@@ -32,15 +32,6 @@
   gap: var(--spacing-xxl);
 }
 
-.column-list {
-  display: grid;
-  grid-template-columns: repeat(var(--col-count), 1fr);
-
-  @media (orientation: portrait) {
-    grid-template-columns: 1fr;
-  }
-}
-
 .balanced > * {
   flex: 1;
 }

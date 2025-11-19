@@ -146,19 +146,3 @@ blockquote {
     font-style: italic;
   }
 }
-
-.accent-list {
-  li {
-    padding-inline-start: calc(var(--spacing-sm) * 2);
-    &::before {
-      content: counter(list-item);
-      display: inline-block;
-      width: var(--spacing-lg);
-      background-color: var(--accent-primary);
-      margin-inline-start: calc(var(--spacing-sm) * -2);
-      margin-right: var(--spacing-sm);
-      text-box: trim-both text;
-      color: var(--surface-primary);
-    }
-  }
-}
