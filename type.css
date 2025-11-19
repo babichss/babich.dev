@@ -1,21 +1,21 @@
 :root {
-  font-family: "Google Sans Flex", sans-serif;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0, "ROND" 0;
   font-size: var(--text-size-md);
 }
 
+html {
+  letter-spacing: 0.02em;
+}
+
 :is(h1, h2, h3) {
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.5em;
   line-height: 1;
   text-wrap: balance;
-}
-
-h1 {
-  font-size: 3.05em;
-  font-weight: 700;
-  margin-bottom: 0;
 }
 
 h2 {
@@ -32,4 +32,10 @@ h3 {
 
 .body-lg {
   font-size: var(--text-size-lg);
+}
+
+.title-xxl {
+  font-size: 3.05em;
+  font-weight: 700;
+  margin-bottom: 0;
 }

@@ -1,28 +1,36 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!doctype html>
 
-<style>
-  html {
-    font-display: fallback;
-  }
-</style>
-
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@400,500,700&display=swap"
-  rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="spacing.css">
-<link rel="stylesheet" href="type.css">
-<link rel="stylesheet" href="layout.css">
-<link rel="stylesheet" href="util.css">
-
-
-<title>Сергій Бабіч | Технічні інтерв’ю</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="uk">
 
+<head>
+  <title>Сергій Бабіч | Технічні інтерв’ю</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    html {
+      font-display: fallback;
+    }
+  </style>
+
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="spacing.css">
+  <link rel="stylesheet" href="type.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="util.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap"
+    rel="stylesheet">
+
+</head>
+
 <body>
+
+
   <nav class="navigation">
     <button class="burger-menu" aria-label="Menu">Menu</button>
     <ul class="stack-row gap-lg">
@@ -36,42 +44,43 @@
 
   <header class="hero">
     <div class="content stack gap-md">
-      <h1>
-        Я — Сергій Бабіч.
-      </h1>
-      <p class="punchline">І ваші технічні співбесіди&nbsp;— тепер мій клопіт.</p>
+      <div>
+        <p class="title-xxl">Я — Сергій Бабіч.</p>
+        <p class="punchline">І ваші технічні співбесіди&nbsp;— тепер мій клопіт.</p>
+      </div>
+
       <a href="#contact" class="contact-me">Домовитись про розмову</a>
     </div>
   </header>
 
   <main class="stack gap-xxl">
     <section class="what-i-offer" id="what-i-offer">
-      <h2>Що я пропоную</h2>
+      <h2>Що я роблю</h2>
 
       <article class="card">
         <h3>Проведення технічних інтерв’ю</h3>
         <ul class="stack gap-md">
-          <li>Точна оцінка інженера під ваші бізнес-задачі</li>
-          <li>Перевірка мислення та технічної зрілості замість завчених відповідей</li>
-          <li>Сценарні співбесіди, зібрані під вимоги продукту й ризики ролі</li>
+          <li>Точна оцінка інженера під ваші бізнес-задачі.</li>
+          <li>Перевірка мислення та технічної зрілості замість завчених відповідей.</li>
+          <li>Сценарні співбесіди, зібрані під вимоги продукту й ризики ролі.</li>
         </ul>
       </article>
 
       <article class="card">
         <h3>Навчання технічних інтерв’юєрів</h3>
-        <ul class="stack gap-sm">
-          <li>Єдиний стандарт оцінювання для всієї команди</li>
-          <li>Чітке розуміння типових помилок і шляхів їх усунення</li>
-          <li>Структура інтерв’ю та сигнальна модель, якою легко користуватися</li>
+        <ul class="stack gap-md">
+          <li>Єдиний стандарт оцінювання для всієї команди.</li>
+          <li>Чітке розуміння типових помилок і шляхів їх усунення.</li>
+          <li>Структура інтерв’ю та сигнальна модель, якою легко користуватися.</li>
         </ul>
       </article>
 
       <article class="card">
         <h3>Оптимізація інтерв’ю-процесів</h3>
-        <ul class="stack gap-sm">
-          <li>Прозорий і передбачуваний інтерв’ю-процес без хаосу та ситуативних рішень</li>
-          <li>Сигнальна модель, яка дозволяє швидко й впевнено оцінювати кандидатів</li>
-          <li>Стандарти, плейбуки та consistency на кожному етапі найму</li>
+        <ul class="stack gap-md">
+          <li>Прозорий і передбачуваний інтерв’ю-процес без хаосу та ситуативних рішень.</li>
+          <li>Сигнальна модель, яка дозволяє швидко й впевнено оцінювати кандидатів.</li>
+          <li>Стандарти, плейбуки та consistency на кожному етапі найму.</li>
         </ul>
       </article>
     </section>
@@ -82,7 +91,7 @@
         <p>
           У більшості команд технічні інтерв’ю живуть своїм життям: кожен проводить їх по-своєму, оцінки плавають, а
           сигнали щоразу звучать інакше.
-        <p>
+        </p>
 
         <p>Через це команда легко губить ясність — складно зрозуміти, хто справді
           “проходить”, а хто просто спрацював із конкретним інтерв’юєром.</p>
@@ -97,12 +106,14 @@
     <section id="who-i-help">
       <h2>Кому це корисно</h2>
       <ul class="stack-row balanced gap-sm">
-        <li class="card">Командам, яким бракує часу чи експертизи для якісних технічних інтерв’ю — беру перевірку рівня
+        <li class="card">Командам, яким бракує часу чи експертизи для якісних технічних інтерв’ю — беру перевірку
+          рівня
           інженера на
           себе</li>
         <li class="card">Лідам, які хочуть оновити підхід до найму та вирівняти інтерв’ю-структуру під сучасні вимоги
         </li>
-        <li class="card">Компаніям, яким потрібні стабільні процеси: узгоджені стандарти, прозорі сигнали й неупереджені
+        <li class="card">Компаніям, яким потрібні стабільні процеси: узгоджені стандарти, прозорі сигнали й
+          неупереджені
           рішення на
           кожному етапі</li>
       </ul>
@@ -111,11 +122,13 @@
     <section id="testimonials">
       <h2>Відгуки</h2>
       <div class="stack gap-xl">
-        <article class="card">
+        <div class="card">
           <blockquote class="stack gap-sm">
             <p>Serhii is a true expert in his field: he knows how to ask not only deep technical questions but
-              also practical situational cases, which made every interview both meaningful and fair. Candidates came to
-              interviews excited (because they knew who Serhii was) and left even more impressed, having received highly
+              also practical situational cases, which made every interview both meaningful and fair. Candidates came
+              to
+              interviews excited (because they knew who Serhii was) and left even more impressed, having received
+              highly
               constructive feedback from him. He also creates a comfortable and professional atmosphere during
               interviews,
               enabling candidates to fully showcase their skills.</p>
@@ -124,9 +137,9 @@
               strongly recommend him!</p>
             <footer>Senior Talent Acquisition Manager </footer>
           </blockquote>
-        </article>
+        </div>
 
-        <article class="card">
+        <div class="card">
           <blockquote>
             <p>Мав можливість пройти тестову співбесіду з Сергієм. Класна розмова - з акцентом на підходи,
               мислення та інженерну зрілість. Особливо цінним був фідбек після: детальний, чесний і з конкретикою. Він
@@ -137,18 +150,19 @@
               не просто "перевірити себе", а отримати якісний і корисний зворотний зв'язок</p>
             <footer>Software engineer</footer>
           </blockquote>
-        </article>
+        </div>
 
-        <article class="card">
+        <div class="card">
           <blockquote class="stack gap-sm">
             <p>Основним моїм запитом було визначення поточного технічного рівня, виявлення прогалин та отримання
               рекомендацій щодо подальших дій, задля покращення відповідних скілів. В результаті була проведена
               співбесіда, яка була побудована суто на практичних питаннях, та ситуаціях які відбуваються у production.
-              Після чого було отримано розгорнутий фідбек, з описом поточного рівня, розписано що потрібно покращити та
+              Після чого було отримано розгорнутий фідбек, з описом поточного рівня, розписано що потрібно покращити
+              та
               якими шляхами і з якими ресурсами це можна зробити. Дуже вдячний Сергію, все було на 10/10)</p>
             <footer>Senior Software Engineer</footer>
           </blockquote>
-        </article>
+        </div>
       </div>
     </section>
 
@@ -167,9 +181,10 @@
     <section id="contact">
       <h3>Контакти</h3>
       <ul class="stack gap-sm">
-        <li>Telegram: @yourhandle</li>
-        <li>Email: youremail@example.com</li>
-        <li>LinkedIn: linkedin.com/in/yourprofile</li>
+        <li>Telegram: <a href="https://t.me/babich_ss" target="_blank">@babich_ss</a></li>
+        <li>Email: <a href="mailto:babich.ss@gmail.com" target="_blank">babich.ss@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/babichss" target="_blank">in/babichss</a>
+        </li>
       </ul>
     </section>
   </main>

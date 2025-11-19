@@ -28,6 +28,8 @@ html {
   h3 {
     font-size: 1.25em;
     font-weight: 700;
+    border-bottom: 1px solid var(--border-secondary);
+    padding-block-end: var(--spacing-sm);
   }
 }
 
@@ -90,7 +92,7 @@ section {
 }
 
 .hero {
-  height: 30dvh;
+  height: 45dvh;
 
   background: radial-gradient(
     circle at 70% 10%,
@@ -142,6 +144,8 @@ blockquote {
   }
 
   footer {
+    padding-block-start: var(--spacing-sm);
+    border-top: 1px solid var(--border-secondary);
     text-align: right;
     font-style: italic;
   }
