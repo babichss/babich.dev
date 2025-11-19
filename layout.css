@@ -1,0 +1,41 @@
+body {
+  padding-block-end: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1200px) 1fr;
+
+  main {
+    grid-column: 2;
+  }
+
+  @media (max-width: 1280px) {
+    grid-template-columns: var(--portrait-gutter) 1fr var(--portrait-gutter);
+  }
+}
+
+header {
+  margin-block-end: var(--spacing-lg);
+  height: 30dvh;
+  display: flex;
+
+  justify-content: center;
+}
+
+.what-i-offer {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  column-gap: var(--spacing-lg);
+
+  @media (orientation: portrait) {
+    grid-template-columns: 1fr;
+  }
+
+  h2 {
+    grid-column: 1 / 4;
+
+    @media (orientation: portrait) {
+      grid-column: 1;
+    }
+  }
+}

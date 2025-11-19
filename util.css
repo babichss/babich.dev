@@ -1,0 +1,50 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack-row {
+  display: flex;
+  flex-direction: row;
+
+  @media (orientation: portrait) {
+    flex-direction: column;
+  }
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-xl {
+  gap: var(--spacing-xl);
+}
+
+.gap-xxl {
+  gap: var(--spacing-xxl);
+}
+
+.column-list {
+  display: grid;
+  grid-template-columns: repeat(var(--col-count), 1fr);
+
+  @media (orientation: portrait) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.balanced > * {
+  flex: 1;
+}
+
+.inline-lg {
+  max-inline-size: 80ch;
+}
