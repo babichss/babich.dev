@@ -1,0 +1,39 @@
+@layer base, layout, type, components;
+
+html {
+  background-color: var(--surface-primary);
+  color: var(--text-primary);
+}
+
+:where(main, .hero) {
+  --gutter: var(--spacing-md);
+
+  display: grid;
+  grid-template-columns:
+    minmax(var(--gutter), 1fr)
+    minmax(auto, 1200px)
+    minmax(var(--gutter), 1fr);
+  row-gap: var(--spacing-md);
+
+  > * {
+    grid-column: 2;
+  }
+}
+
+section > h2 {
+  grid-column: 1 / -1;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}

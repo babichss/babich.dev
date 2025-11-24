@@ -1,0 +1,13 @@
+@layer components {
+  :root {
+    --card-border-radius: var(--spacing-sm);
+    --card-padding: var(--spacing-md);
+  }
+
+  .card {
+    border: 1px solid var(--border-primary);
+    border-radius: var(--card-border-radius);
+    background-color: var(--surface-secondary);
+    padding: var(--card-padding);
+  }
+}

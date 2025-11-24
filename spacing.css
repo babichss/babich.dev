@@ -1,9 +1,0 @@
-@layer tokens {
-  :root {
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 32px;
-    --spacing-xl: 48px;
-    --spacing-xxl: 64px;
-  }
-}

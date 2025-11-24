@@ -1,41 +1,37 @@
-:root {
-  font-family: "Manrope", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0, "ROND" 0;
-  font-size: var(--text-size-md);
-}
+@layer type {
+  :root {
+    --font-family: "Manrope", sans-serif;
+    --font-optical-sizing: auto;
+    --font-weight: 400;
+    --font-style: normal;
+    --font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0, "ROND" 0;
+    --font-size: 16px;
 
-html {
-  letter-spacing: 0.02em;
-}
+    --line-height: 1.5;
+  }
 
-:is(h1, h2, h3) {
-  font-weight: 600;
-  margin-bottom: 0.5em;
-  line-height: 1;
-  text-wrap: balance;
-}
+  html {
+    font-style: var(--font-style);
+    font-weight: var(--font-weight);
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    font-optical-sizing: var(--font-optical-sizing);
+    font-variation-settings: var(--font-variation-settings);
 
-h2 {
-  font-size: 2.44em;
-}
+    > * {
+      text-box: trim-both cap;
+    }
+  }
 
-h3 {
-  font-size: 1.95em;
-}
+  :is(p, li) {
+    line-height: var(--line-height);
 
-:is(p, li) {
-  line-height: 1.5;
-}
+    &:not(:last-of-type) {
+      margin-bottom: 1em;
+    }
+  }
 
-.body-lg {
-  font-size: var(--text-size-lg);
-}
-
-.title-xxl {
-  font-size: 3.05em;
-  font-weight: 700;
-  margin-bottom: 0;
+  :is(h2, h3, h4, h5, h6) {
+    margin-bottom: 0.5em;
+  }
 }
