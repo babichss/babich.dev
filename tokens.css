@@ -13,4 +13,12 @@
   --spacing-lg: 24px;
   --spacing-xl: 32px;
   --spacing-xxl: 40px;
+
+  --body-xs: 12px;
+  --body-sm: 14px;
+  --body-md: 16px;
+  --body-lg: 20px;
+  --body-xl: 40px;
+  --body-2xl: 48px;
+  --body-3xl: 64px;
 }
