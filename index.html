@@ -1,190 +1,271 @@
-<title>Сергій Бабіч</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="uk">
+  <title>Сергій Бабіч</title>
+  <meta name="description" content="Сергій Бабіч — технічний експерт" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.webp" type="image/x-icon" />
+  <style>
+    html {
+      background-color: #111113;
+    }
+  </style>
+  <style>
+    @layer base, type, layout, components, styles;
+  </style>
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/type.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 
-<style>
-  html {
-    background-color: #111113;
-  }
-</style>
-<link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="layout.css">
-<link rel="stylesheet" href="components.css">
-<link rel="stylesheet" href="type.css">
-<link rel="stylesheet" href="styles.css">
+  <header class="hero main-layout">
+    <h2 class="hero-title">Я — Сергій Бабіч</h2>
+    <p class="hero-subtitle">
+      І ваші технічні співбесіди&nbsp;— тепер мій клопіт.
+    </p>
+    <a
+      target="_blank"
+      href="https://calendar.app.google/gbbTfofNZ6Rie8vb7"
+      class="button"
+    >
+      Призначити зустріч
+    </a>
+  </header>
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <body>
+    <main class="main-layout">
+      <section id="services">
+        <h2>Що я роблю</h2>
+        <div class="stack-row gap-md adaptively-scrollable">
+          <article class="card">
+            <h3>
+              <svg class="icon"><use href="/svg/icons.svg#book" /></svg>
+              Підготовка до співбесіди
+            </h3>
+            <ul>
+              <li>Уточнюю вимоги ролі та очікування з&nbsp;наймаючим лідом.</li>
+              <li>
+                Формую компетенційну мапу та чіткий план технічної співбесіди.
+              </li>
+              <li>Готую питання та сценарії під реальні ризики ролі.</li>
+            </ul>
+          </article>
 
-<header class="hero">
-  <h2 class="hero-title">Я — Сергій Бабіч</h2>
-  <p>І ваші технічні співбесіди&nbsp;— тепер мій клопіт.</p>
-  <a target="_blank" href="https://calendar.app.google/gbbTfofNZ6Rie8vb7" class="button">Призначити зустріч</a>
-</header>
+          <article class="card">
+            <h3>
+              <svg class="icon"><use href="/svg/icons.svg#bulb" /></svg>
+              Проведення співбесіди
+            </h3>
+            <ul>
+              <li>
+                Проводжу сценарну розмову: оцінюю мислення, логіку, глибину.
+              </li>
+              <li>
+                Досліджую поведінку: як інженер працює з невизначеністю
+                та&nbsp;приймає рішення.
+              </li>
+              <li>
+                Дивлюся не на завчені відповіді, а&nbsp;на реальні прояви
+                експертизи.
+              </li>
+            </ul>
+          </article>
 
-<main>
-  <section class="services" id="services">
-    <h2>Що я роблю</h2>
-    <div class="stack-row gap-md adaptively-scrollable">
-      <article class="card">
-        <h3><img src="conduct.svg" class="icon">Проведення технічних інтерв'ю</h3>
-        <ul>
-          <li>Оцінюю інженера не «в середньому», а під ваші конкретні задачі та технічний контекст.</li>
-          <li>Дивлюсь на спосіб мислення, зрілість і якість рішень — а не на завчені відповіді.</li>
-          <li>Формую разом із вами чіткий план інтерв’ю, який точно відображає вимоги продукту й ризики ролі.</li>
-        </ul>
-      </article>
+          <article class="card">
+            <h3>
+              <svg class="icon"><use href="/svg/icons.svg#cog" /></svg>
+              Оцінка та фідбек
+            </h3>
+            <ul>
+              <li>
+                Надаю незалежний висновок із&nbsp;чітким визначенням рівня.
+              </li>
+              <li>Формую сильні сторони, зони розвитку та ризики.</li>
+              <li>Даю рекомендацію щодо подальших кроків у процесі найму.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
-      <article class="card">
-        <h3><img src="teach.svg" class="icon">Навчання технічних інтерв'юєрів</h3>
-        <ul>
-          <li>Навчаю інтерв’юєрів створювати єдиний і зрозумілий стандарт оцінювання під кожну вакансію.</li>
-          <li>Пояснюю типові помилки під час проведення співбесіди та показую практичні способи їх уникати.</li>
-          <li>Даю інструменти, що допомагають вибудувати чіткий план співбесіди й коректно аналізувати сигнали.</li>
-        </ul>
-      </article>
+      <section id="why-it-matters">
+        <h2>Чому це важливо</h2>
 
-      <article class="card">
-        <h3><img src="improve.svg" class="icon">Оптимізація інтерв'ю-процесів</h3>
-        <ul>
-          <li>Синхронізую роботу рекрутерів та інтерв’юєрів, щоб команда діяла в одному контексті та в єдиній логіці
-            оцінювання.</li>
-          <li>Вибудовую зрозумілу структуру технічних співбесід — з чіткими цілями, фокусами та зонами відповідальності.
+        <p>
+          У багатьох команд немає єдиного стандарту технічних співбесід, тому
+          оцінка кандидатів суттєво відрізняється між інтерв’юєрами.
+        </p>
+
+        <p>
+          Через це рішення залежать не від вимог ролі, а від особистих вражень
+          фахівця, його досвіду, уподобань чи настрою.
+        </p>
+        <p>
+          Цьому можна запобігти, запровадивши єдиний підхід до технічних
+          співбесід із чіткими стандартами та прозорою сигнальною моделлю.
+        </p>
+      </section>
+
+      <section id="who-i-help">
+        <h2>Кому це корисно</h2>
+        <ul class="plain stack-row gap-md">
+          <li class="card">
+            <b>Командам</b>, яким потрібні прозорі, структуровані технічні
+            співбесіди з незалежною оцінкою.
           </li>
-          <li>Впроваджую спільні стандарти та плейбуки, щоб якість співбесід не залежала від конкретного інтерв’юєра.
+          <li class="card">
+            <b>Лідам</b>, які хочуть уніфікувати підхід до технічних інтерв’ю та
+            покращити якість рішень.
+          </li>
+          <li class="card">
+            <b>Компаніям</b>, яким важливо зменшити ризик упереджених рішень та
+            отримувати аргументований фідбек.
           </li>
         </ul>
-      </article>
-    </div>
-  </section>
+      </section>
 
-  <section id="why-it-matters">
-    <h2>Чому це важливо</h2>
+      <section id="proposal" class="main-layout proposal">
+        <h2>Детальна пропозиція співпраці</h2>
+        <div class="stack gap-md">
+          <p>
+            Структура інтерв’ю, рамка оцінки, вартість та&nbsp;формат роботи —
+            зібрані на окремій сторінці.
+          </p>
 
-    <p>
-      У більшості команд технічні співбесіди існують окремо від системного процесу оцінювання. Кожен інтерв’юєр
-      користується власним підходом, який часто відрізняється від підходів колег. Як результат — різні стандарти, різні
-      очікування та непостійна якість оцінювання.
-    </p>
+          <a class="button" href="/proposal.html">
+            Перейти до пропозиції
+            <svg class="icon"><use href="/svg/icons.svg#arrow-right" /></svg>
+          </a>
+        </div>
+      </section>
 
-    <p>
-      Через це висновки після співбесіди ґрунтуються не на спільних критеріях, а на основі субʼєктивних
-      вражень конкретного інтерв’юєра. Рішення може залежати від його настрою, інтерпретації та особистого досвіду, а
-      не відповідності кандидата вимогам ролі.
-    </p>
+      <section id="about-me">
+        <h2>Про мене</h2>
 
-    <p>Структурований підхід та прозора сигнальна модель дають команді спільну рамку — допомагають оцінювати кандидатів
-      послідовно та обґрунтовано, що дозволяє приймати виважені та неупереджені рішення.
-    </p>
-  </section>
+        <p>
+          Я — фронтенд-інженер із <b>15-річним досвідом</b> та більш як
+          <b>10 роками</b> у технічних співбесідах. Останні роки розвиваю цей
+          напрям як зовнішній експерт: допомагаю командам вибудовувати чесну,
+          структуровану й передбачувану технічну оцінку.
+        </p>
 
-  <section id="who-i-help">
-    <h2>Кому це корисно</h2>
-    <ul class="plain stack-row">
-      <li><b>Командам</b>, яким потрібна якісна технічна оцінка, але бракує часу чи достатньої експертизи всередині.
-      </li>
-      <li><b>Лідам</b>, які хочуть оновити підхід до технічних співбесід і налагодити злагоджену роботу інтерв’юєрів.
-      </li>
-      <li><b>Компаніям</b>, яким важливо мати стабільний і передбачуваний процес із чіткими стандартами та прозорими
-        сигналами.
-      </li>
-    </ul>
-  </section>
+        <p>
+          Провів <b>понад 50</b> публічних інтерв’ю на YouTube і
+          <b>більш як 20</b> співбесід як незалежний спеціаліст. Працював із
+          продуктовими командами над вимогами до ролей, картою компетенцій і
+          логікою технічної оцінки.
+        </p>
 
-  <section id="about-me">
-    <h2>Про мене</h2>
+        <p>
+          Я спираюся на поведінковий підхід. Мені важливо, як інженер мислить,
+          реагує на завдання й приймає рішення. Даю зважені рекомендації, а як
+          зовнішній експерт забезпечую спокійну, незалежну оцінку. Публічні
+          інтерв’ю — місце, де я постійно випробовую й відточую свій метод.
+        </p>
+      </section>
 
-    <p>Я — фронтенд-інженер із майже п’ятнадцятирічним досвідом у продукті та розробці. Понад десять років проводжу
-      технічні співбесіди, а останні кілька років цілеспрямовано розвиваю й поглиблюю саме цю експертизу: як практик,
-      консультант і зовнішній фахівець, який допомагає командам будувати чесний, передбачуваний і зрозумілий підхід до
-      оцінювання інженерів.</p>
+      <section id="testimonials">
+        <h2>Відгуки</h2>
+        <div class="stack gap-md">
+          <blockquote class="card">
+            <p>
+              Serhii is a true expert in his field: he knows how to ask not only
+              deep technical questions but also practical situational cases,
+              which made every interview both meaningful and fair. Candidates
+              came to interviews excited (because they knew who Serhii was) and
+              left even more impressed, having received highly constructive
+              feedback from him. He also creates a comfortable and professional
+              atmosphere during interviews, enabling candidates to fully
+              showcase their skills.
+            </p>
 
-    <p>Провів понад п’ятдесят публічних інтерв’ю на своєму YouTube-каналі — від початківців до тімлідів і техлідів у
-      фронтенді. Ще понад двадцять технічних співбесід — як незалежний спеціаліст, коли компаніям потрібна стороння,
-      неупереджена оцінка кандидата. Працював із продуктовими командами, залучав рекрутерів і наймаючих менеджерів,
-      допомагав формулювати вимоги до ролей, створювати карту компетенцій та налагоджувати логіку технічної оцінки.</p>
+            <p>
+              Serhii is a treasure — a highly professional specialist and a
+              reliable partner in talent selection. I strongly recommend him!
+            </p>
+            <footer>
+              <cite>Senior Talent Acquisition Manager</cite>
+            </footer>
+          </blockquote>
 
-    <p>
-      У своїй роботі спираюся на поведінковий підхід. Мене цікавить не перелік завчених відповідей, а спосіб мислення
-      інженера: як він працює з невизначеністю, як застосовує досвід, як міркує в реальному часі та реагує на завдання.
-      Це
-      дає змогу бачити як прямі прояви фаховості, так і непрямі сигнали — гнучкість, зрілість, здатність приймати
-      інженерні рішення.
-    </p>
+          <blockquote class="card stack gap-sm">
+            <p>
+              Мав можливість пройти тестову співбесіду з Сергієм. Класна розмова
+              - з акцентом на підходи, мислення та інженерну зрілість. Особливо
+              цінним був фідбек після: детальний, чесний і з конкретикою. Він
+              добре показав, що вже працює, а що варто покращити. Після такого
+              фідбеку реально з'являється розуміння, куди саме вкладати час і
+              сили. Окрема подяка за глибину розбору і уважність до нюансів.
+              Рекомендую всім, хто хоче не просто "перевірити себе", а отримати
+              якісний і корисний зворотний зв'язок
+            </p>
+            <footer>
+              <cite>Software engineer</cite>
+            </footer>
+          </blockquote>
 
-    <p>У фідбеку я не формулюю категоричних висновків. Я даю зважену рекомендацію, яка враховує і проявлений рівень, і
-      потенціал. Якщо кандидат не підходить на одну роль, але може бути цінним на суміжній — я це обов’язково
-      відображаю.
-      Остаточне рішення завжди за командою; моя роль — дати їй чесні, аргументовані підстави.</p>
+          <blockquote class="card stack gap-sm">
+            <p>
+              Основним моїм запитом було визначення поточного технічного рівня,
+              виявлення прогалин та отримання рекомендацій щодо подальших дій,
+              задля покращення відповідних скілів. В результаті була проведена
+              співбесіда, яка була побудована суто на практичних питаннях, та
+              ситуаціях які відбуваються у production. Після чого було отримано
+              розгорнутий фідбек, з описом поточного рівня, розписано що
+              потрібно покращити та якими шляхами і з якими ресурсами це можна
+              зробити. Дуже вдячний Сергію, все було на 10/10)
+            </p>
+            <footer>
+              <cite>Senior Software Engineer</cite>
+            </footer>
+          </blockquote>
+        </div>
+      </section>
 
-    <p>Я працюю як зовнішній експерт, тому можу оцінювати кандидатів спокійно й незалежно — без внутрішніх впливів, які
-      часто спотворюють картину. А публічні інтерв’ю на YouTube для мене — не просто контент, а спосіб постійної
-      практики:
-      можливість досліджувати поведінкові сигнали, відточувати власний метод і ділитися ним із тими, хто хоче провести
-      або
-      пройти технічну співбесіду впевнено й професійно.</p>
-  </section>
+      <section id="contacts">
+        <h2>Контакти</h2>
+        <div class="stack-wrap gap-sm">
+          <a
+            href="mailto:serhii@babich.dev"
+            target="_blank"
+            class="button size-sm"
+          >
+            <svg class="icon">
+              <use href="/svg/icons.svg#email" />
+            </svg>
+            Написати на email
+          </a>
 
-  <section id="testimonials">
-    <h2>Відгуки</h2>
-    <div class="stack gap-md">
-      <blockquote class="card">
-        <p>Serhii is a true expert in his field: he knows how to ask not only deep technical questions but
-          also practical situational cases, which made every interview both meaningful and fair. Candidates came
-          to
-          interviews excited (because they knew who Serhii was) and left even more impressed, having received
-          highly
-          constructive feedback from him. He also creates a comfortable and professional atmosphere during
-          interviews,
-          enabling candidates to fully showcase their skills.</p>
+          <a href="tel:+380734296568" target="_blank" class="button size-sm">
+            <svg class="icon">
+              <use href="/svg/icons.svg#phone" />
+            </svg>
+            Зателефонувати
+          </a>
 
-        <p>Serhii is a treasure — a highly professional specialist and a reliable partner in talent selection. I
-          strongly recommend him!</p>
-        <footer>
-          <cite>Senior Talent Acquisition Manager</cite>
-        </footer>
-      </blockquote>
+          <a
+            href="https://linkedin.com/in/babichss"
+            target="_blank"
+            class="button size-sm"
+          >
+            <svg class="icon">
+              <use href="/svg/icons.svg#linkedin" />
+            </svg>
+            Переглянути LinkedIn
+          </a>
 
-      <blockquote class="card stack gap-sm">
-        <p>Мав можливість пройти тестову співбесіду з Сергієм. Класна розмова - з акцентом на підходи,
-          мислення та інженерну зрілість. Особливо цінним був фідбек після: детальний, чесний і з конкретикою. Він
-          добре показав, що вже працює, а що варто покращити. Після такого фідбеку реально з'являється розуміння,
-          куди
-          саме вкладати час і сили. Окрема подяка за глибину розбору і уважність до нюансів. Рекомендую всім, хто
-          хоче
-          не просто "перевірити себе", а отримати якісний і корисний зворотний зв'язок</p>
-        <footer>
-          <cite>Software engineer</cite>
-        </footer>
-      </blockquote>
-
-      <blockquote class="card stack gap-sm">
-        <p>Основним моїм запитом було визначення поточного технічного рівня, виявлення прогалин та отримання
-          рекомендацій щодо подальших дій, задля покращення відповідних скілів. В результаті була проведена
-          співбесіда, яка була побудована суто на практичних питаннях, та ситуаціях які відбуваються у production.
-          Після чого було отримано розгорнутий фідбек, з описом поточного рівня, розписано що потрібно покращити
-          та
-          якими шляхами і з якими ресурсами це можна зробити. Дуже вдячний Сергію, все було на 10/10)</p>
-        <footer>
-          <cite>Senior Software Engineer</cite>
-        </footer>
-      </blockquote>
-    </div>
-  </section>
-
-
-
-  <section id="contacts">
-    <h2>Контакти</h2>
-    <ul>
-      <li>
-        <a href="mailto:serhii@babich.dev" target="_blank">Написати на email</a>
-      </li>
-      <li>
-        <a href="https://t.me/babich_ss" target="_blank">Написати в Telegram</a>
-      </li>
-      <li>
-        <a href="tel:+380734296568" target="_blank">Зателефонувати</a>
-      </li>
-    </ul>
-  </section>
-</main>
+          <a
+            href="https://t.me/babich_ss"
+            target="_blank"
+            class="button size-sm"
+          >
+            <svg class="icon">
+              <use href="/svg/icons.svg#telegram" />
+            </svg>
+            Написати в Telegram
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

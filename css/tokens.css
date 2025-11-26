@@ -1,11 +1,13 @@
 :root {
-  --surface-primary: #111113;
+  --surface-primary: #161618;
   --surface-secondary: #161618;
   --border-primary: #222225;
-  --border-secondary: #333336;
   --text-primary: #ededed;
-  --link-primary: #6f6cff;
   --accent-primary: #7da9ff;
+  --accent-secondary: #a1d48a;
+  --accent-dark: color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  --link-primary: var(--accent-primary);
+  --elevation-primary: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -14,11 +16,9 @@
   --spacing-xl: 32px;
   --spacing-xxl: 40px;
 
-  --body-xs: 12px;
   --body-sm: 14px;
   --body-md: 16px;
   --body-lg: 20px;
   --body-xl: 40px;
-  --body-2xl: 48px;
   --body-3xl: 64px;
 }

@@ -21,7 +21,13 @@
     }
   }
 
-  :is(.stack, .stack-row) {
+  .stack-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--layout-gap);
+  }
+
+  :is(.stack, .stack-row, .stack-wrap) {
     > * {
       margin: 0;
     }
@@ -32,18 +38,6 @@
 
     &.gap-md {
       --layout-gap: var(--spacing-md);
-    }
-
-    &.gap-lg {
-      --layout-gap: var(--spacing-lg);
-    }
-
-    &.gap-xl {
-      --layout-gap: var(--spacing-xl);
-    }
-
-    &.gap-xxl {
-      --layout-gap: var(--spacing-xxl);
     }
   }
 }
