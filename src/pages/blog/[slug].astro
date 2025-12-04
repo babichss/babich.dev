@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Icon from "../../components/Icon.astro";
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blog");
+
+  return blogPosts.map((post) => ({
+    params: { slug: post.data.urlSlug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const { Content } = await post.render();
+---
+
+<script
+  src="https://cdn.counter.dev/script.js"
+  data-id="fc0be846-8fa6-4d1e-aa0c-4645581e1586"
+  data-utcoffset="2"></script>
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <main class="main-layout blog-post">
+    <a href="/blog">
+      <Icon name="arrow-left" />
+      Назад до блогу
+    </a>
+
+    <article>
+      <header>
+        <h1>{post.data.title}</h1>
+        <time datetime={post.data.publishDate.toISOString()}>
+          {
+            post.data.publishDate.toLocaleDateString("uk-UA", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+      </header>
+
+      <Content />
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  @layer styles {
+    .blog-post {
+      margin: 0 auto;
+      padding: 2rem;
+
+      p,
+      pre {
+        max-width: 80ch;
+      }
+
+      pre {
+        padding: var(--spacing-md);
+      }
+
+      code {
+        max-width: 100%;
+        color: var(--text-secondary);
+        font-weight: 200;
+        font-family: "Code";
+      }
+    }
+  }
+</style>

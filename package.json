@@ -1,0 +1,21 @@
+{
+  "name": "babich.dev",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.16.4",
+    "marked": "^17.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-css-order": "^2.1.2"
+  }
+}

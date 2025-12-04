@@ -1,4 +1,15 @@
 {
-  "plugins": ["prettier-plugin-css-order"],
-  "cssDeclarationSorterOrder": "concentric-css"
+  "plugins": [
+    "prettier-plugin-astro",
+    "prettier-plugin-css-order"
+  ],
+  "cssDeclarationSorterOrder": "concentric-css",
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
 }
