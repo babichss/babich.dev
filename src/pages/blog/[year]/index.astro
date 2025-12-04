@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Icon from "../../../components/Icon.astro";
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blog");
+  const years = new Set(
+    blogPosts.map((post) => post.data.publishDate.getFullYear())
+  );
+
+  return Array.from(years).map((year) => {
+    const yearPosts = blogPosts.filter(
+      (post) => post.data.publishDate.getFullYear() === year
+    );
+    const sortedPosts = yearPosts.sort(
+      (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+    );
+
+    return {
+      params: { year: year.toString() },
+      props: { year, posts: sortedPosts },
+    };
+  });
+}
+
+const { year, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`Блог ${year}`}
+  description={`Всі пости блогу за ${year} рік`}
+>
+  <main class="main-layout">
+    <a href="/blog">
+      <Icon name="arrow-left" />
+      Назад до блогу
+    </a>
+
+    <h1>Блог {year}</h1>
+
+    {
+      posts.length === 0 ? (
+        <p>Поки що немає опублікованих постів за {year} рік.</p>
+      ) : (
+        <ul class="stack gap-md">
+          {posts.map((post) => (
+            <li>
+              <article>
+                <h2>
+                  <a href={`/blog/${post.data.urlSlug}`}>{post.data.title}</a>
+                </h2>
+                <p>{post.data.description}</p>
+                <time datetime={post.data.publishDate.toISOString()}>
+                  {post.data.publishDate.toLocaleDateString("uk-UA", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+</BaseLayout>

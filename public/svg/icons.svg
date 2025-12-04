@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="arrow-left" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="m12 19-7-7 7-7m7 7H5" />
+  </symbol>
+
+  <symbol id="arrow-right" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M5 12h14m-7-7 7 7-7 7" />
+  </symbol>
+
+
+  <symbol id="email" viewBox="0 0 24 22">
+    <g fill="currentColor" fill-rule="evenodd">
+      <path
+        d="M19 0H5a5 5 0 0 0-5 5v12a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5M5 2h14a3 3 0 0 1 2.8 1.9L14 11.5a3 3 0 0 1-4.2 0L2.2 4A3 3 0 0 1 5 2m14 18H5a3 3 0 0 1-3-3V6.5L8.5 13a5 5 0 0 0 7 0L22 6.5V17a3 3 0 0 1-3 3" />
+    </g>
+  </symbol>
+
+  <symbol id="phone" viewBox="0 0 24 24">
+    <path fill="currentColor"
+      d="M13 1a1 1 0 0 1 1-1 10 10 0 0 1 10 10 1 1 0 0 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1m1 5a4 4 0 0 1 4 4 1 1 0 0 0 2 0 6 6 0 0 0-6-6 1 1 0 1 0 0 2m9 10.7a3 3 0 0 1 0 4.4l-.9 1c-8.1 8-28-12-20.4-20.2L3 .9a3 3 0 0 1 4.3 0l1.9 2.4a3 3 0 0 1 0 4.3L7.9 9.1a13 13 0 0 0 7 7l1.4-1.2a3 3 0 0 1 4.3 0zm-1.3 1.5-2.4-1.9a1 1 0 0 0-1.6 0l-2 1.7a1 1 0 0 1-1 .1 15 15 0 0 1-8.8-8.8 1 1 0 0 1 .1-1l1.6-2a1 1 0 0 0 0-1.6L5.8 2.3a1 1 0 0 0-1.5 0L3 3.3c-5.6 6.8 11.6 23.1 17.6 17.5l.9-1a1 1 0 0 0 0-1.6" />
+  </symbol>
+
+  <symbol id="linkedin" viewBox="0 0 24 24">
+    <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6M2 9h4v12H2z" />
+      <circle cx="4" cy="4" r="2" />
+    </g>
+  </symbol>
+
+  <symbol id="telegram" viewBox="0 0 24 24">
+    <path fill="currentColor"
+      d="M23.1.9a3 3 0 0 0-2.8-.8l-16 3.4a5 5 0 0 0-2.8 8.4l1.7 1.7.3.8v3.1q0 .8.3 1.3.5 1 1.4 1.4.6.3 1.3.3h3.1q.5 0 .7.3l1.8 1.7a5 5 0 0 0 7.3-.3 5 5 0 0 0 1.1-2.5l3.4-16a3 3 0 0 0-.8-2.8M4.6 12.2l-1.7-1.7a3 3 0 0 1-.7-3 3 3 0 0 1 2.5-2L20.5 2l-15 15v-2.7a3 3 0 0 0-.9-2.2m14 7.2a3 3 0 0 1-5.1 1.7l-1.7-1.7a3 3 0 0 0-2.2-.9H7l15-15z" />
+  </symbol>
+
+  <symbol id="book" viewBox="0 0 24 24">
+    <path fill="currentColor" fill-rule="evenodd"
+      d="M10 1.3h7.4q1.4.2 2.3 1 .8 1 1 2.3v14.8q-.2 1.4-1 2.3-1 .8-2.3 1H6.6q-1.3-.2-2.3-1-.8-1-1-2.3V4.6q.2-1.3 1-2.3 1-.8 2.3-1zm-5.2 17v.9q.2 1 .6 1.4t1.4.5l3.2.2h4q2 0 3.2-.2 1 0 1.4-.5.3-.3.4-.9H8a.8.8 0 0 1 0-1.4h11.2v-1.6H8l-1.6.1a2 2 0 0 0-1.5 1.4m14.5-3H5.9l-1.2.6V8q0-2 .2-3.2 0-1 .5-1.4T6.8 3l3.2-.2h4q2 0 3.2.2 1 0 1.4.5t.5 1.4l.1 3.2zM7.3 7a1 1 0 0 1 .7-.7h8a.8.8 0 0 1 0 1.5H8a1 1 0 0 1-.7-.8m0 3.5a1 1 0 0 1 .7-.7h5a.8.8 0 0 1 0 1.4H8a1 1 0 0 1-.7-.7"
+      clip-rule="evenodd" />
+  </symbol>
+
+  <symbol id="bulb" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <path
+        d="M14.5 19.5h-5m5 0v-1.3c.2-.8.2-.8.7-1.4L17 15a7.5 7.5 0 1 0-10 0l1.8 1.7c.5.6.5.6.7 1.4v1.3m5 0q0 1.3-.2 1.8l-.5.5q-.5.2-1.8.2c-1.3 0-1.4 0-1.7-.2l-.6-.6q-.2-.4-.2-1.7" />
+      <path stroke-linecap="round" d="M12 17v-2m1.7-1a2 2 0 0 1-3.4 0" />
+    </g>
+  </symbol>
+
+  <symbol id="cog" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="3" />
+      <path
+        d="M13.8 2.2Q13.3 2 12 2t-1.8.2a2 2 0 0 0-1 1l-.2.9a2 2 0 0 1-.8 1.4 2 2 0 0 1-1.5 0l-.9-.3a2 2 0 0 0-1.4.3L3.4 7q-.8 1.1-.8 1.6a2 2 0 0 0 .4 1.5q.1.3.7.5.6.5.7 1.4t-.7 1.4q-.6.3-.7.5a2 2 0 0 0-.4 1.5q0 .5.7 1.6l1 1.5a2 2 0 0 0 1.5.3q.4 0 .9-.3a2 2 0 0 1 1.5 0Q9 19 9 20q0 .5.2.9a2 2 0 0 0 1 1q.5.2 1.8.2t1.8-.2a2 2 0 0 0 1-1l.2-.9q0-.9.8-1.4a2 2 0 0 1 1.5 0l.9.3a2 2 0 0 0 1.4-.3q.5-.4 1-1.5.8-1.1.8-1.6a2 2 0 0 0-.4-1.5q-.1-.2-.7-.5a2 2 0 0 1-.7-1.4q0-.8.7-1.4.6-.2.7-.5a2 2 0 0 0 .4-1.5q0-.5-.7-1.6l-1-1.5a2 2 0 0 0-1.5-.3q-.4 0-.9.3a2 2 0 0 1-1.5 0A2 2 0 0 1 15 4q0-.5-.2-.9a2 2 0 0 0-1-1Z" />
+    </g>
+  </symbol>
+
+  <symbol id="pdf" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke-width="1.5"
+        d="M7.792 21.25h8.416a3.5 3.5 0 0 0 3.5-3.5v-5.53a3.5 3.5 0 0 0-1.024-2.475l-5.969-5.97A3.5 3.5 0 0 0 10.24 2.75H7.792a3.5 3.5 0 0 0-3.5 3.5v11.5a3.5 3.5 0 0 0 3.5 3.5" />
+      <path stroke-width="1.5" d="M11.688 3.11v5.66a2 2 0 0 0 2 2h5.662" />
+      <path
+        d="M7.25 16.5v-1m0 0v-2h1a1 1 0 0 1 1 1v0a1 1 0 0 1-1 1zm4 1v-3h.5a1.5 1.5 0 0 1 0 3zm4 0v-1.25m1.5-1.75h-1.5v1.75m0 0h1.5" />
+    </g>
+  </symbol>
+</svg>

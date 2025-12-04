@@ -1,4 +1,9 @@
 @layer styles {
+  :root {
+    --card-border-radius: var(--spacing-sm);
+    --card-padding: var(--spacing-md);
+  }
+
   html {
     background-color: var(--surface-primary);
     color: var(--text-primary);
@@ -62,51 +67,6 @@
     scroll-snap-align: start;
   }
 
-  .hero {
-    row-gap: var(--spacing-sm);
-    background: radial-gradient(
-      circle at 70% 70%,
-      rgba(125, 169, 255, 0.15) 0%,
-      rgba(16, 17, 19, 1) 80%
-    );
-    padding-block: var(--spacing-xxl);
-    line-height: 1;
-
-    > * {
-      max-width: fit-content;
-    }
-
-    .hero-subtitle {
-      font-size: var(--body-lg);
-    }
-
-    .hero-title {
-      margin: 0;
-      font-weight: 200;
-      font-size: var(--body-3xl);
-    }
-
-    @media (max-width: 600px) {
-      justify-items: center;
-      background: radial-gradient(
-        circle at 50% 100%,
-        rgba(125, 169, 255, 0.15) 0%,
-        rgba(16, 17, 19, 1) 80%
-      );
-      padding-block: var(--spacing-xl) var(--spacing-lg);
-      text-align: center;
-
-      .hero-subtitle {
-        margin-block-end: var(--spacing-md);
-        font-size: var(--body-md);
-      }
-
-      .hero-title {
-        font-size: var(--body-xl);
-      }
-    }
-  }
-
   section > h2 {
     grid-column: 1 / -1;
   }
@@ -116,20 +76,6 @@
 
     @media (max-width: 600px) {
       text-wrap: pretty;
-    }
-  }
-
-  .icon {
-    h3:has(&) {
-      display: flex;
-      align-items: start;
-      gap: var(--spacing-sm);
-    }
-
-    a:has(&) {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-xs);
     }
   }
 
@@ -155,5 +101,38 @@
     border-radius: var(--spacing-sm);
     padding: var(--spacing-xs) var(--spacing-sm);
     max-width: fit-content;
+  }
+
+  a {
+    color: var(--link-primary);
+    text-underline-offset: 0.2em;
+  }
+
+  
+
+  .adaptively-scrollable {
+    @media (max-width: 1024px) {
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-color: var(--accent-primary) transparent;
+      scrollbar-width: thin;
+
+      .card {
+        flex: 0 0 auto;
+        max-width: 40vw;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        max-width: 55vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        max-width: 100%;
+      }
+    }
   }
 }

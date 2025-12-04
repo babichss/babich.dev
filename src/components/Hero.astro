@@ -1,0 +1,55 @@
+---
+---
+
+<header class="hero main-layout">
+  <h2 class="hero-title"><slot name="title" /></h2>
+  <p class="hero-subtitle"><slot name="subtitle" /></p>
+  <slot />
+</header>
+
+<style>
+  .hero {
+    row-gap: var(--spacing-sm);
+    background: radial-gradient(
+      circle at 70% 70%,
+      rgba(125, 169, 255, 0.15) 0%,
+      rgba(16, 17, 19, 1) 80%
+    );
+    padding-block: var(--spacing-xxl);
+    line-height: 1;
+
+    > * {
+      max-width: fit-content;
+    }
+
+    .hero-subtitle {
+      font-size: var(--body-lg);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-weight: 200;
+      font-size: var(--body-3xl);
+    }
+
+    @media (max-width: 600px) {
+      justify-items: center;
+      background: radial-gradient(
+        circle at 50% 100%,
+        rgba(125, 169, 255, 0.15) 0%,
+        rgba(16, 17, 19, 1) 80%
+      );
+      padding-block: var(--spacing-xl) var(--spacing-lg);
+      text-align: center;
+
+      .hero-subtitle {
+        margin-block-end: var(--spacing-md);
+        font-size: var(--body-md);
+      }
+
+      .hero-title {
+        font-size: var(--body-xl);
+      }
+    }
+  }
+</style>

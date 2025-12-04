@@ -1,8 +1,9 @@
-:root {
+  :root {
   --surface-primary: #161618;
   --surface-secondary: #161618;
   --border-primary: #222225;
   --text-primary: #ededed;
+  --text-secondary: #a1a1a1;
   --accent-primary: #7da9ff;
   --accent-secondary: #a1d48a;
   --accent-dark: color-mix(in srgb, var(--accent-primary) 20%, transparent);
