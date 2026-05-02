@@ -1,0 +1,138 @@
+@layer styles {
+  :root {
+    --card-border-radius: var(--spacing-sm);
+    --card-padding: var(--spacing-md);
+  }
+
+  html {
+    background-color: var(--surface-primary);
+    color: var(--text-primary);
+  }
+
+  body {
+    padding-block-end: var(--spacing-xxl);
+    @media (max-width: 600px) {
+      padding-block-end: var(--spacing-md);
+    }
+  }
+
+  ul.plain {
+    padding-inline-start: 0;
+    list-style: none;
+  }
+
+  .main-layout {
+    --gutter: var(--spacing-md);
+
+    display: grid;
+    grid-template-columns:
+      minmax(var(--gutter), 1fr)
+      minmax(auto, 1000px)
+      minmax(var(--gutter), 1fr);
+
+    > * {
+      grid-column: 2;
+    }
+
+    @media (max-width: 1200px) {
+      --gutter: var(--spacing-xxl);
+    }
+
+    @media (max-width: 800px) {
+      --gutter: var(--spacing-lg);
+    }
+
+    @media (max-width: 600px) {
+      --gutter: var(--spacing-md);
+    }
+  }
+
+  main {
+    row-gap: var(--spacing-xxl);
+
+    padding-block-start: var(--spacing-md);
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+
+    @media (max-width: 600px) {
+      row-gap: var(--spacing-lg);
+    }
+  }
+
+  body {
+    overscroll-behavior-x: contain;
+  }
+
+  section {
+    scroll-snap-align: start;
+  }
+
+  section > h2 {
+    grid-column: 1 / -1;
+  }
+
+  ul {
+    padding-inline-start: calc(var(--spacing-md) + var(--spacing-sm));
+
+    @media (max-width: 600px) {
+      text-wrap: pretty;
+    }
+  }
+
+  .flyout {
+    position: fixed;
+    right: var(--spacing-md);
+    bottom: var(--spacing-md);
+  }
+
+  .proposal {
+    grid-column: 1 / -1;
+    box-shadow: var(--elevation-primary);
+    background: var(--accent-dark);
+    padding: var(--spacing-xl) var(--spacing-lg);
+
+    h2 {
+      max-width: fit-content;
+    }
+  }
+
+  .price-tag {
+    border: 2px solid var(--accent-secondary);
+    border-radius: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    max-width: fit-content;
+  }
+
+  a {
+    color: var(--link-primary);
+    text-underline-offset: 0.2em;
+  }
+
+  
+
+  .adaptively-scrollable {
+    @media (max-width: 1024px) {
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-color: var(--accent-primary) transparent;
+      scrollbar-width: thin;
+
+      .card {
+        flex: 0 0 auto;
+        max-width: 40vw;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        max-width: 55vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        max-width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Icon from "../../../../components/Icon.astro";
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blog");
+  const dateMap = new Map<string, typeof blogPosts>();
+
+  blogPosts.forEach((post) => {
+    const year = post.data.publishDate.getFullYear();
+    const month = post.data.publishDate.getMonth() + 1; // 1-12
+    const key = `${year}-${month.toString().padStart(2, "0")}`;
+
+    if (!dateMap.has(key)) {
+      dateMap.set(key, []);
+    }
+    dateMap.get(key)!.push(post);
+  });
+
+  return Array.from(dateMap.entries()).map(([key, posts]) => {
+    const [year, month] = key.split("-");
+    const sortedPosts = posts.sort(
+      (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+    );
+
+    return {
+      params: { year, month },
+      props: {
+        year: parseInt(year),
+        month: parseInt(month),
+        posts: sortedPosts,
+      },
+    };
+  });
+}
+
+const { year, month, posts } = Astro.props;
+const monthName = new Date(year, month - 1).toLocaleDateString("uk-UA", {
+  month: "long",
+});
+---
+
+<BaseLayout
+  title={`Блог ${monthName} ${year}`}
+  description={`Всі пости блогу за ${monthName} ${year}`}
+>
+  <main class="main-layout">
+    <a href={`/blog/${year}`}>
+      <Icon name="arrow-left" />
+      Назад до {year}
+    </a>
+
+    <h1>
+      {monthName}
+      {year}
+    </h1>
+
+    {
+      posts.length === 0 ? (
+        <p>
+          Поки що немає опублікованих постів за {monthName} {year}.
+        </p>
+      ) : (
+        <ul class="stack gap-md">
+          {posts.map((post) => (
+            <li>
+              <article>
+                <h2>
+                  <a href={`/blog/${post.data.urlSlug}`}>{post.data.title}</a>
+                </h2>
+                <p>{post.data.description}</p>
+                <time datetime={post.data.publishDate.toISOString()}>
+                  {post.data.publishDate.toLocaleDateString("uk-UA", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+</BaseLayout>

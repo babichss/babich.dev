@@ -1,0 +1,54 @@
+---
+interface Props {
+  href?: string;
+  target?: string;
+  class?: string;
+}
+
+const { href, target, class: className } = Astro.props;
+const Tag = href ? "a" : "button";
+
+const buttonClass = `button ${className || ""}`.trim();
+---
+
+<Tag href={href} target={target} class={buttonClass}>
+  <slot />
+</Tag>
+
+<style>
+  @layer components {
+    .button {
+      display: inline-block;
+      cursor: pointer;
+      border: 2px solid var(--accent-primary);
+      border-radius: var(--spacing-sm);
+      background-color: transparent;
+      padding: var(--spacing-sm);
+      width: fit-content;
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        background-color: var(--accent-primary);
+        color: var(--surface-primary);
+      }
+
+      &.size-sm {
+        border-width: 1px;
+        padding: var(--spacing-sm);
+        font-size: var(--body-sm);
+      }
+
+      &.primary {
+        border-color: var(--accent-primary);
+        background-color: var(--accent-primary);
+        color: var(--surface-primary);
+        &:hover {
+          background-color: var(--accent-primary);
+          color: var(--surface-primary);
+        }
+      }
+    }
+  }
+</style>

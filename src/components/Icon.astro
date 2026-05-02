@@ -1,0 +1,34 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+---
+
+<svg class={`icon ${className || ""}`.trim()}>
+  <use href={`/svg/icons.svg#${name}`}></use>
+</svg>
+
+
+<style>
+  @layer components {
+    .icon {
+      width: var(--spacing-md);
+      height: var(--spacing-md);
+
+      h3:has(&) {
+        display: flex;
+        align-items: start;
+        gap: var(--spacing-sm);
+      }
+
+      a:has(&) {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+      }
+    }
+  }
+</style>
