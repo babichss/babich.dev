@@ -1,0 +1,26 @@
+<nav>
+  <a href="/">Головна</a>
+  <a href="#">Бізнесу</a>
+  <a href="#">Співбесіди</a>
+  <a href="/blog">Блоґ</a>
+  <a href="#">YouTube</a>
+</nav>
+
+<style>
+  @layer components {
+    nav {
+      display: flex;
+      position: sticky;
+      top: 0;
+      gap: var(--spacing-md);
+      backdrop-filter: blur(4px);
+      background-color: color-mix(
+        in srgb,
+        var(--surface-fill, white) 80%,
+        transparent
+      );
+      padding-inline: var(--page-gutter);
+      padding-block: var(--spacing-md);
+    }
+  }
+</style>

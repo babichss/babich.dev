@@ -1,0 +1,20 @@
+---
+
+---
+
+<header class="page-header">
+  <slot />
+</header>
+
+<style>
+  @layer components {
+    header.page-header {
+      padding-inline: var(--page-gutter);
+      padding-block-start: var(--spacing-lg);
+
+      @media (orientation: portrait) {
+        padding-block: var(--spacing-lg);
+      }
+    }
+  }
+</style>

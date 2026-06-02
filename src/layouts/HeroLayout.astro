@@ -1,0 +1,54 @@
+---
+
+---
+
+<div class="body-container">
+  <slot name="header" />
+
+  <main>
+    <hr />
+    <slot name="content" />
+  </main>
+</div>
+
+<slot name="hero" />
+
+<style>
+  @layer styles {
+    body {
+      display: grid;
+      grid:
+        "header portrait"
+        "content portrait";
+      grid-template-columns: 5fr 4fr;
+
+      @media (orientation: portrait) {
+        grid:
+          "header"
+          "portrait"
+          "content";
+      }
+
+      --page-gutter: var(--spacing-xl);
+    }
+
+    .header {
+      grid-area: header;
+    }
+
+    .body-container {
+      grid-area: content;
+    }
+
+    main {
+      display: flex;
+      row-gap: var(--spacing-lg);
+      flex-direction: column;
+      padding-inline: var(--page-gutter);
+
+      > :is(h2, h3, h4, h5, h6) {
+        margin: 0;
+      }
+    }
+  }
+</style>

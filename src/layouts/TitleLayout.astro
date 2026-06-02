@@ -1,0 +1,48 @@
+---
+import Header from "../components/Header.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<div class="surface-dark sidebar">
+  <Nav />
+  <Header>
+    <slot name="title" />
+  </Header>
+</div>
+
+<main>
+  <slot name="content" />
+</main>
+
+<style>
+  @layer styles {
+    body {
+      display: grid;
+      grid:
+        "header portrait"
+        "content portrait";
+      grid-template-columns: 3fr 5fr;
+
+      @media (orientation: portrait) {
+        grid:
+          "header"
+          "portrait"
+          "content";
+      }
+
+      --page-gutter: var(--spacing-xxl);
+    }
+
+    main {
+      display: flex;
+      row-gap: var(--spacing-lg);
+      flex-direction: column;
+      padding: var(--page-gutter);
+      min-width: 0;
+
+      > :is(h2, h3, h4, h5, h6) {
+        margin: 0;
+      }
+    }
+  }
+</style>

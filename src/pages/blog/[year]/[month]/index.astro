@@ -2,6 +2,7 @@
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import Icon from "../../../../components/Icon.astro";
+import TitleLayout from "../../../../layouts/TitleLayout.astro";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
   return Array.from(dateMap.entries()).map(([key, posts]) => {
     const [year, month] = key.split("-");
     const sortedPosts = posts.sort(
-      (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+      (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
     );
 
     return {
@@ -45,43 +46,43 @@ const monthName = new Date(year, month - 1).toLocaleDateString("uk-UA", {
   title={`Блог ${monthName} ${year}`}
   description={`Всі пости блогу за ${monthName} ${year}`}
 >
-  <main class="main-layout">
-    <a href={`/blog/${year}`}>
-      <Icon name="arrow-left" />
-      Назад до {year}
-    </a>
+  <TitleLayout>
+    <div slot="title" class="stack gap-md">
+      <h1>Усі дописи за {monthName} {year} року</h1>
+      <a href="/blog">
+        <Icon name="arrow-left" />
+        Усі дописи
+      </a>
+    </div>
 
-    <h1>
-      {monthName}
-      {year}
-    </h1>
-
-    {
-      posts.length === 0 ? (
-        <p>
-          Поки що немає опублікованих постів за {monthName} {year}.
-        </p>
-      ) : (
-        <ul class="stack gap-md">
-          {posts.map((post) => (
-            <li>
-              <article>
-                <h2>
-                  <a href={`/blog/${post.data.urlSlug}`}>{post.data.title}</a>
-                </h2>
-                <p>{post.data.description}</p>
-                <time datetime={post.data.publishDate.toISOString()}>
-                  {post.data.publishDate.toLocaleDateString("uk-UA", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-              </article>
-            </li>
-          ))}
-        </ul>
-      )
-    }
-  </main>
+    <Fragment slot="content">
+      {
+        posts.length === 0 ? (
+          <p>
+            Поки що немає опублікованих постів за {monthName} {year}.
+          </p>
+        ) : (
+          <ul class="stack gap-md">
+            {posts.map((post) => (
+              <li>
+                <article>
+                  <h2>
+                    <a href={`/blog/${post.data.urlSlug}`}>{post.data.title}</a>
+                  </h2>
+                  <p>{post.data.description}</p>
+                  <time datetime={post.data.publishDate.toISOString()}>
+                    {post.data.publishDate.toLocaleDateString("uk-UA", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
+                </article>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </Fragment>
+  </TitleLayout>
 </BaseLayout>
