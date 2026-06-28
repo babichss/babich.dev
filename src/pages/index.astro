@@ -1,14 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-import * as IntroCopy from "./copy/intro.md";
-import * as ProcessCopy from "./copy/process.md";
-import * as ImportanceCopy from "./copy/importance.md";
-import * as UsefulnessCopy from "./copy/usefulness.md";
-import * as AboutCopy from "./copy/about.md";
-import * as FeedbacksCopy from "./copy/feedbacks.md";
 import HeroLayout from "../layouts/HeroLayout.astro";
-import Header from "../components/Header.astro";
 import Nav from "../components/Nav.astro";
 ---
 
@@ -16,13 +8,57 @@ import Nav from "../components/Nav.astro";
   <HeroLayout>
     <Fragment slot="header">
       <Nav />
-      <Header>
-        <h1>Привіт! Я Сергій Бабіч.</h1>
-      </Header>
     </Fragment>
 
     <Fragment slot="content">
-      <p>Всяке про мене</p>
+      <header class="home-intro">
+        <h1>Привіт, я — Сергій Бабіч</h1>
+        <p>
+          Понад 15 років я працюю у веброзробці — пройшов шлях від наївного
+          джуна, який думав, що знає все на світі, до синьйора, який нарешті
+          зрозумів, скільки всього ще не знає.
+        </p>
+        <p>
+          Мене цікавить розробка не як набір фреймворків, а як інженерна
+          практика — коли рішення треба підтримувати, командам треба
+          домовлятися, а розробників треба наймати, оцінювати й навчати.
+        </p>
+        <p>
+          Веду YouTube-канал, пишу про веброзробку, виступаю з доповідями й
+          роблю формати, у яких компанії можуть говорити з розробниками по
+          суті.
+        </p>
+      </header>
+
+      <section class="home-section">
+        <h2>Технічні співбесіди</h2>
+        <p>
+          Я проводжу frontend-співбесіди, допомагаю налагодити оцінювання й
+          даю незалежний технічний висновок — щоб компанія розуміла, кого
+          запрошує до команди, а в кандидата лишалися про вас якнайкращі
+          враження.
+        </p>
+        <a href="/proposal">Обговорити співбесіди →</a>
+      </section>
+
+      <section class="home-section">
+        <h2>Формати для компаній</h2>
+        <p>
+          Інтервʼю, публічні співбесіди, живі подкасти й авторські формати, у
+          яких компанія може показати людей, технічну культуру, підхід до
+          найму й реальну роботу команди.
+        </p>
+        <a href="/interviews">Обговорити формат →</a>
+      </section>
+
+      <section class="home-section">
+        <h2>А ще є блог</h2>
+        <p>
+          Про frontend, браузери, HTML, CSS, технічні співбесіди, практичний
+          досвід та інше, про що говорять розробники.
+        </p>
+        <a href="/blog">Читати блог →</a>
+      </section>
     </Fragment>
     <img slot="hero" class="hero" src="assets/hero.webp" alt="Сергій Бабіч" />
   </HeroLayout>
@@ -30,9 +66,22 @@ import Nav from "../components/Nav.astro";
 
 <style>
   @layer styles {
-    .feedbacks blockquote {
-      box-shadow: 0 0 3px black;
-      color: lime;
+    .home-intro {
+      padding-bottom: var(--spacing-lg);
+    }
+
+    .home-section {
+      padding-top: 0;
+    }
+
+    .home-section > a {
+      margin-top: calc(var(--spacing-xs) - 1px);
+    }
+
+    h1,
+    h2,
+    p {
+      max-width: 42rem;
     }
 
     .hero {
@@ -45,7 +94,7 @@ import Nav from "../components/Nav.astro";
       object-fit: cover;
       object-position: top;
 
-      @media (orientation: portrait) {
+      @media (max-width: 960px) {
         position: static;
         height: 50vh;
       }

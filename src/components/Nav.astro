@@ -12,78 +12,135 @@ const nav = [
   },
   {
     href: "/blog",
-    title: "Блоґ",
+    title: "Блог",
   },
 ];
+
+const currentPath = Astro.url.pathname;
+const { variant = "all" } = Astro.props;
+const showMobile = variant !== "desktop";
+const showDesktop = variant !== "mobile";
+
+const isCurrent = (href: string) => {
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+};
 ---
 
-<div class="navbar">
-  <div class="title">
-    <button
-      class="menu-button"
-      type="button"
-      aria-label="Відкрити меню"
-      popovertarget="menu-mobile"
-      popovertargetaction="show"
-    >
-      <Icon name="menu" />
-    </button>
-    <a href="/" class="site-title body-lg">Сергій Бабіч.</a>
-  </div>
+{
+  showMobile && (
+    <header class="mobile-masthead">
+      <div class="mobile-title">
+        <button
+          class="menu-button"
+          type="button"
+          aria-label="Відкрити меню"
+          popovertarget="menu-mobile"
+          popovertargetaction="show"
+        >
+          <Icon name="menu" />
+        </button>
+        <a href="/" class="site-title body-lg">Сергій Бабіч.</a>
+      </div>
 
-  <nav id="menu-mobile" aria-label="Головна навігація" popover="auto">
-    {nav.map(({ href, title }) => <a href={href}>{title}</a>)}
-  </nav>
-</div>
+      <nav id="menu-mobile" aria-label="Головна навігація" popover="auto">
+        {nav.map(({ href, title }) => (
+          <a href={href} aria-current={isCurrent(href) ? "page" : undefined}>
+            {title}
+          </a>
+        ))}
+      </nav>
+    </header>
+  )
+}
 
-<div id="menu-desktop">
-  <a href="/" class="site-title body-lg">Сергій Бабіч.</a>
-  <nav aria-label="Головна навігація">
-    {nav.map(({ href, title }) => <a href={href}>{title}</a>)}
-  </nav>
-</div>
+{
+  showDesktop && (
+    <header class="masthead">
+      <div class="masthead-brand">
+        <a href="/" class="site-title body-lg">Сергій Бабіч.</a>
+        <p>Frontend engineer, interviewer, author.</p>
+      </div>
+
+      <nav aria-label="Головна навігація" class="masthead-nav">
+        {nav.map(({ href, title }) => (
+          <a href={href} aria-current={isCurrent(href) ? "page" : undefined}>
+            {title}
+          </a>
+        ))}
+      </nav>
+    </header>
+  )
+}
 
 <style>
   @layer components {
+    .mobile-masthead {
+      display: none;
+    }
+
+    .masthead {
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      background-color: var(--surface-primary);
+      padding-inline: var(--page-gutter);
+      padding-top: var(--spacing-xl);
+    }
+
+    .masthead-brand {
+      padding-bottom: var(--spacing-lg);
+      border-bottom: 1px solid var(--border-primary);
+    }
+
     .site-title {
       margin: 0;
-      color: inherit;
+      color: var(--text-primary);
       font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .masthead-brand p {
+      margin-top: var(--spacing-xs);
+      color: var(--text-secondary);
+    }
+
+    .masthead-nav {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--spacing-xl);
+      padding-block: var(--spacing-lg);
+      border-bottom: 1px solid var(--border-primary);
+    }
+
+    .masthead-nav a {
+      color: var(--text-primary);
       text-decoration: none;
     }
 
-    button {
-      border: none;
-      background: none;
-      color: aliceblue;
+    .masthead-nav a[aria-current="page"] {
+      color: var(--accent-primary);
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.35em;
     }
 
-    #menu-desktop {
-      display: flex;
-
-      flex-direction: column;
-      justify-content: center;
-
-      gap: var(--spacing-sm);
-      padding: var(--page-gutter);
-
-      @media (orientation: portrait) {
-        display: none;
+    @media (max-width: 960px) {
+      .mobile-masthead {
+        position: sticky;
+        z-index: 1;
+        top: 0;
+        display: block;
+        background-color: var(--surface-primary);
       }
 
-      nav {
-        display: flex;
-        gap: var(--spacing-md);
-        backdrop-filter: blur(4px);
-      }
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      background-color: aliceblue;
-
-      .title {
+      .mobile-title {
         display: flex;
         align-items: center;
         gap: var(--spacing-sm);
@@ -97,10 +154,39 @@ const nav = [
         border: 0;
         background: transparent;
         padding: 0;
-        color: currentColor;
+        color: var(--text-primary);
       }
 
-      @media (orientation: landscape) {
+      #menu-mobile {
+        margin: 0;
+        border: 0;
+        background-color: var(--surface-primary);
+        padding: var(--page-gutter);
+        color: var(--text-primary);
+
+        &::backdrop {
+          background-color: color-mix(in hsl, var(--text-primary) 18%, transparent);
+        }
+
+        a {
+          display: block;
+          color: var(--text-primary);
+          text-decoration: none;
+        }
+
+        a + a {
+          margin-top: var(--spacing-lg);
+        }
+
+        a[aria-current="page"] {
+          color: var(--accent-primary);
+          text-decoration: underline;
+          text-decoration-thickness: 2px;
+          text-underline-offset: 0.35em;
+        }
+      }
+
+      .masthead {
         display: none;
       }
     }

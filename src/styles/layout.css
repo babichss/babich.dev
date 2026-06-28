@@ -38,5 +38,8 @@
     &.gap-lg {
       gap: var(--spacing-lg);
     }
+    &.gap-xl {
+      gap: var(--spacing-xl);
+    }
   }
 }

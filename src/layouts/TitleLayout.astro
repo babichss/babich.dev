@@ -1,71 +1,72 @@
 ---
-import Header from "../components/Header.astro";
 import Nav from "../components/Nav.astro";
 ---
 
-<div class="surface-dark sidebar">
-  <Nav />
-  <div class="title">
-    <slot name="title" />
-  </div>
-</div>
+<Nav variant="mobile" />
 
-<main>
-  <slot name="content" />
-</main>
+<div class="content-layout">
+  <div class="side-column">
+    <Nav variant="desktop" />
+    <div class="title">
+      <slot name="title" />
+    </div>
+  </div>
+
+  <main>
+    <slot name="content" />
+  </main>
+</div>
 
 <style>
   @layer styles {
     body {
       --page-gutter: var(--spacing-xxl);
-      display: grid;
-      grid-template-columns: 3fr 5fr;
-      grid-template-areas: "sidebar content";
+      --side-column-width: 37.5vw;
 
-      @media (orientation: portrait) {
+      @media (max-width: 960px) {
         --page-gutter: var(--spacing-lg);
-        grid:
-          "sidebar"
-          "content";
+        --side-column-width: 100%;
       }
     }
 
-    .sidebar {
-      display: flex;
-
-      grid-area: sidebar;
-      flex-direction: column;
-      width: stretch;
+    .content-layout {
+      min-height: 100vh;
       min-width: 0;
+    }
 
-      @media (orientation: landscape) {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-      }
+    .side-column {
+      position: fixed;
+      inset: 0 auto 0 0;
+      display: flex;
+      flex-direction: column;
+      width: var(--side-column-width);
+      height: 100dvh;
+      min-width: 0;
+      overflow: auto;
 
-      @media (orientation: portrait) {
+      @media (max-width: 960px) {
         position: static;
-        top: unset;
-        height: fit-content;
+        height: auto;
       }
     }
 
     .title {
       flex: 1;
-      padding: var(--page-gutter);
+      padding-inline: var(--page-gutter);
+      padding-block: var(--spacing-xl);
+      min-width: 0;
     }
 
     main {
       display: flex;
       row-gap: var(--spacing-lg);
-      grid-area: content;
       flex-direction: column;
-      padding: var(--page-gutter);
+      margin-left: var(--side-column-width);
+      padding: var(--spacing-xl) var(--page-gutter) var(--spacing-xxl);
       min-width: 0;
 
-      > :is(h2, h3, h4, h5, h6) {
-        margin: 0;
+      @media (max-width: 960px) {
+        margin-left: 0;
       }
     }
   }

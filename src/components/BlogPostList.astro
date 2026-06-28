@@ -1,0 +1,90 @@
+---
+interface Post {
+  data: {
+    title: string;
+    description: string;
+    urlSlug: string;
+    publishDate: Date;
+  };
+}
+
+interface Props {
+  posts: Post[];
+  showDate?: boolean;
+}
+
+const { posts, showDate = true } = Astro.props;
+---
+
+<ul class="stack gap-md blog-post-list">
+  {posts.map((post) => {
+    const publishDate = post.data.publishDate;
+    const dateLabel = publishDate.toLocaleDateString("uk-UA", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const datePath = `${publishDate.getFullYear()}/${String(
+      publishDate.getMonth() + 1,
+    ).padStart(2, "0")}/${String(publishDate.getDate()).padStart(2, "0")}`;
+
+    return (
+      <li>
+        <article class="stack gap-xs blog-post-item">
+          <h2 class="body-lg blog-post-title">
+            <a href={`/blog/${post.data.urlSlug}`}>{post.data.title}</a>
+          </h2>
+          <p class="blog-post-description">{post.data.description}</p>
+
+          {showDate && (
+            <footer class="blog-post-meta">
+              <time class="body-sm" datetime={publishDate.toISOString()}>
+                <a href={`/blog/${datePath}`}>{dateLabel}</a>
+              </time>
+            </footer>
+          )}
+        </article>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  @layer components {
+    .blog-post-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .blog-post-item {
+      padding-block: var(--spacing-sm);
+      border-top: 1px solid color-mix(in hsl, currentColor 7%, transparent);
+    }
+
+    .blog-post-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .blog-post-title,
+    .blog-post-description,
+    .blog-post-meta {
+      margin: 0;
+    }
+
+    .blog-post-title {
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .blog-post-description {
+      max-width: 66ch;
+      color: color-mix(in hsl, currentColor 66%, transparent);
+    }
+
+    .blog-post-meta {
+      color: color-mix(in hsl, currentColor 50%, transparent);
+    }
+  }
+</style>

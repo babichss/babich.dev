@@ -54,7 +54,7 @@
     font-weight: 100;
     font-size: var(--body-3xl);
 
-    @media (orientation: portrait) {
+    @media (max-width: 960px) {
       font-size: var(--body-xl);
     }
   }

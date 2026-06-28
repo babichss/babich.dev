@@ -2,14 +2,13 @@
 
 ---
 
-<div class="body-container">
+<div class="hero-header">
   <slot name="header" />
-
-  <main>
-    <hr />
-    <slot name="content" />
-  </main>
 </div>
+
+<main class="stack gap-xl">
+  <slot name="content" />
+</main>
 
 <slot name="hero" />
 
@@ -17,35 +16,46 @@
   @layer styles {
     body {
       display: grid;
-      grid: "content portrait";
+      grid:
+        "header portrait"
+        "content portrait";
       grid-template-columns: 5fr 4fr;
+      grid-template-rows: auto 1fr;
 
-      @media (orientation: portrait) {
+      @media (max-width: 960px) {
         grid:
+          "header"
           "portrait"
           "content";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
       }
 
-      --page-gutter: var(--spacing-xl);
+      --page-gutter: var(--spacing-xxl);
+
+      @media (max-width: 960px) {
+        --page-gutter: var(--spacing-lg);
+      }
     }
 
-    .header {
+    .hero-header {
       grid-area: header;
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      align-self: start;
     }
 
-    .body-container {
-      grid-area: content;
+    .hero-header :global(.masthead),
+    .hero-header :global(.mobile-masthead) {
+      position: static;
     }
 
     main {
-      display: flex;
-      row-gap: var(--spacing-lg);
-      flex-direction: column;
+      grid-area: content;
+      padding-top: var(--spacing-xl);
       padding-inline: var(--page-gutter);
-
-      > :is(h2, h3, h4, h5, h6) {
-        margin: 0;
-      }
+      padding-bottom: var(--spacing-xxl);
     }
   }
 </style>

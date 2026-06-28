@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import Icon from "../../components/Icon.astro";
-import Button from "../../components/Button.astro";
+import BlogPostList from "../../components/BlogPostList.astro";
 import TitleLayout from "../../layouts/TitleLayout.astro";
 
 const blogPosts = await getCollection("blog");
@@ -69,52 +69,13 @@ const groupedArray = Object.values(groupedPosts).sort((a, b) => {
           groupedArray.map((group) => {
             const monthPadded = group.month.toString().padStart(2, "0");
             return (
-              <section>
-                <h2 class="body-sm">
+              <section class="stack gap-md blog-group">
+                <h2 class="body-sm blog-group-title">
                   <a href={`/blog/${group.year}/${monthPadded}`}>
                     {group.monthName} {group.year}
                   </a>
                 </h2>
-                <ul class="stack gap-md posts">
-                  {group.posts.map((post) => {
-                    const postYear = post.data.publishDate.getFullYear();
-                    const postDay = post.data.publishDate.getDate();
-                    const postMonth = post.data.publishDate.getMonth() + 1;
-                    const postMonthPadded = postMonth
-                      .toString()
-                      .padStart(2, "0");
-                    const postDayPadded = postDay.toString().padStart(2, "0");
-                    return (
-                      <li>
-                        <article class="stack gap-xs">
-                          <h3>
-                            <a href={`/blog/${post.data.urlSlug}`}>
-                              {post.data.title}
-                            </a>
-                          </h3>
-                          <p>{post.data.description}</p>
-                          <time
-                            datetime={post.data.publishDate.toISOString()}
-                            class="body-sm"
-                          >
-                            <a
-                              href={`/blog/${postYear}/${postMonthPadded}/${postDayPadded}`}
-                            >
-                              {post.data.publishDate.toLocaleDateString(
-                                "uk-UA",
-                                {
-                                  year: "numeric",
-                                  month: "long",
-                                  day: "numeric",
-                                },
-                              )}
-                            </a>
-                          </time>
-                        </article>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <BlogPostList posts={group.posts} />
               </section>
             );
           })
@@ -126,13 +87,20 @@ const groupedArray = Object.values(groupedPosts).sort((a, b) => {
 
 <style>
   @layer styles {
-    .posts {
-      padding: 0;
-      list-style: none;
+    .blog-group {
+      padding-block: var(--spacing-md);
     }
 
-    article * {
+    .blog-group:first-child {
+      padding-top: 0;
+    }
+
+    .blog-group-title {
       margin: 0;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: color-mix(in hsl, currentColor 46%, transparent);
+      margin-bottom: var(--spacing-xs);
     }
   }
 </style>
