@@ -7,7 +7,7 @@ interface Props {
 const { name, class: className } = Astro.props;
 ---
 
-<svg class={`icon ${className || ""}`.trim()}>
+<svg class={`icon ${className || ""}`.trim()} aria-hidden="true" focusable="false">
   <use href={`/svg/icons.svg#${name}`}></use>
 </svg>
 

@@ -16,11 +16,12 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 
 const { Content } = await post.render();
-const year = post.data.publishDate.getFullYear();
-const month = `${post.data.publishDate.getUTCMonth() + 1}`.padStart(2, "0");
-const monthName = post.data.publishDate
+
+const dateName = post.data.publishDate
   .toLocaleDateString("uk-UA", {
+    day: "numeric",
     month: "long",
+    year: "numeric",
   })
   .replace(/^./, (c) => c.toUpperCase());
 ---
@@ -33,24 +34,28 @@ const monthName = post.data.publishDate
     data-utcoffset="2"></script>
 
   <TitleLayout>
-    <div slot="title" class="stack gap-md">
+    <div slot="title" class="post-title">
       <div>
-        <a href=`/blog/${year}`> {year}</a>
-        /
-        <a href=`/blog/${year}/${month}`>
-          {monthName}
-        </a>
+        <time datetime={post.data.publishDate.toISOString()}>{dateName}</time>
+        <h1>{post.data.title}</h1>
       </div>
-
-      <h1>{post.data.title}</h1>
       <a href="/blog">
         <Icon name="arrow-left" />
         Усі дописи
       </a>
     </div>
 
-    <article slot="content">
+    <article slot="content" class="content">
       <Content />
     </article>
   </TitleLayout>
 </BaseLayout>
+
+<style>
+  .post-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: stretch;
+  }
+</style>

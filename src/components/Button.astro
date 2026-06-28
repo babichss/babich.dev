@@ -2,16 +2,19 @@
 interface Props {
   href?: string;
   target?: string;
+  rel?: string;
   class?: string;
 }
 
-const { href, target, class: className } = Astro.props;
+const { href, target, rel: relProp, class: className } = Astro.props;
 const Tag = href ? "a" : "button";
 
 const buttonClass = `button ${className || ""}`.trim();
+const rel = target === "_blank" ? relProp || "noopener noreferrer" : relProp;
+const type = href ? undefined : "button";
 ---
 
-<Tag href={href} target={target} class={buttonClass}>
+<Tag href={href} target={target} rel={rel} type={type} class={buttonClass}>
   <slot />
 </Tag>
 

@@ -1,26 +1,108 @@
-<nav>
-  <a href="/">Головна</a>
-  <a href="#">Бізнесу</a>
-  <a href="#">Співбесіди</a>
-  <a href="/blog">Блоґ</a>
-  <a href="#">YouTube</a>
-</nav>
+---
+import Icon from "./Icon.astro";
+
+const nav = [
+  {
+    href: "/",
+    title: "Головна",
+  },
+  {
+    href: "/interviews",
+    title: "Співбесіди",
+  },
+  {
+    href: "/blog",
+    title: "Блоґ",
+  },
+];
+---
+
+<div class="navbar">
+  <div class="title">
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Відкрити меню"
+      popovertarget="menu-mobile"
+      popovertargetaction="show"
+    >
+      <Icon name="menu" />
+    </button>
+    <a href="/" class="site-title body-lg">Сергій Бабіч.</a>
+  </div>
+
+  <nav id="menu-mobile" aria-label="Головна навігація" popover="auto">
+    {nav.map(({ href, title }) => <a href={href}>{title}</a>)}
+  </nav>
+</div>
+
+<div id="menu-desktop">
+  <a href="/" class="site-title body-lg">Сергій Бабіч.</a>
+  <nav aria-label="Головна навігація">
+    {nav.map(({ href, title }) => <a href={href}>{title}</a>)}
+  </nav>
+</div>
 
 <style>
   @layer components {
-    nav {
+    .site-title {
+      margin: 0;
+      color: inherit;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    button {
+      border: none;
+      background: none;
+      color: aliceblue;
+    }
+
+    #menu-desktop {
       display: flex;
+
+      flex-direction: column;
+      justify-content: center;
+
+      gap: var(--spacing-sm);
+      padding: var(--page-gutter);
+
+      @media (orientation: portrait) {
+        display: none;
+      }
+
+      nav {
+        display: flex;
+        gap: var(--spacing-md);
+        backdrop-filter: blur(4px);
+      }
+    }
+
+    .navbar {
       position: sticky;
       top: 0;
-      gap: var(--spacing-md);
-      backdrop-filter: blur(4px);
-      background-color: color-mix(
-        in srgb,
-        var(--surface-fill, white) 80%,
-        transparent
-      );
-      padding-inline: var(--page-gutter);
-      padding-block: var(--spacing-md);
+      background-color: aliceblue;
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding-inline: var(--page-gutter);
+        padding-block: var(--spacing-md);
+      }
+
+      .menu-button {
+        display: inline-grid;
+        place-items: center;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        color: currentColor;
+      }
+
+      @media (orientation: landscape) {
+        display: none;
+      }
     }
   }
 </style>

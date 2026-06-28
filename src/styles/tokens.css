@@ -19,9 +19,12 @@
   --spacing-xl: 32px;
   --spacing-xxl: 40px;
 
-  --body-sm: 14px;
-  --body-md: 16px;
-  --body-lg: 20px;
-  --body-xl: 40px;
-  --body-3xl: 64px;
+  --body-md: 18px;
+  --ratio: 1.25;
+
+  --body-sm: calc(var(--body-md) / var(--ratio)); /* 12.8px */
+  --body-lg: calc(var(--body-md) * var(--ratio)); /* 20px */
+  --body-xl: calc(var(--body-lg) * var(--ratio)); /* 25px */
+  --body-xxl: calc(var(--body-xl) * var(--ratio)); /* 31.25px */
+  --body-3xl: calc(var(--body-xxl) * var(--ratio)); /* 39px */
 }

@@ -17,14 +17,11 @@
   @layer styles {
     body {
       display: grid;
-      grid:
-        "header portrait"
-        "content portrait";
+      grid: "content portrait";
       grid-template-columns: 5fr 4fr;
 
       @media (orientation: portrait) {
         grid:
-          "header"
           "portrait"
           "content";
       }

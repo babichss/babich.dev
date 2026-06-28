@@ -5,8 +5,7 @@
     --font-weight: 400;
     --font-style: normal;
     --font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0, "ROND" 0;
-    --base-font-size: 16px;
-
+    --font-size: var(--body-md);
     --line-height: 1.5;
   }
 
@@ -25,8 +24,8 @@
   }
 
   :is(p, li, ul, ol) {
+    max-width: 70ch;
     line-height: var(--line-height);
-
     &:not(:last-child) {
       margin-bottom: 1em;
 
@@ -52,6 +51,7 @@
 
   h1 {
     margin-bottom: 0.2em;
+    font-weight: 100;
     font-size: var(--body-3xl);
 
     @media (orientation: portrait) {
@@ -69,6 +69,18 @@
 
   .body-lg {
     font-size: var(--body-lg);
+  }
+
+  .body-xl {
+    font-size: var(--body-xl);
+  }
+
+  .body-xxl {
+    font-size: var(--body-xxl);
+  }
+
+  .body-3xl {
+    font-size: var(--body-3xl);
   }
 
   :is(ul, ol) {

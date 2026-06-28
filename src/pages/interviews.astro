@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import * as IntroCopy from "./copy/intro.md";
+import * as ProcessCopy from "./copy/process.md";
+import * as ImportanceCopy from "./copy/importance.md";
+import * as UsefulnessCopy from "./copy/usefulness.md";
+import * as AboutCopy from "./copy/about.md";
+import * as FeedbacksCopy from "./copy/feedbacks.md";
+
+import TitleLayout from "../layouts/TitleLayout.astro";
+---
+
+<BaseLayout title="Сергій Бабіч" description="Сергій Бабіч — технічний експерт">
+  <TitleLayout>
+    <Fragment slot="title">
+      <h1>Про технічні співбесіди.</h1>
+      <Fragment set:html={await IntroCopy.compiledContent()} />
+    </Fragment>
+
+    <Fragment slot="content">
+      <section>
+        <h2>Як це відбувається</h2>
+
+        <Fragment set:html={await ProcessCopy.compiledContent()} />
+      </section>
+      <section>
+        <h2>Хочете дізнатися більше?</h2>
+        <p>
+          Структура інтервʼю, рамка оцінки, формат роботи й вартість зібрані на
+          окремій сторінці.
+        </p>
+        <a href="/proposal/">Переглянути пропозицію співпраці</a>
+      </section>
+      <section>
+        <Fragment set:html={await ImportanceCopy.compiledContent()} />
+      </section>
+
+      <section>
+        <Fragment set:html={await UsefulnessCopy.compiledContent()} />
+      </section>
+
+      <section>
+        <Fragment set:html={await AboutCopy.compiledContent()} />
+      </section>
+
+      <section class="feedbacks">
+        <Fragment set:html={await FeedbacksCopy.compiledContent()} />
+      </section>
+    </Fragment>
+  </TitleLayout>
+</BaseLayout>
+
+<style>
+  @layer styles {
+    .feedbacks blockquote {
+      box-shadow: 0 0 3px black;
+      color: lime;
+    }
+
+    .hero {
+      position: sticky;
+      top: 0;
+      grid-area: portrait;
+      width: stretch;
+      min-width: 0;
+      height: 100vh;
+      object-fit: cover;
+      object-position: top;
+
+      @media (orientation: portrait) {
+        position: static;
+        height: 50vh;
+      }
+    }
+  }
+</style>

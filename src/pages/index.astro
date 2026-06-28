@@ -17,45 +17,14 @@ import Nav from "../components/Nav.astro";
     <Fragment slot="header">
       <Nav />
       <Header>
-        <h1>Сергій Бабіч.</h1>
+        <h1>Привіт! Я Сергій Бабіч.</h1>
       </Header>
     </Fragment>
 
     <Fragment slot="content">
-      <section>
-        <Fragment set:html={await IntroCopy.compiledContent()} />
-      </section>
-      <section>
-        <h2>Як це відбувається</h2>
-        <div class="columns x3">
-          <Fragment set:html={await ProcessCopy.compiledContent()} />
-        </div>
-      </section>
-      <section>
-        <h2>Хочете дізнатися більше?</h2>
-        <p>
-          Структура інтервʼю, рамка оцінки, формат роботи й вартість зібрані на
-          окремій сторінці.
-        </p>
-        <a href="./proposal.html">Переглянути пропозицію співпраці</a>
-      </section>
-      <section>
-        <Fragment set:html={await ImportanceCopy.compiledContent()} />
-      </section>
-
-      <section>
-        <Fragment set:html={await UsefulnessCopy.compiledContent()} />
-      </section>
-
-      <section>
-        <Fragment set:html={await AboutCopy.compiledContent()} />
-      </section>
-
-      <section class="feedbacks">
-        <Fragment set:html={await FeedbacksCopy.compiledContent()} />
-      </section>
+      <p>Всяке про мене</p>
     </Fragment>
-    <img slot="hero" class="hero" src="assets/hero.png" />
+    <img slot="hero" class="hero" src="assets/hero.webp" alt="Сергій Бабіч" />
   </HeroLayout>
 </BaseLayout>
 

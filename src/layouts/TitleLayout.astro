@@ -5,9 +5,9 @@ import Nav from "../components/Nav.astro";
 
 <div class="surface-dark sidebar">
   <Nav />
-  <Header>
+  <div class="title">
     <slot name="title" />
-  </Header>
+  </div>
 </div>
 
 <main>
@@ -17,25 +17,49 @@ import Nav from "../components/Nav.astro";
 <style>
   @layer styles {
     body {
+      --page-gutter: var(--spacing-xxl);
       display: grid;
-      grid:
-        "header portrait"
-        "content portrait";
       grid-template-columns: 3fr 5fr;
+      grid-template-areas: "sidebar content";
 
       @media (orientation: portrait) {
+        --page-gutter: var(--spacing-lg);
         grid:
-          "header"
-          "portrait"
+          "sidebar"
           "content";
       }
+    }
 
-      --page-gutter: var(--spacing-xxl);
+    .sidebar {
+      display: flex;
+
+      grid-area: sidebar;
+      flex-direction: column;
+      width: stretch;
+      min-width: 0;
+
+      @media (orientation: landscape) {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+      }
+
+      @media (orientation: portrait) {
+        position: static;
+        top: unset;
+        height: fit-content;
+      }
+    }
+
+    .title {
+      flex: 1;
+      padding: var(--page-gutter);
     }
 
     main {
       display: flex;
       row-gap: var(--spacing-lg);
+      grid-area: content;
       flex-direction: column;
       padding: var(--page-gutter);
       min-width: 0;
