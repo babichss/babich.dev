@@ -4,28 +4,44 @@
     overscroll-behavior: none;
   }
 
-  .columns {
-    --col: 1;
-    columns: var(--col);
-
-    &.x3 {
-      --col: 3;
-    }
-
-    p {
-      break-inside: avoid-column;
-    }
-
-    @media (aspect-ratio < 14 / 9) {
-      &:is(.x3) {
-        --col: 1;
-      }
-    }
-  }
-
   .stack {
     display: flex;
     flex-direction: column;
+
+    > * {
+      margin-block: 0;
+    }
+  }
+
+  .list-plain {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      margin: 0;
+      max-width: none;
+    }
+  }
+
+  .flush {
+    margin: 0;
+  }
+
+  .sticky-portrait {
+    position: sticky;
+    top: 0;
+    grid-area: portrait;
+    width: stretch;
+    min-width: 0;
+    height: 100vh;
+    object-fit: cover;
+    object-position: top;
+
+    @media (max-width: 960px) {
+      position: static;
+      height: 50vh;
+    }
   }
 
   @scope (.stack) {
@@ -40,6 +56,9 @@
     }
     &.gap-xl {
       gap: var(--spacing-xl);
+    }
+    &.gap-xxl {
+      gap: var(--spacing-xxl);
     }
   }
 }

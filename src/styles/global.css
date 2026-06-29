@@ -1,12 +1,7 @@
-@layer styles {
-  html,
-  body {
-    background-color: var(--surface-primary);
-    color: var(--text-primary);
-  }
-
+@layer base {
   a {
     color: var(--action-primary);
+    text-decoration: none;
     text-underline-offset: 0.15em;
 
     &:visited {
@@ -26,25 +21,23 @@
       color: inherit;
     }
   }
+}
 
-  a.cta,
+@layer styles {
+  html,
+  body {
+    background-color: var(--surface-primary);
+    color: var(--text-primary);
+  }
+
   .cta:is(a, button) {
     border: 0;
-    padding: 0;
     background: transparent;
+    padding: 0;
     font-weight: 700;
 
     &:focus-visible {
       outline-offset: 3px;
-    }
-  }
-
-  .surface-dark {
-    background: var(--color-panel);
-    color: var(--color-panel-text);
-
-    a {
-      color: inherit;
     }
   }
 

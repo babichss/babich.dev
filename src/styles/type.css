@@ -6,7 +6,7 @@
     --font-style: normal;
     --font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0, "ROND" 0;
     --font-size: var(--body-md);
-    --line-height: 1.5;
+    --line-height: var(--line-height-body);
   }
 
   html {
@@ -24,7 +24,7 @@
   }
 
   :is(p, li, ul, ol) {
-    max-width: 70ch;
+    max-width: var(--measure-body);
     line-height: var(--line-height);
     &:not(:last-child) {
       margin-bottom: 1em;
@@ -35,11 +35,15 @@
     }
   }
 
+  p a {
+    text-decoration: underline;
+  }
+
   :is(h2, h3, h4, h5, h6) {
     margin-bottom: 0.5em;
     color: var(--text-heading);
-    line-height: 1;
     font-weight: 600;
+    line-height: var(--line-height-heading);
     text-wrap: balance;
 
     &:not(:first-child) {
@@ -48,6 +52,18 @@
 
     &:not(:last-child) {
       margin-block-end: 1em;
+    }
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) a {
+    color: inherit;
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      color: var(--action-hover);
     }
   }
 
@@ -84,6 +100,18 @@
 
   .body-3xl {
     font-size: var(--body-3xl);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-soft {
+    color: var(--text-soft);
+  }
+
+  .measure-copy {
+    max-width: var(--measure-copy);
   }
 
   :is(ul, ol) {

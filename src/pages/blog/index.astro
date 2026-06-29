@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import Icon from "../../components/Icon.astro";
 import BlogPostList from "../../components/BlogPostList.astro";
 import TitleLayout from "../../layouts/TitleLayout.astro";
 
@@ -64,30 +63,28 @@ const groupedArray = Object.values(groupedPosts).sort((a, b) => {
     <div slot="title" class="stack gap-md">
       <h1>Блоґ</h1>
       <p>
-        Тут я пишу про веброзробку, співбесіди, команди, технічні рішення й
-        усе, чим хочеться поділитися, поки думка не загубилася.
+        Тут я пишу про веброзробку, співбесіди, команди, технічні рішення й усе,
+        чим хочеться поділитися, поки думка не загубилася.
       </p>
       <p>Дякую, що завітали. Приємного читання.</p>
     </div>
 
     <Fragment slot="content">
-      <div class="stack gap-lg">
-        {
-          groupedArray.map((group) => {
-            const monthPadded = group.month.toString().padStart(2, "0");
-            return (
-              <section class="stack gap-md blog-group">
-                <h2 class="body-sm blog-group-title">
-                  <a href={`/blog/${group.year}/${monthPadded}`}>
-                    {group.monthName} {group.year}
-                  </a>
-                </h2>
-                <BlogPostList posts={group.posts} />
-              </section>
-            );
-          })
-        }
-      </div>
+      {
+        groupedArray.map((group) => {
+          const monthPadded = group.month.toString().padStart(2, "0");
+          return (
+            <section class="stack gap-md blog-group">
+              <h2 class="body-sm text-soft blog-group-title">
+                <a href={`/blog/${group.year}/${monthPadded}`}>
+                  {group.monthName} {group.year}
+                </a>
+              </h2>
+              <BlogPostList posts={group.posts} />
+            </section>
+          );
+        })
+      }
     </Fragment>
   </TitleLayout>
 </BaseLayout>
@@ -103,11 +100,8 @@ const groupedArray = Object.values(groupedPosts).sort((a, b) => {
     }
 
     .blog-group-title {
-      margin: 0;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: color-mix(in hsl, currentColor 46%, transparent);
-      margin-bottom: var(--spacing-xs);
     }
   }
 </style>

@@ -9,9 +9,9 @@ import TitleLayout from "../layouts/TitleLayout.astro";
       <h1>Технічні співбесіди</h1>
       <p>
         Я проводжу технічні співбесіди для розробників, допомагаю налагодити
-        оцінювання й даю незалежний технічний висновок — щоб компанія
-        розуміла, кого запрошує до команди, а в кандидата лишалися про вас
-        якнайкращі враження.
+        оцінювання й даю незалежний технічний висновок — щоб компанія розуміла,
+        кого запрошує до команди, а в кандидата лишалися про вас якнайкращі
+        враження.
       </p>
       <a class="cta" href="/proposal/">Переглянути пропозицію співпраці</a>
     </Fragment>
@@ -34,8 +34,8 @@ import TitleLayout from "../layouts/TitleLayout.astro";
 
         <p>
           Мені важливо побачити, як людина думає, говорить про свій досвід,
-          пояснює рішення, ставить уточнення й поводиться там, де немає
-          ідеально сформульованого завдання.
+          пояснює рішення, ставить уточнення й поводиться там, де немає ідеально
+          сформульованого завдання.
         </p>
 
         <p>
@@ -53,7 +53,8 @@ import TitleLayout from "../layouts/TitleLayout.astro";
 
         <p>
           Моя головна експертиза — <b>front‑end від Trainee до Tech Lead</b>.
-          Також можу проводити співбесіди для <b>React Native</b>, <b>Node.js</b>
+          Також можу проводити співбесіди для <b>React Native</b>, <b>Node.js</b
+          >
           і <b>Python</b> до рівня <b>Middle</b>, якщо роль не потребує глибшої
           спеціалізації поза моїм досвідом.
         </p>
@@ -67,23 +68,3 @@ import TitleLayout from "../layouts/TitleLayout.astro";
     </Fragment>
   </TitleLayout>
 </BaseLayout>
-
-<style>
-  @layer styles {
-    .hero {
-      position: sticky;
-      top: 0;
-      grid-area: portrait;
-      width: stretch;
-      min-width: 0;
-      height: 100vh;
-      object-fit: cover;
-      object-position: top;
-
-      @media (max-width: 960px) {
-        position: static;
-        height: 50vh;
-      }
-    }
-  }
-</style>

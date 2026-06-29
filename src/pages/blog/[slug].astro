@@ -34,7 +34,7 @@ const dateName = post.data.publishDate
     data-utcoffset="2"></script>
 
   <TitleLayout>
-    <div slot="title" class="post-title">
+    <div slot="title" class="post-title stack gap-md">
       <div>
         <time datetime={post.data.publishDate.toISOString()}>{dateName}</time>
         <h1>{post.data.title}</h1>
@@ -45,7 +45,7 @@ const dateName = post.data.publishDate
       </a>
     </div>
 
-    <article slot="content" class="content">
+    <article slot="content">
       <Content />
     </article>
   </TitleLayout>
@@ -53,8 +53,6 @@ const dateName = post.data.publishDate
 
 <style>
   .post-title {
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
     height: stretch;
   }

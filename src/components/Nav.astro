@@ -47,7 +47,9 @@ const isCurrent = (href: string) => {
         >
           <Icon name="menu" />
         </button>
-        <a href="/" class="site-title body-lg">Сергій Бабіч.</a>
+        <a href="/" class="site-title body-lg">
+          Сергій Бабіч.
+        </a>
       </div>
 
       <nav id="menu-mobile" aria-label="Головна навігація" popover="auto">
@@ -65,8 +67,12 @@ const isCurrent = (href: string) => {
   showDesktop && (
     <header class="masthead">
       <div class="masthead-brand">
-        <a href="/" class="site-title body-lg">Сергій Бабіч.</a>
-        <p>Фронтенд-інженер, технічний інтервʼюєр, автор.</p>
+        <a href="/" class="site-title body-lg">
+          Сергій Бабіч.
+        </a>
+        <p class="text-secondary">
+          Фронтенд-інженер, технічний інтервʼюєр, автор.
+        </p>
       </div>
 
       <nav aria-label="Головна навігація" class="masthead-nav">
@@ -88,20 +94,19 @@ const isCurrent = (href: string) => {
 
     .masthead {
       position: sticky;
-      z-index: 1;
       top: 0;
+      z-index: 1;
       background-color: var(--surface-primary);
       padding-inline: var(--page-gutter);
       padding-top: var(--spacing-xl);
     }
 
     .masthead-brand {
-      padding-bottom: var(--spacing-lg);
       border-bottom: 1px solid var(--border-primary);
+      padding-bottom: var(--spacing-lg);
     }
 
     .site-title {
-      margin: 0;
       color: var(--text-primary);
       font-weight: 900;
       text-decoration: none;
@@ -110,16 +115,15 @@ const isCurrent = (href: string) => {
 
     .masthead-brand p {
       margin-top: var(--spacing-xs);
-      color: var(--text-secondary);
     }
 
     .masthead-nav {
       display: flex;
-      align-items: baseline;
       flex-wrap: wrap;
+      align-items: baseline;
       gap: var(--spacing-xl);
-      padding-block: var(--spacing-lg);
       border-bottom: 1px solid var(--border-primary);
+      padding-block: var(--spacing-lg);
     }
 
     .masthead-nav a {
@@ -137,10 +141,10 @@ const isCurrent = (href: string) => {
 
     @media (max-width: 960px) {
       .mobile-masthead {
-        position: sticky;
-        z-index: 1;
-        top: 0;
         display: block;
+        position: sticky;
+        top: 0;
+        z-index: 1;
         background-color: var(--surface-primary);
       }
 
@@ -169,7 +173,11 @@ const isCurrent = (href: string) => {
         color: var(--text-primary);
 
         &::backdrop {
-          background-color: color-mix(in hsl, var(--text-primary) 18%, transparent);
+          background-color: color-mix(
+            in hsl,
+            var(--text-primary) 18%,
+            transparent
+          );
         }
 
         a {
