@@ -1,13 +1,23 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
+
+const pages = defineCollection({
+  type: "content",
+  schema: z.object({
+    page: z.enum(["home", "interviews", "proposal", "youtube"]),
+    lang: z.enum(["uk", "en"]).default("uk"),
+    excerpt: z.array(z.string()).optional(),
+  }),
+});
 
 const blog = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
     publishDate: z.coerce.date(),
     urlSlug: z.string(),
+    lang: z.enum(["uk", "en"]).default("uk"),
   }),
 });
 
-export const collections = { blog };
+export const collections = { blog, pages };

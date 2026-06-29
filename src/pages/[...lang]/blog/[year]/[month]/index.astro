@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import BlogPostList from "../../../../../components/BlogPostList.astro";
+import Icon from "../../../../../components/Icon.astro";
+import { site } from "../../../../../data/site";
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import TitleLayout from "../../../../../layouts/TitleLayout.astro";
+import { getLangPostGroups, sortPostsByDate } from "../../../../../lib/blog";
+import {
+  dateLocales,
+  getLangFromPath,
+  langParam,
+  localizedPath,
+} from "../../../../../lib/i18n";
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blog");
+
+  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) => {
+    const dateMap = new Map<string, typeof posts>();
+
+    posts.forEach((post) => {
+      const year = post.data.publishDate.getFullYear();
+      const month = post.data.publishDate.getMonth() + 1;
+      const key = `${year}-${month.toString().padStart(2, "0")}`;
+
+      if (!dateMap.has(key)) {
+        dateMap.set(key, []);
+      }
+      dateMap.get(key)!.push(post);
+    });
+
+    return Array.from(dateMap.entries()).map(([key, posts]) => {
+      const [year, month] = key.split("-");
+      const sortedPosts = sortPostsByDate(posts);
+
+      return {
+        params: { lang: langParam(lang), year, month },
+        props: {
+          year: parseInt(year),
+          month: parseInt(month),
+          posts: sortedPosts,
+        },
+      };
+    });
+  });
+}
+
+const lang = getLangFromPath(Astro.url.pathname);
+const content = site[lang].blog;
+const { year, month, posts } = Astro.props;
+const monthName = new Date(year, month - 1).toLocaleDateString(
+  dateLocales[lang],
+  { month: "long" },
+);
+---
+
+<BaseLayout
+  title={content.monthTitle(monthName, year)}
+  description={content.monthDescription(monthName, year)}
+  lang={lang}
+>
+  <TitleLayout>
+    <div slot="title" class="stack gap-md">
+      <h1>{content.monthHeading(monthName, year)}</h1>
+      <a href={localizedPath(lang, "/blog")}>
+        <Icon name="arrow-left" />
+        {content.allPosts}
+      </a>
+    </div>
+
+    <Fragment slot="content">
+      {
+        posts.length === 0 ? (
+          <p>{content.monthEmpty(monthName, year)}</p>
+        ) : (
+          <BlogPostList posts={posts} lang={lang} />
+        )
+      }
+    </Fragment>
+  </TitleLayout>
+</BaseLayout>

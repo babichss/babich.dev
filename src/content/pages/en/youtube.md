@@ -1,0 +1,152 @@
+---
+page: youtube
+lang: en
+excerpt:
+  - I run the YouTube channel “Serhii Babich and the Wonderful World of Web Development.” It is a channel about development, [technical interviews](/interviews), careers, the IT market, learning, AI, engineering thinking, and how the profession is changing.
+  - I am open to cooperation with companies, products, educational projects, events, and teams that want to do more than briefly appear in front of developers. They want to explain themselves properly through people, experience, work, hiring, and technical decisions.
+---
+<section>
+
+</section>
+
+<section>
+
+## About the channel
+
+“Serhii Babich and the Wonderful World of Web Development” is a channel for developers and people who work close to software development.
+
+I am interested not only in code. I am interested in how developers go through interviews, grow professionally, change roles, work in teams, make mistakes, make decisions, and deal with change in the industry.
+
+Technical topics here are connected to real work. Frontend, the web platform, AI, hiring, careers, engineering levels, learning, and team work all become one conversation about what it means to be a developer today.
+
+</section>
+
+<section>
+
+## Who cooperation is for
+
+It can be useful for companies [hiring engineers](/proposal) who want to show not only vacancies, but also people, their approach to technical evaluation, team work, and how development actually works inside the company.
+
+It also fits technical products and services that need to explain themselves through developer problems instead of just walking through a feature list.
+
+Educational projects, courses, and mentors can talk here about learning, professional growth, and entering IT without promises of fast success or glossy stories about a “new life in three months.”
+
+Conferences, communities, and events can reach Ukrainian developers through a channel that already has trust around technical and professional topics.
+
+</section>
+
+<section>
+
+## Cooperation formats
+
+### Partner episode
+
+A standalone video supported by a partner.
+
+The topic is built around a question that is genuinely interesting to the audience. It can be an interview, career topic, learning, team work, tools, the market, AI, technical decisions, or professional growth.
+
+The partner is not merely “mentioned.” They enter the conversation through a topic, expertise, product, people, or experience that can be useful to developers.
+
+Examples:
+
+- [Interview on stage #2 | Frontend Tech Lead | Davyd Kasumov](https://www.youtube.com/watch?v=XCPPTNBNKB4)
+- [Junior, Middle, and Senior — Frontend | One question, three answers #2 | Lviv](https://www.youtube.com/watch?v=IESsvnPfPtU)
+- [IT against juniors? Are juniors hired today and why](https://www.youtube.com/watch?v=UtSfAFwNl5k)
+
+### Interview with a company expert
+
+A conversation with an engineer, technical lead, founder, mentor, or someone who really understands how development works inside the company.
+
+The focus is not on how great the company is. The focus is on experience: what you build, how you make decisions, how you hire, where you made mistakes, what you already learned, and what may be useful to others.
+
+Examples:
+
+- [Developers and business: friends or fellow travelers? | Conversation with Ihor Zakutynskyi](https://www.youtube.com/watch?v=lIugEWpCzX4)
+- [IT against juniors? Are juniors hired today and why](https://www.youtube.com/watch?v=UtSfAFwNl5k)
+
+### Public interview or technical review
+
+This format fits companies, educational projects, and teams that care about hiring, skill evaluation, or developer preparation.
+
+We can do a mock interview, review answers, analyze common mistakes, discuss evaluation criteria, or make an episode about how technical interviews have changed.
+
+Related pages and examples:
+
+- [How I conduct technical interviews](/interviews)
+- [Cooperation proposal for private interviews](/proposal)
+- [Trainee vibe coding: does it work? | Test task review](https://www.youtube.com/watch?v=Fds47q02RNQ)
+- [Interview on stage #2 | Frontend Tech Lead | Davyd Kasumov](https://www.youtube.com/watch?v=XCPPTNBNKB4)
+
+### Live podcast or offline event
+
+A format with an audience in the room. The company can speak directly with developers, answer questions, and become part of a live professional conversation instead of only appearing in a video.
+
+This works when it is important not just to make a video, but to gather people around a topic and let them see the company live.
+
+Example:
+
+- [Interview on stage #2 | Frontend Tech Lead | Davyd Kasumov](https://www.youtube.com/watch?v=XCPPTNBNKB4)
+
+### Custom format
+
+We can build a separate idea around your goal: for example, an interview on stage, “one question, three answers,” a technical discussion, a case review, or a conversation with several people from the team.
+
+The point is not to fit into a ready-made advertising template, but to find a format where the company genuinely has something to say.
+
+Example:
+
+- [Junior, Middle, and Senior — Frontend | One question, three answers #2 | Lviv](https://www.youtube.com/watch?v=IESsvnPfPtU)
+
+### Integration into a relevant episode
+
+A short partner mention in a video where the product, event, or company is naturally connected to the topic.
+
+The text is adapted to the audience, channel tone, and specific episode. I do not read ready-made marketing paragraphs if they sound alien.
+
+</section>
+
+<section>
+
+## How I work with partner content
+
+I take on cooperation when I see a healthy connection between the partner, the topic, and the people who watch the channel.
+
+I do not disguise advertising as a personal recommendation, take topics far from developers, or read ready-made marketing copy without edits. If an integration damages trust in the channel, I do not take it.
+
+Partner content should feel not like a banner that accidentally landed in the video, but like part of a normal conversation.
+
+</section>
+
+<section>
+
+## What the partner gets
+
+The partner gets access to Ukrainian developers and a format where they can explain a product, event, company, expertise, or hiring approach without press-release intonation.
+
+This content can be used beyond YouTube. It can work in social media, recruiting, communications, content marketing, or employer branding.
+
+Most importantly, the episode does not become an ad break. The editorial approach keeps audience trust and makes the partner's presence part of the conversation instead of a foreign piece in the middle of the video.
+
+</section>
+
+<section>
+
+## When this is not a fit
+
+This is not the right format if you need a simple ad read or approved marketing copy without meaningful edits.
+
+It also will not work if the product, event, or offer has no connection to developers, technology, education, the IT market, or professional growth.
+
+And it is definitely not a fit if I am expected to guarantee a positive review without editorial caution.
+
+</section>
+
+<section>
+
+## Discuss cooperation
+
+Write what you want to present: a product, vacancies, an event, an educational project, employer brand, or technical expertise.
+
+I will see whether there is a natural format for it on the channel and suggest a cooperation option. [Write about YouTube cooperation](mailto:hello@babich.dev?subject=YouTube%20cooperation)
+
+</section>

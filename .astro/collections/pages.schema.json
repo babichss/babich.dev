@@ -1,0 +1,41 @@
+{
+  "$ref": "#/definitions/pages",
+  "definitions": {
+    "pages": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "string",
+          "enum": [
+            "home",
+            "interviews",
+            "proposal",
+            "youtube"
+          ]
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "uk",
+            "en"
+          ],
+          "default": "uk"
+        },
+        "excerpt": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

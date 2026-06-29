@@ -1,36 +1,23 @@
 ---
 import Icon from "./Icon.astro";
-
-const nav = [
-  {
-    href: "/",
-    title: "Головна",
-  },
-  {
-    href: "/interviews",
-    title: "Співбесіди",
-  },
-  {
-    href: "/youtube",
-    title: "YouTube",
-  },
-  {
-    href: "/blog",
-    title: "Блоґ",
-  },
-];
+import { site } from "../data/site";
+import { getLangFromPath, localizedPath, stripLangFromPath } from "../lib/i18n";
 
 const currentPath = Astro.url.pathname;
+const lang = getLangFromPath(currentPath);
+const content = site[lang];
+const nav = content.nav;
 const { variant = "all" } = Astro.props;
 const showMobile = variant !== "desktop";
 const showDesktop = variant !== "mobile";
+const pathWithoutLang = stripLangFromPath(currentPath);
 
 const isCurrent = (href: string) => {
   if (href === "/") {
-    return currentPath === "/";
+    return pathWithoutLang === "/";
   }
 
-  return currentPath === href || currentPath.startsWith(`${href}/`);
+  return pathWithoutLang === href || pathWithoutLang.startsWith(`${href}/`);
 };
 ---
 
@@ -41,20 +28,23 @@ const isCurrent = (href: string) => {
         <button
           class="menu-button"
           type="button"
-          aria-label="Відкрити меню"
+          aria-label={content.menuLabel}
           popovertarget="menu-mobile"
           popovertargetaction="show"
         >
           <Icon name="menu" />
         </button>
-        <a href="/" class="site-title body-lg">
-          Сергій Бабіч.
+        <a href={localizedPath(lang, "/")} class="site-title body-lg">
+          {content.title}
         </a>
       </div>
 
-      <nav id="menu-mobile" aria-label="Головна навігація" popover="auto">
+      <nav id="menu-mobile" aria-label={content.navLabel} popover="auto">
         {nav.map(({ href, title }) => (
-          <a href={href} aria-current={isCurrent(href) ? "page" : undefined}>
+          <a
+            href={localizedPath(lang, href)}
+            aria-current={isCurrent(href) ? "page" : undefined}
+          >
             {title}
           </a>
         ))}
@@ -67,17 +57,18 @@ const isCurrent = (href: string) => {
   showDesktop && (
     <header class="masthead">
       <div class="masthead-brand">
-        <a href="/" class="site-title body-lg">
-          Сергій Бабіч.
+        <a href={localizedPath(lang, "/")} class="site-title body-lg">
+          {content.title}
         </a>
-        <p class="text-secondary">
-          Фронтенд-інженер, технічний інтервʼюєр, автор.
-        </p>
+        <p class="text-secondary">{content.tagline}</p>
       </div>
 
-      <nav aria-label="Головна навігація" class="masthead-nav">
+      <nav aria-label={content.navLabel} class="masthead-nav">
         {nav.map(({ href, title }) => (
-          <a href={href} aria-current={isCurrent(href) ? "page" : undefined}>
+          <a
+            href={localizedPath(lang, href)}
+            aria-current={isCurrent(href) ? "page" : undefined}
+          >
             {title}
           </a>
         ))}
@@ -87,6 +78,8 @@ const isCurrent = (href: string) => {
 }
 
 <style>
+  @layer base, type, layout, components, styles;
+
   @layer components {
     .mobile-masthead {
       display: none;

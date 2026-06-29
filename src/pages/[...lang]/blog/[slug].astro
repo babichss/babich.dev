@@ -1,24 +1,35 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import Icon from "../../components/Icon.astro";
-import TitleLayout from "../../layouts/TitleLayout.astro";
+import Icon from "../../../components/Icon.astro";
+import { site } from "../../../data/site";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import TitleLayout from "../../../layouts/TitleLayout.astro";
+import { getLangPostGroups, sortPostsByDate } from "../../../lib/blog";
+import {
+  dateLocales,
+  getLangFromPath,
+  langParam,
+  localizedPath,
+} from "../../../lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
 
-  return blogPosts.map((post) => ({
-    params: { slug: post.data.urlSlug },
-    props: { post },
-  }));
+  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) =>
+    sortPostsByDate(posts).map((post) => ({
+      params: { lang: langParam(lang), slug: post.data.urlSlug },
+      props: { post },
+    })),
+  );
 }
 
+const lang = getLangFromPath(Astro.url.pathname);
+const content = site[lang].blog;
 const { post } = Astro.props;
-
 const { Content } = await post.render();
 
 const dateName = post.data.publishDate
-  .toLocaleDateString("uk-UA", {
+  .toLocaleDateString(dateLocales[lang], {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -26,7 +37,11 @@ const dateName = post.data.publishDate
   .replace(/^./, (c) => c.toUpperCase());
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  lang={lang}
+>
   <script
     slot="head"
     src="https://cdn.counter.dev/script.js"
@@ -39,9 +54,9 @@ const dateName = post.data.publishDate
         <time datetime={post.data.publishDate.toISOString()}>{dateName}</time>
         <h1>{post.data.title}</h1>
       </div>
-      <a href="/blog">
+      <a href={localizedPath(lang, "/blog")}>
         <Icon name="arrow-left" />
-        Усі дописи
+        {content.allPosts}
       </a>
     </div>
 

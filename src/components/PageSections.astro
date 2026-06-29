@@ -1,0 +1,58 @@
+---
+import { localizedHtml, localizedPath, type Lang } from "../lib/i18n";
+import type { LinkContent, SectionContent } from "../data/site";
+
+interface Props {
+  sections: SectionContent[];
+  lang: Lang;
+}
+
+const { sections, lang } = Astro.props;
+
+const getHref = (link: LinkContent) =>
+  link.external || link.href.startsWith("#")
+    ? link.href
+    : localizedPath(lang, link.href);
+
+const linkAttrs = (link: LinkContent) =>
+  link.external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+---
+
+{
+  sections.map((section) => (
+    <section id={section.id}>
+      <h2>{section.title}</h2>
+
+      {section.paragraphs?.map((paragraph) => (
+        <p set:html={localizedHtml(lang, paragraph)} />
+      ))}
+
+      {section.subsections?.map((subsection) => (
+        <>
+          <h3>{subsection.title}</h3>
+          {subsection.paragraphs?.map((paragraph) => (
+            <p set:html={localizedHtml(lang, paragraph)} />
+          ))}
+          {subsection.listIntro && <p>{subsection.listIntro}</p>}
+          {subsection.links && (
+            <ul>
+              {subsection.links.map((link) => (
+                <li>
+                  <a href={getHref(link)} {...linkAttrs(link)}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      ))}
+
+      {section.cta && (
+        <a class="cta" href={getHref(section.cta)} {...linkAttrs(section.cta)}>
+          {section.cta.label}
+        </a>
+      )}
+    </section>
+  ))
+}

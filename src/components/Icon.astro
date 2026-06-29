@@ -13,6 +13,8 @@ const { name, class: className } = Astro.props;
 
 
 <style>
+  @layer base, type, layout, components, styles;
+
   @layer components {
     .icon {
       width: var(--spacing-md);

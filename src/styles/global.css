@@ -41,7 +41,8 @@
     }
   }
 
-  pre {
+  article pre {
+    margin-bottom: var(--spacing-md);
     padding: var(--spacing-md);
   }
 }

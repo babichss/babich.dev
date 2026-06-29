@@ -29,6 +29,14 @@
         "urlSlug": {
           "type": "string"
         },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "uk",
+            "en"
+          ],
+          "default": "uk"
+        },
         "$schema": {
           "type": "string"
         }

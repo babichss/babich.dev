@@ -1,26 +1,30 @@
 ---
+import { dateLocales, localizedPath, type Lang } from "../lib/i18n";
+
 interface Post {
   data: {
     title: string;
     description: string;
     urlSlug: string;
     publishDate: Date;
+    lang: Lang;
   };
 }
 
 interface Props {
   posts: Post[];
   showDate?: boolean;
+  lang: Lang;
 }
 
-const { posts, showDate = true } = Astro.props;
+const { posts, showDate = true, lang } = Astro.props;
 ---
 
 <ul class="stack gap-md list-plain blog-post-list">
   {
     posts.map((post) => {
       const publishDate = post.data.publishDate;
-      const dateLabel = publishDate.toLocaleDateString("uk-UA", {
+      const dateLabel = publishDate.toLocaleDateString(dateLocales[lang], {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -35,13 +39,17 @@ const { posts, showDate = true } = Astro.props;
             {showDate && (
               <footer class="flush text-soft">
                 <time class="body-sm" datetime={publishDate.toISOString()}>
-                  <a href={`/blog/${datePath}`}>{dateLabel}</a>
+                  <a href={localizedPath(lang, `/blog/${datePath}`)}>
+                    {dateLabel}
+                  </a>
                 </time>
               </footer>
             )}
 
             <h2 class="body-lg flush blog-post-title">
-              <a href={`/blog/${post.data.urlSlug}`}>{post.data.title}</a>
+              <a href={localizedPath(lang, `/blog/${post.data.urlSlug}`)}>
+                {post.data.title}
+              </a>
             </h2>
             <p class="flush text-secondary">{post.data.description}</p>
           </article>
@@ -52,6 +60,8 @@ const { posts, showDate = true } = Astro.props;
 </ul>
 
 <style>
+  @layer base, type, layout, components, styles;
+
   @layer components {
     .blog-post-item {
       display: grid;
