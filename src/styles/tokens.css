@@ -1,58 +1,71 @@
 @layer base, type, layout, components, styles;
 
 :root {
-  /* Core surfaces */
-  --color-bg: #f8f6f1;
-  --color-surface: #ffffff;
-  --color-surface-muted: #eef1f6;
+  color-scheme: light dark;
 
-  /* Navy scale */
-  --color-navy-950: #08111f;
-  --color-navy-900: #0f172a;
-  --color-navy-800: #17233a;
-  --color-navy-700: #223557;
-  --color-navy-600: #2f4a78;
-  --color-navy-500: #42669e;
-  --color-navy-100: #dbe4f2;
-  --color-navy-50: #edf2f8;
+  /* Surfaces */
+  --color-bg: light-dark(#f7f9fc, #0a1320);
+  --color-surface: light-dark(#ffffff, #15263a);
+  --color-surface-muted: light-dark(#edf3fa, #1b3047);
+  --color-surface-raised: light-dark(#ffffff, #1a2c42);
+  --color-sidebar: light-dark(#ffffff, #0d1827);
+  --color-content-bg: light-dark(#f7f9fc, #111e2f);
+  --color-content-surface: light-dark(#ffffff, #15263a);
+  --color-content-muted: light-dark(#edf3fa, #1b3047);
 
   /* Text */
-  --color-text: #10131a;
-  --color-text-muted: #4b5565;
-  --color-text-soft: #6b7280;
-  --color-text-inverse: #f7f8fb;
-  --color-text-inverse-muted: #c8d0dc;
+  --color-text: light-dark(#0d1420, #e7eef6);
+  --color-text-muted: light-dark(#4b5a6d, #adbac9);
+  --color-text-soft: light-dark(#6b7a90, #8798aa);
+  --color-text-inverse: light-dark(#f7fbff, #0a1320);
+
+  /* Blue / navy scale */
+  --color-blue-950: #07111f;
+  --color-blue-900: #0b1b31;
+  --color-blue-850: #102844;
+  --color-blue-800: #15345a;
+  --color-blue-700: #1d4778;
+  --color-blue-600: #2563a6;
+  --color-blue-500: #2f7ed8;
+  --color-blue-400: #4b9df0;
+  --color-blue-100: #d9ebff;
+  --color-blue-50: #eef7ff;
 
   /* Links */
-  --color-link: #2f5f9f;
-  --color-link-hover: #1f4f8f;
-  --color-link-active: #123a6f;
-  --color-link-visited: #5a6680;
+  --color-link: light-dark(#1f6fbe, #86b4df);
+  --color-link-hover: light-dark(#0f5aa3, #a1c7ea);
+  --color-link-active: light-dark(#0a427c, #c0daf2);
+  --color-link-visited: light-dark(#526f9a, #9cabc2);
 
   /* Actions */
-  --color-action: #245da8;
-  --color-action-hover: #123f78;
-  --color-action-text: #ffffff;
+  --color-action: light-dark(#1478d4, #91bee8);
+  --color-action-hover: light-dark(#075ca8, #add0ee);
+  --color-action-text: light-dark(#ffffff, #0a1320);
 
   /* Borders */
-  --color-border: #d8dee8;
-  --color-border-strong: #b8c2d2;
+  --color-border: light-dark(#d5e0ec, #24384f);
+  --color-border-strong: light-dark(#aec1d6, #38536e);
 
   /* Dark panels */
-  --color-panel: var(--color-navy-900);
-  --color-panel-deep: var(--color-navy-950);
-  --color-panel-soft: var(--color-navy-800);
-  --color-panel-text: var(--color-text-inverse);
-  --color-panel-text-muted: var(--color-text-inverse-muted);
+  --color-panel: light-dark(#0b1b31, #0d1827);
+  --color-panel-deep: light-dark(#07111f, #0a1320);
+  --color-panel-soft: light-dark(#102844, #111e2f);
+  --color-panel-text: light-dark(#f7fbff, #f6faff);
+  --color-panel-text-muted: light-dark(#bfd0e3, #dbe8f6);
+
+  /* Navigation */
+  --color-nav: light-dark(#4b5a6d, #a7b5c7);
+  --color-nav-hover: light-dark(#0d1420, #d2deea);
+  --color-nav-active: light-dark(#0d1420, #f0f5fa);
 
   /* Focus / selection */
-  --color-focus: var(--color-navy-500);
-  --color-selection-bg: var(--color-navy-100);
-  --color-selection-text: var(--color-navy-950);
+  --color-focus: light-dark(#2f7ed8, #86b4df);
+  --color-selection-bg: light-dark(#d9ebff, #1d3a59);
+  --color-selection-text: light-dark(#07111f, #f4f8fc);
 
   /* Warm support — only for photo harmony, not primary UI */
-  --color-warm-bg: #f8f6f1;
-  --color-warm-border: #e4ded4;
+  --color-warm-bg: light-dark(#f8f6f1, #07111f);
+  --color-warm-border: light-dark(#e4ded4, #223b5a);
 
   --surface-primary: var(--color-bg);
   --surface-secondary: var(--color-surface);
@@ -62,8 +75,9 @@
   --text-primary: var(--color-text);
   --text-secondary: var(--color-text-muted);
   --text-soft: var(--color-text-soft);
-  --text-inverse: var(--color-text-inverse);
-  --text-inverse-muted: var(--color-text-inverse-muted);
+  --text-heading: color-mix(in hsl, var(--text-primary) 76%, var(--accent-primary));
+  --text-inverse: var(--color-panel-text);
+  --text-inverse-muted: var(--color-panel-text-muted);
   --accent-primary: var(--color-link);
   --accent-secondary: var(--color-focus);
   --accent-dark: var(--color-link-hover);

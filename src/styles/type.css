@@ -37,7 +37,9 @@
 
   :is(h2, h3, h4, h5, h6) {
     margin-bottom: 0.5em;
+    color: var(--text-heading);
     line-height: 1;
+    font-weight: 600;
     text-wrap: balance;
 
     &:not(:first-child) {
@@ -51,7 +53,8 @@
 
   h1 {
     margin-bottom: 0.2em;
-    font-weight: 100;
+    color: var(--text-heading);
+    font-weight: 700;
     font-size: var(--body-3xl);
 
     @media (max-width: 960px) {

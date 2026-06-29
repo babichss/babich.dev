@@ -31,11 +31,6 @@ const { posts, showDate = true } = Astro.props;
     return (
       <li>
         <article class="stack gap-xs blog-post-item">
-          <h2 class="body-lg blog-post-title">
-            <a href={`/blog/${post.data.urlSlug}`}>{post.data.title}</a>
-          </h2>
-          <p class="blog-post-description">{post.data.description}</p>
-
           {showDate && (
             <footer class="blog-post-meta">
               <time class="body-sm" datetime={publishDate.toISOString()}>
@@ -43,6 +38,11 @@ const { posts, showDate = true } = Astro.props;
               </time>
             </footer>
           )}
+
+          <h2 class="body-lg blog-post-title">
+            <a href={`/blog/${post.data.urlSlug}`}>{post.data.title}</a>
+          </h2>
+          <p class="blog-post-description">{post.data.description}</p>
         </article>
       </li>
     );

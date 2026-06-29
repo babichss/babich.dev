@@ -6,15 +6,15 @@
   }
 
   a {
-    color: var(--link-primary);
+    color: var(--action-primary);
     text-underline-offset: 0.15em;
 
     &:visited {
-      color: var(--link-visited);
+      color: var(--action-primary);
     }
 
     &:hover {
-      color: var(--accent-dark);
+      color: var(--action-hover);
     }
 
     &:focus-visible {
@@ -24,6 +24,18 @@
 
     &:has(.icon) {
       color: inherit;
+    }
+  }
+
+  a.cta,
+  .cta:is(a, button) {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font-weight: 700;
+
+    &:focus-visible {
+      outline-offset: 3px;
     }
   }
 

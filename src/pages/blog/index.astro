@@ -57,11 +57,18 @@ const groupedArray = Object.values(groupedPosts).sort((a, b) => {
 ---
 
 <BaseLayout
-  title="Блог"
-  description="Блог Сергія Бабіча про технічні співбесіди та розробку"
+  title="Блоґ"
+  description="Блоґ Сергія Бабіча про веброзробку, співбесіди, команди й технічні рішення"
 >
   <TitleLayout>
-    <h1 slot="title">Блоґ</h1>
+    <div slot="title" class="stack gap-md">
+      <h1>Блоґ</h1>
+      <p>
+        Тут я пишу про веброзробку, співбесіди, команди, технічні рішення й
+        усе, чим хочеться поділитися, поки думка не загубилася.
+      </p>
+      <p>Дякую, що завітали. Приємного читання.</p>
+    </div>
 
     <Fragment slot="content">
       <div class="stack gap-lg">
