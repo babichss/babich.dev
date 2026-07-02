@@ -1,10 +1,18 @@
 ---
 page: interviews
 lang: en
-excerpt:
-  - I conduct technical interviews for developers, help set up evaluation, and provide an independent technical assessment so the company understands who it is inviting into the team and candidates leave with the best possible impression of you.
-  - If you need a ready cooperation format, there is a separate [cooperation proposal](/proposal).
 ---
+import TitleLayout from "../../../layouts/TitleLayout.astro";
+
+<TitleLayout>
+<Fragment slot="title">
+  <h1>Technical interviews</h1>
+  <p>I conduct technical interviews for developers, help set up evaluation, and provide an independent technical assessment so the company understands who it is inviting into the team and candidates leave with the best possible impression of you.</p>
+  <a href="/proposal" class="cta">Cooperation proposal</a>
+</Fragment>
+
+<Fragment slot="content">
+
 <section>
 
 ## Why technical interviews often fail
@@ -36,3 +44,7 @@ My main expertise is <b>front-end from Trainee to Tech Lead</b>. I can also inte
 Beyond company work, I have conducted more than 50 [public interviews on YouTube](/youtube), so I know how to guide a technical conversation where a candidate does not just defend themselves from questions, but shows how they actually work with problems.
 
 </section>
+
+</Fragment>
+
+</TitleLayout>

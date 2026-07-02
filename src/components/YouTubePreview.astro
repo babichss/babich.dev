@@ -1,0 +1,106 @@
+---
+interface Props {
+  href: string;
+  title: string;
+}
+
+const { href, title } = Astro.props;
+
+const getVideoId = (href: string) => {
+  const url = new URL(href);
+
+  if (url.hostname === "youtu.be") {
+    return url.pathname.slice(1);
+  }
+
+  return url.searchParams.get("v");
+};
+
+const videoId = getVideoId(href);
+---
+
+{
+  videoId && (
+    <a
+      class="youtube-preview"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="youtube-preview-media">
+        <img
+          src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${videoId}/sddefault.jpg';`}
+        />
+        <span class="youtube-preview-play" aria-hidden="true" />
+      </span>
+      <span class="youtube-preview-title">{title}</span>
+    </a>
+  )
+}
+
+<style>
+  @layer base, type, layout, components, styles;
+
+  @layer components {
+    .youtube-preview {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: var(--spacing-sm);
+      width: 800px;
+      max-width: 100%;
+      margin-block: var(--spacing-md) var(--spacing-xl);
+      color: inherit;
+    }
+
+    .youtube-preview:visited {
+      color: inherit;
+    }
+
+    .youtube-preview:hover {
+      color: var(--action-hover);
+    }
+
+    .youtube-preview-media {
+      display: block;
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--surface-secondary);
+    }
+
+    .youtube-preview-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .youtube-preview-play {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 48px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgb(0 0 0 / 0.72);
+      transform: translate(-50%, -50%);
+    }
+
+    .youtube-preview-play::before {
+      content: "";
+      position: absolute;
+      inset: 50% auto auto 50%;
+      border-block: 8px solid transparent;
+      border-left: 13px solid white;
+      transform: translate(-35%, -50%);
+    }
+
+    .youtube-preview-title {
+      font-weight: 700;
+      line-height: 1.25;
+    }
+  }
+</style>

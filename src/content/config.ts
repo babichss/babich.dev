@@ -5,7 +5,6 @@ const pages = defineCollection({
   schema: z.object({
     page: z.enum(["home", "interviews", "proposal", "youtube"]),
     lang: z.enum(["uk", "en"]).default("uk"),
-    excerpt: z.array(z.string()).optional(),
   }),
 });
 

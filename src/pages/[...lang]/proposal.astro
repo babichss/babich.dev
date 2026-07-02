@@ -1,12 +1,7 @@
 ---
 import { site } from "../../data/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import TitleLayout from "../../layouts/TitleLayout.astro";
-import {
-  getCollection,
-  render,
-} from "astro:content";
-import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { getCollection, render } from "astro:content";
 import {
   getLangFromPath,
   getLangStaticPaths,
@@ -26,10 +21,7 @@ if (!page) {
   throw new Error(`Missing proposal copy for ${lang}`);
 }
 
-const markdown = await createMarkdownProcessor({});
 const { Content } = await render(page);
-const renderExcerpt = async (excerpt: string) =>
-  (await markdown.render(excerpt)).code;
 ---
 
 <BaseLayout
@@ -37,20 +29,5 @@ const renderExcerpt = async (excerpt: string) =>
   description={content.metaDescription}
   lang={lang}
 >
-  <TitleLayout>
-    <div slot="title">
-      <h1>{content.title}</h1>
-      {
-        await Promise.all(
-          page.data.excerpt?.map(async (paragraph) => (
-            <p set:html={await renderExcerpt(paragraph)} />
-          )) ?? [],
-        )
-      }
-    </div>
-
-    <Fragment slot="content">
-      <Content />
-    </Fragment>
-  </TitleLayout>
+  <Content />
 </BaseLayout>
