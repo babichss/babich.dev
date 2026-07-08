@@ -9,6 +9,7 @@
           "enum": [
             "home",
             "interviews",
+            "personal-interview",
             "proposal",
             "youtube"
           ]

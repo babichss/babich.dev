@@ -59,7 +59,7 @@ export const site = {
           paragraphs: [
             "Я проводжу <a href=\"/interviews\">технічні співбесіди</a> для розробників, допомагаю налагодити оцінювання й даю незалежний технічний висновок — щоб компанія розуміла, кого запрошує до команди, а в кандидата лишалися про вас якнайкращі враження.",
           ],
-          cta: { href: "/proposal", label: "Поговорити про співбесіди" },
+          cta: { href: "/interviews/hiring", label: "Поговорити про співбесіди" },
         },
         {
           title: "Розкажіть про компанію так, щоб вас чули розробники",
@@ -78,11 +78,12 @@ export const site = {
       ],
     },
     interviews: {
-      metaTitle: "Співбесіди",
-      metaDescription: "Сергій Бабіч — технічний експерт",
-      title: "Технічні співбесіди",
+      metaTitle: "Співбесіди для компаній і розробників",
+      metaDescription:
+        "Технічні співбесіди для компаній і індивідуальний формат для розробників.",
+      title: "Співбесіди для компаній і розробників",
       intro: [
-        "Я проводжу технічні співбесіди для розробників, допомагаю налагодити оцінювання й даю незалежний технічний висновок — щоб компанія розуміла, кого запрошує до команди, а в кандидата лишалися про вас якнайкращі враження. Якщо потрібен вже готовий формат роботи, є окрема <a href=\"/proposal\">пропозиція співпраці</a>.",
+        "Я проводжу технічні співбесіди для розробників, допомагаю налагодити оцінювання й даю незалежний технічний висновок — щоб компанія розуміла, кого запрошує до команди, а в кандидата лишалися про вас якнайкращі враження. Якщо потрібен вже готовий формат роботи, є окрема <a href=\"/interviews/hiring\">пропозиція співпраці</a>.",
       ],
       sections: [
         {
@@ -109,10 +110,16 @@ export const site = {
         },
       ],
     },
+    personalInterview: {
+      metaTitle: "Індивідуальні технічні співбесіди",
+      metaDescription:
+        "Індивідуальні технічні співбесіди для розробників: перевірити рівень, підготуватися до вакансії або розібрати попередні співбесіди.",
+    },
     proposal: {
-      metaTitle: "Пропозиція співпраці",
-      metaDescription: "Пропозиція співпраці від Сергія Бабіча",
-      title: "Про співпрацю",
+      metaTitle: "Технічні співбесіди для компаній",
+      metaDescription:
+        "Технічні співбесіди для компаній: план оцінювання, розмова з кандидатом і незалежний технічний висновок.",
+      title: "Технічні співбесіди для компаній",
       intro: [
         "Я проводжу <a href=\"/interviews\">технічні співбесіди</a> з розробниками, готую план оцінювання для конкретної ролі й даю незалежний технічний висновок після кожної розмови.",
         "Моя основна зона — frontend і web development від Trainee до Tech Lead. Також можу проводити співбесіди для React Native, Node.js і Python до Middle-рівня, якщо роль не вимагає глибшої спеціалізації поза моїм досвідом.",
@@ -215,7 +222,7 @@ export const site = {
         {
           title: "Кому підходить співпраця",
           paragraphs: [
-            "Це може бути корисно компаніям, які <a href=\"/proposal\">наймають інженерів</a> і хочуть показати не тільки вакансії, а й людей, підхід до технічної оцінки, роботу команди й те, як у них насправді влаштована розробка.",
+            "Це може бути корисно компаніям, які <a href=\"/interviews/hiring\">наймають інженерів</a> і хочуть показати не тільки вакансії, а й людей, підхід до технічної оцінки, роботу команди й те, як у них насправді влаштована розробка.",
             "Так само це підходить технічним продуктам і сервісам, яким треба пояснити себе через задачі розробників, а не просто пройтися списком можливостей.",
             "Освітні проєкти, курси й ментори можуть говорити тут про навчання, професійний ріст і вхід в ІТ без обіцянок швидкого успіху й глянцевих історій про “нове життя за три місяці”.",
             "Конференції, спільноти й події можуть вийти до українських розробників через канал, де вже є довіра до технічних і професійних тем.",
@@ -288,7 +295,7 @@ export const site = {
                   label: "Як я проводжу технічні співбесіди",
                 },
                 {
-                  href: "/proposal",
+                  href: "/interviews/hiring",
                   label: "Пропозиція співпраці для приватних співбесід",
                 },
                 {
@@ -441,7 +448,7 @@ export const site = {
           paragraphs: [
             "I conduct <a href=\"/interviews\">technical interviews</a> for developers, help set up evaluation, and provide an independent technical assessment so the company understands who it is inviting into the team and candidates leave with the best possible impression of you.",
           ],
-          cta: { href: "/proposal", label: "Discuss interviews" },
+          cta: { href: "/interviews/hiring", label: "Discuss interviews" },
         },
         {
           title: "Tell your company story so developers actually listen",
@@ -464,7 +471,7 @@ export const site = {
       metaDescription: "Serhii Babich — technical expert",
       title: "Technical Interviews",
       intro: [
-        "I conduct technical interviews for developers, help set up evaluation, and provide an independent technical assessment so the company understands who it is inviting into the team and candidates leave with the best possible impression of you. If you need a ready cooperation format, there is a separate <a href=\"/proposal\">cooperation proposal</a>.",
+        "I conduct technical interviews for developers, help set up evaluation, and provide an independent technical assessment so the company understands who it is inviting into the team and candidates leave with the best possible impression of you. If you need a ready cooperation format, there is a separate <a href=\"/interviews/hiring\">cooperation proposal</a>.",
       ],
       sections: [
         {
@@ -598,7 +605,7 @@ export const site = {
         {
           title: "Who cooperation is for",
           paragraphs: [
-            "It can be useful for companies <a href=\"/proposal\">hiring engineers</a> who want to show not only vacancies, but also people, their approach to technical evaluation, team work, and how development actually works inside the company.",
+            "It can be useful for companies <a href=\"/interviews/hiring\">hiring engineers</a> who want to show not only vacancies, but also people, their approach to technical evaluation, team work, and how development actually works inside the company.",
             "It also fits technical products and services that need to explain themselves through developer problems instead of just walking through a feature list.",
             "Educational projects, courses, and mentors can talk here about learning, professional growth, and entering IT without promises of fast success or glossy stories about a “new life in three months.”",
             "Conferences, communities, and events can reach Ukrainian developers through a channel that already has trust around technical and professional topics.",
@@ -669,7 +676,7 @@ export const site = {
                   label: "How I conduct technical interviews",
                 },
                 {
-                  href: "/proposal",
+                  href: "/interviews/hiring",
                   label: "Cooperation proposal for private interviews",
                 },
                 {

@@ -1,11 +1,11 @@
 ---
-import { site } from "../../data/site";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../../data/site";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
 import {
   getLangFromPath,
   getLangStaticPaths,
-} from "../../lib/i18n";
+} from "../../../lib/i18n";
 
 export function getStaticPaths() {
   return getLangStaticPaths();

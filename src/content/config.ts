@@ -3,7 +3,13 @@ import { defineCollection, z } from "astro:content";
 const pages = defineCollection({
   type: "content",
   schema: z.object({
-    page: z.enum(["home", "interviews", "proposal", "youtube"]),
+    page: z.enum([
+      "home",
+      "interviews",
+      "personal-interview",
+      "proposal",
+      "youtube",
+    ]),
     lang: z.enum(["uk", "en"]).default("uk"),
   }),
 });

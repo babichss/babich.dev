@@ -1,0 +1,31 @@
+---
+import { site } from "../../../data/site";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+import { defaultLang, getLangFromPath } from "../../../lib/i18n";
+
+export function getStaticPaths() {
+  return [{ params: { lang: undefined } }];
+}
+
+const lang = getLangFromPath(Astro.url.pathname);
+const content = site[defaultLang].personalInterview;
+const page = (await getCollection("pages")).find(
+  (entry) =>
+    entry.data.lang === defaultLang && entry.data.page === "personal-interview",
+);
+
+if (!page) {
+  throw new Error("Missing personal interview copy for uk");
+}
+
+const { Content } = await render(page);
+---
+
+<BaseLayout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  lang={lang}
+>
+  <Content />
+</BaseLayout>
