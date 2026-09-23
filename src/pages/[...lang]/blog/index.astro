@@ -4,7 +4,12 @@ import BlogPostList from "src/components/BlogPostList.astro";
 import { site } from "src/data/site";
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import TitleLayout from "src/layouts/TitleLayout.astro";
-import { getDateGroups, getPostsForLang, sortPostsByDate } from "src/lib/blog";
+import {
+  getDateGroups,
+  getPostsForLang,
+  padDatePart,
+  sortPostsByDate,
+} from "src/lib/blog";
 import {
   dateLocales,
   getLangFromPath,
@@ -48,7 +53,7 @@ const groupedArray = getDateGroups(sortedPosts, "month");
         ) : (
           groupedArray.map((group) => {
             const month = group.month as number;
-            const monthPadded = month.toString().padStart(2, "0");
+            const monthPadded = padDatePart(month);
             return (
               <section class="stack gap-md blog-group">
                 <h2 class="body-sm text-soft blog-group-title">

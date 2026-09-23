@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
+  getBlogLangGroups,
   getDateGroups,
   getLangParams,
   getLangPostGroups,
   getPathLang,
   getPostsForLang,
+  padDatePart,
   sortPostsByDate,
   type BlogPost,
 } from "src/lib/blog";
@@ -101,6 +103,36 @@ describe("getDateGroups", () => {
       { year: 2024, month: 5, day: 1, posts: [posts[0]] },
       { year: 2024, month: 5, day: 2, posts: [posts[1]] },
     ]);
+  });
+});
+
+describe("getBlogLangGroups", () => {
+  it("pairs each language's posts with its counterpart's as altPosts", () => {
+    const posts = [post("en", "2024-01-02"), post("uk", "2024-01-01")];
+
+    expect(getBlogLangGroups(posts)).toEqual([
+      { lang: "uk", posts: [posts[1]], altPosts: [posts[0]] },
+      { lang: "en", posts: [posts[0]], altPosts: [posts[1]] },
+    ]);
+  });
+
+  it("gives an empty altPosts when the counterpart language has no posts", () => {
+    const posts = [post("uk", "2024-01-01")];
+
+    expect(getBlogLangGroups(posts)).toEqual([
+      { lang: "uk", posts: [posts[0]], altPosts: [] },
+      { lang: "en", posts: [], altPosts: [posts[0]] },
+    ]);
+  });
+});
+
+describe("padDatePart", () => {
+  it("pads a single digit with a leading zero", () => {
+    expect(padDatePart(5)).toBe("05");
+  });
+
+  it("leaves a two-digit value unchanged", () => {
+    expect(padDatePart(12)).toBe("12");
   });
 });
 

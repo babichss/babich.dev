@@ -5,13 +5,12 @@ import { site } from "src/data/site";
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import TitleLayout from "src/layouts/TitleLayout.astro";
 import {
-  getLangPostGroups,
+  getBlogLangGroups,
   hasPostWithSlug,
   sortPostsByDate,
 } from "src/lib/blog";
 import {
   dateLocales,
-  getAlternateLang,
   getLangFromPath,
   langParam,
   localizedPath,
@@ -19,13 +18,9 @@ import {
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
-  const postsByLang = getLangPostGroups(blogPosts);
+  const langGroups = getBlogLangGroups(blogPosts);
 
-  return postsByLang.flatMap(({ lang, posts }) => {
-    const altPosts =
-      postsByLang.find((group) => group.lang === getAlternateLang(lang))
-        ?.posts ?? [];
-
+  return langGroups.flatMap(({ lang, posts, altPosts }) => {
     return sortPostsByDate(posts).map((post) => ({
       params: { lang: langParam(lang), slug: post.data.urlSlug },
       props: {

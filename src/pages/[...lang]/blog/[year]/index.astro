@@ -3,21 +3,17 @@ import { getCollection } from "astro:content";
 import { site } from "src/data/site";
 import BlogArchiveLayout from "src/layouts/BlogArchiveLayout.astro";
 import {
+  getBlogLangGroups,
   getDateGroups,
   hasPostInPeriod,
-  getLangPostGroups,
 } from "src/lib/blog";
-import { getAlternateLang, getLangFromPath, langParam } from "src/lib/i18n";
+import { getLangFromPath, langParam } from "src/lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
-  const postsByLang = getLangPostGroups(blogPosts);
+  const langGroups = getBlogLangGroups(blogPosts);
 
-  return postsByLang.flatMap(({ lang, posts }) => {
-    const altPosts =
-      postsByLang.find((group) => group.lang === getAlternateLang(lang))
-        ?.posts ?? [];
-
+  return langGroups.flatMap(({ lang, posts, altPosts }) => {
     return getDateGroups(posts, "year").map(({ year, posts: yearPosts }) => ({
       params: { lang: langParam(lang), year: year.toString() },
       props: {

@@ -1,5 +1,11 @@
 import type { CollectionEntry } from "astro:content";
-import { defaultLang, langParam, languages, type Lang } from "src/lib/i18n";
+import {
+  defaultLang,
+  getAlternateLang,
+  langParam,
+  languages,
+  type Lang,
+} from "src/lib/i18n";
 
 export type BlogPost = CollectionEntry<"blog">;
 
@@ -16,6 +22,29 @@ export const getLangPostGroups = (posts: BlogPost[]) =>
     lang,
     posts: getPostsForLang(posts, lang),
   }));
+
+export interface BlogLangGroup {
+  lang: Lang;
+  posts: BlogPost[];
+  altPosts: BlogPost[];
+}
+
+// Each language's posts paired with its counterpart language's posts (its
+// "alt" set), needed at every archive/slug getStaticPaths to decide whether
+// a page's hreflang alternate was ever built.
+export const getBlogLangGroups = (posts: BlogPost[]): BlogLangGroup[] => {
+  const postsByLang = getLangPostGroups(posts);
+
+  return postsByLang.map(({ lang, posts: langPosts }) => ({
+    lang,
+    posts: langPosts,
+    altPosts:
+      postsByLang.find((group) => group.lang === getAlternateLang(lang))
+        ?.posts ?? [],
+  }));
+};
+
+export const padDatePart = (value: number) => value.toString().padStart(2, "0");
 
 export type DateGranularity = "year" | "month" | "day";
 
