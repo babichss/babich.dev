@@ -44,7 +44,8 @@
   --selection-bg: var(--color-selection-bg);
   --selection-text: var(--color-selection-text);
 
-  --page-width: clamp(80vw, calc(64vw + 192px), 96vw);
+  /* 96vw's cap leaves sub-1rem gutters on narrow phones; floor each side at 1rem. */
+  --page-width: min(clamp(80vw, calc(64vw + 192px), 96vw), 100vw - 2rem);
   --measure-body: 66ch;
   --measure-copy: 62ch;
   --section-space: 64px;
