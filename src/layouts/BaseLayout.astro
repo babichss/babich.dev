@@ -4,8 +4,8 @@ import "../styles/base.css";
 import "../styles/layout.css";
 import "../styles/type.css";
 import "../styles/global.css";
-import Footer from "../components/Footer.astro";
-import { site } from "../data/site";
+import Footer from "@/components/Footer.astro";
+import { site } from "@/data/site";
 import {
   defaultLang,
   getAlternateLang,
@@ -13,7 +13,7 @@ import {
   localizedPath,
   stripLangFromPath,
   type Lang,
-} from "../lib/i18n";
+} from "@/lib/i18n";
 
 interface Props {
   title: string;

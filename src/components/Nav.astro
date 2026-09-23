@@ -1,13 +1,13 @@
 ---
-import Icon from "./Icon.astro";
-import NavLinks from "./NavLinks.astro";
-import { site } from "../data/site";
+import Icon from "@/components/Icon.astro";
+import NavLinks from "@/components/NavLinks.astro";
+import { site } from "@/data/site";
 import {
   getAlternateLang,
   getLangFromPath,
   localizedPath,
   stripLangFromPath,
-} from "../lib/i18n";
+} from "@/lib/i18n";
 
 interface Props {
   hideLanguageSwitch?: boolean;

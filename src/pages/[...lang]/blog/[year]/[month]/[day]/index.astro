@@ -1,13 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import { site } from "../../../../../../data/site";
-import BlogArchiveLayout from "../../../../../../layouts/BlogArchiveLayout.astro";
-import { getDateGroups, getLangPostGroups } from "../../../../../../lib/blog";
-import {
-  dateLocales,
-  getLangFromPath,
-  langParam,
-} from "../../../../../../lib/i18n";
+import { site } from "@/data/site";
+import BlogArchiveLayout from "@/layouts/BlogArchiveLayout.astro";
+import { getDateGroups, getLangPostGroups } from "@/lib/blog";
+import { dateLocales, getLangFromPath, langParam } from "@/lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");

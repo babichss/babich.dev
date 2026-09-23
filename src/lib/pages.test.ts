@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getPage } from "./pages";
+import { getPage } from "@/lib/pages";
 
 // The found-entry render() path is exercised by the dist/ build byte-diff
 // instead of here: this env's SSR module runner can't evaluate this repo's

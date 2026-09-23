@@ -1,5 +1,5 @@
 import type { CollectionEntry } from "astro:content";
-import { defaultLang, langParam, languages, type Lang } from "./i18n";
+import { defaultLang, langParam, languages, type Lang } from "@/lib/i18n";
 
 export type BlogPost = CollectionEntry<"blog">;
 

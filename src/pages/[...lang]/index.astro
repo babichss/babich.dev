@@ -1,10 +1,10 @@
 ---
-import Nav from "../../components/Nav.astro";
-import { site } from "../../data/site";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import HeroLayout from "../../layouts/HeroLayout.astro";
-import { getLangFromPath, getLangStaticPaths } from "../../lib/i18n";
-import { getPage } from "../../lib/pages";
+import Nav from "@/components/Nav.astro";
+import { site } from "@/data/site";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import HeroLayout from "@/layouts/HeroLayout.astro";
+import { getLangFromPath, getLangStaticPaths } from "@/lib/i18n";
+import { getPage } from "@/lib/pages";
 
 export function getStaticPaths() {
   return getLangStaticPaths();

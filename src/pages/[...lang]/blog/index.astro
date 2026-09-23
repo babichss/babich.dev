@@ -1,20 +1,16 @@
 ---
 import { getCollection } from "astro:content";
-import BlogPostList from "../../../components/BlogPostList.astro";
-import { site } from "../../../data/site";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import TitleLayout from "../../../layouts/TitleLayout.astro";
-import {
-  getDateGroups,
-  getPostsForLang,
-  sortPostsByDate,
-} from "../../../lib/blog";
+import BlogPostList from "@/components/BlogPostList.astro";
+import { site } from "@/data/site";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import TitleLayout from "@/layouts/TitleLayout.astro";
+import { getDateGroups, getPostsForLang, sortPostsByDate } from "@/lib/blog";
 import {
   dateLocales,
   getLangFromPath,
   getLangStaticPaths,
   localizedPath,
-} from "../../../lib/i18n";
+} from "@/lib/i18n";
 
 export function getStaticPaths() {
   return getLangStaticPaths();

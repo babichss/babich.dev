@@ -1,10 +1,10 @@
 ---
-import BlogPostList from "../components/BlogPostList.astro";
-import Icon from "../components/Icon.astro";
-import type { BlogPost } from "../lib/blog";
-import { localizedPath, type Lang } from "../lib/i18n";
-import BaseLayout from "./BaseLayout.astro";
-import TitleLayout from "./TitleLayout.astro";
+import BlogPostList from "@/components/BlogPostList.astro";
+import Icon from "@/components/Icon.astro";
+import type { BlogPost } from "@/lib/blog";
+import { localizedPath, type Lang } from "@/lib/i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import TitleLayout from "@/layouts/TitleLayout.astro";
 
 interface Props {
   lang: Lang;

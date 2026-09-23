@@ -9,7 +9,7 @@ import {
   languages,
   localizedPath,
   stripLangFromPath,
-} from "./i18n";
+} from "@/lib/i18n";
 
 describe("isLang", () => {
   it("accepts configured languages", () => {
