@@ -6,6 +6,7 @@
   /* Surfaces */
   --color-bg: light-dark(#f7f9fc, #0a1320);
   --color-surface: light-dark(#ffffff, #15263a);
+  --color-code-bg: light-dark(#e9eff6, #15263a);
 
   /* Text */
   --color-text: light-dark(#0d1420, #e7eef6);
@@ -27,6 +28,7 @@
 
   --surface-primary: var(--color-bg);
   --surface-secondary: var(--color-surface);
+  --surface-code: var(--color-code-bg);
   --border-primary: var(--color-border);
   --border-subtle: var(--color-border-subtle);
   --text-primary: var(--color-text);

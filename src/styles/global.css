@@ -85,7 +85,7 @@
 
   article code:not(pre code) {
     border-radius: 4px;
-    background-color: var(--surface-secondary);
+    background-color: var(--surface-code);
     padding: 0.15em 0.4em;
     font-size: 0.85em;
   }
