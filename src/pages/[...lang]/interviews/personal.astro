@@ -1,8 +1,8 @@
 ---
 import { site } from "src/data/site";
 import BaseLayout from "src/layouts/BaseLayout.astro";
-import { getCollection, render } from "astro:content";
 import { defaultLang, getLangFromPath } from "src/lib/i18n";
+import { getPage } from "src/lib/pages";
 
 export function getStaticPaths() {
   return [{ params: { lang: undefined } }];
@@ -10,16 +10,7 @@ export function getStaticPaths() {
 
 const lang = getLangFromPath(Astro.url.pathname);
 const content = site[defaultLang].personalInterview;
-const page = (await getCollection("pages")).find(
-  (entry) =>
-    entry.data.lang === defaultLang && entry.data.page === "personal-interview",
-);
-
-if (!page) {
-  throw new Error("Missing personal interview copy for uk");
-}
-
-const { Content } = await render(page);
+const { Content } = await getPage(defaultLang, "personal-interview");
 ---
 
 <BaseLayout
