@@ -9,6 +9,11 @@ export default defineConfig({
     inlineStylesheets: "never",
   },
   prefetch: true,
+  vite: {
+    build: {
+      cssCodeSplit: false,
+    },
+  },
   markdown: {
     shikiConfig: {
       themes: {
