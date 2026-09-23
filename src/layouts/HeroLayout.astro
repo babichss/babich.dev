@@ -18,8 +18,10 @@
       display: grid;
       grid-template:
         "title image" auto
-        "intro image" 1fr /
+        "intro image" auto
+        "lead  image" auto /
         minmax(0, 1fr) min(20rem, 40%);
+      align-items: start;
       gap: calc(var(--section-space) / 2) var(--section-space);
     }
 
@@ -27,10 +29,22 @@
       grid-area: title;
     }
 
-    .home-content :global(.hero section) {
-      grid-area: intro;
-      align-self: start;
+    .home-content :global(.hero .hero-intro),
+    .home-content :global(.hero .hero-lead) {
       width: min(100%, var(--measure-copy));
+    }
+
+    .home-content :global(.hero .hero-intro) {
+      grid-area: intro;
+    }
+
+    /* The main stack's divider no longer falls between the hero and this
+       section, so draw it here. Half the gap (from the grid) plus half
+       padding matches the rule-stack spacing. */
+    .home-content :global(.hero .hero-lead) {
+      grid-area: lead;
+      border-top: 1px solid var(--rule-color);
+      padding-top: calc(var(--rule-gap) / 2);
     }
 
     .home-content > :global(section) {
@@ -40,7 +54,6 @@
     .home-content :global(.hero .home-portrait) {
       display: block;
       grid-area: image;
-      justify-self: end;
       aspect-ratio: 3 / 4;
       width: 100%;
       height: auto;
@@ -53,7 +66,8 @@
         grid-template:
           "title" auto
           "intro" auto
-          "image" auto /
+          "image" auto
+          "lead" auto /
           1fr;
       }
 
