@@ -1,0 +1,52 @@
+---
+import BlogPostList from "../components/BlogPostList.astro";
+import Icon from "../components/Icon.astro";
+import type { BlogPost } from "../lib/blog";
+import { localizedPath, type Lang } from "../lib/i18n";
+import BaseLayout from "./BaseLayout.astro";
+import TitleLayout from "./TitleLayout.astro";
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  heading: string;
+  allPostsLabel: string;
+  emptyMessage?: string;
+  posts: BlogPost[];
+  showDate?: boolean;
+}
+
+const {
+  lang,
+  title,
+  description,
+  heading,
+  allPostsLabel,
+  emptyMessage,
+  posts,
+  showDate = true,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <TitleLayout>
+    <div slot="title" class="stack gap-md">
+      <h1>{heading}</h1>
+      <a href={localizedPath(lang, "/blog")}>
+        <Icon name="arrow-left" />
+        {allPostsLabel}
+      </a>
+    </div>
+
+    <Fragment slot="content">
+      {
+        posts.length === 0 && emptyMessage ? (
+          <p>{emptyMessage}</p>
+        ) : (
+          <BlogPostList posts={posts} showDate={showDate} lang={lang} />
+        )
+      }
+    </Fragment>
+  </TitleLayout>
+</BaseLayout>

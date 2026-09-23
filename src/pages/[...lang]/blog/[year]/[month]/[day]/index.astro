@@ -1,53 +1,30 @@
 ---
 import { getCollection } from "astro:content";
-import BlogPostList from "../../../../../../components/BlogPostList.astro";
-import Icon from "../../../../../../components/Icon.astro";
 import { site } from "../../../../../../data/site";
-import BaseLayout from "../../../../../../layouts/BaseLayout.astro";
-import TitleLayout from "../../../../../../layouts/TitleLayout.astro";
-import { getLangPostGroups, sortPostsByDate } from "../../../../../../lib/blog";
+import BlogArchiveLayout from "../../../../../../layouts/BlogArchiveLayout.astro";
+import { getDateGroups, getLangPostGroups } from "../../../../../../lib/blog";
 import {
   dateLocales,
   getLangFromPath,
   langParam,
-  localizedPath,
 } from "../../../../../../lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
 
-  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) => {
-    const dateMap = new Map<string, typeof posts>();
-
-    posts.forEach((post) => {
-      const year = post.data.publishDate.getFullYear();
-      const month = post.data.publishDate.getMonth() + 1;
-      const day = post.data.publishDate.getDate();
-      const key = `${year}-${month.toString().padStart(2, "0")}-${day
-        .toString()
-        .padStart(2, "0")}`;
-
-      if (!dateMap.has(key)) {
-        dateMap.set(key, []);
-      }
-      dateMap.get(key)!.push(post);
-    });
-
-    return Array.from(dateMap.entries()).map(([key, posts]) => {
-      const [year, month, day] = key.split("-");
-      const sortedPosts = sortPostsByDate(posts);
-
-      return {
-        params: { lang: langParam(lang), year, month, day },
-        props: {
-          year: parseInt(year),
-          month: parseInt(month),
-          day: parseInt(day),
-          posts: sortedPosts,
+  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) =>
+    getDateGroups(posts, "day").map(
+      ({ year, month, day, posts: dayPosts }) => ({
+        params: {
+          lang: langParam(lang),
+          year: year.toString(),
+          month: month!.toString().padStart(2, "0"),
+          day: day!.toString().padStart(2, "0"),
         },
-      };
-    });
-  });
+        props: { year, month: month!, day: day!, posts: dayPosts },
+      }),
+    ),
+  );
 }
 
 const lang = getLangFromPath(Astro.url.pathname);
@@ -62,22 +39,12 @@ const dateName = new Date(year, month - 1, day)
   .replace(/\s*р\.$/u, " року");
 ---
 
-<BaseLayout
+<BlogArchiveLayout
+  lang={lang}
   title={content.dayTitle(dateName)}
   description={content.dayDescription(dateName)}
-  lang={lang}
->
-  <TitleLayout>
-    <div slot="title" class="stack gap-md">
-      <h1>{content.dayHeading(dateName)}</h1>
-      <a href={localizedPath(lang, "/blog")}>
-        <Icon name="arrow-left" />
-        {content.allPosts}
-      </a>
-    </div>
-
-    <Fragment slot="content">
-      <BlogPostList posts={posts} showDate={false} lang={lang} />
-    </Fragment>
-  </TitleLayout>
-</BaseLayout>
+  heading={content.dayHeading(dateName)}
+  allPostsLabel={content.allPosts}
+  posts={posts}
+  showDate={false}
+/>

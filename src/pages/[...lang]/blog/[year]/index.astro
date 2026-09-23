@@ -1,36 +1,19 @@
 ---
 import { getCollection } from "astro:content";
-import BlogPostList from "../../../../components/BlogPostList.astro";
-import Icon from "../../../../components/Icon.astro";
 import { site } from "../../../../data/site";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import TitleLayout from "../../../../layouts/TitleLayout.astro";
-import { getLangPostGroups, sortPostsByDate } from "../../../../lib/blog";
-import {
-  getLangFromPath,
-  langParam,
-  localizedPath,
-} from "../../../../lib/i18n";
+import BlogArchiveLayout from "../../../../layouts/BlogArchiveLayout.astro";
+import { getDateGroups, getLangPostGroups } from "../../../../lib/blog";
+import { getLangFromPath, langParam } from "../../../../lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
 
-  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) => {
-    const years = new Set(
-      posts.map((post) => post.data.publishDate.getFullYear()),
-    );
-
-    return Array.from(years).map((year) => {
-      const yearPosts = sortPostsByDate(
-        posts.filter((post) => post.data.publishDate.getFullYear() === year),
-      );
-
-      return {
-        params: { lang: langParam(lang), year: year.toString() },
-        props: { year, posts: yearPosts },
-      };
-    });
-  });
+  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) =>
+    getDateGroups(posts, "year").map(({ year, posts: yearPosts }) => ({
+      params: { lang: langParam(lang), year: year.toString() },
+      props: { year, posts: yearPosts },
+    })),
+  );
 }
 
 const lang = getLangFromPath(Astro.url.pathname);
@@ -38,28 +21,12 @@ const content = site[lang].blog;
 const { year, posts } = Astro.props;
 ---
 
-<BaseLayout
+<BlogArchiveLayout
+  lang={lang}
   title={content.yearTitle(year)}
   description={content.yearDescription(year)}
-  lang={lang}
->
-  <TitleLayout>
-    <div slot="title" class="stack gap-md">
-      <h1>{content.yearHeading(year)}</h1>
-      <a href={localizedPath(lang, "/blog")}>
-        <Icon name="arrow-left" />
-        {content.allPosts}
-      </a>
-    </div>
-
-    <Fragment slot="content">
-      {
-        posts.length === 0 ? (
-          <p>{content.yearEmpty(year)}</p>
-        ) : (
-          <BlogPostList posts={posts} lang={lang} />
-        )
-      }
-    </Fragment>
-  </TitleLayout>
-</BaseLayout>
+  heading={content.yearHeading(year)}
+  allPostsLabel={content.allPosts}
+  emptyMessage={content.yearEmpty(year)}
+  posts={posts}
+/>
