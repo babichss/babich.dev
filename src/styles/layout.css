@@ -29,6 +29,34 @@
     min-width: 0;
   }
 
+  /* A vertical stack divided by a rule between items — row-rule where
+     supported, a border-top fallback (at half the gap, each side) where
+     not. Callers set --rule-gap/--rule-color/--rule-inset to vary the
+     divider; unset, they default to the plain full-bleed section rule. */
+  .rule-stack {
+    --rule-gap: var(--section-space);
+    --rule-color: var(--border-primary);
+    --rule-inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--rule-gap);
+    row-rule: 1px solid var(--rule-color);
+    row-rule-inset: var(--rule-inset);
+    row-rule-visibility-items: between;
+  }
+
+  @supports not (row-rule: 1px solid red) {
+    .rule-stack {
+      gap: calc(var(--rule-gap) / 2);
+    }
+
+    .rule-stack > * + * {
+      border-top: 1px solid var(--rule-color);
+      padding-top: calc(var(--rule-gap) / 2);
+    }
+  }
+
   @scope (.stack) {
     &.gap-xs {
       gap: var(--spacing-xs);

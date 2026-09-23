@@ -10,12 +10,12 @@ const { hideLanguageSwitch = false } = Astro.props;
 
 <Nav hideLanguageSwitch={hideLanguageSwitch} />
 
-<main class="page-container page-content">
+<main class="page-container page-content rule-stack">
   <header class="title stack gap-md">
     <slot name="title" />
   </header>
 
-  <div class="content">
+  <div class="content rule-stack">
     <slot name="content" />
   </div>
 </main>
@@ -23,47 +23,12 @@ const { hideLanguageSwitch = false } = Astro.props;
 <style>
   @layer styles {
     .page-content {
-      display: flex;
-      flex-direction: column;
-      gap: var(--section-space);
-      row-rule: 1px solid var(--border-primary);
-      row-rule-inset: 0 max(0px, calc(100% - var(--measure-copy)));
-      row-rule-visibility-items: between;
-    }
-
-    @supports not (row-rule: 1px solid red) {
-      .page-content {
-        gap: calc(var(--section-space) / 2);
-      }
-
-      .page-content > :global(* + *) {
-        border-top: 1px solid var(--border-primary);
-        padding-top: calc(var(--section-space) / 2);
-      }
+      --rule-inset: 0 max(0px, calc(100% - var(--measure-copy)));
     }
 
     .title,
     .content {
       width: min(100%, var(--measure-copy));
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      gap: var(--section-space);
-      row-rule: 1px solid var(--border-primary);
-      row-rule-visibility-items: between;
-    }
-
-    @supports not (row-rule: 1px solid red) {
-      .content {
-        gap: calc(var(--section-space) / 2);
-      }
-
-      .content > :global(* + *) {
-        border-top: 1px solid var(--border-primary);
-        padding-top: calc(var(--section-space) / 2);
-      }
     }
 
     .content > :global(section),
