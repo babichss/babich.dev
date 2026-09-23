@@ -35,6 +35,7 @@ So, the browser has many rules for processing your `html`, and a significant num
 
 For example, optional closing tags. In some cases you can omit them because of how certain elements interact with each other. Take this example:
 
+<!-- prettier-ignore -->
 ```html
 <p>Hello
 <p>World
@@ -51,6 +52,7 @@ The browser will explicitly turn this into two paragraphs:
 
 Why? Because a paragraph cannot contain block elements inside it. So when the parser sees an opening tag for a block element after an open `p`, it concludes that the previous element has ended and should be closed. By the way, it will apply the same fix if you decide to put a `div` inside a `p`:
 
+<!-- prettier-ignore -->
 ```html
 <p>
 <div></div>

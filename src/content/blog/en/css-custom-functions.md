@@ -70,7 +70,7 @@ I am genuinely looking forward to CSS custom functions becoming part of Baseline
 
 Why am I so impatient for these specifications to become Baseline? Because it would mark the beginning of the end for SCSS and all those other LESS-like things, toward which I feel an entirely unreasonable and burning hostility. If this post gets at least 100 reactions, I will explain why. If it does not, I will not.
 
-***
+---
 
 Further reading:
 

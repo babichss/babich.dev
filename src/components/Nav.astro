@@ -28,31 +28,34 @@ const isCurrent = (href: string) => {
 
 <header class="site-header">
   <div class="mobile-masthead">
-      <div class="mobile-title">
-        <button
-          class="menu-button"
-          type="button"
-          aria-label={content.menuLabel}
-          popovertarget="menu-mobile"
-          popovertargetaction="toggle"
-        >
-          <Icon name="menu" />
-        </button>
-        <a href={localizedPath(lang, "/")} class="site-title body-lg">
-          {content.title}
-        </a>
-      </div>
+    <div class="mobile-title">
+      <button
+        class="menu-button"
+        type="button"
+        aria-label={content.menuLabel}
+        popovertarget="menu-mobile"
+        popovertargetaction="toggle"
+      >
+        <Icon name="menu" />
+      </button>
+      <a href={localizedPath(lang, "/")} class="site-title body-lg">
+        {content.title}
+      </a>
+    </div>
 
-      <nav id="menu-mobile" aria-label={content.navLabel} popover="auto">
-        {nav.map(({ href, title }) => (
+    <nav id="menu-mobile" aria-label={content.navLabel} popover="auto">
+      {
+        nav.map(({ href, title }) => (
           <a
             href={localizedPath(lang, href)}
             aria-current={isCurrent(href) ? "page" : undefined}
           >
             {title}
           </a>
-        ))}
-        {showLanguageSwitch && (
+        ))
+      }
+      {
+        showLanguageSwitch && (
           <a
             class="language-switch"
             href={localizedPath(alternateLang, pathWithoutLang)}
@@ -61,28 +64,32 @@ const isCurrent = (href: string) => {
           >
             {languageNames[alternateLang]}
           </a>
-        )}
-      </nav>
+        )
+      }
+    </nav>
   </div>
 
   <div class="masthead">
-      <div class="masthead-brand">
-        <a href={localizedPath(lang, "/")} class="site-title body-lg">
-          {content.title}
-        </a>
-        <p class="text-secondary">{content.tagline}</p>
-      </div>
+    <div class="masthead-brand">
+      <a href={localizedPath(lang, "/")} class="site-title body-lg">
+        {content.title}
+      </a>
+      <p class="text-secondary">{content.tagline}</p>
+    </div>
 
-      <nav aria-label={content.navLabel} class="masthead-nav">
-        {nav.map(({ href, title }) => (
+    <nav aria-label={content.navLabel} class="masthead-nav">
+      {
+        nav.map(({ href, title }) => (
           <a
             href={localizedPath(lang, href)}
             aria-current={isCurrent(href) ? "page" : undefined}
           >
             {title}
           </a>
-        ))}
-        {showLanguageSwitch && (
+        ))
+      }
+      {
+        showLanguageSwitch && (
           <>
             <span class="nav-divider" aria-hidden="true" />
             <a
@@ -94,8 +101,9 @@ const isCurrent = (href: string) => {
               {languageNames[alternateLang]}
             </a>
           </>
-        )}
-      </nav>
+        )
+      }
+    </nav>
   </div>
 </header>
 
