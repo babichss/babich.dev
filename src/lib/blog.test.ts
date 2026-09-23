@@ -7,7 +7,7 @@ import {
   getPostsForLang,
   sortPostsByDate,
   type BlogPost,
-} from "@/lib/blog";
+} from "src/lib/blog";
 
 const post = (
   lang: BlogPost["data"]["lang"],

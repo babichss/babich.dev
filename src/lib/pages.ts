@@ -1,5 +1,5 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import type { Lang } from "@/lib/i18n";
+import type { Lang } from "src/lib/i18n";
 
 type PageKey = CollectionEntry<"pages">["data"]["page"];
 

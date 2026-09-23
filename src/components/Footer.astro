@@ -1,6 +1,6 @@
 ---
-import { site } from "@/data/site";
-import { getLangFromPath } from "@/lib/i18n";
+import { site } from "src/data/site";
+import { getLangFromPath } from "src/lib/i18n";
 
 const lang = getLangFromPath(Astro.url.pathname);
 const year = new Date().getFullYear();

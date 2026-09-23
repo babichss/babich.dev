@@ -1,8 +1,8 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { describe, expect, it } from "vitest";
-import { site } from "@/data/site";
-import { languageNames } from "@/lib/i18n";
-import Nav from "@/components/Nav.astro";
+import { site } from "src/data/site";
+import { languageNames } from "src/lib/i18n";
+import Nav from "src/components/Nav.astro";
 
 const render = async (path: string, props: Record<string, unknown> = {}) => {
   const container = await AstroContainer.create();

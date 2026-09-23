@@ -1,4 +1,4 @@
-import type { Lang } from "@/lib/i18n";
+import type { Lang } from "src/lib/i18n";
 
 export interface LinkContent {
   href: string;

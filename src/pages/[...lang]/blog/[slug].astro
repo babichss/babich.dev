@@ -1,16 +1,16 @@
 ---
 import { getCollection } from "astro:content";
-import Icon from "@/components/Icon.astro";
-import { site } from "@/data/site";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import TitleLayout from "@/layouts/TitleLayout.astro";
-import { getLangPostGroups, sortPostsByDate } from "@/lib/blog";
+import Icon from "src/components/Icon.astro";
+import { site } from "src/data/site";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import TitleLayout from "src/layouts/TitleLayout.astro";
+import { getLangPostGroups, sortPostsByDate } from "src/lib/blog";
 import {
   dateLocales,
   getLangFromPath,
   langParam,
   localizedPath,
-} from "@/lib/i18n";
+} from "src/lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");

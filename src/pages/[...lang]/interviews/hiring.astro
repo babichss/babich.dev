@@ -1,8 +1,8 @@
 ---
-import { site } from "@/data/site";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getLangFromPath, getLangStaticPaths } from "@/lib/i18n";
-import { getPage } from "@/lib/pages";
+import { site } from "src/data/site";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import { getLangFromPath, getLangStaticPaths } from "src/lib/i18n";
+import { getPage } from "src/lib/pages";
 
 export function getStaticPaths() {
   return getLangStaticPaths();
