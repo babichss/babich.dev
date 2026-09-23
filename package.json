@@ -4,18 +4,21 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --check .",
+    "typecheck": "astro check"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",
     "astro": "^5.16.4"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-css-order": "^2.1.2"
+    "prettier-plugin-css-order": "^2.1.2",
+    "typescript": "^5.9.3"
   }
 }
