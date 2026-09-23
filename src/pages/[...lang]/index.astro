@@ -3,8 +3,8 @@ import Nav from "../../components/Nav.astro";
 import { site } from "../../data/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroLayout from "../../layouts/HeroLayout.astro";
-import { getCollection, render } from "astro:content";
 import { getLangFromPath, getLangStaticPaths } from "../../lib/i18n";
+import { getPage } from "../../lib/pages";
 
 export function getStaticPaths() {
   return getLangStaticPaths();
@@ -12,15 +12,7 @@ export function getStaticPaths() {
 
 const lang = getLangFromPath(Astro.url.pathname);
 const content = site[lang].home;
-const page = (await getCollection("pages")).find(
-  (entry) => entry.data.lang === lang && entry.data.page === "home",
-);
-
-if (!page) {
-  throw new Error(`Missing home copy for ${lang}`);
-}
-
-const { Content } = await render(page);
+const { Content } = await getPage(lang, "home");
 ---
 
 <BaseLayout

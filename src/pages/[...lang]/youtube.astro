@@ -1,8 +1,8 @@
 ---
 import { site } from "../../data/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection, render } from "astro:content";
 import { getLangFromPath, getLangStaticPaths } from "../../lib/i18n";
+import { getPage } from "../../lib/pages";
 
 export function getStaticPaths() {
   return getLangStaticPaths();
@@ -10,15 +10,7 @@ export function getStaticPaths() {
 
 const lang = getLangFromPath(Astro.url.pathname);
 const content = site[lang].youtube;
-const page = (await getCollection("pages")).find(
-  (entry) => entry.data.lang === lang && entry.data.page === "youtube",
-);
-
-if (!page) {
-  throw new Error(`Missing youtube copy for ${lang}`);
-}
-
-const { Content } = await render(page);
+const { Content } = await getPage(lang, "youtube");
 ---
 
 <BaseLayout
