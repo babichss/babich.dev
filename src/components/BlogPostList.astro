@@ -71,6 +71,17 @@ const { posts, showDate = true, lang } = Astro.props;
       row-rule-visibility-items: between;
     }
 
+    @supports not (row-rule: 1px solid red) {
+      .blog-post-list {
+        gap: var(--spacing-lg);
+      }
+
+      .blog-post-list > * + * {
+        border-top: 1px solid var(--border-subtle);
+        padding-top: var(--spacing-lg);
+      }
+    }
+
     .blog-post-item {
       display: grid;
       gap: var(--spacing-xs);

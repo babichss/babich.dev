@@ -38,8 +38,6 @@
   --color-link-visited: light-dark(#526f9a, #9cabc2);
 
   /* Actions */
-  --color-action: light-dark(#1478d4, #91bee8);
-  --color-action-hover: light-dark(#075ca8, #add0ee);
   --color-action-text: light-dark(#ffffff, #0a1320);
 
   /* Borders */
@@ -88,8 +86,8 @@
   --accent-secondary: var(--color-focus);
   --accent-dark: var(--color-link-hover);
   --accent-active: var(--color-link-active);
-  --action-primary: var(--color-action);
-  --action-hover: var(--color-action-hover);
+  --action-primary: var(--color-link);
+  --action-hover: var(--color-link-hover);
   --action-text: var(--color-action-text);
   --link-primary: var(--color-link);
   --link-hover: var(--color-link-hover);

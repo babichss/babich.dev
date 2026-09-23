@@ -21,12 +21,23 @@
       row-rule-visibility-items: between;
     }
 
+    @supports not (row-rule: 1px solid red) {
+      .home-content {
+        gap: calc(var(--section-space) / 2);
+      }
+
+      .home-content > :global(* + *) {
+        border-top: 1px solid var(--border-primary);
+        padding-top: calc(var(--section-space) / 2);
+      }
+    }
+
     .home-content :global(.hero) {
       display: grid;
       grid-template:
         "title image" auto
         "intro image" 1fr /
-        minmax(0, 1fr) minmax(0, 1fr);
+        minmax(0, 1fr) auto;
       gap: calc(var(--section-space) / 2) var(--section-space);
     }
 
