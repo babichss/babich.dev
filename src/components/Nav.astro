@@ -183,7 +183,8 @@ const navLinksProps = {
       #menu-mobile {
         position: fixed;
         margin: 0;
-        inset: 60px 0 auto;
+        /* Below the mobile masthead's own 1px bottom border, not on top of it. */
+        inset: calc(60px + 1px) 0 auto;
         border: 0;
         border-bottom: 1px solid var(--border-primary);
         background-color: var(--surface-primary);
