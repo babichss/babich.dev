@@ -5,6 +5,9 @@ export default defineConfig({
   integrations: [mdx()],
   output: "static",
   site: "https://babich.dev",
+  build: {
+    inlineStylesheets: "never",
+  },
   markdown: {
     shikiConfig: {
       themes: {
