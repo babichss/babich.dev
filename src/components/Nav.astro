@@ -1,10 +1,10 @@
 ---
 import Icon from "./Icon.astro";
+import NavLinks from "./NavLinks.astro";
 import { site } from "../data/site";
 import {
   getAlternateLang,
   getLangFromPath,
-  languageNames,
   localizedPath,
   stripLangFromPath,
 } from "../lib/i18n";
@@ -50,28 +50,14 @@ const isCurrent = (href: string) => {
     </div>
 
     <nav id="menu-mobile" aria-label={content.navLabel} popover="auto">
-      {
-        nav.map(({ href, title }) => (
-          <a
-            href={localizedPath(lang, href)}
-            aria-current={isCurrent(href) ? "page" : undefined}
-          >
-            {title}
-          </a>
-        ))
-      }
-      {
-        showLanguageSwitch && (
-          <a
-            class="language-switch"
-            href={localizedPath(alternateLang, pathWithoutLang)}
-            hreflang={alternateLang}
-            lang={alternateLang}
-          >
-            {languageNames[alternateLang]}
-          </a>
-        )
-      }
+      <NavLinks
+        nav={nav}
+        lang={lang}
+        isCurrent={isCurrent}
+        showLanguageSwitch={showLanguageSwitch}
+        alternateLang={alternateLang}
+        pathWithoutLang={pathWithoutLang}
+      />
     </nav>
   </div>
 
@@ -84,31 +70,15 @@ const isCurrent = (href: string) => {
     </div>
 
     <nav aria-label={content.navLabel} class="masthead-nav">
-      {
-        nav.map(({ href, title }) => (
-          <a
-            href={localizedPath(lang, href)}
-            aria-current={isCurrent(href) ? "page" : undefined}
-          >
-            {title}
-          </a>
-        ))
-      }
-      {
-        showLanguageSwitch && (
-          <>
-            <span class="nav-divider" aria-hidden="true" />
-            <a
-              class="language-switch"
-              href={localizedPath(alternateLang, pathWithoutLang)}
-              hreflang={alternateLang}
-              lang={alternateLang}
-            >
-              {languageNames[alternateLang]}
-            </a>
-          </>
-        )
-      }
+      <NavLinks
+        nav={nav}
+        lang={lang}
+        isCurrent={isCurrent}
+        showLanguageSwitch={showLanguageSwitch}
+        alternateLang={alternateLang}
+        pathWithoutLang={pathWithoutLang}
+        withDivider
+      />
     </nav>
   </div>
 </header>
@@ -162,12 +132,15 @@ const isCurrent = (href: string) => {
       white-space: nowrap;
     }
 
-    .masthead-nav a {
+    /* :global() — these links and the language switch render inside
+       NavLinks, a separate component the scoped-style compiler doesn't
+       attribute-tag; the container classes stay locally scoped. */
+    .masthead-nav :global(a) {
       color: var(--text-primary);
       text-decoration: none;
     }
 
-    .masthead-nav a[aria-current="page"] {
+    .masthead-nav :global(a[aria-current="page"]) {
       color: var(--accent-primary);
       text-decoration: underline;
       text-decoration-color: currentColor;
@@ -175,14 +148,14 @@ const isCurrent = (href: string) => {
       text-underline-offset: 0.35em;
     }
 
-    .nav-divider {
+    :global(.nav-divider) {
       flex: none;
       background: var(--border-primary);
       width: 1px;
       height: 1em;
     }
 
-    .masthead-nav .language-switch {
+    .masthead-nav :global(.language-switch) {
       color: var(--text-secondary);
     }
 
@@ -233,27 +206,27 @@ const isCurrent = (href: string) => {
             transparent
           );
         }
+      }
 
-        a {
-          display: flex;
-          align-items: center;
-          min-height: 44px;
-          color: var(--text-primary);
-          text-decoration: none;
-        }
+      #menu-mobile :global(a) {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--text-primary);
+        text-decoration: none;
+      }
 
-        a[aria-current="page"] {
-          color: var(--accent-primary);
-          text-decoration: underline;
-          text-decoration-thickness: 2px;
-          text-underline-offset: 0.35em;
-        }
+      #menu-mobile :global(a[aria-current="page"]) {
+        color: var(--accent-primary);
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.35em;
+      }
 
-        .language-switch {
-          margin-top: var(--spacing-sm);
-          border-top: 1px solid var(--border-primary);
-          color: var(--text-secondary);
-        }
+      #menu-mobile :global(.language-switch) {
+        margin-top: var(--spacing-sm);
+        border-top: 1px solid var(--border-primary);
+        color: var(--text-secondary);
       }
 
       .masthead {

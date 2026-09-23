@@ -1,0 +1,56 @@
+---
+import { languageNames, localizedPath, type Lang } from "../lib/i18n";
+
+interface NavItem {
+  href: string;
+  title: string;
+}
+
+interface Props {
+  nav: NavItem[];
+  lang: Lang;
+  isCurrent: (href: string) => boolean;
+  showLanguageSwitch: boolean;
+  alternateLang: Lang;
+  pathWithoutLang: string;
+  // The masthead-nav divider before the language switch; the mobile popover
+  // has no divider of its own.
+  withDivider?: boolean;
+}
+
+const {
+  nav,
+  lang,
+  isCurrent,
+  showLanguageSwitch,
+  alternateLang,
+  pathWithoutLang,
+  withDivider = false,
+} = Astro.props;
+---
+
+{
+  nav.map(({ href, title }) => (
+    <a
+      href={localizedPath(lang, href)}
+      aria-current={isCurrent(href) ? "page" : undefined}
+    >
+      {title}
+    </a>
+  ))
+}
+{
+  showLanguageSwitch && (
+    <>
+      {withDivider && <span class="nav-divider" aria-hidden="true" />}
+      <a
+        class="language-switch"
+        href={localizedPath(alternateLang, pathWithoutLang)}
+        hreflang={alternateLang}
+        lang={alternateLang}
+      >
+        {languageNames[alternateLang]}
+      </a>
+    </>
+  )
+}
