@@ -6,36 +6,15 @@
   /* Surfaces */
   --color-bg: light-dark(#f7f9fc, #0a1320);
   --color-surface: light-dark(#ffffff, #15263a);
-  --color-surface-muted: light-dark(#edf3fa, #1b3047);
-  --color-surface-raised: light-dark(#ffffff, #1a2c42);
-  --color-sidebar: light-dark(#ffffff, #0d1827);
-  --color-content-bg: light-dark(#f7f9fc, #111e2f);
-  --color-content-surface: light-dark(#ffffff, #15263a);
-  --color-content-muted: light-dark(#edf3fa, #1b3047);
 
   /* Text */
   --color-text: light-dark(#0d1420, #e7eef6);
   --color-text-muted: light-dark(#4b5a6d, #adbac9);
   --color-text-soft: light-dark(#5f6f86, #8798aa);
-  --color-text-inverse: light-dark(#f7fbff, #0a1320);
-
-  /* Blue / navy scale */
-  --color-blue-950: #07111f;
-  --color-blue-900: #0b1b31;
-  --color-blue-850: #102844;
-  --color-blue-800: #15345a;
-  --color-blue-700: #1d4778;
-  --color-blue-600: #2563a6;
-  --color-blue-500: #2f7ed8;
-  --color-blue-400: #4b9df0;
-  --color-blue-100: #d9ebff;
-  --color-blue-50: #eef7ff;
 
   /* Links */
   --color-link: light-dark(#1f6fbe, #86b4df);
   --color-link-hover: light-dark(#0f5aa3, #a1c7ea);
-  --color-link-active: light-dark(#0a427c, #c0daf2);
-  --color-link-visited: light-dark(#526f9a, #9cabc2);
 
   /* Actions */
   --color-action-text: light-dark(#ffffff, #0a1320);
@@ -43,35 +22,16 @@
   /* Borders */
   --color-border: light-dark(#d5e0ec, #24384f);
   --color-border-subtle: light-dark(#e5ebf2, #192a3d);
-  --color-border-strong: light-dark(#aec1d6, #38536e);
-
-  /* Dark panels */
-  --color-panel: light-dark(#0b1b31, #0d1827);
-  --color-panel-deep: light-dark(#07111f, #0a1320);
-  --color-panel-soft: light-dark(#102844, #111e2f);
-  --color-panel-text: light-dark(#f7fbff, #f6faff);
-  --color-panel-text-muted: light-dark(#bfd0e3, #dbe8f6);
-
-  /* Navigation */
-  --color-nav: light-dark(#4b5a6d, #a7b5c7);
-  --color-nav-hover: light-dark(#0d1420, #d2deea);
-  --color-nav-active: light-dark(#0d1420, #f0f5fa);
 
   /* Focus / selection */
   --color-focus: light-dark(#2f7ed8, #86b4df);
   --color-selection-bg: light-dark(#d9ebff, #1d3a59);
   --color-selection-text: light-dark(#07111f, #f4f8fc);
 
-  /* Warm support — only for photo harmony, not primary UI */
-  --color-warm-bg: light-dark(#f8f6f1, #07111f);
-  --color-warm-border: light-dark(#e4ded4, #223b5a);
-
   --surface-primary: var(--color-bg);
   --surface-secondary: var(--color-surface);
-  --surface-muted: var(--color-surface-muted);
   --border-primary: var(--color-border);
   --border-subtle: var(--color-border-subtle);
-  --border-strong: var(--color-border-strong);
   --text-primary: var(--color-text);
   --text-secondary: var(--color-text-muted);
   --text-soft: var(--color-text-soft);
@@ -80,28 +40,12 @@
     var(--text-primary) 76%,
     var(--accent-primary)
   );
-  --text-inverse: var(--color-panel-text);
-  --text-inverse-muted: var(--color-panel-text-muted);
   --accent-primary: var(--color-link);
   --accent-secondary: var(--color-focus);
-  --accent-dark: var(--color-link-hover);
-  --accent-active: var(--color-link-active);
   --action-primary: var(--color-link);
   --action-hover: var(--color-link-hover);
-  --action-text: var(--color-action-text);
-  --link-primary: var(--color-link);
-  --link-hover: var(--color-link-hover);
-  --link-visited: var(--color-link-visited);
-  --panel-primary: var(--color-panel);
-  --panel-deep: var(--color-panel-deep);
-  --panel-soft: var(--color-panel-soft);
-  --panel-text: var(--color-panel-text);
-  --panel-text-muted: var(--color-panel-text-muted);
   --selection-bg: var(--color-selection-bg);
   --selection-text: var(--color-selection-text);
-  --warm-bg: var(--color-warm-bg);
-  --warm-border: var(--color-warm-border);
-  --elevation-primary: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 
   --page-width: clamp(80vw, calc(64vw + 192px), 96vw);
   --measure-body: 66ch;

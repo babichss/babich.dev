@@ -39,11 +39,6 @@ export const localizedPath = (lang: Lang, path: string) => {
   return normalizedPath === "/" ? `/${lang}` : `/${lang}${normalizedPath}`;
 };
 
-export const localizedHtml = (lang: Lang, html: string) =>
-  html.replace(/href="(\/(?!\/)[^"#?]*)"/g, (_match, href: string) => {
-    return `href="${localizedPath(lang, href)}"`;
-  });
-
 export const stripLangFromPath = (pathname: string) => {
   const parts = pathname.split("/").filter(Boolean);
 
