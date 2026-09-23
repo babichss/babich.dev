@@ -77,7 +77,7 @@
   }
 
   article hr {
-    margin: 0;
+    margin-block: var(--spacing-xl);
     border: 0;
     background: var(--border-primary);
     height: 1px;
@@ -87,7 +87,7 @@
     border-radius: 4px;
     background-color: var(--surface-secondary);
     padding: 0.15em 0.4em;
-    font-size: var(--body-sm);
+    font-size: 0.85em;
   }
 
   /* Shiki's dual-theme output ships both palettes as CSS custom properties
