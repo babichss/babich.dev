@@ -90,7 +90,8 @@ export const site = {
     },
     interviews: {
       metaTitle: "Interviews",
-      metaDescription: "Serhii Babich — technical expert",
+      metaDescription:
+        "Technical interviews for companies and an individual format for developers",
     },
     proposal: {
       metaTitle: "Cooperation Proposal",
