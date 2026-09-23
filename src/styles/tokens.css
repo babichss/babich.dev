@@ -16,9 +16,6 @@
   --color-link: light-dark(#1f6fbe, #86b4df);
   --color-link-hover: light-dark(#0f5aa3, #a1c7ea);
 
-  /* Actions */
-  --color-action-text: light-dark(#ffffff, #0a1320);
-
   /* Borders */
   --color-border: light-dark(#d5e0ec, #24384f);
   --color-border-subtle: light-dark(#e5ebf2, #192a3d);
