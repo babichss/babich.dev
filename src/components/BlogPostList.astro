@@ -1,18 +1,9 @@
 ---
+import type { BlogPost } from "../lib/blog";
 import { dateLocales, localizedPath, type Lang } from "../lib/i18n";
 
-interface Post {
-  data: {
-    title: string;
-    description: string;
-    urlSlug: string;
-    publishDate: Date;
-    lang: Lang;
-  };
-}
-
 interface Props {
-  posts: Post[];
+  posts: BlogPost[];
   showDate?: boolean;
   lang: Lang;
 }
@@ -60,8 +51,6 @@ const { posts, showDate = true, lang } = Astro.props;
 </ul>
 
 <style>
-  @layer base, type, layout, components, styles;
-
   @layer components {
     .blog-post-list {
       display: flex;

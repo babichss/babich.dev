@@ -1,8 +1,14 @@
 ---
 import Nav from "../components/Nav.astro";
+
+interface Props {
+  hideLanguageSwitch?: boolean;
+}
+
+const { hideLanguageSwitch = false } = Astro.props;
 ---
 
-<Nav />
+<Nav hideLanguageSwitch={hideLanguageSwitch} />
 
 <main class="page-container page-content">
   <header class="title stack gap-md">
@@ -15,8 +21,6 @@ import Nav from "../components/Nav.astro";
 </main>
 
 <style>
-  @layer base, type, layout, components, styles;
-
   @layer styles {
     .page-content {
       display: flex;

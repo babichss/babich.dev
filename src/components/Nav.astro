@@ -9,13 +9,19 @@ import {
   stripLangFromPath,
 } from "../lib/i18n";
 
+interface Props {
+  hideLanguageSwitch?: boolean;
+}
+
+const { hideLanguageSwitch = false } = Astro.props;
+
 const currentPath = Astro.url.pathname;
 const lang = getLangFromPath(currentPath);
 const content = site[lang];
 const nav = content.nav;
 const pathWithoutLang = stripLangFromPath(currentPath);
 const alternateLang = getAlternateLang(lang);
-const showLanguageSwitch = pathWithoutLang !== "/interviews/personal";
+const showLanguageSwitch = !hideLanguageSwitch;
 
 const isCurrent = (href: string) => {
   if (href === "/") {
@@ -108,8 +114,6 @@ const isCurrent = (href: string) => {
 </header>
 
 <style>
-  @layer base, type, layout, components, styles;
-
   @layer components {
     .site-header {
       position: sticky;

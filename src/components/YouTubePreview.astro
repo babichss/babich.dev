@@ -30,10 +30,10 @@ const videoId = getVideoId(href);
       <span class="youtube-preview-media">
         <img
           src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+          data-fallback-src={`https://i.ytimg.com/vi/${videoId}/sddefault.jpg`}
           alt=""
           loading="lazy"
           decoding="async"
-          onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${videoId}/sddefault.jpg';`}
         />
         <span class="youtube-preview-play" aria-hidden="true" />
       </span>
@@ -42,9 +42,25 @@ const videoId = getVideoId(href);
   )
 }
 
-<style>
-  @layer base, type, layout, components, styles;
+<script>
+  // "error" doesn't bubble, so listen on the capturing phase instead.
+  document.addEventListener(
+    "error",
+    (event) => {
+      const img = event.target;
 
+      if (!(img instanceof HTMLImageElement) || !img.dataset.fallbackSrc) {
+        return;
+      }
+
+      img.src = img.dataset.fallbackSrc;
+      delete img.dataset.fallbackSrc;
+    },
+    true,
+  );
+</script>
+
+<style>
   @layer components {
     .youtube-preview {
       display: grid;
