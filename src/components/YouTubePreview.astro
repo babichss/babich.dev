@@ -1,4 +1,6 @@
 ---
+import { getVideoId } from "src/lib/youtube";
+
 interface Props {
   href: string;
   title: string;
@@ -6,17 +8,14 @@ interface Props {
 
 const { href, title } = Astro.props;
 
-const getVideoId = (href: string) => {
-  const url = new URL(href);
-
-  if (url.hostname === "youtu.be") {
-    return url.pathname.slice(1);
-  }
-
-  return url.searchParams.get("v");
-};
-
 const videoId = getVideoId(href);
+
+if (href && !videoId) {
+  // A silently-empty card is invisible in review; a bad href should fail the build instead.
+  throw new Error(
+    `YouTubePreview: could not extract a video id from "${href}"`,
+  );
+}
 ---
 
 {
@@ -29,8 +28,8 @@ const videoId = getVideoId(href);
     >
       <span class="youtube-preview-media">
         <img
-          src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
-          data-fallback-src={`https://i.ytimg.com/vi/${videoId}/sddefault.jpg`}
+          src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+          data-fallback-src={`https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`}
           alt=""
           loading="lazy"
           decoding="async"
@@ -67,8 +66,8 @@ const videoId = getVideoId(href);
       grid-template-rows: auto 1fr;
       gap: var(--spacing-sm);
       margin-block: var(--spacing-lg) var(--spacing-xxl);
-      width: 800px;
-      max-width: 100%;
+      /* Caps at 800px against the page column, not the narrower measure-copy parent it sits in. */
+      width: min(800px, var(--page-width));
       color: inherit;
     }
 
