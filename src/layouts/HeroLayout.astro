@@ -35,7 +35,7 @@
       grid-template:
         "title image" auto
         "intro image" 1fr /
-        minmax(0, 1fr) auto;
+        minmax(0, 1fr) min(20rem, 40%);
       gap: calc(var(--section-space) / 2) var(--section-space);
     }
 
@@ -58,7 +58,7 @@
       grid-area: image;
       justify-self: end;
       aspect-ratio: 3 / 4;
-      width: min(100%, 20rem);
+      width: 100%;
       height: auto;
       object-fit: cover;
       object-position: 50% 28%;
