@@ -19,9 +19,17 @@ interface Props {
   title: string;
   description: string;
   lang?: Lang;
+  // Set on a page with no translated counterpart, so this layout never
+  // advertises a hreflang alternate that 404s.
+  noAlternateLang?: boolean;
 }
 
-const { title, description, lang = "uk" } = Astro.props;
+const {
+  title,
+  description,
+  lang = "uk",
+  noAlternateLang = false,
+} = Astro.props;
 const pageLang = isLang(lang) ? lang : defaultLang;
 const siteName = site[pageLang].name;
 const pageTitle = `${siteName} • ${title}`;
@@ -49,12 +57,20 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
 
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang={pageLang} href={canonicalURL} />
+    {
+      !noAlternateLang && (
+        <link
+          rel="alternate"
+          hreflang={alternateLang}
+          href={urlFor(alternateLang)}
+        />
+      )
+    }
     <link
       rel="alternate"
-      hreflang={alternateLang}
-      href={urlFor(alternateLang)}
+      hreflang="x-default"
+      href={noAlternateLang ? canonicalURL : urlFor(defaultLang)}
     />
-    <link rel="alternate" hreflang="x-default" href={urlFor(defaultLang)} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
@@ -62,7 +78,14 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content={ogLocales[pageLang]} />
-    <meta property="og:locale:alternate" content={ogLocales[alternateLang]} />
+    {
+      !noAlternateLang && (
+        <meta
+          property="og:locale:alternate"
+          content={ogLocales[alternateLang]}
+        />
+      )
+    }
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={pageTitle} />
