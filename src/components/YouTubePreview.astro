@@ -29,6 +29,7 @@ if (href && !videoId) {
       <span class="youtube-preview-media">
         <img
           src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+          srcset={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg 1x, https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg 2x`}
           data-fallback-src={`https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`}
           alt=""
           loading="lazy"
@@ -48,7 +49,18 @@ if (href && !videoId) {
     (event) => {
       const img = event.target;
 
-      if (!(img instanceof HTMLImageElement) || !img.dataset.fallbackSrc) {
+      if (!(img instanceof HTMLImageElement)) {
+        return;
+      }
+
+      // A failed srcset candidate (e.g. a missing maxresdefault at 2x) is
+      // never retried from src, so drop srcset and let src take over.
+      if (img.srcset) {
+        img.removeAttribute("srcset");
+        return;
+      }
+
+      if (!img.dataset.fallbackSrc) {
         return;
       }
 
