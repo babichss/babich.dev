@@ -30,6 +30,15 @@ const isCurrent = (href: string) => {
 
   return pathWithoutLang === href || pathWithoutLang.startsWith(`${href}/`);
 };
+
+const navLinksProps = {
+  nav,
+  lang,
+  isCurrent,
+  showLanguageSwitch,
+  alternateLang,
+  pathWithoutLang,
+};
 ---
 
 <header class="site-header">
@@ -50,14 +59,7 @@ const isCurrent = (href: string) => {
     </div>
 
     <nav id="menu-mobile" aria-label={content.navLabel} popover="auto">
-      <NavLinks
-        nav={nav}
-        lang={lang}
-        isCurrent={isCurrent}
-        showLanguageSwitch={showLanguageSwitch}
-        alternateLang={alternateLang}
-        pathWithoutLang={pathWithoutLang}
-      />
+      <NavLinks {...navLinksProps} />
     </nav>
   </div>
 
@@ -70,15 +72,7 @@ const isCurrent = (href: string) => {
     </div>
 
     <nav aria-label={content.navLabel} class="masthead-nav">
-      <NavLinks
-        nav={nav}
-        lang={lang}
-        isCurrent={isCurrent}
-        showLanguageSwitch={showLanguageSwitch}
-        alternateLang={alternateLang}
-        pathWithoutLang={pathWithoutLang}
-        withDivider
-      />
+      <NavLinks {...navLinksProps} withDivider />
     </nav>
   </div>
 </header>
