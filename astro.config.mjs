@@ -8,6 +8,7 @@ export default defineConfig({
   build: {
     inlineStylesheets: "never",
   },
+  prefetch: true,
   markdown: {
     shikiConfig: {
       themes: {

@@ -18,5 +18,6 @@ const { Content } = await getPage(lang, "youtube");
   description={content.metaDescription}
   lang={lang}
 >
+  <link slot="head" rel="preconnect" href="https://i.ytimg.com" />
   <Content />
 </BaseLayout>
