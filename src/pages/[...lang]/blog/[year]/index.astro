@@ -2,23 +2,36 @@
 import { getCollection } from "astro:content";
 import { site } from "src/data/site";
 import BlogArchiveLayout from "src/layouts/BlogArchiveLayout.astro";
-import { getDateGroups, getLangPostGroups } from "src/lib/blog";
-import { getLangFromPath, langParam } from "src/lib/i18n";
+import {
+  getDateGroups,
+  hasPostInPeriod,
+  getLangPostGroups,
+} from "src/lib/blog";
+import { getAlternateLang, getLangFromPath, langParam } from "src/lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
+  const postsByLang = getLangPostGroups(blogPosts);
 
-  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) =>
-    getDateGroups(posts, "year").map(({ year, posts: yearPosts }) => ({
+  return postsByLang.flatMap(({ lang, posts }) => {
+    const altPosts =
+      postsByLang.find((group) => group.lang === getAlternateLang(lang))
+        ?.posts ?? [];
+
+    return getDateGroups(posts, "year").map(({ year, posts: yearPosts }) => ({
       params: { lang: langParam(lang), year: year.toString() },
-      props: { year, posts: yearPosts },
-    })),
-  );
+      props: {
+        year,
+        posts: yearPosts,
+        noAlternateLang: !hasPostInPeriod(altPosts, year),
+      },
+    }));
+  });
 }
 
 const lang = getLangFromPath(Astro.url.pathname);
 const content = site[lang].blog;
-const { year, posts } = Astro.props;
+const { year, posts, noAlternateLang } = Astro.props;
 ---
 
 <BlogArchiveLayout
@@ -29,4 +42,5 @@ const { year, posts } = Astro.props;
   allPostsLabel={content.allPosts}
   emptyMessage={content.yearEmpty(year)}
   posts={posts}
+  noAlternateLang={noAlternateLang}
 />

@@ -15,6 +15,9 @@ interface Props {
   emptyMessage?: string;
   posts: BlogPost[];
   showDate?: boolean;
+  // Set when this archive period has no built counterpart in the other
+  // language, so the layout never advertises an alternate that 404s.
+  noAlternateLang?: boolean;
 }
 
 const {
@@ -26,11 +29,17 @@ const {
   emptyMessage,
   posts,
   showDate = true,
+  noAlternateLang = false,
 } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} lang={lang}>
-  <TitleLayout>
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  noAlternateLang={noAlternateLang}
+>
+  <TitleLayout hideLanguageSwitch={noAlternateLang}>
     <div slot="title" class="stack gap-md">
       <h1>{heading}</h1>
       <a href={localizedPath(lang, "/blog")}>

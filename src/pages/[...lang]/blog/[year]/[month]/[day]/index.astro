@@ -2,14 +2,28 @@
 import { getCollection } from "astro:content";
 import { site } from "src/data/site";
 import BlogArchiveLayout from "src/layouts/BlogArchiveLayout.astro";
-import { getDateGroups, getLangPostGroups } from "src/lib/blog";
-import { dateLocales, getLangFromPath, langParam } from "src/lib/i18n";
+import {
+  getDateGroups,
+  hasPostInPeriod,
+  getLangPostGroups,
+} from "src/lib/blog";
+import {
+  dateLocales,
+  getAlternateLang,
+  getLangFromPath,
+  langParam,
+} from "src/lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
+  const postsByLang = getLangPostGroups(blogPosts);
 
-  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) =>
-    getDateGroups(posts, "day").map(
+  return postsByLang.flatMap(({ lang, posts }) => {
+    const altPosts =
+      postsByLang.find((group) => group.lang === getAlternateLang(lang))
+        ?.posts ?? [];
+
+    return getDateGroups(posts, "day").map(
       ({ year, month, day, posts: dayPosts }) => ({
         params: {
           lang: langParam(lang),
@@ -17,15 +31,21 @@ export async function getStaticPaths() {
           month: month!.toString().padStart(2, "0"),
           day: day!.toString().padStart(2, "0"),
         },
-        props: { year, month: month!, day: day!, posts: dayPosts },
+        props: {
+          year,
+          month: month!,
+          day: day!,
+          posts: dayPosts,
+          noAlternateLang: !hasPostInPeriod(altPosts, year, month, day),
+        },
       }),
-    ),
-  );
+    );
+  });
 }
 
 const lang = getLangFromPath(Astro.url.pathname);
 const content = site[lang].blog;
-const { year, month, day, posts } = Astro.props;
+const { year, month, day, posts, noAlternateLang } = Astro.props;
 const dateName = new Date(year, month - 1, day)
   .toLocaleDateString(dateLocales[lang], {
     day: "numeric",
@@ -43,4 +63,5 @@ const dateName = new Date(year, month - 1, day)
   allPostsLabel={content.allPosts}
   posts={posts}
   showDate={false}
+  noAlternateLang={noAlternateLang}
 />

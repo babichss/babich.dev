@@ -57,6 +57,28 @@ export const getDateGroups = (
   });
 };
 
+// Whether `posts` (expected: one language's posts) has an entry for the
+// given date, at whatever granularity of year/month/day is given — used to
+// decide if an archive page's alternate-language counterpart was ever built.
+export const hasPostInPeriod = (
+  posts: BlogPost[],
+  year: number,
+  month?: number,
+  day?: number,
+) =>
+  posts.some((post) => {
+    const date = post.data.publishDate;
+
+    if (date.getFullYear() !== year) return false;
+    if (month !== undefined && date.getMonth() + 1 !== month) return false;
+    if (day !== undefined && date.getDate() !== day) return false;
+
+    return true;
+  });
+
+export const hasPostWithSlug = (posts: BlogPost[], urlSlug: string) =>
+  posts.some((post) => post.data.urlSlug === urlSlug);
+
 export const getPathLang = (lang: Lang | undefined) => lang ?? defaultLang;
 
 export const getLangParams = (lang: Lang) => ({

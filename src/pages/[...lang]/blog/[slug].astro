@@ -4,9 +4,14 @@ import Icon from "src/components/Icon.astro";
 import { site } from "src/data/site";
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import TitleLayout from "src/layouts/TitleLayout.astro";
-import { getLangPostGroups, sortPostsByDate } from "src/lib/blog";
+import {
+  getLangPostGroups,
+  hasPostWithSlug,
+  sortPostsByDate,
+} from "src/lib/blog";
 import {
   dateLocales,
+  getAlternateLang,
   getLangFromPath,
   langParam,
   localizedPath,
@@ -14,18 +19,26 @@ import {
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
+  const postsByLang = getLangPostGroups(blogPosts);
 
-  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) =>
-    sortPostsByDate(posts).map((post) => ({
+  return postsByLang.flatMap(({ lang, posts }) => {
+    const altPosts =
+      postsByLang.find((group) => group.lang === getAlternateLang(lang))
+        ?.posts ?? [];
+
+    return sortPostsByDate(posts).map((post) => ({
       params: { lang: langParam(lang), slug: post.data.urlSlug },
-      props: { post },
-    })),
-  );
+      props: {
+        post,
+        noAlternateLang: !hasPostWithSlug(altPosts, post.data.urlSlug),
+      },
+    }));
+  });
 }
 
 const lang = getLangFromPath(Astro.url.pathname);
 const content = site[lang].blog;
-const { post } = Astro.props;
+const { post, noAlternateLang } = Astro.props;
 const { Content } = await post.render();
 
 const dateName = post.data.publishDate
@@ -41,6 +54,7 @@ const dateName = post.data.publishDate
   title={post.data.title}
   description={post.data.description}
   lang={lang}
+  noAlternateLang={noAlternateLang}
 >
   <script
     slot="head"
@@ -48,7 +62,7 @@ const dateName = post.data.publishDate
     data-id="fc0be846-8fa6-4d1e-aa0c-4645581e1586"
     data-utcoffset="2"></script>
 
-  <TitleLayout>
+  <TitleLayout hideLanguageSwitch={noAlternateLang}>
     <div slot="title" class="post-title stack gap-md">
       <div class="stack gap-sm">
         <time

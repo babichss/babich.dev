@@ -2,27 +2,48 @@
 import { getCollection } from "astro:content";
 import { site } from "src/data/site";
 import BlogArchiveLayout from "src/layouts/BlogArchiveLayout.astro";
-import { getDateGroups, getLangPostGroups } from "src/lib/blog";
-import { dateLocales, getLangFromPath, langParam } from "src/lib/i18n";
+import {
+  getDateGroups,
+  hasPostInPeriod,
+  getLangPostGroups,
+} from "src/lib/blog";
+import {
+  dateLocales,
+  getAlternateLang,
+  getLangFromPath,
+  langParam,
+} from "src/lib/i18n";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
+  const postsByLang = getLangPostGroups(blogPosts);
 
-  return getLangPostGroups(blogPosts).flatMap(({ lang, posts }) =>
-    getDateGroups(posts, "month").map(({ year, month, posts: monthPosts }) => ({
-      params: {
-        lang: langParam(lang),
-        year: year.toString(),
-        month: month!.toString().padStart(2, "0"),
-      },
-      props: { year, month: month!, posts: monthPosts },
-    })),
-  );
+  return postsByLang.flatMap(({ lang, posts }) => {
+    const altPosts =
+      postsByLang.find((group) => group.lang === getAlternateLang(lang))
+        ?.posts ?? [];
+
+    return getDateGroups(posts, "month").map(
+      ({ year, month, posts: monthPosts }) => ({
+        params: {
+          lang: langParam(lang),
+          year: year.toString(),
+          month: month!.toString().padStart(2, "0"),
+        },
+        props: {
+          year,
+          month: month!,
+          posts: monthPosts,
+          noAlternateLang: !hasPostInPeriod(altPosts, year, month),
+        },
+      }),
+    );
+  });
 }
 
 const lang = getLangFromPath(Astro.url.pathname);
 const content = site[lang].blog;
-const { year, month, posts } = Astro.props;
+const { year, month, posts, noAlternateLang } = Astro.props;
 const monthName = new Date(year, month - 1).toLocaleDateString(
   dateLocales[lang],
   { month: "long" },
@@ -37,4 +58,5 @@ const monthName = new Date(year, month - 1).toLocaleDateString(
   allPostsLabel={content.allPosts}
   emptyMessage={content.monthEmpty(monthName, year)}
   posts={posts}
+  noAlternateLang={noAlternateLang}
 />
