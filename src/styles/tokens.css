@@ -44,7 +44,6 @@
   --selection-bg: var(--color-selection-bg);
   --selection-text: var(--color-selection-text);
 
-  --page-gutter: 24px;
   /* 96vw's cap leaves narrow phones with less than a --page-gutter side margin. */
   --page-width: min(
     clamp(80vw, calc(64vw + 192px), 96vw),
@@ -53,7 +52,7 @@
   --measure-body: 66ch;
   --measure-copy: 62ch;
   --section-space: 64px;
-  --section-gap: clamp(24px, calc(6.667vw - 16px), var(--section-space));
+  --page-gutter: clamp(24px, calc(6.667vw - 16px), var(--section-space));
 
   --spacing-xs: 4px;
   --spacing-sm: 8px;
