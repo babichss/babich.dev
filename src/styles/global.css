@@ -30,15 +30,45 @@
     color: var(--text-primary);
   }
 
+  body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--page-gutter);
+    min-height: 100dvh;
+  }
+
+  body > main {
+    flex: 1;
+  }
+
+  ::selection {
+    background: var(--selection-bg);
+    color: var(--selection-text);
+  }
+
   .cta:is(a, button) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-inline-end: var(--spacing-lg);
     border: 0;
     background: transparent;
     padding: 0;
+    min-height: 44px;
     font-weight: 700;
+    text-decoration: none;
+
+    &::after {
+      content: "\2192";
+    }
 
     &:focus-visible {
       outline-offset: 3px;
     }
+  }
+
+  .cta + .cta {
+    margin-inline-start: 0;
   }
 
   article pre {

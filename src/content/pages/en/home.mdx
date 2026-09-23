@@ -3,6 +3,17 @@ page: home
 lang: en
 ---
 
+import hero from "../../../../assets/hero.webp";
+import { site } from "../../../data/site";
+
+<div class="hero">
+
+<header>
+
+<h1 class="measure-copy">{site.en.home.title}</h1>
+
+</header>
+
 <section>
 
 I have worked in web development for more than 15 years: from a naive junior who thought he knew everything to a senior engineer who finally understood how much there still is to learn.
@@ -11,14 +22,25 @@ I care about software development not as a collection of frameworks, but as an e
 
 </section>
 
+<img
+  class="home-portrait"
+  src={hero.src}
+  width={hero.width}
+  height={hero.height}
+  alt="Serhii Babich"
+  decoding="async"
+/>
+
+</div>
+
 <section>
 
 ## Let me handle your technical interviews
 
-I conduct [technical interviews](/interviews) for developers, help set up evaluation, and provide an independent technical assessment so the company understands who it is inviting into the team and candidates leave with the best possible impression of you.
+I conduct [technical interviews](/en/interviews) for developers, help set up evaluation, and provide an independent technical assessment so the company understands who it is inviting into the team and candidates leave with the best possible impression of you.
 
-<a href="/interviews/hiring" class="cta">
-  Learn more
+<a href="/en/interviews/hiring" class="cta">
+  About technical interviews
 </a>
 
 </section>
@@ -27,9 +49,9 @@ I conduct [technical interviews](/interviews) for developers, help set up evalua
 
 ## Tell your company story so developers actually listen
 
-I run a [YouTube channel](/youtube) and host offline events for developers. These include interviews, public technical interviews, live podcasts, and custom formats where companies can talk clearly about work, hiring, teams, and technical decisions.
+I run a [YouTube channel](/en/youtube) and host offline events for developers. These include interviews, public technical interviews, live podcasts, and custom formats where companies can talk clearly about work, hiring, teams, and technical decisions.
 
-<a href="/youtube" class="cta">
+<a href="/en/youtube" class="cta">
   Choose a format
 </a>
 
@@ -41,8 +63,8 @@ I run a [YouTube channel](/youtube) and host offline events for developers. Thes
 
 About frontend, browsers, HTML, CSS, technical interviews, practical experience, and other topics developers talk about.
 
-<a href="/blog" class="cta">
-  Read
+<a href="/en/blog" class="cta">
+  Read the blog
 </a>
 
 </section>

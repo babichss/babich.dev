@@ -1,9 +1,4 @@
 @layer layout {
-  html,
-  body {
-    overscroll-behavior: none;
-  }
-
   .stack {
     display: flex;
     flex-direction: column;
@@ -28,25 +23,18 @@
     margin: 0;
   }
 
-  .sticky-portrait {
-    position: sticky;
-    top: 0;
-    grid-area: portrait;
-    width: stretch;
+  .page-container {
+    margin-inline: auto;
+    width: var(--page-width);
     min-width: 0;
-    height: 100vh;
-    object-fit: cover;
-    object-position: top;
-
-    @media (max-width: 960px) {
-      position: static;
-      height: 50vh;
-    }
   }
 
   @scope (.stack) {
     &.gap-xs {
       gap: var(--spacing-xs);
+    }
+    &.gap-sm {
+      gap: var(--spacing-sm);
     }
     &.gap-md {
       gap: var(--spacing-md);

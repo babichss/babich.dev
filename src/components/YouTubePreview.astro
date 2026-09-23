@@ -50,9 +50,9 @@ const videoId = getVideoId(href);
       display: grid;
       grid-template-rows: auto 1fr;
       gap: var(--spacing-sm);
+      margin-block: var(--spacing-lg) var(--spacing-xxl);
       width: 800px;
       max-width: 100%;
-      margin-block: var(--spacing-md) var(--spacing-xl);
       color: inherit;
     }
 
@@ -67,9 +67,9 @@ const videoId = getVideoId(href);
     .youtube-preview-media {
       display: block;
       position: relative;
+      background: var(--surface-secondary);
       aspect-ratio: 16 / 9;
       overflow: hidden;
-      background: var(--surface-secondary);
     }
 
     .youtube-preview-media img {
@@ -81,21 +81,21 @@ const videoId = getVideoId(href);
 
     .youtube-preview-play {
       position: absolute;
+      transform: translate(-50%, -50%);
       inset: 50% auto auto 50%;
-      width: 48px;
-      height: 34px;
       border-radius: 8px;
       background: rgb(0 0 0 / 0.72);
-      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 34px;
     }
 
     .youtube-preview-play::before {
-      content: "";
       position: absolute;
-      inset: 50% auto auto 50%;
-      border-block: 8px solid transparent;
-      border-left: 13px solid white;
       transform: translate(-35%, -50%);
+      inset: 50% auto auto 50%;
+      border-left: 13px solid white;
+      border-block: 8px solid transparent;
+      content: "";
     }
 
     .youtube-preview-title {

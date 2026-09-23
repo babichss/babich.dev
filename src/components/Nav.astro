@@ -1,16 +1,21 @@
 ---
 import Icon from "./Icon.astro";
 import { site } from "../data/site";
-import { getLangFromPath, localizedPath, stripLangFromPath } from "../lib/i18n";
+import {
+  getAlternateLang,
+  getLangFromPath,
+  languageNames,
+  localizedPath,
+  stripLangFromPath,
+} from "../lib/i18n";
 
 const currentPath = Astro.url.pathname;
 const lang = getLangFromPath(currentPath);
 const content = site[lang];
 const nav = content.nav;
-const { variant = "all" } = Astro.props;
-const showMobile = variant !== "desktop";
-const showDesktop = variant !== "mobile";
 const pathWithoutLang = stripLangFromPath(currentPath);
+const alternateLang = getAlternateLang(lang);
+const showLanguageSwitch = pathWithoutLang !== "/interviews/personal";
 
 const isCurrent = (href: string) => {
   if (href === "/") {
@@ -21,16 +26,15 @@ const isCurrent = (href: string) => {
 };
 ---
 
-{
-  showMobile && (
-    <header class="mobile-masthead">
+<header class="site-header">
+  <div class="mobile-masthead">
       <div class="mobile-title">
         <button
           class="menu-button"
           type="button"
           aria-label={content.menuLabel}
           popovertarget="menu-mobile"
-          popovertargetaction="show"
+          popovertargetaction="toggle"
         >
           <Icon name="menu" />
         </button>
@@ -48,14 +52,20 @@ const isCurrent = (href: string) => {
             {title}
           </a>
         ))}
+        {showLanguageSwitch && (
+          <a
+            class="language-switch"
+            href={localizedPath(alternateLang, pathWithoutLang)}
+            hreflang={alternateLang}
+            lang={alternateLang}
+          >
+            {languageNames[alternateLang]}
+          </a>
+        )}
       </nav>
-    </header>
-  )
-}
+  </div>
 
-{
-  showDesktop && (
-    <header class="masthead">
+  <div class="masthead">
       <div class="masthead-brand">
         <a href={localizedPath(lang, "/")} class="site-title body-lg">
           {content.title}
@@ -72,31 +82,51 @@ const isCurrent = (href: string) => {
             {title}
           </a>
         ))}
+        {showLanguageSwitch && (
+          <>
+            <span class="nav-divider" aria-hidden="true" />
+            <a
+              class="language-switch"
+              href={localizedPath(alternateLang, pathWithoutLang)}
+              hreflang={alternateLang}
+              lang={alternateLang}
+            >
+              {languageNames[alternateLang]}
+            </a>
+          </>
+        )}
       </nav>
-    </header>
-  )
-}
+  </div>
+</header>
 
 <style>
   @layer base, type, layout, components, styles;
 
   @layer components {
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
     .mobile-masthead {
       display: none;
     }
 
     .masthead {
-      position: sticky;
-      top: 0;
-      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--spacing-xl);
+      margin-inline: auto;
+      border-bottom: 1px solid var(--border-primary);
       background-color: var(--surface-primary);
-      padding-inline: var(--page-gutter);
-      padding-top: var(--spacing-xl);
+      padding-block: var(--spacing-md);
+      width: var(--page-width);
     }
 
     .masthead-brand {
-      border-bottom: 1px solid var(--border-primary);
-      padding-bottom: var(--spacing-lg);
+      min-width: 0;
     }
 
     .site-title {
@@ -108,15 +138,16 @@ const isCurrent = (href: string) => {
 
     .masthead-brand p {
       margin-top: var(--spacing-xs);
+      margin-bottom: 0;
+      font-size: var(--body-sm);
+      white-space: nowrap;
     }
 
     .masthead-nav {
       display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: var(--spacing-xl);
-      border-bottom: 1px solid var(--border-primary);
-      padding-block: var(--spacing-lg);
+      align-items: center;
+      gap: var(--spacing-lg);
+      white-space: nowrap;
     }
 
     .masthead-nav a {
@@ -132,21 +163,31 @@ const isCurrent = (href: string) => {
       text-underline-offset: 0.35em;
     }
 
+    .nav-divider {
+      flex: none;
+      background: var(--border-primary);
+      width: 1px;
+      height: 1em;
+    }
+
+    .masthead-nav .language-switch {
+      color: var(--text-secondary);
+    }
+
     @media (max-width: 960px) {
       .mobile-masthead {
         display: block;
-        position: sticky;
-        top: 0;
-        z-index: 1;
+        border-bottom: 1px solid var(--border-primary);
         background-color: var(--surface-primary);
       }
 
       .mobile-title {
         display: flex;
         align-items: center;
-        gap: var(--spacing-sm);
-        padding-inline: var(--page-gutter);
-        padding-block: var(--spacing-md);
+        gap: 0;
+        margin-inline: auto;
+        width: var(--page-width);
+        height: 60px;
       }
 
       .menu-button {
@@ -155,14 +196,22 @@ const isCurrent = (href: string) => {
         border: 0;
         background: transparent;
         padding: 0;
+        width: 44px;
+        height: 44px;
         color: var(--text-primary);
       }
 
       #menu-mobile {
+        position: fixed;
         margin: 0;
+        inset: 60px 0 auto;
         border: 0;
+        border-bottom: 1px solid var(--border-primary);
         background-color: var(--surface-primary);
-        padding: var(--page-gutter);
+        padding: var(--spacing-sm) calc((100vw - var(--page-width)) / 2)
+          var(--spacing-md);
+        width: 100vw;
+        max-width: none;
         color: var(--text-primary);
 
         &::backdrop {
@@ -174,13 +223,11 @@ const isCurrent = (href: string) => {
         }
 
         a {
-          display: block;
+          display: flex;
+          align-items: center;
+          min-height: 44px;
           color: var(--text-primary);
           text-decoration: none;
-        }
-
-        a + a {
-          margin-top: var(--spacing-lg);
         }
 
         a[aria-current="page"] {
@@ -188,6 +235,12 @@ const isCurrent = (href: string) => {
           text-decoration: underline;
           text-decoration-thickness: 2px;
           text-underline-offset: 0.35em;
+        }
+
+        .language-switch {
+          margin-top: var(--spacing-sm);
+          border-top: 1px solid var(--border-primary);
+          color: var(--text-secondary);
         }
       }
 

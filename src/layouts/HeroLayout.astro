@@ -2,62 +2,72 @@
 
 ---
 
-<div class="hero-header">
-  <slot name="header" />
-</div>
+<slot name="header" />
 
-<main class="stack gap-xl">
+<main class="page-container home-content">
   <slot name="content" />
 </main>
-
-<slot name="hero" />
 
 <style>
   @layer base, type, layout, components, styles;
 
   @layer styles {
-    body {
+    .home-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--section-space);
+      row-rule: 1px solid var(--border-primary);
+      row-rule-inset: 0 max(0px, calc(100% - var(--measure-copy)));
+      row-rule-visibility-items: between;
+    }
+
+    .home-content :global(.hero) {
       display: grid;
-      grid:
-        "header portrait"
-        "content portrait";
-      grid-template-columns: 5fr 4fr;
-      grid-template-rows: auto 1fr;
-
-      @media (max-width: 960px) {
-        grid:
-          "header"
-          "portrait"
-          "content";
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-      }
-
-      --page-gutter: var(--spacing-xxl);
-
-      @media (max-width: 960px) {
-        --page-gutter: var(--spacing-lg);
-      }
+      grid-template:
+        "title image" auto
+        "intro image" 1fr /
+        minmax(0, 1fr) minmax(0, 1fr);
+      gap: calc(var(--section-space) / 2) var(--section-space);
     }
 
-    .hero-header {
-      grid-area: header;
-      position: sticky;
-      z-index: 1;
-      top: 0;
+    .home-content :global(.hero header) {
+      grid-area: title;
+    }
+
+    .home-content :global(.hero section) {
+      grid-area: intro;
       align-self: start;
+      width: min(100%, var(--measure-copy));
     }
 
-    .hero-header :global(.masthead),
-    .hero-header :global(.mobile-masthead) {
-      position: static;
+    .home-content > :global(section) {
+      width: min(100%, var(--measure-copy));
     }
 
-    main {
-      grid-area: content;
-      padding-top: var(--spacing-xl);
-      padding-inline: var(--page-gutter);
-      padding-bottom: var(--spacing-xxl);
+    .home-content :global(.hero .home-portrait) {
+      display: block;
+      grid-area: image;
+      justify-self: end;
+      width: min(100%, 20rem);
+      aspect-ratio: 3 / 4;
+      height: auto;
+      object-fit: cover;
+      object-position: 50% 28%;
+    }
+
+    @media (max-width: 960px) {
+      .home-content :global(.hero) {
+        grid-template:
+          "title" auto
+          "intro" auto
+          "image" auto /
+          1fr;
+      }
+
+      .home-content :global(.hero .home-portrait) {
+        justify-self: stretch;
+        width: 100%;
+      }
     }
   }
 </style>

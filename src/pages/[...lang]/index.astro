@@ -5,7 +5,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroLayout from "../../layouts/HeroLayout.astro";
 import { getCollection, render } from "astro:content";
 import { getLangFromPath, getLangStaticPaths } from "../../lib/i18n";
-import hero from "../../../assets/hero.webp";
 
 export function getStaticPaths() {
   return getLangStaticPaths();
@@ -35,16 +34,7 @@ const { Content } = await render(page);
     </Fragment>
 
     <Fragment slot="content">
-      <header>
-        <h1 class="measure-copy">{content.title}</h1>
-      </header>
       <Content />
     </Fragment>
-    <img
-      slot="hero"
-      class="sticky-portrait"
-      src={hero.src}
-      alt={content.heroAlt}
-    />
   </HeroLayout>
 </BaseLayout>

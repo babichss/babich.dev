@@ -1,0 +1,38 @@
+---
+import { site } from "../data/site";
+import { getLangFromPath } from "../lib/i18n";
+
+const lang = getLangFromPath(Astro.url.pathname);
+const year = new Date().getFullYear();
+---
+
+<footer class="page-container site-footer">
+  <hr />
+  <div class="footer-content">
+    <span class="body-sm text-soft">© {year} {site[lang].name}</span>
+    <a href="mailto:hello@babich.dev">hello@babich.dev</a>
+  </div>
+</footer>
+
+<style>
+  @layer base, type, layout, components, styles;
+
+  @layer components {
+    .site-footer {
+      > hr {
+        margin: 0;
+        border: 0;
+        background: var(--border-primary);
+        height: 1px;
+      }
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--spacing-md) var(--spacing-xl);
+      padding-block: calc(var(--section-space) / 2);
+    }
+  }
+</style>

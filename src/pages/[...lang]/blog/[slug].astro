@@ -50,8 +50,11 @@ const dateName = post.data.publishDate
 
   <TitleLayout>
     <div slot="title" class="post-title stack gap-md">
-      <div>
-        <time datetime={post.data.publishDate.toISOString()}>{dateName}</time>
+      <div class="stack gap-sm">
+        <time
+          class="body-sm text-soft"
+          datetime={post.data.publishDate.toISOString()}>{dateName}</time
+        >
         <h1>{post.data.title}</h1>
       </div>
       <a href={localizedPath(lang, "/blog")}>
@@ -65,10 +68,3 @@ const dateName = post.data.publishDate
     </article>
   </TitleLayout>
 </BaseLayout>
-
-<style>
-  .post-title {
-    justify-content: space-between;
-    height: stretch;
-  }
-</style>

@@ -20,7 +20,7 @@ interface Props {
 const { posts, showDate = true, lang } = Astro.props;
 ---
 
-<ul class="stack gap-md list-plain blog-post-list">
+<ul class="list-plain blog-post-list">
   {
     posts.map((post) => {
       const publishDate = post.data.publishDate;
@@ -63,21 +63,33 @@ const { posts, showDate = true, lang } = Astro.props;
   @layer base, type, layout, components, styles;
 
   @layer components {
+    .blog-post-list {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--spacing-lg) * 2);
+      row-rule: 1px solid var(--border-subtle);
+      row-rule-visibility-items: between;
+    }
+
     .blog-post-item {
       display: grid;
       gap: var(--spacing-xs);
-      border-top: 1px solid color-mix(in hsl, currentColor 7%, transparent);
-      padding-block: var(--spacing-sm);
     }
 
-    .blog-post-item:first-child {
-      border-top: 0;
-      padding-top: 0;
+    .blog-post-item time a {
+      color: var(--text-soft);
     }
 
     .blog-post-title {
       font-weight: 700;
       line-height: var(--line-height-tight);
+    }
+
+    .blog-post-item > p {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
     }
   }
 </style>

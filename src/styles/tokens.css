@@ -16,7 +16,7 @@
   /* Text */
   --color-text: light-dark(#0d1420, #e7eef6);
   --color-text-muted: light-dark(#4b5a6d, #adbac9);
-  --color-text-soft: light-dark(#6b7a90, #8798aa);
+  --color-text-soft: light-dark(#5f6f86, #8798aa);
   --color-text-inverse: light-dark(#f7fbff, #0a1320);
 
   /* Blue / navy scale */
@@ -44,6 +44,7 @@
 
   /* Borders */
   --color-border: light-dark(#d5e0ec, #24384f);
+  --color-border-subtle: light-dark(#e5ebf2, #192a3d);
   --color-border-strong: light-dark(#aec1d6, #38536e);
 
   /* Dark panels */
@@ -71,6 +72,7 @@
   --surface-secondary: var(--color-surface);
   --surface-muted: var(--color-surface-muted);
   --border-primary: var(--color-border);
+  --border-subtle: var(--color-border-subtle);
   --border-strong: var(--color-border-strong);
   --text-primary: var(--color-text);
   --text-secondary: var(--color-text-muted);
@@ -103,8 +105,11 @@
   --warm-border: var(--color-warm-border);
   --elevation-primary: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 
-  --measure-body: 70ch;
-  --measure-copy: 42rem;
+  --page-width: clamp(80vw, calc(64vw + 192px), 96vw);
+  --measure-body: 66ch;
+  --measure-copy: 62ch;
+  --section-space: 64px;
+  --page-gutter: clamp(24px, calc(6.667vw - 16px), var(--section-space));
 
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -116,12 +121,18 @@
   --body-md: 18px;
   --ratio: 1.25;
   --line-height-body: 1.5;
-  --line-height-heading: 1;
+  --line-height-heading: 1.2;
   --line-height-tight: 1.1;
 
-  --body-sm: calc(var(--body-md) / var(--ratio)); /* 12.8px */
-  --body-lg: calc(var(--body-md) * var(--ratio)); /* 20px */
-  --body-xl: calc(var(--body-lg) * var(--ratio)); /* 25px */
-  --body-xxl: calc(var(--body-xl) * var(--ratio)); /* 31.25px */
-  --body-3xl: calc(var(--body-xxl) * var(--ratio)); /* 39px */
+  --body-sm: calc(var(--body-md) / var(--ratio));
+  --body-lg: calc(var(--body-md) * var(--ratio));
+  --body-xl: calc(var(--body-lg) * var(--ratio));
+  --body-xxl: calc(var(--body-xl) * var(--ratio));
+  --body-3xl: calc(var(--body-xxl) * var(--ratio));
+}
+
+@media (max-width: 600px) {
+  :root {
+    --section-space: 48px;
+  }
 }
