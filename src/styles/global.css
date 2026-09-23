@@ -1,7 +1,7 @@
 @layer base {
   a {
     color: var(--action-primary);
-    text-decoration: none;
+    text-decoration: underline;
     text-underline-offset: 0.15em;
 
     &:visited {
@@ -69,6 +69,35 @@
 
   article pre {
     margin-bottom: var(--spacing-md);
+    /* Shiki sets its own themed background inline per token (light/dark);
+       only the border and sizing are ours to add. */
+    border: 1px solid var(--border-primary);
     padding: var(--spacing-md);
+    font-size: var(--body-sm);
+  }
+
+  article hr {
+    margin: 0;
+    border: 0;
+    background: var(--border-primary);
+    height: 1px;
+  }
+
+  article code:not(pre code) {
+    border-radius: 4px;
+    background-color: var(--surface-secondary);
+    padding: 0.15em 0.4em;
+    font-size: var(--body-sm);
+  }
+
+  /* Shiki's dual-theme output ships both palettes as CSS custom properties
+     on each token, defaulting to light; swap to dark only by OS preference,
+     matching the rest of the site's light-dark() scheme selection. */
+  @media (prefers-color-scheme: dark) {
+    .astro-code,
+    .astro-code span {
+      background-color: var(--shiki-dark-bg) !important;
+      color: var(--shiki-dark) !important;
+    }
   }
 }

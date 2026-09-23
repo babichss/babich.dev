@@ -5,4 +5,12 @@ export default defineConfig({
   integrations: [mdx()],
   output: "static",
   site: "https://babich.dev",
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+    },
+  },
 });
