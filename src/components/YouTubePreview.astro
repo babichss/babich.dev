@@ -49,7 +49,9 @@ if (href && !videoId) {
     (event) => {
       const img = event.target;
 
-      if (!(img instanceof HTMLImageElement)) {
+      // data-fallback-src marks this as one of our thumbnails, not some
+      // unrelated page image; it survives until the fallback below applies.
+      if (!(img instanceof HTMLImageElement) || !img.dataset.fallbackSrc) {
         return;
       }
 
@@ -57,10 +59,6 @@ if (href && !videoId) {
       // never retried from src, so drop srcset and let src take over.
       if (img.srcset) {
         img.removeAttribute("srcset");
-        return;
-      }
-
-      if (!img.dataset.fallbackSrc) {
         return;
       }
 
