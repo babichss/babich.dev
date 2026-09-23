@@ -3,6 +3,7 @@ page: home
 lang: uk
 ---
 
+import { Image } from "astro:assets";
 import hero from "../../../../assets/hero.webp";
 import { site } from "src/data/site";
 
@@ -22,13 +23,16 @@ import { site } from "src/data/site";
 
 </section>
 
-<img
+<Image
   class="home-portrait"
-  src={hero.src}
-  width={hero.width}
-  height={hero.height}
+  src={hero}
+  width={960}
+  widths={[320, 640, 960]}
+  sizes="(max-width: 960px) min(100%, 20rem), min(20rem, 40%)"
+  format="webp"
   alt="Сергій Бабіч"
-  decoding="async"
+  loading="eager"
+  fetchpriority="high"
 />
 
 </div>
