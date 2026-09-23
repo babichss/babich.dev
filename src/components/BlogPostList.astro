@@ -6,9 +6,11 @@ interface Props {
   posts: BlogPost[];
   showDate?: boolean;
   lang: Lang;
+  headingLevel?: 2 | 3;
 }
 
-const { posts, showDate = true, lang } = Astro.props;
+const { posts, showDate = true, lang, headingLevel = 2 } = Astro.props;
+const Heading = `h${headingLevel}` as "h2" | "h3";
 ---
 
 <ul class="list-plain blog-post-list">
@@ -37,11 +39,11 @@ const { posts, showDate = true, lang } = Astro.props;
               </footer>
             )}
 
-            <h3 class="body-lg flush blog-post-title">
+            <Heading class="body-lg flush blog-post-title">
               <a href={localizedPath(lang, `/blog/${post.data.urlSlug}`)}>
                 {post.data.title}
               </a>
-            </h3>
+            </Heading>
             <p class="flush text-secondary">{post.data.description}</p>
           </article>
         </li>

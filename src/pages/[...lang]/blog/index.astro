@@ -61,7 +61,11 @@ const groupedArray = getDateGroups(sortedPosts, "month");
                     {monthName(group.year, month)} {group.year}
                   </a>
                 </h2>
-                <BlogPostList posts={group.posts} lang={lang} />
+                <BlogPostList
+                  posts={group.posts}
+                  lang={lang}
+                  headingLevel={3}
+                />
               </section>
             );
           })
