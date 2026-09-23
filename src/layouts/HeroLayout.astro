@@ -61,7 +61,11 @@
       object-position: 50% 28%;
     }
 
-    @media (max-width: 960px) {
+    /* 960px squeezes the two-column text column to ~420px before this
+       breakpoint would otherwise kick in, so the hero itself drops to a
+       single column a bit earlier than the rest of the site's 960px
+       breakpoint. */
+    @media (max-width: 1100px) {
       .home-content :global(.hero) {
         grid-template:
           "title" auto
