@@ -37,11 +37,11 @@ const { posts, showDate = true, lang } = Astro.props;
               </footer>
             )}
 
-            <h2 class="body-lg flush blog-post-title">
+            <h3 class="body-lg flush blog-post-title">
               <a href={localizedPath(lang, `/blog/${post.data.urlSlug}`)}>
                 {post.data.title}
               </a>
-            </h2>
+            </h3>
             <p class="flush text-secondary">{post.data.description}</p>
           </article>
         </li>
