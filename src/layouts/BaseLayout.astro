@@ -6,7 +6,14 @@ import "../styles/type.css";
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import { site } from "../data/site";
-import { defaultLang, isLang, type Lang } from "../lib/i18n";
+import {
+  defaultLang,
+  getAlternateLang,
+  isLang,
+  localizedPath,
+  stripLangFromPath,
+  type Lang,
+} from "../lib/i18n";
 
 interface Props {
   title: string;
@@ -18,6 +25,14 @@ const { title, description, lang = "uk" } = Astro.props;
 const pageLang = isLang(lang) ? lang : defaultLang;
 const siteName = site[pageLang].name;
 const pageTitle = `${siteName} • ${title}`;
+
+const alternateLang = getAlternateLang(pageLang);
+const pathWithoutLang = stripLangFromPath(Astro.url.pathname);
+const urlFor = (forLang: Lang) =>
+  new URL(localizedPath(forLang, pathWithoutLang), Astro.site).href;
+const canonicalURL = urlFor(pageLang);
+
+const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
 ---
 
 <!doctype html>
@@ -31,6 +46,28 @@ const pageTitle = `${siteName} • ${title}`;
     />
     <link rel="icon" href="/favicon.webp" type="image/x-icon" />
     <title>{pageTitle}</title>
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={pageLang} href={canonicalURL} />
+    <link
+      rel="alternate"
+      hreflang={alternateLang}
+      href={urlFor(alternateLang)}
+    />
+    <link rel="alternate" hreflang="x-default" href={urlFor(defaultLang)} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={ogLocales[pageLang]} />
+    <meta property="og:locale:alternate" content={ogLocales[alternateLang]} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
