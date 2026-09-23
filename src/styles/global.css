@@ -90,13 +90,19 @@
     font-size: 0.85em;
   }
 
-  /* Shiki's dual-theme output ships both palettes as CSS custom properties
-     on each token, defaulting to light; swap to dark only by OS preference,
-     matching the rest of the site's light-dark() scheme selection. */
+  /* Dark mode swaps the code block's background to the UI's own surface
+     token rather than Shiki's github-dark background, so it matches the
+     surrounding chrome; token spans go transparent so none of them layers
+     a second background under it. Syntax color still comes from Shiki's
+     own dual-theme custom property. Light mode is untouched. */
   @media (prefers-color-scheme: dark) {
-    .astro-code,
+    .astro-code {
+      background-color: var(--surface-secondary) !important;
+      color: var(--shiki-dark) !important;
+    }
+
     .astro-code span {
-      background-color: var(--shiki-dark-bg) !important;
+      background-color: transparent !important;
       color: var(--shiki-dark) !important;
     }
   }
