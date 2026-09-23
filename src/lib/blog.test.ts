@@ -5,6 +5,7 @@ import {
   getLangParams,
   getLangPostGroups,
   getPathLang,
+  getPostDatePath,
   getPostsForLang,
   padDatePart,
   sortPostsByDate,
@@ -133,6 +134,16 @@ describe("padDatePart", () => {
 
   it("leaves a two-digit value unchanged", () => {
     expect(padDatePart(12)).toBe("12");
+  });
+});
+
+describe("getPostDatePath", () => {
+  it("builds a zero-padded YYYY/MM/DD path segment", () => {
+    expect(getPostDatePath(new Date("2024-03-05"))).toBe("2024/03/05");
+  });
+
+  it("pads a single-digit month and day", () => {
+    expect(getPostDatePath(new Date(2024, 0, 2))).toBe("2024/01/02");
   });
 });
 

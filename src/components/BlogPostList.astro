@@ -1,5 +1,5 @@
 ---
-import type { BlogPost } from "src/lib/blog";
+import { getPostDatePath, type BlogPost } from "src/lib/blog";
 import { dateLocales, localizedPath, type Lang } from "src/lib/i18n";
 
 interface Props {
@@ -22,9 +22,7 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
         month: "long",
         day: "numeric",
       });
-      const datePath = `${publishDate.getFullYear()}/${String(
-        publishDate.getMonth() + 1,
-      ).padStart(2, "0")}/${String(publishDate.getDate()).padStart(2, "0")}`;
+      const datePath = getPostDatePath(publishDate);
 
       return (
         <li>

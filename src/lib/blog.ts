@@ -46,6 +46,9 @@ export const getBlogLangGroups = (posts: BlogPost[]): BlogLangGroup[] => {
 
 export const padDatePart = (value: number) => value.toString().padStart(2, "0");
 
+export const getPostDatePath = (publishDate: Date) =>
+  `${publishDate.getFullYear()}/${padDatePart(publishDate.getMonth() + 1)}/${padDatePart(publishDate.getDate())}`;
+
 export type DateGranularity = "year" | "month" | "day";
 
 export interface DateGroup {
