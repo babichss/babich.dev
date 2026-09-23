@@ -44,12 +44,16 @@
   --selection-bg: var(--color-selection-bg);
   --selection-text: var(--color-selection-text);
 
-  /* 96vw's cap leaves sub-1rem gutters on narrow phones; floor each side at 1rem. */
-  --page-width: min(clamp(80vw, calc(64vw + 192px), 96vw), 100vw - 2rem);
+  --page-gutter: 24px;
+  /* 96vw's cap leaves narrow phones with less than a --page-gutter side margin. */
+  --page-width: min(
+    clamp(80vw, calc(64vw + 192px), 96vw),
+    100vw - 2 * var(--page-gutter)
+  );
   --measure-body: 66ch;
   --measure-copy: 62ch;
   --section-space: 64px;
-  --page-gutter: clamp(24px, calc(6.667vw - 16px), var(--section-space));
+  --section-gap: clamp(24px, calc(6.667vw - 16px), var(--section-space));
 
   --spacing-xs: 4px;
   --spacing-sm: 8px;
