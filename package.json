@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --check .",
-    "typecheck": "astro check"
+    "typecheck": "astro check",
+    "test": "vitest run"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",
@@ -19,6 +20,7 @@
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-css-order": "^2.1.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
   }
 }
