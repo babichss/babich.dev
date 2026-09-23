@@ -4,7 +4,11 @@ import BlogPostList from "../../../components/BlogPostList.astro";
 import { site } from "../../../data/site";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import TitleLayout from "../../../layouts/TitleLayout.astro";
-import { getPostsForLang, sortPostsByDate } from "../../../lib/blog";
+import {
+  getDateGroups,
+  getPostsForLang,
+  sortPostsByDate,
+} from "../../../lib/blog";
 import {
   dateLocales,
   getLangFromPath,
@@ -21,46 +25,12 @@ const content = site[lang].blog;
 const blogPosts = getPostsForLang(await getCollection("blog"), lang);
 const sortedPosts = sortPostsByDate(blogPosts);
 
-const groupedPosts = sortedPosts.reduce(
-  (acc, post) => {
-    const year = post.data.publishDate.getFullYear();
-    const month = post.data.publishDate.getMonth() + 1;
-    const monthName = post.data.publishDate.toLocaleDateString(
-      dateLocales[lang],
-      { month: "long" },
-    );
-    const key = `${year}-${month}`;
+const monthName = (year: number, month: number) =>
+  new Date(year, month - 1, 1).toLocaleDateString(dateLocales[lang], {
+    month: "long",
+  });
 
-    if (!acc[key]) {
-      acc[key] = {
-        year,
-        month,
-        monthName,
-        posts: [],
-      };
-    }
-
-    acc[key].posts.push(post);
-    return acc;
-  },
-  {} as Record<
-    string,
-    {
-      year: number;
-      month: number;
-      monthName: string;
-      posts: typeof blogPosts;
-    }
-  >,
-);
-
-const groupedArray = Object.values(groupedPosts).sort((a, b) => {
-  if (a.year !== b.year) return b.year - a.year;
-  return (
-    b.posts[0].data.publishDate.getTime() -
-    a.posts[0].data.publishDate.getTime()
-  );
-});
+const groupedArray = getDateGroups(sortedPosts, "month");
 ---
 
 <BaseLayout
@@ -81,7 +51,8 @@ const groupedArray = Object.values(groupedPosts).sort((a, b) => {
           <p>{content.empty}</p>
         ) : (
           groupedArray.map((group) => {
-            const monthPadded = group.month.toString().padStart(2, "0");
+            const month = group.month as number;
+            const monthPadded = month.toString().padStart(2, "0");
             return (
               <section class="stack gap-md blog-group">
                 <h2 class="body-sm text-soft blog-group-title">
@@ -91,7 +62,7 @@ const groupedArray = Object.values(groupedPosts).sort((a, b) => {
                       `/blog/${group.year}/${monthPadded}`,
                     )}
                   >
-                    {group.monthName} {group.year}
+                    {monthName(group.year, month)} {group.year}
                   </a>
                 </h2>
                 <BlogPostList posts={group.posts} lang={lang} />
