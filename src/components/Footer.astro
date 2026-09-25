@@ -10,7 +10,11 @@ const year = new Date().getFullYear();
   <hr />
   <div class="footer-content">
     <span class="body-sm text-soft">© {year} {site[lang].name}</span>
-    <a href="mailto:hello@babich.dev">hello@babich.dev</a>
+    <div class="footer-links">
+      <a href="mailto:serhii@babich.dev">serhii@babich.dev</a>
+      <a href="https://www.linkedin.com/in/babichss">LinkedIn</a>
+      <a href="https://youtube.com/@babichweb">YouTube</a>
+    </div>
   </div>
 </footer>
 
@@ -31,6 +35,12 @@ const year = new Date().getFullYear();
       justify-content: space-between;
       gap: var(--spacing-md) var(--spacing-xl);
       padding-block: calc(var(--section-space) / 2);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-md) var(--spacing-lg);
     }
 
     .footer-content a {
