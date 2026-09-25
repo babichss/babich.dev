@@ -8,8 +8,165 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 <TitleLayout hideLanguageSwitch>
 <Fragment slot="title">
   <h1>Work</h1>
-  <p>Selected case studies from Serhii Babich's work on complex data and ML interfaces.</p>
+  <p>Selected projects from the last five years. Each one: the problem, what I owned, the decisions that mattered, and what happened after.</p>
 </Fragment>
 
-<Fragment slot="content"></Fragment>
+<Fragment slot="content">
+
+<article id="test-set-evaluation">
+
+## Evaluation against customer test data
+
+<p class="body-sm text-soft">
+  {"DataRobot · Senior Software Engineer · 2024–2026"}
+</p>
+<p class="body-sm text-soft">
+  {"ML evaluation, legacy migration, React, production debugging"}
+</p>
+
+**Problem** — DataRobot's built-in evaluation metrics couldn't score a model against a customer's own test data; that capability lived only in a legacy UI no longer under active development. The team needed it migrated into the new experiment workflow without losing behavior customers depended on.
+
+**My role** — I owned my team's contribution to this cross-team migration — my first case at this scale with direct ownership. I set the UI technical design, coordinated with Product, UX, and backend, and researched the legacy domain myself: attachment and eligibility rules, the tables, charts, and views involved. The initial requirements covered the supervised path only; finding the missing unsupervised path took reading the legacy system directly.
+
+**Key decisions**
+
+- Original designs put an "add data" action next to individual charts, which made resource ownership ambiguous; I proposed one canonical upload point at the experiment level instead.
+- The legacy state layer and charts were tightly coupled, so instead of a rewrite I built a shared React context store with selectors and a transformation layer, letting new views read clean data while older charts kept working.
+- I sequenced delivery into small, independently releasable increments — basic attachment, then multiple attachments, then scoring, then the remaining integrations — across ten epics and five release trains.
+- Client-side compatibility checks aren't reliable, so after upload the UI re-fetches eligible datasets and warns if one's missing, with a final check possible at scoring — earliest feedback without duplicating backend logic.
+
+**Outcome** — The supervised workflow shipped in about five months and reached production, used by real customers within two months of GA; an external QA pass found about 15 defects, none critical. Post-GA, a customer reported their data wasn't working; tracing past an unrelated backend bug led back to an unsupported unsupervised setup in the legacy flow. I fixed the UI and backend; the fix merged and reached staging, not production, before my role ended. It changed how I scope migrations now — a requested workflow doesn't define the real system boundary, so I map adjacent modes up front. Separately, I delivered a fast, backend-coordinated frontend integration adding a Bayesian hyperparameter-search option, under time pressure from active enterprise deals.
+
+**Stack** — React, a custom context-based state layer, integration tests against legacy chart components, close coordination with backend.
+
+</article>
+
+<article id="custom-metrics">
+
+## Customer-defined evaluation metrics
+
+<p class="body-sm text-soft">
+  {"DataRobot · Senior Software Engineer · 2024–2026"}
+</p>
+<p class="body-sm text-soft">
+  {"product ownership, evaluation config, React, Python APIs"}
+</p>
+
+**Problem** — Customer data teams wanted to define their own model-evaluation metrics — YAML describing the metric, a Python file with the calculation — since built-in metrics don't cover every domain's definition of "good". A backend core already existed, but the feature had no real UI or modeling-workflow integration when it reached my team's pipeline and I was expected to take it through delivery. The work was also tied to a large account renewal, raising the stakes.
+
+**My role** — I took effective responsibility for the whole product flow, not just the frontend: proposed the UX, maintained requirements and specs, broke the work into tasks, built the React UI, and extended the Python APIs it needed — new endpoints, changes to an existing large GET response, updates to project-settings and metric-metadata endpoints — while writing tests and tracing integration seams myself.
+
+**Key decisions**
+
+- The original design required uploading both files, then a separate Validate step before any feedback. I proposed validating each file on its own upload, then cross-validating the pair, removing the Validate button; the backend contract changed so one endpoint accepts files separately and runs the right check — a small extra call for much earlier feedback.
+- I scoped the feature into three phases — a metric registry, experiment-time selection, and post-modeling display — and got a working UI behind a feature flag through all three.
+- Manual testing surfaced a defect: two validation points in the optimization-metric save path were hard-coded for built-in metrics, so a custom metric was rejected with a server error and never reached the modeling engine. I traced it with research assistance, reviewed the evidence with the backend lead, and took the fix — validating custom metrics against their own package at both points, with new integration tests at the seams.
+
+**Outcome** — The backend side of the fix merged, but the small remaining UI change — sending the right field and distinguishing built-in from custom handling — was still open and awaiting review when my role ended, so the capability stayed behind its flag and was never released. I'd get involved in backend design earlier next time; deeper research into the validation logic up front would likely have surfaced the hard-coding sooner.
+
+**Stack** — React, Python API changes across several endpoints, YAML/Python file validation, integration tests.
+
+</article>
+
+<article id="agentic-workflow">
+
+## Agentic engineering workflow
+
+<p class="body-sm text-soft">
+  {"DataRobot · Senior Software Engineer · 2024–2026"}
+</p>
+<p class="body-sm text-soft">
+  {"AI-assisted engineering, agent orchestration, code review"}
+</p>
+
+**Problem** — Owning a feature end-to-end at DataRobot meant carrying frontend, Python API changes, testing, and maintenance myself, often several at once. During the customer-defined-metrics work, I spent about three months building a personal harness to formalize how I already worked, not to replace my judgment — never rolled out to the team, just mine.
+
+**My role** — I prepared a bounded task or spec; a feature-level orchestrator handed bounded research or implementation work to subagents, each in its own isolated git worktree with its own checks and tests. Research agents traced a full code path — files, lines, functions — into a reference doc before I wrote a bug report or spec. Implementation agents wrote the change; I did a complete human review of every diff and decided which feedback to act on. Supporting scripts assembled PR descriptions from a template, checked PR status, and opened diffs for review.
+
+**Key decisions**
+
+- Judgment stayed with me: framing, architecture, decomposition, review, validation, acceptance. The harness only ever executed within scope I'd already set.
+- I never trusted agent output on its own; I verified evidence myself and confirmed anything backend-adjacent with the domain owner before acting on it.
+- I kept a rule of minimum necessary code, simplifying PRs through review iterations rather than accepting the first working version.
+- Parallel research, implementation, testing, and maintenance let me carry frontend, backend, and test work on the same feature at once instead of queuing them.
+
+**Outcome** — The clearest example is the cross-system validation defect from the custom-metrics case above. A research agent traced both hard-coded validation points across the save path into a reference doc with the exact files and functions before I wrote the fix spec; I checked that against the backend lead's understanding, then had an implementation agent make the bounded change while I reviewed it. I haven't measured any speed-up from working this way — there's no before/after timing to point to — and this was personal tooling, not something the team adopted or that ran without me in the loop.
+
+**Stack** — Custom orchestration scripts, isolated git worktrees per agent, an LLM coding agent for research and implementation, small review-support tooling I wrote myself.
+
+</article>
+
+<article id="schema-mapping-editor">
+
+## Visual schema-mapping editor
+
+<p class="body-sm text-soft">
+  {
+    "Edvantis · Frontend Engineer / Technical Coordinator (official title: Frontend Solution Architect) · 2023–2024"
+  }
+</p>
+<p class="body-sm text-soft">
+  {"data modeling, visual editor, TypeScript, performance"}
+</p>
+
+**Problem** — Mapping a customer's database schema onto the product's internal model was done through a CSV/spreadsheet DSL, filled in by hand — field type, subtype, transformation rules, calculated fields. It worked, but manual mapping on a large schema was slow, error-prone, hard to discover, and gave no preview of the result.
+
+**My role** — I worked closely with the feature architect to formalize the mapping domain before building anything, then translated it into scope a frontend could implement. I had no access to the mapping-engine code, and the one doc I started from was incomplete and had no example CSVs, so I reconstructed the DSL's syntax, semantics, and transformation behavior from documentation, examples, and the mapper developer's own explanations.
+
+**Key decisions**
+
+- I scoped the UI to the common, relatively simple mappings rather than trying to replace the DSL outright — full coverage of every transformation it supported wasn't realistic for a first version, and I said so.
+- The backend returned large nested schemas as an awkward array structure; I built a normalized in-memory model on JS Maps — maps referencing maps, forming a graph optimized for traversal rather than the shape the API happened to return — and wrote two transformer facades to convert between it and the backend format in both directions.
+- Schemas ran to roughly one to two thousand nodes, so I added virtualization and expand/collapse so most of the tree never touched the DOM, and kept profiling access and render performance as the model grew instead of assuming it stayed fast.
+- The editor works left-to-right — customer schema on the left, internal model on the right — with 1:1, 1:many, and many:1 connections drawn by dragging and connecting nodes, and each transformation type gets its own presentation.
+
+**Outcome** — The visual editor shipped, covering the common, relatively simple mappings it was scoped for, not the full DSL. I verified it mainly with unit tests and some integration tests, running fixtures and existing customer spreadsheets back through it rather than relying on manual spot checks alone.
+
+**Stack** — TypeScript, a normalized Map-based data model, drag-and-drop UI, virtualized rendering.
+
+</article>
+
+<article id="skillreveal">
+
+## SkillReveal: frontend lead from zero
+
+<p class="body-sm text-soft">
+  {"SkillReveal · Lead Frontend Developer · 2021–2023"}
+</p>
+<p class="body-sm text-soft">{"0-to-1, React, Recoil, team leadership"}</p>
+
+**Problem** — SkillReveal started as an early-stage platform connecting interviewers and candidates for mock interviews and company-outsourced real interviews, later adding a job board around it. It began with a handful of design screens; frontend and backend had to be built in parallel, fast, with no established direction yet.
+
+**My role** — I set frontend technical direction from the first commit, as lead frontend developer on a six-person product team (a backend engineer, a designer, two other frontend engineers, one of them full-stack), and worked with the CEO on what to ship, postpone, or cut — contributing prioritization, feasibility, and UI judgment rather than owning the product roadmap outright. The MVP took about three months.
+
+**Key decisions**
+
+- I chose Recoil for state, favoring atomic state and a clean split between UI and data over Redux, which felt too boilerplate-heavy for an MVP moving this fast; the core stack and architecture decisions from that period held for the rest of the product's life.
+- The assessment page — dynamically generated competency sections and scoring controls, one of the most important pages in the product — had every component re-render on a single score change. I spent about a month restructuring the data flow so a score update touched only the component it affected, with comments and derived results updating independently too.
+- I customized Material UI into an in-house design system to standardize recurring patterns instead of styling each screen from scratch.
+
+**Outcome** — The refactored assessment page shipped, and users reported it felt noticeably more responsive, especially on mobile — I don't have a latency number to put on that. The product reached 20 paying customers and roughly 4,000 registered users across companies, interviewers, and candidates, at ~$15K MRR.
+
+**Stack** — React, Recoil, a customized Material UI design system.
+
+</article>
+
+<section>
+
+## Earlier work (2011–2021)
+
+- **N-iX** — frontend engineering across real-time trading (Angular/NgRx, from a .NET app prototype to the production UI), a visual questionnaire builder, and a video-processing pipeline editor (React/Redux, real-time SVG manipulation).
+- **Lohika** — real-time analytics dashboards: custom D3/SVG visualizations, hand-built list virtualization for large datasets.
+- **GlobalLogic** — migrated a Chrome-extension messenger to a desktop app built with web technologies (Node-WebKit); HTML5 apps for memory-constrained embedded media devices.
+- **Viseven** — interactive pharma e-detailing apps used by sales reps, plus an in-house CSS framework for chart markup and animation.
+
+</section>
+
+<section>
+
+Full history in the [CV](/en/cv) · [serhii@babich.dev](mailto:serhii@babich.dev)
+
+</section>
+
+</Fragment>
 </TitleLayout>
