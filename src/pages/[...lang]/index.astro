@@ -13,6 +13,19 @@ export function getStaticPaths() {
 const lang = getLangFromPath(Astro.url.pathname);
 const content = site[lang].home;
 const { Content } = await getPage(lang, "home");
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.en.name,
+  jobTitle: "Senior Product Engineer",
+  url: "https://babich.dev/en",
+  sameAs: [
+    "https://www.linkedin.com/in/babichss",
+    "https://youtube.com/@babichweb",
+  ],
+  knowsLanguage: ["uk", "en"],
+};
 ---
 
 <BaseLayout
@@ -20,6 +33,13 @@ const { Content } = await getPage(lang, "home");
   description={content.metaDescription}
   lang={lang}
 >
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personJsonLd)}
+    />
+  </Fragment>
+
   <HeroLayout>
     <Fragment slot="header">
       <Nav />
