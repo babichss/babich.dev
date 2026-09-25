@@ -1,0 +1,21 @@
+---
+import { site } from "src/data/site";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import { getPage } from "src/lib/pages";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }];
+}
+
+const content = site.en.cv;
+const { Content } = await getPage("en", "cv");
+---
+
+<BaseLayout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  lang="en"
+  noAlternateLang
+>
+  <Content />
+</BaseLayout>
