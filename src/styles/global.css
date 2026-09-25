@@ -106,4 +106,45 @@
       color: var(--shiki-dark) !important;
     }
   }
+
+  /* /cv print stylesheet (job-search-pages.md §7.3). Scoped by the
+     body class BaseLayout sets only on that route: the build bundles
+     every page's CSS into one shared file (astro.config.mjs's
+     cssCodeSplit: false), so an unscoped rule here would apply on
+     every printed page, not just /cv. */
+  @media print {
+    body.page-cv {
+      --color-bg: #ffffff;
+      --color-surface: #ffffff;
+      --color-text: #000000;
+      --color-text-muted: #000000;
+      --color-text-soft: #333333;
+      --color-link: #000000;
+      --color-link-hover: #000000;
+      --color-border: #000000;
+      --color-border-subtle: #cccccc;
+      --section-space: 20px;
+    }
+
+    body.page-cv > .site-header,
+    body.page-cv > .site-footer {
+      display: none;
+    }
+
+    body.page-cv a {
+      text-decoration: none;
+    }
+
+    body.page-cv a[href^="https://www.linkedin.com/"]::after,
+    body.page-cv a[href^="https://youtube.com/"]::after {
+      content: " (" attr(href) ")";
+      font-weight: 400;
+      font-size: var(--body-sm);
+    }
+
+    @page {
+      size: A4;
+      margin: 1.5cm;
+    }
+  }
 }

@@ -25,6 +25,9 @@ interface Props {
   // Set on the service pages hidden from nav/home during the job search;
   // keeps them out of search results without deleting them.
   noindex?: boolean;
+  // Lets a page scope its own CSS (e.g. the /cv print stylesheet) without
+  // the shared, code-split-free bundle leaking those rules everywhere.
+  bodyClass?: string;
 }
 
 const {
@@ -33,6 +36,7 @@ const {
   lang = "uk",
   noAlternateLang = false,
   noindex = false,
+  bodyClass,
 } = Astro.props;
 const pageLang = isLang(lang) ? lang : defaultLang;
 const siteName = site[pageLang].name;
@@ -121,7 +125,7 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
     </noscript>
     <slot name="head" />
   </head>
-  <body>
+  <body class={bodyClass}>
     <slot />
     <Footer />
   </body>
