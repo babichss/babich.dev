@@ -16,6 +16,7 @@ const { Content } = await getPage("en", "cv");
   description={content.metaDescription}
   lang="en"
   noAlternateLang
+  bodyClass="page-cv"
 >
   <Content />
 </BaseLayout>
