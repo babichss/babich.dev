@@ -22,6 +22,9 @@ interface Props {
   // Set on a page with no translated counterpart, so this layout never
   // advertises a hreflang alternate that 404s.
   noAlternateLang?: boolean;
+  // Set on the service pages hidden from nav/home during the job search;
+  // keeps them out of search results without deleting them.
+  noindex?: boolean;
 }
 
 const {
@@ -29,6 +32,7 @@ const {
   description,
   lang = "uk",
   noAlternateLang = false,
+  noindex = false,
 } = Astro.props;
 const pageLang = isLang(lang) ? lang : defaultLang;
 const siteName = site[pageLang].name;
@@ -39,6 +43,7 @@ const pathWithoutLang = stripLangFromPath(Astro.url.pathname);
 const urlFor = (forLang: Lang) =>
   new URL(localizedPath(forLang, pathWithoutLang), Astro.site).href;
 const canonicalURL = urlFor(pageLang);
+const ogImageURL = new URL("/og.png", Astro.site).href;
 
 const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
 ---
@@ -57,6 +62,7 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
     />
     <link rel="icon" href="/favicon.webp" type="image/webp" />
     <title>{pageTitle}</title>
+    {noindex && <meta name="robots" content="noindex" />}
 
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang={pageLang} href={canonicalURL} />
@@ -89,10 +95,12 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
         />
       )
     }
+    <meta property="og:image" content={ogImageURL} />
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

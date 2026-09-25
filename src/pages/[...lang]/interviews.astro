@@ -17,6 +17,7 @@ const { Content } = await getPage(lang, "interviews");
   title={content.metaTitle}
   description={content.metaDescription}
   lang={lang}
+  noindex
 >
   <Content />
 </BaseLayout>

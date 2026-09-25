@@ -1,0 +1,15 @@
+---
+// A stand-in for BaseLayout.astro, used only by noindex.test.ts: the real
+// layout needs Astro.site, which astro/container (experimental_AstroContainer,
+// astro@5.16.4) never populates, crashing any container-rendered page that
+// uses it. This stub carries just the one prop that test exercises.
+interface Props {
+  noindex?: boolean;
+}
+
+const { noindex = false } = Astro.props;
+---
+
+{noindex && <meta name="robots" content="noindex" />}
+<slot name="head" />
+<slot />

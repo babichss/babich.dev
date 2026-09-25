@@ -18,6 +18,7 @@ const { Content } = await getPage(defaultLang, "personal-interview");
   description={content.metaDescription}
   lang={lang}
   noAlternateLang
+  noindex
 >
   <Content />
 </BaseLayout>
