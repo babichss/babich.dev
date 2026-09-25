@@ -35,7 +35,7 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 - I sequenced delivery into small, independently releasable increments — basic attachment, then multiple attachments, then scoring, then the remaining integrations — across ten epics and five release trains.
 - Client-side compatibility checks aren't reliable, so after upload the UI re-fetches eligible datasets and warns if one's missing, with a final check possible at scoring — earliest feedback without duplicating backend logic.
 
-**Outcome** — The supervised workflow shipped in about five months and reached production, used by real customers within two months of GA; an external QA pass found about 15 defects, none critical. Post-GA, a customer reported their data wasn't working; tracing past an unrelated backend bug led back to an unsupported unsupervised setup in the legacy flow. I fixed the UI and backend; the fix merged and reached staging, not production, before my role ended. It changed how I scope migrations now — a requested workflow doesn't define the real system boundary, so I map adjacent modes up front. Also shipped in the same window: a fast, backend-coordinated integration adding a Bayesian hyperparameter-search option, under time pressure from active enterprise deals.
+**Outcome** — The supervised workflow shipped in about five months and reached production, used by real customers within two months of GA; an external QA pass found about 15 defects, none critical. Post-GA, a customer reported their data wasn't working; tracing past an unrelated backend bug led back to an unsupported unsupervised setup in the legacy flow. I fixed the UI and backend; the fix merged and reached staging, not production, before my role ended. It changed how I scope migrations now — a requested workflow doesn't define the real system boundary, so I map adjacent modes up front. Separately, a fast, backend-coordinated integration adding a Bayesian hyperparameter-search option also shipped, under time pressure from active enterprise deals.
 
 **Stack** — React, a custom context-based state layer, integration tests against legacy chart components, close coordination with backend.
 
@@ -60,7 +60,7 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 
 - The original design required uploading both files, then a separate Validate step before any feedback. I proposed validating each file on its own upload, then cross-validating the pair, removing the Validate button; the backend contract changed so one endpoint accepts files separately and runs the right check — a small extra call for much earlier feedback.
 - I scoped the feature into three phases — a metric registry, experiment-time selection, and post-modeling display — and got a working UI behind a feature flag through all three.
-- Manual testing surfaced a defect: two validation points in the optimization-metric save path were hard-coded for built-in metrics, so a custom metric was silently rejected and never reached the modeling engine. I traced it with research assistance, reviewed the evidence with the backend lead, and took the fix — validating custom metrics against their own package at both points, with new integration tests at the seams.
+- Manual testing surfaced a defect: two validation points in the optimization-metric save path were hard-coded for built-in metrics, so a custom metric was rejected with a server error and never reached the modeling engine. I traced it with research assistance, reviewed the evidence with the backend lead, and took the fix — validating custom metrics against their own package at both points, with new integration tests at the seams.
 
 **Outcome** — The backend side of the fix merged, but the small remaining UI change — sending the right field and distinguishing built-in from custom handling — was still open and awaiting review when my role ended, so the capability stayed behind its flag and was never released. I'd get involved in backend design earlier next time; deeper research into the validation logic up front would likely have surfaced the hard-coding sooner.
 
@@ -79,7 +79,7 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
   {"AI-assisted engineering, agent orchestration, code review"}
 </p>
 
-**Problem** — Owning a feature end-to-end at DataRobot meant carrying frontend, Python API changes, testing, and maintenance myself, often several at once. About three months into the customer-defined-metrics work, I built a personal harness to formalize how I already worked, not to replace my judgment — never rolled out to the team, just mine.
+**Problem** — Owning a feature end-to-end at DataRobot meant carrying frontend, Python API changes, testing, and maintenance myself, often several at once. During the customer-defined-metrics work, I spent about three months building a personal harness to formalize how I already worked, not to replace my judgment — never rolled out to the team, just mine.
 
 **My role** — I prepared a bounded task or spec; a feature-level orchestrator handed bounded research or implementation work to subagents, each in its own isolated git worktree with its own checks and tests. Research agents traced a full code path — files, lines, functions — into a reference doc before I wrote a bug report or spec. Implementation agents wrote the change; I did a complete human review of every diff and decided which feedback to act on. Supporting scripts assembled PR descriptions from a template, checked PR status, and opened diffs for review.
 
@@ -120,7 +120,7 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 - Schemas ran to roughly one to two thousand nodes, so I added virtualization and expand/collapse so most of the tree never touched the DOM, and kept profiling access and render performance as the model grew instead of assuming it stayed fast.
 - The editor works left-to-right — customer schema on the left, internal model on the right — with 1:1, 1:many, and many:1 connections drawn by dragging and connecting nodes, and each transformation type gets its own presentation.
 
-**Outcome** — The visual editor shipped, covering the common mapping cases the DSL was mostly used for. I verified it mainly with unit tests and some integration tests, running fixtures and existing customer spreadsheets back through it rather than relying on manual spot checks alone.
+**Outcome** — The visual editor shipped, covering the common, relatively simple mappings it was scoped for, not the full DSL. I verified it mainly with unit tests and some integration tests, running fixtures and existing customer spreadsheets back through it rather than relying on manual spot checks alone.
 
 **Stack** — TypeScript, a normalized Map-based data model, drag-and-drop UI, virtualized rendering.
 
@@ -135,7 +135,7 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 </p>
 <p class="body-sm text-soft">{"0-to-1, React, Recoil, team leadership"}</p>
 
-**Problem** — SkillReveal started as an early-stage platform connecting interviewers and candidates for mock interviews, later adding company-outsourced real interviews around a job board. It began with a handful of design screens; frontend and backend had to be built in parallel, fast, with no established direction yet.
+**Problem** — SkillReveal started as an early-stage platform connecting interviewers and candidates for mock interviews and company-outsourced real interviews, later adding a job board around it. It began with a handful of design screens; frontend and backend had to be built in parallel, fast, with no established direction yet.
 
 **My role** — I set frontend technical direction from the first commit, as lead frontend developer on a six-person product team (a backend engineer, a designer, two other frontend engineers, one of them full-stack), and worked with the CEO on what to ship, postpone, or cut — contributing prioritization, feasibility, and UI judgment rather than owning the product roadmap outright. The MVP took about three months.
 
@@ -155,10 +155,10 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 
 ## Earlier work (2011–2021)
 
-- **N-iX** (2017–2020) — lead frontend across real-time trading (Angular/NgRx, from a .NET app prototype to the production UI), a visual questionnaire builder, and a video-processing pipeline editor (React/Redux, real-time SVG manipulation).
-- **Lohika** (2014–2017) — real-time analytics dashboards: custom D3/SVG visualizations, hand-built list virtualization for large datasets.
-- **GlobalLogic** (2013–2014) — migrated a Chrome-extension messenger to a desktop app built with web technologies (Node-WebKit); HTML5 apps for memory-constrained embedded media devices.
-- **Viseven** (2011–2013) — interactive pharma e-detailing apps used by sales reps, plus an in-house CSS framework for chart markup and animation.
+- **N-iX** — frontend engineering across real-time trading (Angular/NgRx, from a .NET app prototype to the production UI), a visual questionnaire builder, and a video-processing pipeline editor (React/Redux, real-time SVG manipulation).
+- **Lohika** — real-time analytics dashboards: custom D3/SVG visualizations, hand-built list virtualization for large datasets.
+- **GlobalLogic** — migrated a Chrome-extension messenger to a desktop app built with web technologies (Node-WebKit); HTML5 apps for memory-constrained embedded media devices.
+- **Viseven** — interactive pharma e-detailing apps used by sales reps, plus an in-house CSS framework for chart markup and animation.
 
 </section>
 
