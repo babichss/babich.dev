@@ -43,7 +43,7 @@ const pathWithoutLang = stripLangFromPath(Astro.url.pathname);
 const urlFor = (forLang: Lang) =>
   new URL(localizedPath(forLang, pathWithoutLang), Astro.site).href;
 const canonicalURL = urlFor(pageLang);
-const ogImageURL = new URL("/og.png", Astro.site).href;
+const ogImageURL = new URL("/og.jpg", Astro.site).href;
 
 const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
 ---
@@ -96,6 +96,9 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
       )
     }
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
