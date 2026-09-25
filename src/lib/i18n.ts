@@ -31,6 +31,14 @@ export const getLangStaticPaths = () =>
 
 export const localizedPath = (lang: Lang, path: string) => {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  const [firstSegment] = normalizedPath.split("/").filter(Boolean);
+
+  // An href that already names its own language (a cross-language nav
+  // link, e.g. the UK nav pointing at /en/work) is left as is — prefixing
+  // it again would double it regardless of the current page's lang.
+  if (isLang(firstSegment)) {
+    return normalizedPath;
+  }
 
   if (lang === defaultLang) {
     return normalizedPath;

@@ -23,12 +23,19 @@ const pathWithoutLang = stripLangFromPath(currentPath);
 const alternateLang = getAlternateLang(lang);
 const showLanguageSwitch = !hideLanguageSwitch;
 
+// Resolve href through localizedPath first: a cross-language href (e.g.
+// the UK nav's /en/work) already names its own lang and must compare
+// against the raw path, not the current page's stripped one.
 const isCurrent = (href: string) => {
-  if (href === "/") {
-    return pathWithoutLang === "/";
+  const resolvedHref = localizedPath(lang, href);
+
+  if (resolvedHref === "/") {
+    return currentPath === "/";
   }
 
-  return pathWithoutLang === href || pathWithoutLang.startsWith(`${href}/`);
+  return (
+    currentPath === resolvedHref || currentPath.startsWith(`${resolvedHref}/`)
+  );
 };
 
 const navLinksProps = {

@@ -69,6 +69,14 @@ describe("localizedPath", () => {
   it("prefixes root as just /lang, not /lang/", () => {
     expect(localizedPath("en", "/")).toBe("/en");
   });
+
+  it("leaves an already language-prefixed path as is for the default lang", () => {
+    expect(localizedPath(defaultLang, "/en/work")).toBe("/en/work");
+  });
+
+  it("leaves an already language-prefixed path as is for a non-default lang, never doubling the prefix", () => {
+    expect(localizedPath("en", "/en/work")).toBe("/en/work");
+  });
 });
 
 describe("stripLangFromPath", () => {

@@ -10,18 +10,19 @@ export const site = {
   uk: {
     name: "Сергій Бабіч",
     title: "Сергій Бабіч.",
-    tagline: "Фронтенд-інженер, технічний інтервʼюєр, автор.",
+    tagline:
+      "Продуктовий інженер · складні інтерфейси даних · AI-native розробка",
     navLabel: "Головна навігація",
     menuLabel: "Відкрити меню",
     nav: [
-      { href: "/", title: "Головна" },
-      { href: "/interviews", title: "Співбесіди" },
-      { href: "/youtube", title: "YouTube" },
+      { href: "/en/work", title: "Робота (EN)" },
+      { href: "/en/cv", title: "CV (EN)" },
       { href: "/blog", title: "Блоґ" },
     ],
     home: {
       metaTitle: "Головна",
-      metaDescription: "Сергій Бабіч — технічний експерт",
+      metaDescription:
+        "Сергій Бабіч — старший продуктовий інженер, який створює складні інтерфейси для даних та ML. Відкритий до позицій Senior та Full-stack Product Engineer, віддалено.",
       title: "Привіт, я — Сергій Бабіч",
     },
     interviews: {
@@ -74,19 +75,29 @@ export const site = {
   en: {
     name: "Serhii Babich",
     title: "Serhii Babich.",
-    tagline: "Frontend engineer, technical interviewer, author.",
+    tagline: "Product engineer · complex data interfaces · AI-native delivery",
     navLabel: "Main navigation",
     menuLabel: "Open menu",
     nav: [
-      { href: "/", title: "Home" },
-      { href: "/interviews", title: "Interviews" },
-      { href: "/youtube", title: "YouTube" },
+      { href: "/en/work", title: "Work" },
+      { href: "/en/cv", title: "CV" },
       { href: "/blog", title: "Blog" },
     ],
     home: {
       metaTitle: "Home",
-      metaDescription: "Serhii Babich — technical expert",
+      metaDescription:
+        "Serhii Babich — senior product engineer building complex data and ML interfaces. Open to Senior and Full-stack Product Engineer roles, remote.",
       title: "Hi, I am Serhii Babich",
+    },
+    work: {
+      metaTitle: "Work",
+      metaDescription:
+        "Selected case studies from Serhii Babich's work on complex data and ML interfaces.",
+    },
+    cv: {
+      metaTitle: "CV",
+      metaDescription:
+        "Serhii Babich's CV — senior product engineer, complex data and ML interfaces.",
     },
     interviews: {
       metaTitle: "Interviews",
