@@ -5,6 +5,7 @@ lang: en
 
 import { Image } from "astro:assets";
 import hero from "../../../../assets/hero.webp";
+import HomeWriting from "src/components/HomeWriting.astro";
 import { site } from "src/data/site";
 
 <div class="hero">
@@ -17,9 +18,9 @@ import { site } from "src/data/site";
 
 <section class="hero-intro">
 
-I have worked in web development for more than 15 years: from a naive junior who thought he knew everything to a senior engineer who finally understood how much there still is to learn.
+I'm Serhii, a senior product engineer with 15+ years in frontend. At DataRobot, I owned my team's migration of evaluation against customer test data into the product UI, which reached production with real customers, and later took over the incomplete customer-defined evaluation metrics work — redesigning the upload flow and extending the API it needed.
 
-I care about software development not as a collection of frameworks, but as an engineering practice: decisions have to be maintained, teams have to align, and developers have to be hired, evaluated, and trained.
+I also work AI-native: I built my own agentic engineering harness, where specialized agents handle research, implementation, and testing in isolated worktrees, while I keep framing, architecture, review, and acceptance.
 
 </section>
 
@@ -37,12 +38,19 @@ I care about software development not as a collection of frameworks, but as an e
 
 <section class="hero-lead">
 
-## Let me handle your technical interviews
+<div class="body-sm text-soft">
+  Open to Senior / Staff Product Engineer roles · Remote · Ukraine, EET
+  (UTC+2/+3), overlap with EU and US East.
+</div>
 
-I help companies understand who they are hiring, and help developers see their level from the outside, prepare for a role, or figure out why interviews are not going the way they expected.
-
-<a href="/en/interviews" class="cta">
-  About technical interviews
+<a href="/en/work" class="cta">
+  See my work
+</a>
+<a href="/en/cv" class="cta">
+  CV
+</a>
+<a href="mailto:serhii@babich.dev" class="cta">
+  {"serhii@babich.dev"}
 </a>
 
 </section>
@@ -51,24 +59,98 @@ I help companies understand who they are hiring, and help developers see their l
 
 <section>
 
-## Tell your company story so developers actually listen
+<dl class="proof-strip" aria-label="Career highlights">
+  <div>
+    <dt>15+ years</dt>
+    <dd>building browser-heavy products</dd>
+  </div>
+  <div>
+    <dt>10+ years</dt>
+    <dd>interviewing engineers, Trainee → Tech Lead</dd>
+  </div>
+  <div>
+    <dt>50+</dt>
+    <dd>public technical interviews on YouTube</dd>
+  </div>
+  <div>
+    <dt>2 products from zero</dt>
+    <dd>
+      SkillReveal: MVP in 3 months → 20 paying customers; Jonny Git: frontend
+      from scratch
+    </dd>
+  </div>
+</dl>
 
-I run a [YouTube channel](/en/youtube) and host offline events for developers. These include interviews, public technical interviews, live podcasts, and custom formats where companies can talk clearly about work, hiring, teams, and technical decisions.
+</section>
 
-<a href="/en/youtube" class="cta">
-  Choose a format
+<section>
+
+## Selected work
+
+### Evaluation against customer test data
+
+Migrated evaluation against customer test data into the product UI — the primary workflow shipped in about five months and reached production with real customers.
+
+<a href="/en/work#test-set-evaluation" class="cta">
+  See the case study
+</a>
+
+### Customer-defined evaluation metrics
+
+Took over incomplete API work for customer-defined evaluation metrics: redesigned the upload around per-file validation and changed the backend contract. The UI shipped behind a feature flag — the full feature hadn't released by the time the role ended.
+
+<a href="/en/work#custom-metrics" class="cta">
+  See the case study
+</a>
+
+### Multi-agent engineering harness
+
+How one engineer owns more of the lifecycle without giving up review.
+
+<a href="/en/work#agentic-workflow" class="cta">
+  See the case study
 </a>
 
 </section>
 
 <section>
 
-## There is also a blog
+## How I work
 
-About frontend, browsers, HTML, CSS, technical interviews, practical experience, and other topics developers talk about.
+### Discovery before code
 
-<a href="/en/blog" class="cta">
-  Read the blog
-</a>
+I reconstruct the real workflow, often from legacy behavior, before proposing scope.
+
+### Own it to production
+
+Scope, trade-offs, implementation, release, and the bugs afterwards.
+
+### Agents do the volume, I own the judgment
+
+Parallel research and implementation; human gates on framing, architecture, and acceptance.
+
+</section>
+
+<section>
+
+## Writing
+
+<HomeWriting lang="en" cta="Read the blog" />
+
+</section>
+
+<section>
+
+## Also
+
+Outside product work I've interviewed engineers for 10+ years — Trainee to Tech Lead — and I run a Ukrainian [YouTube channel](https://youtube.com/@babichweb) about web development: 50+ public technical interviews, plus live events and podcasts in Lviv.
+
+</section>
+
+<section>
+
+## Contact
+
+Hiring for a product engineering role? Write to <a href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a> — or grab the [CV](/en/cv).
 
 </section>

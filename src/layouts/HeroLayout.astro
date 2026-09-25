@@ -80,5 +80,23 @@
         width: min(100%, 20rem);
       }
     }
+
+    .home-content :global(.proof-strip) {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      gap: var(--spacing-lg) var(--section-space);
+      margin: 0;
+    }
+
+    .home-content :global(.proof-strip dt) {
+      color: var(--text-heading);
+      font-weight: 700;
+      font-size: var(--body-xl);
+    }
+
+    .home-content :global(.proof-strip dd) {
+      margin: 0;
+      color: var(--text-secondary);
+    }
   }
 </style>
