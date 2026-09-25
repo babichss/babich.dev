@@ -22,7 +22,7 @@ export const site = {
     home: {
       metaTitle: "Головна",
       metaDescription:
-        "Сергій Бабіч — старший продуктовий інженер, який створює складні інтерфейси для даних та ML. Відкритий до позицій Senior та Full-stack Product Engineer, віддалено.",
+        "Сергій Бабіч — старший продуктовий інженер, який створює складні інтерфейси для даних та ML. Відкритий до позицій Senior/Staff, віддалено.",
       title: "Продуктовий інженер для складних інтерфейсів даних.",
     },
     interviews: {
@@ -86,7 +86,7 @@ export const site = {
     home: {
       metaTitle: "Home",
       metaDescription:
-        "Serhii Babich — senior product engineer building complex data and ML interfaces. Open to Senior and Full-stack Product Engineer roles, remote.",
+        "Serhii Babich — senior product engineer building complex data and ML interfaces. Open to Senior/Staff roles, remote.",
       title: "Product engineer for complex data interfaces.",
     },
     work: {
