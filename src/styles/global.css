@@ -142,9 +142,11 @@
       font-size: var(--body-sm);
     }
 
-    @page {
-      size: A4;
-      margin: 1.5cm;
-    }
+    /* No @page rule here: `@page` has no selector to scope it by an
+       ancestor class, and this stylesheet is bundled site-wide
+       (cssCodeSplit: false) — an `@page` block here would set every
+       page's print size/margins, not just /cv's. Page setup is left to
+       the browser/printer default; the rules above carry the "scoped
+       to /cv" requirement instead. */
   }
 }
