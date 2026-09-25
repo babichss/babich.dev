@@ -16,6 +16,6 @@ const posts = sortPostsByDate(
 ).slice(0, 3);
 ---
 
-<BlogPostList posts={posts} lang={lang} />
+<BlogPostList posts={posts} lang={lang} headingLevel={3} />
 
 <a href={localizedPath(lang, "/blog")} class="cta">{cta}</a>
