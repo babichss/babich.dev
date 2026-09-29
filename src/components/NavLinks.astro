@@ -2,6 +2,9 @@
 import { languageNames, localizedPath, type Lang } from "src/lib/i18n";
 
 interface NavItem {
+  // The href is already final: it points at the unprefixed (default-language)
+  // page even when rendered in the uk nav.
+  unprefixed?: boolean;
   href: string;
   title: string;
 }
@@ -9,7 +12,7 @@ interface NavItem {
 interface Props {
   nav: NavItem[];
   lang: Lang;
-  isCurrent: (href: string) => boolean;
+  isCurrent: (item: NavItem) => boolean;
   showLanguageSwitch: boolean;
   alternateLang: Lang;
   pathWithoutLang: string;
@@ -30,12 +33,12 @@ const {
 ---
 
 {
-  nav.map(({ href, title }) => (
+  nav.map((item) => (
     <a
-      href={localizedPath(lang, href)}
-      aria-current={isCurrent(href) ? "page" : undefined}
+      href={item.unprefixed ? item.href : localizedPath(lang, item.href)}
+      aria-current={isCurrent(item) ? "page" : undefined}
     >
-      {title}
+      {item.title}
     </a>
   ))
 }

@@ -1,24 +1,29 @@
-export const defaultLang = "uk";
-export const languages = [defaultLang, "en"] as const;
+export const defaultLang = "en";
+export const languages = [defaultLang, "uk"] as const;
 
 export type Lang = (typeof languages)[number];
 
 export const languageNames: Record<Lang, string> = {
-  uk: "Українська",
   en: "English",
+  uk: "Українська",
 };
 
 export const dateLocales: Record<Lang, string> = {
-  uk: "uk-UA",
   en: "en-US",
+  uk: "uk-UA",
 };
 
 export const isLang = (value: string | undefined): value is Lang =>
   languages.includes(value as Lang);
 
+// Only non-default languages appear as a path prefix; the default language
+// lives at the unprefixed root.
+const isPrefixLang = (value: string | undefined): value is Lang =>
+  isLang(value) && value !== defaultLang;
+
 export const getLangFromPath = (pathname: string): Lang => {
   const [firstSegment] = pathname.split("/").filter(Boolean);
-  return isLang(firstSegment) ? firstSegment : defaultLang;
+  return isPrefixLang(firstSegment) ? firstSegment : defaultLang;
 };
 
 export const langParam = (lang: Lang) =>
@@ -31,14 +36,6 @@ export const getLangStaticPaths = () =>
 
 export const localizedPath = (lang: Lang, path: string) => {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  const [firstSegment] = normalizedPath.split("/").filter(Boolean);
-
-  // An href that already names its own language (a cross-language nav
-  // link, e.g. the UK nav pointing at /en/work) is left as is — prefixing
-  // it again would double it regardless of the current page's lang.
-  if (isLang(firstSegment)) {
-    return normalizedPath;
-  }
 
   if (lang === defaultLang) {
     return normalizedPath;
@@ -50,7 +47,7 @@ export const localizedPath = (lang: Lang, path: string) => {
 export const stripLangFromPath = (pathname: string) => {
   const parts = pathname.split("/").filter(Boolean);
 
-  if (isLang(parts[0])) {
+  if (isPrefixLang(parts[0])) {
     parts.shift();
   }
 
@@ -58,4 +55,4 @@ export const stripLangFromPath = (pathname: string) => {
 };
 
 export const getAlternateLang = (lang: Lang): Lang =>
-  lang === defaultLang ? "en" : defaultLang;
+  lang === defaultLang ? "uk" : defaultLang;

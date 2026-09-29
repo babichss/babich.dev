@@ -15,8 +15,8 @@ export const site = {
     navLabel: "Головна навігація",
     menuLabel: "Відкрити меню",
     nav: [
-      { href: "/en/work", title: "Робота (EN)" },
-      { href: "/en/cv", title: "CV (EN)" },
+      { href: "/work", title: "Робота (EN)", unprefixed: true },
+      { href: "/cv", title: "CV (EN)", unprefixed: true },
       { href: "/blog", title: "Блоґ" },
     ],
     home: {
@@ -79,8 +79,8 @@ export const site = {
     navLabel: "Main navigation",
     menuLabel: "Open menu",
     nav: [
-      { href: "/en/work", title: "Work" },
-      { href: "/en/cv", title: "CV" },
+      { href: "/work", title: "Work" },
+      { href: "/cv", title: "CV" },
       { href: "/blog", title: "Blog" },
     ],
     home: {

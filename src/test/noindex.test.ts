@@ -48,21 +48,23 @@ const NOINDEX = '<meta name="robots" content="noindex">';
 
 describe("noindex on the service pages", () => {
   it("interviews carries noindex", async () => {
-    expect(await render(InterviewsPage, "/interviews")).toContain(NOINDEX);
+    expect(await render(InterviewsPage, "/uk/interviews")).toContain(NOINDEX);
   });
 
   it("interviews/hiring carries noindex", async () => {
-    expect(await render(HiringPage, "/interviews/hiring")).toContain(NOINDEX);
+    expect(await render(HiringPage, "/uk/interviews/hiring")).toContain(
+      NOINDEX,
+    );
   });
 
-  it("interviews/personal carries noindex", async () => {
-    expect(await render(PersonalPage, "/interviews/personal")).toContain(
+  it("uk/interviews/personal carries noindex", async () => {
+    expect(await render(PersonalPage, "/uk/interviews/personal")).toContain(
       NOINDEX,
     );
   });
 
   it("youtube carries noindex", async () => {
-    expect(await render(YouTubePage, "/youtube")).toContain(NOINDEX);
+    expect(await render(YouTubePage, "/uk/youtube")).toContain(NOINDEX);
   });
 
   it("home does not carry noindex", async () => {

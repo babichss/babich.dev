@@ -19,7 +19,7 @@ const personJsonLd = {
   "@type": "Person",
   name: site.en.name,
   jobTitle: "Senior Product Engineer",
-  url: new URL("/en", Astro.site ?? Astro.url).href,
+  url: new URL("/", Astro.site ?? Astro.url).href,
   sameAs: [
     "https://www.linkedin.com/in/babichss",
     "https://youtube.com/@babichweb",

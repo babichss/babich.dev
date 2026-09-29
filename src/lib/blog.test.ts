@@ -58,8 +58,8 @@ describe("getLangPostGroups", () => {
     const posts = [post("en", "2024-01-02"), post("uk", "2024-01-01")];
 
     expect(getLangPostGroups(posts)).toEqual([
-      { lang: "uk", posts: [posts[1]] },
       { lang: "en", posts: [posts[0]] },
+      { lang: "uk", posts: [posts[1]] },
     ]);
   });
 });
@@ -112,8 +112,8 @@ describe("getBlogLangGroups", () => {
     const posts = [post("en", "2024-01-02"), post("uk", "2024-01-01")];
 
     expect(getBlogLangGroups(posts)).toEqual([
-      { lang: "uk", posts: [posts[1]], altPosts: [posts[0]] },
       { lang: "en", posts: [posts[0]], altPosts: [posts[1]] },
+      { lang: "uk", posts: [posts[1]], altPosts: [posts[0]] },
     ]);
   });
 
@@ -121,8 +121,8 @@ describe("getBlogLangGroups", () => {
     const posts = [post("uk", "2024-01-01")];
 
     expect(getBlogLangGroups(posts)).toEqual([
-      { lang: "uk", posts: [posts[0]], altPosts: [] },
       { lang: "en", posts: [], altPosts: [posts[0]] },
+      { lang: "uk", posts: [posts[0]], altPosts: [] },
     ]);
   });
 });
@@ -149,20 +149,20 @@ describe("getPostDatePath", () => {
 
 describe("getPathLang", () => {
   it("falls back to the default language when undefined", () => {
-    expect(getPathLang(undefined)).toBe("uk");
+    expect(getPathLang(undefined)).toBe("en");
   });
 
   it("passes through a given language", () => {
-    expect(getPathLang("en")).toBe("en");
+    expect(getPathLang("uk")).toBe("uk");
   });
 });
 
 describe("getLangParams", () => {
   it("omits the param for the default language", () => {
-    expect(getLangParams("uk")).toEqual({ lang: undefined });
+    expect(getLangParams("en")).toEqual({ lang: undefined });
   });
 
   it("carries the param for a non-default language", () => {
-    expect(getLangParams("en")).toEqual({ lang: "en" });
+    expect(getLangParams("uk")).toEqual({ lang: "uk" });
   });
 });
