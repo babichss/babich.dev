@@ -1,8 +1,9 @@
 ---
 import { site } from "src/data/site";
 import BaseLayout from "src/layouts/BaseLayout.astro";
-import { getLangFromPath, getLangStaticPaths } from "src/lib/i18n";
+import { defaultLang, getLangFromPath, getLangStaticPaths } from "src/lib/i18n";
 import { getPage } from "src/lib/pages";
+import { personJsonLd } from "src/lib/seo";
 
 export function getStaticPaths() {
   return getLangStaticPaths();
@@ -12,17 +13,31 @@ const lang = getLangFromPath(Astro.url.pathname);
 const content = site[lang].home;
 const { Content } = await getPage(lang, "home");
 
-const personJsonLd = {
+const siteURL = Astro.site ?? Astro.url;
+const home = new URL("/", siteURL).href;
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: site.en.name,
-  jobTitle: "Senior Product Engineer",
-  url: new URL("/", Astro.site ?? Astro.url).href,
-  sameAs: [
-    "https://www.linkedin.com/in/babichss",
-    "https://youtube.com/@babichweb",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${home}#website`,
+      url: home,
+      name: site.en.name,
+      alternateName: "babich.dev",
+      inLanguage: "en",
+      publisher: { "@id": `${home}#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${home}#profilepage`,
+      url: home,
+      name: site.en.home.metaTitle,
+      inLanguage: "en",
+      isPartOf: { "@id": `${home}#website` },
+      mainEntity: { "@id": `${home}#person` },
+    },
+    personJsonLd(siteURL),
   ],
-  knowsLanguage: ["uk", "en"],
 };
 ---
 
@@ -30,12 +45,15 @@ const personJsonLd = {
   title={content.metaTitle}
   description={content.metaDescription}
   lang={lang}
+  titleSuffix={false}
+  ogType="profile"
 >
   <Fragment slot="head">
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(personJsonLd)}
-    />
+    {
+      lang === defaultLang && (
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      )
+    }
   </Fragment>
 
   <Content />

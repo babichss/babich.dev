@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cv/serhii-babich-cv.pdf
+
+Sitemap: https://www.babich.dev/sitemap-index.xml

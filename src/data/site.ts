@@ -12,11 +12,11 @@ export const site = {
     title: "Сергій Бабіч.",
     navLabel: "Головна навігація",
     nav: [
-      { href: "/work", title: "Проєкти (EN)", unprefixed: true },
-      { href: "/cv", title: "CV (EN)", unprefixed: true },
+      { href: "/work/", title: "Проєкти (EN)", unprefixed: true },
+      { href: "/cv/", title: "CV (EN)", unprefixed: true },
     ],
     home: {
-      metaTitle: "Senior Product Engineer",
+      metaTitle: "Сергій Бабіч — Senior Product Engineer",
       metaDescription:
         "Сергій Бабіч — продуктовий інженер: складні інтерфейси для роботи з даними та ML, понад 15 років у фронтенді. Відкритий до віддалених позицій Senior / Staff.",
       title: "Продуктовий інженер: складні інтерфейси для роботи з даними.",
@@ -63,7 +63,7 @@ export const site = {
         `Усі дописи за ${monthName} ${year} року`,
       monthEmpty: (monthName: string, year: number) =>
         `Поки що немає опублікованих дописів за ${monthName} ${year}.`,
-      dayTitle: (dateName: string) => `Блоґ | ${dateName}`,
+      dayTitle: (dateName: string) => `Блоґ: ${dateName}`,
       dayDescription: (dateName: string) => `Усі дописи блоґу за ${dateName}`,
       dayHeading: (dateName: string) => `Усі дописи за ${dateName}`,
     },
@@ -73,24 +73,24 @@ export const site = {
     title: "Serhii Babich.",
     navLabel: "Main navigation",
     nav: [
-      { href: "/work", title: "Work" },
-      { href: "/cv", title: "CV" },
+      { href: "/work/", title: "Work" },
+      { href: "/cv/", title: "CV" },
     ],
     home: {
-      metaTitle: "Senior Product Engineer",
+      metaTitle: "Serhii Babich — Senior Product Engineer",
       metaDescription:
-        "Serhii Babich — product engineer for complex data and ML interfaces, 15+ years in frontend. Open to remote Senior / Staff Product Engineer roles.",
+        "I'm a product engineer for complex data interfaces: 15+ years in frontend, most recently ML evaluation at DataRobot. Open to remote Senior / Staff roles.",
       title: "Product engineer for complex data interfaces.",
     },
     work: {
-      metaTitle: "Work",
+      metaTitle: "Product Engineering Case Studies",
       metaDescription:
-        "Case studies by Serhii Babich: ML evaluation features and a multi-agent engineering workflow at DataRobot, a schema-mapping editor at Edvantis, and the SkillReveal frontend.",
+        "Five case studies: two ML evaluation features and my multi-agent engineering workflow at DataRobot, a schema-mapping editor, and a startup frontend I led.",
     },
     cv: {
-      metaTitle: "CV",
+      metaTitle: "CV: Senior Product Engineer",
       metaDescription:
-        "CV of Serhii Babich, Senior Product Engineer: 15+ years in frontend, most recently at DataRobot. Open to remote Senior / Staff roles.",
+        "Senior Product Engineer with 15+ years building data-heavy apps and interactive tools, most recently at DataRobot. Remote from Ukraine (EET).",
     },
     interviews: {
       metaTitle: "Technical interviews",
@@ -108,9 +108,9 @@ export const site = {
         "Partnership formats for Serhii Babich's Ukrainian YouTube channel about web development.",
     },
     blog: {
-      metaTitle: "Blog",
+      metaTitle: "Blog: HTML, CSS and Web Development",
       metaDescription:
-        "Serhii Babich's blog about web development, interviews, teams, and technical decisions",
+        "I write about HTML, CSS and the web platform: how browsers handle broken HTML, what deprecated means, new CSS features, and building without a framework.",
       title: "Blog",
       intro:
         "Here I write about web development, interviews, teams, technical decisions, and anything worth sharing before the thought disappears.",
@@ -130,7 +130,7 @@ export const site = {
         `All posts from ${monthName} ${year}`,
       monthEmpty: (monthName: string, year: number) =>
         `There are no published posts from ${monthName} ${year} yet.`,
-      dayTitle: (dateName: string) => `Blog | ${dateName}`,
+      dayTitle: (dateName: string) => `Blog: ${dateName}`,
       dayDescription: (dateName: string) => `All blog posts from ${dateName}`,
       dayHeading: (dateName: string) => `All posts from ${dateName}`,
     },

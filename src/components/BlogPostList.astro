@@ -30,7 +30,7 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
             {showDate && (
               <footer class="flush text-soft">
                 <time class="body-sm" datetime={publishDate.toISOString()}>
-                  <a href={localizedPath(lang, `/blog/${datePath}`)}>
+                  <a href={localizedPath(lang, `/blog/${datePath}/`)}>
                     {dateLabel}
                   </a>
                 </time>
@@ -38,7 +38,7 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
             )}
 
             <Heading class="flush blog-post-title">
-              <a href={localizedPath(lang, `/blog/${post.data.urlSlug}`)}>
+              <a href={localizedPath(lang, `/blog/${post.data.urlSlug}/`)}>
                 {post.data.title}
               </a>
             </Heading>

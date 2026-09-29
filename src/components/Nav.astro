@@ -38,9 +38,9 @@ const isCurrent = ({
     return currentPath === "/";
   }
 
-  return (
-    currentPath === resolvedHref || currentPath.startsWith(`${resolvedHref}/`)
-  );
+  // Nav hrefs end in "/"; the request path may or may not.
+  const base = resolvedHref.replace(/\/$/, "");
+  return currentPath === base || currentPath.startsWith(`${base}/`);
 };
 ---
 

@@ -35,12 +35,19 @@ const PersonalPage = (
 ).default;
 const YouTubePage = (await import("src/pages/[...lang]/youtube.astro")).default;
 const HomePage = (await import("src/pages/[...lang]/index.astro")).default;
+const YearArchivePage = (
+  await import("src/pages/[...lang]/blog/[year]/index.astro")
+).default;
 
-const render = async (Component: unknown, path: string) => {
+const render = async (
+  Component: unknown,
+  path: string,
+  props: Record<string, unknown> = {},
+) => {
   const container = await AstroContainer.create();
   return container.renderToString(
     Component as Parameters<typeof container.renderToString>[0],
-    { request: new Request(`https://babich.dev${path}`) },
+    { request: new Request(`https://babich.dev${path}`), props },
   );
 };
 
@@ -73,5 +80,17 @@ describe("noindex on the service pages", () => {
 
   it("en home does not carry noindex", async () => {
     expect(await render(HomePage, "/")).not.toContain(NOINDEX);
+  });
+});
+
+describe("noindex on the blog archives", () => {
+  it("year archive carries noindex", async () => {
+    expect(
+      await render(YearArchivePage, "/blog/2024", {
+        year: 2024,
+        posts: [],
+        noAlternateLang: true,
+      }),
+    ).toContain(NOINDEX);
   });
 });

@@ -60,7 +60,7 @@ const groupedArray = getDateGroups(sortedPosts, "month");
                   <a
                     href={localizedPath(
                       lang,
-                      `/blog/${group.year}/${monthPadded}`,
+                      `/blog/${group.year}/${monthPadded}/`,
                     )}
                   >
                     {monthName(group.year, month)} {group.year}

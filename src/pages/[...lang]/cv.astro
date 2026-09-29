@@ -2,6 +2,7 @@
 import { site } from "src/data/site";
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import { getPage } from "src/lib/pages";
+import { personJsonLd } from "src/lib/seo";
 
 export function getStaticPaths() {
   return [{ params: { lang: undefined } }];
@@ -9,6 +10,25 @@ export function getStaticPaths() {
 
 const content = site.en.cv;
 const { Content } = await getPage("en", "cv");
+
+const siteURL = Astro.site ?? Astro.url;
+const cvURL = new URL("/cv/", siteURL).href;
+const personId = new URL("/#person", siteURL).href;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${cvURL}#webpage`,
+      url: cvURL,
+      name: `${site.en.cv.metaTitle} | ${site.en.name}`,
+      inLanguage: "en",
+      about: { "@id": personId },
+      mainEntity: { "@id": personId },
+    },
+    personJsonLd(siteURL),
+  ],
+};
 ---
 
 <BaseLayout
@@ -17,6 +37,12 @@ const { Content } = await getPage("en", "cv");
   lang="en"
   noAlternateLang
   bodyClass="page-cv"
+  ogType="profile"
 >
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(jsonLd)}
+  />
   <Content />
 </BaseLayout>

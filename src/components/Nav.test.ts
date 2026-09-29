@@ -22,8 +22,8 @@ describe("Nav", () => {
     }
     expect(html).toContain("Проєкти (EN)");
     expect(html).toContain("CV (EN)");
-    expect(html).toContain('href="/work"');
-    expect(html).toContain('href="/cv"');
+    expect(html).toContain('href="/work/"');
+    expect(html).toContain('href="/cv/"');
     expect(html).toContain(languageNames.en);
     expect(html).toContain('hreflang="en"');
     expect(html).toContain('href="/blog"');
@@ -32,8 +32,8 @@ describe("Nav", () => {
   it("renders the en nav with unprefixed links and no language switch", async () => {
     const html = await render("/blog");
 
-    expect(html).toContain('href="/work"');
-    expect(html).toContain('href="/cv"');
+    expect(html).toContain('href="/work/"');
+    expect(html).toContain('href="/cv/"');
     expect(html).not.toContain('href="/en');
     for (const { title } of site.en.nav) {
       expect(html).toContain(title);
@@ -57,10 +57,10 @@ describe("Nav", () => {
   it("puts the uk language switch last, after Work and CV", async () => {
     const html = await render("/uk/blog");
 
-    expect(html.indexOf('href="/work"')).toBeLessThan(
-      html.indexOf('href="/cv"'),
+    expect(html.indexOf('href="/work/"')).toBeLessThan(
+      html.indexOf('href="/cv/"'),
     );
-    expect(html.indexOf('href="/cv"')).toBeLessThan(
+    expect(html.indexOf('href="/cv/"')).toBeLessThan(
       html.indexOf('hreflang="en"'),
     );
   });
@@ -69,7 +69,7 @@ describe("Nav", () => {
     const html = await render("/work");
 
     expect(html).toMatch(
-      /href="\/work"[^>]*aria-current="page"|aria-current="page"[^>]*href="\/work"/,
+      /href="\/work\/"[^>]*aria-current="page"|aria-current="page"[^>]*href="\/work\/"/,
     );
     expect(html.match(/aria-current="page"/g)).toHaveLength(1);
   });
@@ -77,7 +77,7 @@ describe("Nav", () => {
   it("does not mark the other nav links current", async () => {
     const html = await render("/work");
 
-    expect(html).not.toMatch(/href="\/cv"[^>]*aria-current/);
+    expect(html).not.toMatch(/href="\/cv\/"[^>]*aria-current/);
   });
 
   it("omits the language switch when hideLanguageSwitch is set", async () => {

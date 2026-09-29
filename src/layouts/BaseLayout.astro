@@ -32,6 +32,9 @@ interface Props {
   // Lets a page scope its own CSS (e.g. the /cv print stylesheet) without
   // the shared, code-split-free bundle leaking those rules everywhere.
   bodyClass?: string;
+  titleSuffix?: boolean;
+  ogType?: "website" | "profile" | "article";
+  publishedTime?: string;
 }
 
 const {
@@ -41,17 +44,28 @@ const {
   noAlternateLang = false,
   noindex = false,
   bodyClass,
+  titleSuffix = true,
+  ogType = "website",
+  publishedTime,
 } = Astro.props;
 const pageLang = isLang(lang) ? lang : defaultLang;
 const siteName = site[pageLang].name;
-const pageTitle = `${siteName} • ${title}`;
+const pageTitle = titleSuffix ? `${title} | ${siteName}` : title;
 
 const alternateLang = getAlternateLang(pageLang);
 const pathWithoutLang = stripLangFromPath(Astro.url.pathname);
+const withTrailingSlash = (path: string) =>
+  path.endsWith("/") ? path : `${path}/`;
 const urlFor = (forLang: Lang) =>
-  new URL(localizedPath(forLang, pathWithoutLang), Astro.site).href;
+  new URL(
+    withTrailingSlash(localizedPath(forLang, pathWithoutLang)),
+    Astro.site,
+  ).href;
 const canonicalURL = urlFor(pageLang);
 const ogImageURL = new URL("/og.jpg", Astro.site).href;
+const homeURL = new URL("/", Astro.site).href;
+const ogImageAlt =
+  "Portrait of Serhii Babich with the text: Serhii Babich, Senior Product Engineer, babich.dev";
 
 const skipLabel = pageLang === "uk" ? "Перейти до вмісту" : "Skip to content";
 
@@ -70,7 +84,19 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <link rel="icon" href="/favicon.webp" type="image/webp" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#eef1eb"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#141a23"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{pageTitle}</title>
     {
       (noindex || isNoindexLang(pageLang)) && (
@@ -99,7 +125,23 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
       )
     }
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    {
+      ogType === "profile" && (
+        <>
+          <meta property="profile:first_name" content="Serhii" />
+          <meta property="profile:last_name" content="Babich" />
+        </>
+      )
+    }
+    {
+      ogType === "article" && publishedTime && (
+        <>
+          <meta property="article:published_time" content={publishedTime} />
+          <meta property="article:author" content={homeURL} />
+        </>
+      )
+    }
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -117,11 +159,13 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

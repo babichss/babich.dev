@@ -38,11 +38,12 @@ const {
   description={description}
   lang={lang}
   noAlternateLang={noAlternateLang}
+  noindex
 >
   <TitleLayout hideLanguageSwitch={noAlternateLang}>
     <div slot="title" class="stack gap-md">
       <h1>{heading}</h1>
-      <a href={localizedPath(lang, "/blog")}>
+      <a href={localizedPath(lang, "/blog/")}>
         <Icon name="arrow-left" />
         {allPostsLabel}
       </a>

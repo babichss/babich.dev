@@ -11,6 +11,7 @@ import {
 } from "src/lib/blog";
 import {
   dateLocales,
+  defaultLang,
   getLangFromPath,
   langParam,
   localizedPath,
@@ -43,6 +44,32 @@ const dateName = post.data.publishDate
     year: "numeric",
   })
   .replace(/^./, (c) => c.toUpperCase());
+
+const siteURL = Astro.site ?? Astro.url;
+const titleSuffix = `${post.data.title} | ${site[lang].name}`.length <= 60;
+const postURL = new URL(
+  localizedPath(lang, `/blog/${post.data.urlSlug}/`),
+  siteURL,
+).href;
+const publishedTime = post.data.publishDate.toISOString();
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": `${postURL}#article`,
+  mainEntityOfPage: postURL,
+  url: postURL,
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: publishedTime,
+  inLanguage: lang,
+  image: new URL("/og.jpg", siteURL).href,
+  author: {
+    "@type": "Person",
+    "@id": new URL("/#person", siteURL).href,
+    name: site.en.name,
+    url: new URL("/", siteURL).href,
+  },
+};
 ---
 
 <BaseLayout
@@ -50,7 +77,17 @@ const dateName = post.data.publishDate
   description={post.data.description}
   lang={lang}
   noAlternateLang={noAlternateLang}
+  titleSuffix={titleSuffix}
+  ogType="article"
+  publishedTime={publishedTime}
 >
+  <Fragment slot="head">
+    {
+      lang === defaultLang && (
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      )
+    }
+  </Fragment>
   <script
     slot="head"
     src="https://cdn.counter.dev/script.js"
@@ -66,7 +103,7 @@ const dateName = post.data.publishDate
         >
         <h1>{post.data.title}</h1>
       </div>
-      <a href={localizedPath(lang, "/blog")}>
+      <a href={localizedPath(lang, "/blog/")}>
         <Icon name="arrow-left" />
         {content.allPosts}
       </a>
