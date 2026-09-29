@@ -154,6 +154,11 @@
     line-height: 28px;
   }
 
+  .item-grid + .item-link {
+    justify-self: start;
+    margin-top: var(--space-3);
+  }
+
   #contact > h2 {
     margin-bottom: var(--space-2);
   }

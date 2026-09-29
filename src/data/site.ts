@@ -73,7 +73,7 @@ export const site = {
     title: "Serhii Babich.",
     navLabel: "Main navigation",
     nav: [
-      { href: "/work/", title: "Work" },
+      { href: "/work/", title: "How I work" },
       { href: "/cv/", title: "CV" },
     ],
     home: {
@@ -83,9 +83,9 @@ export const site = {
       title: "Product engineer for complex data interfaces.",
     },
     work: {
-      metaTitle: "Product Engineering Case Studies",
+      metaTitle: "How I Work: Product Engineering Case Studies",
       metaDescription:
-        "Five case studies: two ML evaluation features and my multi-agent engineering workflow at DataRobot, a schema-mapping editor, and a startup frontend I led.",
+        "How I work, walked through five projects: finding the real scope, making product and technical trade-offs, checking the whole flow, and what I'd change.",
     },
     cv: {
       metaTitle: "CV: Senior Product Engineer",
