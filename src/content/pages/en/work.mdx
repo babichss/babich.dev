@@ -24,7 +24,7 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
   {"ML evaluation, legacy migration, React, production debugging"}
 </p>
 
-A US regional bank wanted to score models against its own test data. That capability lived only in a legacy UI nobody was developing anymore, and it had to move into the new experiment workflow without losing what customers relied on. It was my first case at this scale with direct ownership, and my team's part of it was mine.
+A US regional bank wanted to score models against its own test data. That capability lived only in a legacy UI nobody was developing anymore, and it had to move into the new experiment workflow without losing what customers relied on. It was my first project of that scale, and I owned my team's part of it fully.
 
 The requirements covered supervised training only. I read the legacy system myself to find what they skipped: attachment and eligibility rules, the tables, the charts. The migration covered seven model-insight views plus alignment of prediction explanations. The requirements never mentioned the unsupervised path at all.
 
@@ -88,11 +88,9 @@ The loop was simple. I write a bounded task or spec. A feature-level orchestrato
 
 Research agents earned their keep before any code existed. Given a bug, one traces the full code path and writes a reference doc: files, lines, functions. I read that before I write a bug report or spec, and I check anything backend-adjacent with the domain owner. An agent's account of a system is a lead, not a verdict.
 
-I set a few rules. Framing, architecture, decomposition, review, validation, and acceptance stay with me. Agents get the minimum necessary code, and I simplify each PR through review rounds rather than accept the first version that works. Because research, implementation, and testing ran in parallel, I could keep up to four tracks moving on one feature instead of queuing them.
+I set a few rules. Framing, architecture, decomposition, review, validation, and acceptance stay with me. I keep the code to the minimum necessary and simplify each PR through review rounds rather than accept the first version that works. Because research, implementation, and testing ran in parallel, I could keep up to four tracks at once instead of queuing them. The same loop let me take API changes and integration testing alongside frontend delivery.
 
-Take the validation defect in the custom-metrics work. A research agent followed the optimization-metric save path and found both hard-coded validation points. I confirmed that with the backend lead, gave an implementation agent a bounded fix, and reviewed the result line by line.
-
-It began as default agents helping me study the legacy flow on the test-data migration. The harness came later, built around my habits, and I stay in the loop for every merge.
+Take the validation defect in the custom-metrics work. A research agent followed the optimization-metric save path and found both hard-coded validation points. I confirmed that with the backend lead, gave an implementation agent a bounded fix, and reviewed the result line by line. The harness only ever executes inside a scope I have already set.
 
 **Stack** — Custom orchestration scripts, isolated git worktrees per agent, an LLM coding agent for research and implementation, small review tools I wrote.
 
@@ -138,9 +136,9 @@ Given another pass, I'd do the DSL discovery more fully up front, split its rule
 </p>
 <p class="body-sm text-soft">{"0-to-1, React, Recoil, team leadership"}</p>
 
-SkillReveal began as a few design screens: an interview platform that matched interviewers with candidates for mock interviews and company-outsourced real ones, and later added a job board. Frontend and backend had to be built in parallel, fast, with no direction yet. I joined at inception as lead frontend developer in a six-person team, with a backend engineer, a designer, and two other frontend engineers.
+SkillReveal began as a few design screens: an interview platform that matched interviewers with candidates for mock interviews and company-outsourced real ones, and later added a job board. Frontend and backend had to be built in parallel, fast. I joined at inception as lead frontend developer in a six-person team, with a backend engineer, a designer, and two other frontend engineers.
 
-I set the frontend direction from the first commit. For state I chose Recoil: atomic state, UI cleanly separated from data, derived values composed from atoms. Redux felt like too much boilerplate for an MVP moving that fast. The stack and architecture I picked then held for the life of the product. I also worked through data-shape questions with the backend engineer.
+I set the frontend direction from the first commit. For state I chose Recoil, having had good results with atomic state before. It kept UI cleanly separated from data and let me compose derived values from atoms. Redux felt like too much boilerplate for an MVP moving that fast. The stack and architecture I picked then held for the life of the product. I also worked through data-shape questions with the backend engineer.
 
 With the CEO I decided what to ship, postpone, or cut. He specified views; I brought feasibility, UI judgment, and my view as a practicing interviewer. The MVP took about three months. The pace was intense, sometimes into the night, and I ran several interviews on the platform myself, which showed me the scoring flow as a user.
 
@@ -149,8 +147,6 @@ The assessment page taught me the most. It generates competency sections and sco
 I also customized Material UI into an in-house design system, so recurring patterns became reusable components instead of per-screen styling.
 
 During my time the product reached 20 paying customers and about 4,000 registered users across client teams, interviewers, and candidates, at ~USD 15K MRR.
-
-Today I'd make many of those early choices differently.
 
 **Stack** — React, Recoil, a customized Material UI design system.
 
