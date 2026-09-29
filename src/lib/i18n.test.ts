@@ -5,10 +5,13 @@ import {
   getLangFromPath,
   getLangStaticPaths,
   isLang,
+  isNoindexLang,
   langParam,
   languages,
+  linksToAlternateLang,
   localizedPath,
   stripLangFromPath,
+  ukrainianDetached,
 } from "src/lib/i18n";
 
 describe("isLang", () => {
@@ -102,5 +105,15 @@ describe("getAlternateLang", () => {
   it("swaps between the two configured languages", () => {
     expect(getAlternateLang("uk")).toBe("en");
     expect(getAlternateLang("en")).toBe("uk");
+  });
+});
+
+describe("ukrainianDetached", () => {
+  it("is on, so /uk/ is noindex and English does not link to it", () => {
+    expect(ukrainianDetached).toBe(true);
+    expect(isNoindexLang("uk")).toBe(true);
+    expect(isNoindexLang("en")).toBe(false);
+    expect(linksToAlternateLang("en")).toBe(false);
+    expect(linksToAlternateLang("uk")).toBe(true);
   });
 });

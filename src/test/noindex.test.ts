@@ -67,7 +67,11 @@ describe("noindex on the service pages", () => {
     expect(await render(YouTubePage, "/uk/youtube")).toContain(NOINDEX);
   });
 
-  it("home does not carry noindex", async () => {
+  it("uk home carries noindex", async () => {
+    expect(await render(HomePage, "/uk")).toContain(NOINDEX);
+  });
+
+  it("en home does not carry noindex", async () => {
     expect(await render(HomePage, "/")).not.toContain(NOINDEX);
   });
 });

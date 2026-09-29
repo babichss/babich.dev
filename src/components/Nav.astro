@@ -4,6 +4,7 @@ import { site } from "src/data/site";
 import {
   getAlternateLang,
   getLangFromPath,
+  linksToAlternateLang,
   localizedPath,
   stripLangFromPath,
 } from "src/lib/i18n";
@@ -20,7 +21,7 @@ const content = site[lang];
 const nav = content.nav;
 const pathWithoutLang = stripLangFromPath(currentPath);
 const alternateLang = getAlternateLang(lang);
-const showLanguageSwitch = !hideLanguageSwitch;
+const showLanguageSwitch = !hideLanguageSwitch && linksToAlternateLang(lang);
 
 // A cross-language item (the UK nav's Work/CV) is `unprefixed` and compares
 // against its raw href; the rest resolve through the current language.

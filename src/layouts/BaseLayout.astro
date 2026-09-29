@@ -11,8 +11,11 @@ import {
   defaultLang,
   getAlternateLang,
   isLang,
+  isNoindexLang,
+  linksToAlternateLang,
   localizedPath,
   stripLangFromPath,
+  ukrainianDetached,
   type Lang,
 } from "src/lib/i18n";
 
@@ -67,24 +70,32 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
     />
     <link rel="icon" href="/favicon.webp" type="image/webp" />
     <title>{pageTitle}</title>
-    {noindex && <meta name="robots" content="noindex" />}
-
-    <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" hreflang={pageLang} href={canonicalURL} />
     {
-      !noAlternateLang && (
-        <link
-          rel="alternate"
-          hreflang={alternateLang}
-          href={urlFor(alternateLang)}
-        />
+      (noindex || isNoindexLang(pageLang)) && (
+        <meta name="robots" content="noindex" />
       )
     }
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href={noAlternateLang ? canonicalURL : urlFor(defaultLang)}
-    />
+
+    <link rel="canonical" href={canonicalURL} />
+    {
+      !ukrainianDetached && (
+        <>
+          <link rel="alternate" hreflang={pageLang} href={canonicalURL} />
+          {!noAlternateLang && (
+            <link
+              rel="alternate"
+              hreflang={alternateLang}
+              href={urlFor(alternateLang)}
+            />
+          )}
+          <link
+            rel="alternate"
+            hreflang="x-default"
+            href={noAlternateLang ? canonicalURL : urlFor(defaultLang)}
+          />
+        </>
+      )
+    }
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
@@ -93,7 +104,7 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content={ogLocales[pageLang]} />
     {
-      !noAlternateLang && (
+      !noAlternateLang && linksToAlternateLang(pageLang) && (
         <meta
           property="og:locale:alternate"
           content={ogLocales[alternateLang]}

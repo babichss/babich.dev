@@ -56,3 +56,16 @@ export const stripLangFromPath = (pathname: string) => {
 
 export const getAlternateLang = (lang: Lang): Lang =>
   lang === defaultLang ? "uk" : defaultLang;
+
+// Master switch for detaching the Ukrainian side, reversibly. While true:
+// /uk/ pages are noindex, English pages neither link to /uk/ nor emit
+// hreflang/og:locale:alternate, and /uk/ pages keep their link back to
+// English. Set to false to restore the bilingual behaviour.
+export const ukrainianDetached = true;
+
+// Whether a page in `lang` may link to its other-language twin.
+export const linksToAlternateLang = (lang: Lang) =>
+  !ukrainianDetached || lang !== defaultLang;
+
+export const isNoindexLang = (lang: Lang) =>
+  ukrainianDetached && lang !== defaultLang;

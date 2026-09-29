@@ -29,7 +29,7 @@ describe("Nav", () => {
     expect(html).toContain('href="/blog"');
   });
 
-  it("renders the en nav with unprefixed links and the language switch to uk", async () => {
+  it("renders the en nav with unprefixed links and no language switch", async () => {
     const html = await render("/blog");
 
     expect(html).toContain('href="/work"');
@@ -39,9 +39,9 @@ describe("Nav", () => {
       expect(html).toContain(title);
     }
     expect(html).not.toContain("Blog");
-    expect(html).toContain('href="/uk/blog"');
-    expect(html).toContain('hreflang="uk"');
-    expect(html).toContain(languageNames.uk);
+    expect(html).not.toContain("/uk");
+    expect(html).not.toContain("hreflang");
+    expect(html).not.toContain(languageNames.uk);
   });
 
   it("shows the site name as the home link, with no tagline and no menu button", async () => {
@@ -54,14 +54,14 @@ describe("Nav", () => {
     expect(html).not.toContain("open to remote roles");
   });
 
-  it("puts the language switch last, after Work and CV", async () => {
-    const html = await render("/blog");
+  it("puts the uk language switch last, after Work and CV", async () => {
+    const html = await render("/uk/blog");
 
     expect(html.indexOf('href="/work"')).toBeLessThan(
       html.indexOf('href="/cv"'),
     );
     expect(html.indexOf('href="/cv"')).toBeLessThan(
-      html.indexOf('hreflang="uk"'),
+      html.indexOf('hreflang="en"'),
     );
   });
 
@@ -81,7 +81,7 @@ describe("Nav", () => {
   });
 
   it("omits the language switch when hideLanguageSwitch is set", async () => {
-    const html = await render("/blog", { hideLanguageSwitch: true });
+    const html = await render("/uk/blog", { hideLanguageSwitch: true });
 
     expect(html).not.toContain("language-switch");
   });
