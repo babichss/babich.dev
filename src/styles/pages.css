@@ -111,7 +111,7 @@
     }
   }
 
-  /* Home: Working principles, Selected work, Contact */
+  /* Home: Working principles, Case studies, Contact */
   .item-grid {
     display: flex;
     flex-direction: column;
@@ -396,7 +396,7 @@
       margin-top: var(--space-2);
     }
 
-    /* Home: Working principles, Selected work, Contact */
+    /* Home: Working principles, Case studies, Contact */
     .item-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
