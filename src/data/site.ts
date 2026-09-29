@@ -26,7 +26,7 @@ export const site = {
     interviews: {
       metaTitle: "Співбесіди для компаній і розробників",
       metaDescription:
-        "Технічні співбесіди для компаній і індивідуальний формат для розробників.",
+        "Технічні співбесіди для компаній та індивідуальний формат для розробників.",
     },
     personalInterview: {
       metaTitle: "Індивідуальні технічні співбесіди",
@@ -40,7 +40,7 @@ export const site = {
     },
     youtube: {
       metaTitle: "YouTube",
-      metaDescription: "Формати співпраці для YouTube-каналу Сергія Бабіча",
+      metaDescription: "Формати співпраці з YouTube-каналом Сергія Бабіча.",
     },
     blog: {
       metaTitle: "Блоґ",
@@ -51,22 +51,22 @@ export const site = {
         "Тут я пишу про веброзробку, співбесіди, команди, технічні рішення й усе, чим хочеться поділитися, поки думка не загубилася.",
       thanks: "Дякую, що завітали. Приємного читання.",
       allPosts: "Усі дописи",
-      empty: "Поки що немає опублікованих постів.",
+      empty: "Поки що немає опублікованих дописів.",
       yearTitle: (year: number) => `Блоґ ${year}`,
-      yearDescription: (year: number) => `Всі пости блоґу за ${year} рік`,
+      yearDescription: (year: number) => `Усі дописи блоґу за ${year} рік`,
       yearHeading: (year: number) => `Усі дописи за ${year} рік`,
       yearEmpty: (year: number) =>
-        `Поки що немає опублікованих постів за ${year} рік.`,
+        `Поки що немає опублікованих дописів за ${year} рік.`,
       monthTitle: (monthName: string, year: number) =>
         `Блоґ ${monthName} ${year}`,
       monthDescription: (monthName: string, year: number) =>
-        `Всі пости блоґу за ${monthName} ${year}`,
+        `Усі дописи блоґу за ${monthName} ${year}`,
       monthHeading: (monthName: string, year: number) =>
         `Усі дописи за ${monthName} ${year} року`,
       monthEmpty: (monthName: string, year: number) =>
-        `Поки що немає опублікованих постів за ${monthName} ${year}.`,
+        `Поки що немає опублікованих дописів за ${monthName} ${year}.`,
       dayTitle: (dateName: string) => `Блоґ | ${dateName}`,
-      dayDescription: (dateName: string) => `Всі пости блоґу за ${dateName}`,
+      dayDescription: (dateName: string) => `Усі дописи блоґу за ${dateName}`,
       dayHeading: (dateName: string) => `Усі дописи за ${dateName}`,
     },
   },
@@ -97,19 +97,19 @@ export const site = {
         "CV of Serhii Babich, Senior Product Engineer: 15+ years in frontend, most recently at DataRobot. Open to remote Senior / Staff roles.",
     },
     interviews: {
-      metaTitle: "Interviews",
+      metaTitle: "Technical interviews",
       metaDescription:
         "Independent technical interviews for hiring teams, frontend from Trainee to Tech Lead.",
     },
     proposal: {
-      metaTitle: "Interviewing for Hiring Teams",
+      metaTitle: "Interviewing for hiring teams",
       metaDescription:
         "Technical interviews for hiring teams: an interview plan, the interviews themselves, and an independent technical assessment.",
     },
     youtube: {
       metaTitle: "Partner with my YouTube channel",
       metaDescription:
-        "Partnership formats for Serhii Babich's YouTube channel.",
+        "Partnership formats for Serhii Babich's Ukrainian YouTube channel about web development.",
     },
     blog: {
       metaTitle: "Blog",
