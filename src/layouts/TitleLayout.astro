@@ -3,37 +3,45 @@ import Nav from "src/components/Nav.astro";
 
 interface Props {
   hideLanguageSwitch?: boolean;
+  // The gap under the title block: the 64px title gap by default, or the
+  // full section gap when the title block is followed by a section directly.
+  titleGap?: "title" | "section";
 }
 
-const { hideLanguageSwitch = false } = Astro.props;
+const { hideLanguageSwitch = false, titleGap = "title" } = Astro.props;
 ---
 
 <Nav hideLanguageSwitch={hideLanguageSwitch} />
 
-<main class="page-container page-content rule-stack">
-  <header class="title stack gap-md">
+<main class="page-container page-main">
+  <header class="page-title" data-gap={titleGap}>
     <slot name="title" />
   </header>
 
-  <div class="content rule-stack">
+  <div class="page-content">
     <slot name="content" />
   </div>
 </main>
 
 <style>
-  @layer styles {
+  @layer layout {
+    .page-main {
+      padding-block: var(--header-gap) var(--section-gap);
+    }
+
+    .page-title {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--title-gap);
+    }
+
+    .page-title[data-gap="section"] {
+      margin-bottom: var(--section-gap);
+    }
+
     .page-content {
-      --rule-inset: 0 max(0px, calc(100% - var(--measure-copy)));
-    }
-
-    .title,
-    .content {
-      width: min(100%, var(--measure-copy));
-    }
-
-    .content > :global(section),
-    .content > :global(article) {
-      width: 100%;
+      min-width: 0;
     }
   }
 </style>

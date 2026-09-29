@@ -16,9 +16,6 @@ interface Props {
   showLanguageSwitch: boolean;
   alternateLang: Lang;
   pathWithoutLang: string;
-  // The masthead-nav divider before the language switch; the mobile popover
-  // has no divider of its own.
-  withDivider?: boolean;
 }
 
 const {
@@ -28,13 +25,13 @@ const {
   showLanguageSwitch,
   alternateLang,
   pathWithoutLang,
-  withDivider = false,
 } = Astro.props;
 ---
 
 {
   nav.map((item) => (
     <a
+      class="link-plain"
       href={item.unprefixed ? item.href : localizedPath(lang, item.href)}
       aria-current={isCurrent(item) ? "page" : undefined}
     >
@@ -44,16 +41,13 @@ const {
 }
 {
   showLanguageSwitch && (
-    <>
-      {withDivider && <span class="nav-divider" aria-hidden="true" />}
-      <a
-        class="language-switch"
-        href={localizedPath(alternateLang, pathWithoutLang)}
-        hreflang={alternateLang}
-        lang={alternateLang}
-      >
-        {languageNames[alternateLang]}
-      </a>
-    </>
+    <a
+      class="link-plain language-switch"
+      href={localizedPath(alternateLang, pathWithoutLang)}
+      hreflang={alternateLang}
+      lang={alternateLang}
+    >
+      {languageNames[alternateLang]}
+    </a>
   )
 }

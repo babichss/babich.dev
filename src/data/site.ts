@@ -10,9 +10,7 @@ export const site = {
   uk: {
     name: "Сергій Бабіч",
     title: "Сергій Бабіч.",
-    tagline: "Senior Product Engineer · відкритий до віддаленої роботи",
     navLabel: "Головна навігація",
-    menuLabel: "Відкрити меню",
     nav: [
       { href: "/work", title: "Проєкти (EN)", unprefixed: true },
       { href: "/cv", title: "CV (EN)", unprefixed: true },
@@ -73,9 +71,7 @@ export const site = {
   en: {
     name: "Serhii Babich",
     title: "Serhii Babich.",
-    tagline: "Senior Product Engineer · open to remote roles",
     navLabel: "Main navigation",
-    menuLabel: "Open menu",
     nav: [
       { href: "/work", title: "Work" },
       { href: "/cv", title: "CV" },

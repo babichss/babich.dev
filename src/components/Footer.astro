@@ -7,44 +7,62 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="page-container site-footer">
-  <hr />
-  <div class="footer-content">
-    <span class="body-sm text-soft">© {year} {site[lang].name}</span>
+  <div class="footer-content micro">
+    <span class="text-soft">© {year} {site[lang].name}</span>
     <div class="footer-links">
-      <a href="mailto:serhii@babich.dev">serhii@babich.dev</a>
-      <a href="https://www.linkedin.com/in/babichss">LinkedIn</a>
-      <a href="https://youtube.com/@babichweb">YouTube</a>
+      <a class="link-plain" href="mailto:serhii@babich.dev">serhii@babich.dev</a
+      >
+      <a class="link-plain" href="https://www.linkedin.com/in/babichss"
+        >LinkedIn</a
+      >
+      <a class="link-plain" href="https://youtube.com/@babichweb">YouTube</a>
     </div>
   </div>
 </footer>
 
 <style>
   @layer components {
-    .site-footer {
-      > hr {
-        margin: 0;
-        border: 0;
-        background: var(--border-primary);
-        height: 1px;
-      }
-    }
-
     .footer-content {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: var(--spacing-md) var(--spacing-xl);
-      padding-block: calc(var(--section-space) / 2);
+      flex-direction: column-reverse;
+      gap: 4px;
+      border-top: 1px solid var(--rule-subtle);
+      padding-block: var(--space-2) var(--space-3);
+      line-height: 20px;
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--spacing-md) var(--spacing-lg);
+      gap: 0 20px;
     }
 
-    .footer-content a {
-      text-decoration: none;
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--tap-target);
+      color: var(--text-2);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media (min-width: 1024px) {
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-block: var(--space-3) var(--space-4);
+      }
+
+      .footer-links {
+        gap: var(--space-3);
+      }
+
+      .footer-links a {
+        min-height: 0;
+      }
     }
   }
 </style>

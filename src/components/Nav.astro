@@ -1,5 +1,4 @@
 ---
-import Icon from "src/components/Icon.astro";
 import NavLinks from "src/components/NavLinks.astro";
 import { site } from "src/data/site";
 import {
@@ -42,205 +41,101 @@ const isCurrent = ({
     currentPath === resolvedHref || currentPath.startsWith(`${resolvedHref}/`)
   );
 };
-
-const navLinksProps = {
-  nav,
-  lang,
-  isCurrent,
-  showLanguageSwitch,
-  alternateLang,
-  pathWithoutLang,
-};
 ---
 
 <header class="site-header">
-  <div class="mobile-masthead">
-    <div class="mobile-title">
-      <button
-        class="menu-button"
-        type="button"
-        aria-label={content.menuLabel}
-        popovertarget="menu-mobile"
-        popovertargetaction="toggle"
-      >
-        <Icon name="menu" />
-      </button>
-      <a href={localizedPath(lang, "/")} class="site-title body-lg">
-        {content.title}
-      </a>
-    </div>
-
-    <nav id="menu-mobile" aria-label={content.navLabel} popover="auto">
-      <NavLinks {...navLinksProps} />
-    </nav>
-  </div>
-
-  <div class="masthead">
-    <div class="masthead-brand">
-      <a href={localizedPath(lang, "/")} class="site-title body-lg">
-        {content.title}
-      </a>
-      <p class="text-secondary">{content.tagline}</p>
-    </div>
-
-    <nav aria-label={content.navLabel} class="masthead-nav">
-      <NavLinks {...navLinksProps} withDivider />
+  <div class="page-container header-inner">
+    <a href={localizedPath(lang, "/")} class="link-plain site-title">
+      {content.title}
+    </a>
+    <nav aria-label={content.navLabel}>
+      <NavLinks
+        nav={nav}
+        lang={lang}
+        isCurrent={isCurrent}
+        showLanguageSwitch={showLanguageSwitch}
+        alternateLang={alternateLang}
+        pathWithoutLang={pathWithoutLang}
+      />
     </nav>
   </div>
 </header>
 
 <style>
   @layer components {
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .mobile-masthead {
-      display: none;
-    }
-
-    .masthead {
+    .header-inner {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: var(--spacing-xl);
-      margin-inline: auto;
-      border-bottom: 1px solid var(--border-primary);
-      background-color: var(--surface-primary);
-      padding-block: var(--spacing-md);
-      width: var(--page-width);
-    }
-
-    .masthead-brand {
-      min-width: 0;
+      gap: 0 12px;
+      border-bottom: 1px solid var(--rule-subtle);
+      padding-block: var(--space-1);
+      font-size: 15px;
+      line-height: 24px;
     }
 
     .site-title {
-      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--tap-target);
       font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
     }
 
-    .masthead-brand p {
-      margin-top: var(--spacing-xs);
-      margin-bottom: 0;
-      font-size: var(--body-sm);
-      white-space: nowrap;
-    }
-
-    .masthead-nav {
+    nav {
       display: flex;
       align-items: center;
-      gap: var(--spacing-lg);
-      white-space: nowrap;
+      gap: 4px;
     }
 
-    /* :global() — these links and the language switch render inside
-       NavLinks, a separate component the scoped-style compiler doesn't
-       attribute-tag; the container classes stay locally scoped. */
-    .masthead-nav :global(a) {
-      color: var(--text-primary);
-      text-decoration: none;
+    /* :global() — the links render inside NavLinks, a separate component the
+       scoped-style compiler doesn't attribute-tag. */
+    nav :global(a) {
+      display: flex;
+      align-items: center;
+      padding-inline: var(--space-1);
+      min-height: var(--tap-target);
     }
 
-    .masthead-nav :global(a[aria-current="page"]) {
-      color: var(--accent-primary);
+    nav :global(a:last-child) {
+      padding-inline-end: 0;
+    }
+
+    nav :global(a[aria-current="page"]) {
+      color: var(--text-strong);
       text-decoration: underline;
       text-decoration-color: currentColor;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 0.35em;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 6px;
     }
 
-    :global(.nav-divider) {
-      flex: none;
-      background: var(--border-primary);
-      width: 1px;
-      height: 1em;
+    nav :global(.language-switch) {
+      color: var(--text-3);
     }
 
-    .masthead-nav :global(.language-switch) {
-      color: var(--text-secondary);
+    nav :global(a:hover) {
+      color: var(--accent);
     }
 
-    @media (max-width: 960px) {
-      .mobile-masthead {
-        display: block;
-        border-bottom: 1px solid var(--border-primary);
-        background-color: var(--surface-primary);
+    @media (min-width: 1024px) {
+      .header-inner {
+        align-items: baseline;
+        padding-block: var(--space-4) var(--space-3);
+        font-size: 16px;
       }
 
-      .mobile-title {
-        display: flex;
-        align-items: center;
-        gap: 0;
-        margin-inline: auto;
-        width: var(--page-width);
-        height: 60px;
+      .site-title {
+        min-height: 0;
       }
 
-      .menu-button {
-        display: inline-grid;
-        place-items: center;
-        /* Shifts the 44px tap target left by its own icon-centering inset,
-           so the icon (not the button box) lands on the content edge. */
-        margin-inline-start: calc((var(--spacing-md) - 44px) / 2);
-        border: 0;
-        background: transparent;
-        padding: 0;
-        width: 44px;
-        height: 44px;
-        color: var(--text-primary);
+      nav {
+        gap: var(--space-3);
       }
 
-      #menu-mobile {
-        position: fixed;
-        margin: 0;
-        /* Below the mobile masthead's own 1px bottom border, not on top of it. */
-        inset: calc(60px + 1px) 0 auto;
-        border: 0;
-        border-bottom: 1px solid var(--border-primary);
-        background-color: var(--surface-primary);
-        padding: var(--spacing-sm) calc((100% - var(--page-width)) / 2)
-          var(--spacing-md);
-        width: 100%;
-        max-width: none;
-        color: var(--text-primary);
-
-        &::backdrop {
-          background-color: color-mix(
-            in hsl,
-            var(--text-primary) 18%,
-            transparent
-          );
-        }
-      }
-
-      #menu-mobile :global(a) {
-        display: flex;
-        align-items: center;
-        min-height: 44px;
-        color: var(--text-primary);
-        text-decoration: none;
-      }
-
-      #menu-mobile :global(a[aria-current="page"]) {
-        color: var(--accent-primary);
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 0.35em;
-      }
-
-      #menu-mobile :global(.language-switch) {
-        margin-top: var(--spacing-sm);
-        border-top: 1px solid var(--border-primary);
-        color: var(--text-secondary);
-      }
-
-      .masthead {
-        display: none;
+      nav :global(a) {
+        display: inline;
+        padding-inline: 0;
+        min-height: 0;
       }
     }
   }
