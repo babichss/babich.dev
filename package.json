@@ -8,6 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --check .",
+    "lint": "prettier --check .",
     "typecheck": "astro check",
     "test": "vitest run"
   },
