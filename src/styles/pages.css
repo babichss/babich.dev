@@ -165,7 +165,8 @@
     line-height: 28px;
   }
 
-  .item-grid + .item-link {
+  .item-grid + .item-link,
+  .item-list + .item-link {
     justify-self: start;
     margin-top: var(--space-3);
   }
