@@ -23,11 +23,21 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 
 ## Summary
 
-Senior product engineer with 15+ years of frontend experience, focused on complex data interfaces, most recently for an ML product. I turn ambiguous requirements and legacy constraints into shipped product flows — discovery, architecture, implementation, release, and production debugging — and take on the backend and cross-stack work a feature needs, using AI assistance while keeping ownership of design, review, and verification myself.
+Product engineer with 15+ years of experience building data-heavy applications, complex interactive tools, and performance-sensitive web interfaces. Turns ambiguous product problems into shipped solutions through domain research, technical discovery, scope definition, product and technical trade-offs, implementation, release, and production debugging. Deep frontend expertise with ownership extending across product workflows, APIs, testing, and delivery.
 
-Most recently at DataRobot, I worked on evaluation and legacy-platform migration for an ML product: shipped a customer-facing test-set evaluation feature, redesigned the upload validation flow for customer-defined evaluation metrics, and built a personal agentic workflow that let me run research, implementation, and testing in parallel across up to four workstreams. Earlier, I joined SkillReveal at inception as its frontend lead through its first paying customers, and contributed frontend delivery on real-time trading, visual editors, and analytics-dashboard products.
+</section>
 
-Looking for a Senior or Full-stack Product Engineer role, remote, at a product company building complex data or ML-driven interfaces.
+<section>
+
+## Skills
+
+**Product engineering:** Domain and technical discovery, problem framing, requirements and scope definition, workflow and solution design, feature ownership, technical trade-offs, stakeholder and UX collaboration, iterative delivery, release and production support, legacy modernization.
+
+**AI-assisted engineering:** Agentic workflows, AI-assisted codebase research, task decomposition, implementation and testing, human-in-the-loop review, validation, and acceptance.
+
+**Engineering:** JavaScript, TypeScript, React, Redux, TanStack Query, HTML, CSS, browser APIs, component architecture, frontend performance, data visualization, real-time interfaces, micro-frontends; production experience with Angular, RxJS, and NgRx.
+
+**Backend, platform & quality:** REST API integration and extension, including AI-assisted work in Python and Node.js services; SSR/SSG; Jest, integration testing, Cypress, CI/CD, and production debugging. Working familiarity with Next.js, Express, Astro, and Vue.
 
 </section>
 
@@ -41,13 +51,13 @@ Looking for a Senior or Full-stack Product Engineer role, remote, at a product c
 
 <p class="text-secondary">Jul 2024 – Sep 2026</p>
 
-Contributed across DataRobot's legacy-platform migration, model tuning, and customer-configurable evaluation work, partnering with Product and UX on scope and design while owning implementation, integration, testing, release, and production support.
+Delivered customer-facing workflows and production fixes across legacy-platform migration, customer-configurable evaluation, and model tuning. Worked directly with Product, UX, and backend engineers, with scope varying by initiative from requirements and technical design to hands-on implementation, testing, release, and production investigation.
 
-- Led my team's part of migrating customer test-data evaluation into the new UI, shipping the supervised workflow in five months and using legacy-workflow research to consolidate dataset attachment into a single experiment-level entry point. Production use was confirmed across banking, chemicals, and manufacturing within two months of GA.
-- Built a personal agentic engineering workflow: bounded specs handed to agents working in isolated worktrees for research, implementation, and testing, with full human review before merge. Sustained up to four parallel workstreams across UI, API, and testing while keeping ownership of framing, architecture, and acceptance.
-- Redesigned customer-defined metric package validation after identifying that users received feedback too late in the upload flow. Proposed progressive per-file validation, removing an extra validation step and changing the backend upload contract.
-- Delivered the UI changes for Bayesian hyperparameter search — a fast, business-critical frontend integration coordinated closely with backend — tied to two large, late-stage opportunities and customer RFPs.
-- Took ownership of the customer-defined evaluation metrics workflow — from metric registration through experiment configuration and optimization — for a capability tied to significant at-risk revenue and a renewal blocker; the UI was complete behind a feature flag, and the feature had not been released when my role ended.
+- Enabled customers to evaluate supervised models against their own test data without returning to the legacy product by bringing the workflow into the new UI over five months. Owned domain and legacy-flow research, requirements, frontend technical design and implementation, delivery sequencing, and testing through release. Consolidated multiple proposed upload points into one experiment-level entry point and staged delivery across five incremental releases; customers used the workflow in production.
+- Delivered the missing user-facing workflow for an existing model-tuning strategy required by a customer migrating from an end-of-life on-prem deployment. Implemented strategy selection and conditional settings, and validated request handling with backend engineers. The same gap affected two large late-stage opportunities, additional late-stage prospects, and customer RFPs.
+- Owned the product integration of an existing API-only capability for customer-defined model-evaluation metrics, a workstream tied to significant at-risk revenue and a separate renewal blocker. Defined requirements and delivery scope, built the React workflows, implemented the necessary Python endpoint and payload changes, and added integration tests at the validation seams. The UI was complete behind a feature flag when my role ended.
+- Challenged a proposed two-file upload flow during Product and UX review because users received no validation feedback until both files were uploaded and they clicked Validate. Designed a progressive alternative that validated each file on upload and then cross-validated the pair; the adopted design removed the extra action and changed the Python API contract to accept files separately.
+- Built and adopted a personal AI-assisted engineering workflow used throughout feature research, implementation, API work, testing, and maintenance. Delegated bounded tasks to specialized agents in isolated worktrees to keep up to four concurrent tracks moving while retaining responsibility for problem framing, architecture, code review, validation, and acceptance. For example, I used the workflow to trace why a customer-defined metric could be registered but not used for model optimization to two backend validation paths that assumed built-in metrics; confirmed the root cause with the backend lead and implemented the fix. The backend fix merged; the small UI change was still in review when my role ended.
 
 [Case study →](/work#test-set-evaluation)
 
@@ -61,11 +71,10 @@ Contributed across DataRobot's legacy-platform migration, model tuning, and cust
   Official title: Frontend Solution Architect · Jun 2023 – Jul 2024
 </p>
 
-Owned technical coordination across a 5–6 engineer team on a large logistics platform built with distributed micro-frontends, resolving cross-team dependencies and integration issues across frontend and backend systems.
+Combined technical coordination with hands-on frontend engineering within a 5–6 engineer team building a logistics platform with distributed micro-frontends. Clarified incomplete requirements and traced undocumented dependencies with frontend leads, backend engineers, and adjacent teams.
 
-- Introduced a discovery and scoping practice after identifying that incomplete upfront context was driving rework and missed estimates. Prepared discovery documentation and implementation-ready epics and stories with explicit scope, dependencies, and sequencing, aimed at reducing bugs and rework.
-- Took a schema-mapping feature from discovery through implementation, reconstructing an under-documented mapping DSL encoded in CSV files, its syntax, and supported transformations. Designed and built a visual editor for common mapping scenarios, using a normalized in-memory data model, transformation layers, and virtualization to keep large nested schemas responsive.
-- Reverse-engineered a tightly coupled inherited micro-frontend ahead of a rewrite, documenting its behavior and dependencies to turn legacy implementation details into actionable scope.
+- Introduced and piloted upfront technical discovery and scoping after incomplete context caused rework and missed estimates. Documented requirements, mapped dependencies, and sequenced work into independently testable increments before grooming; for a tightly coupled, undocumented micro-frontend, reverse-engineered its behavior and dependencies into implementation-ready rewrite scope. This gave engineers explicit scope to review before estimation and exposed cross-team dependencies before implementation.
+- Replaced manual CSV authoring for common mappings between customer database schemas and an internal model with an interactive editor. Reconstructed the supported DSL syntax and transformations, then designed and implemented a normalized in-memory model, bidirectional transformation layer, and virtualized tree rendering, enabling users to build those mappings visually while keeping scrolling and expansion responsive across schemas of approximately 1,000–2,000 nodes.
 
 [Case study →](/work#schema-mapping-editor)
 
@@ -77,12 +86,11 @@ Owned technical coordination across a 5–6 engineer team on a large logistics p
 
 <p class="text-secondary">May 2021 – Apr 2023</p>
 
-SkillReveal was an early-stage interview and assessment product. Joined at inception as the frontend lead within a six-person product team, working directly with the CEO on product scope, architecture, and technical trade-offs. Helped bring the product to MVP in three months; during my tenure, it reached 20 paying customers, ~4,000 registered users across client teams, interviewers, and candidates, and ~USD 15K MRR.
+Joined SkillReveal at inception as frontend lead in a six-person team building an interview and assessment product from a few initial design screens. Worked directly with the CEO on prioritization, feasibility, and usability, helping deliver the MVP in three months. During my tenure, the product reached 20 paying customers, ~4,000 registered users across client teams, interviewers, and candidates, and ~USD 15K MRR.
 
-- Owned frontend technical direction from the first commit, selecting the stack, libraries, and architecture to support fast iteration, implementation simplicity, and maintainability as the product evolved.
-- Worked directly with the CEO on product scope and prioritization, contributing UI decisions and feedback from practicing technical interviews.
-- Refactored the assessment experience after tracing sluggish interactions to an overly coupled state model. Redesigned state and update flows to isolate scoring, comments, and derived results, reducing unnecessary recomputation and improving responsiveness across desktop and mobile.
-- Built an in-house design system on top of Material UI, standardizing recurring UI patterns into reusable components adopted across the product.
+- Designed the frontend architecture for rapid product iteration around a Recoil-based atomic state model that separated UI from data and composed derived state with limited framework overhead. Established the approach from the first commit; its core stack and architecture remained in place throughout product development.
+- Refactored the assessment page's coupled state model after tracing sluggish score updates to page-wide rerenders. Restructured state and update flows so scoring, comments, and derived results triggered only dependent work, then released the change to production. Users said it felt faster, especially on mobile.
+- Built a shared product component library on Material UI as the product expanded from its initial screens, translating its visual design and recurring UI patterns into reusable components used throughout the product.
 
 [Case study →](/work#skillreveal)
 
@@ -94,16 +102,12 @@ SkillReveal was an early-stage interview and assessment product. Joined at incep
 
 <p class="text-secondary">Jonny Git · N-iX · Lohika · GlobalLogic · Viseven</p>
 
-Progressed from Web Developer to Senior and Lead Frontend Engineer across five companies, including about a year as lead frontend at Jonny Git, a developer-analytics startup built from scratch alongside one other engineer.
+Progressed from Web Developer to Senior and Lead Frontend Engineer, building frontend products across real-time trading, analytics, configurable workflows, desktop communication, and constrained media devices.
 
-- **Trading** — Web feasibility prototype reproducing a .NET trading application, later the production UI built with the full team (Angular, NgRx).
-- **Questionnaire builder** — Configurable visual builder built from scratch, generating a JSON config consumed by an end-user UI (Angular, NgRx).
-- **Video-processing editor** — React/Redux visual editor with real-time SVG manipulation.
-- **Analytics dashboard** — UI components for a highly configurable real-time analytics dashboard, with D3/SVG visualizations and manual list virtualization for large lists.
-- **Desktop app built with web technologies** — Migrated a Chrome-extension messaging app to a Node-WebKit desktop app, covering chat, voice/video calls, file sharing, and a multi-window UI.
-- **Embedded media apps** — HTML5 applications for media-player devices on a customized Opera runtime, under tight memory and JavaScript-performance constraints.
-- **Pharma e-detailing** — Interactive e-detailing presentations for pharma sales reps and healthcare professionals, plus a lightweight in-house CSS framework for chart markup, layout, and animation.
-- **Jonny Git** — Greenfield Git-analytics product started from scratch with one other engineer, with a frontend-performance focus.
+- **Real-time and data-heavy interfaces** — Built a browser feasibility prototype for migrating a .NET trading application, then joined the full team developing its production UI, where responsiveness was critical. For a separate real-time analytics dashboard, built D3/SVG visualizations and implemented manual virtualization to keep large lists responsive.
+- **Configurable workflows and visual builders** — Built a questionnaire builder from scratch, designing both the editing UI and data-processing flow. Users assembled questionnaires from reusable components, and the builder generated JSON configurations consumed by the end-user interface.
+- **Desktop applications with web technologies** — Migrated a Chrome-extension messaging application to a Node-WebKit desktop product supporting multi-window UI, chat, voice/video calls, file transfer, and location sharing.
+- **Specialized browser environments and UI tooling** — Built HTML5 applications and an internal compatibility test for resource-constrained media-player devices running a customized Opera browser. Also built interactive e-detailing applications for pharmaceutical sales representatives using a custom JavaScript engine, and created a lightweight CSS framework for animated charts and data visualizations.
 
 </article>
 
@@ -116,22 +120,6 @@ Progressed from Web Developer to Senior and Lead Frontend Engineer across five c
 - Technical interviewer for 10+ years, across frontend levels from Trainee to Tech Lead.
 - [YouTube channel](https://youtube.com/@babichweb) with 50+ public technical interviews, plus live events and podcasts in Lviv.
 - [Blog](/blog) on web-platform topics.
-
-</section>
-
-<section>
-
-## Skills
-
-**Product engineering:** Technical discovery, requirements and scope definition, workflow and solution design, feature ownership, stakeholder and UX collaboration, legacy modernization.
-
-**Frontend systems:** JavaScript, TypeScript, HTML, CSS, browser APIs, component architecture, performance, data visualization, real-time interfaces, micro-frontends.
-
-**Frontend stack:** React, Redux, TanStack Query; production experience with Angular, RxJS, and NgRx; working familiarity with Next.js, Express, Astro, and Vue.
-
-**Server-side & APIs:** REST APIs, SSR/SSG, AI-assisted development of Python and Node.js services.
-
-**Quality:** Jest, integration testing, Cypress, CI/CD, production debugging.
 
 </section>
 
