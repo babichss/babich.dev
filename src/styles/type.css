@@ -1,135 +1,130 @@
 @layer type {
-  :root {
-    --font-family: "Google Sans", sans-serif;
-    --font-family-mono: "JetBrains Mono", monospace;
-    --font-optical-sizing: auto;
-    --font-weight: 400;
-    --font-style: normal;
-    --font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0, "ROND" 0;
-    --font-size: var(--body-md);
-    --line-height: var(--line-height-body);
-  }
-
   html {
-    font-style: var(--font-style);
-    font-weight: var(--font-weight);
-    font-size: var(--font-size);
     font-family: var(--font-family);
-    font-optical-sizing: var(--font-optical-sizing);
-    font-variation-settings: var(--font-variation-settings);
+    font-optical-sizing: auto;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    color: var(--text);
+    font-weight: 400;
+    font-size: var(--body-size);
+    line-height: var(--body-line);
+  }
+
+  :is(h1, h2, h3, h4, p) {
     text-wrap: pretty;
-
-    > * {
-      text-box: trim-both cap;
-    }
   }
 
-  :is(p, li, ul, ol) {
+  :where(p, li, ul, ol) {
     max-width: var(--measure-body);
-    line-height: var(--line-height);
-  }
-
-  :is(p, ul, ol) {
-    &:not(:last-child) {
-      margin-bottom: 1em;
-    }
-  }
-
-  li + li {
-    margin-top: 0.5em;
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
     margin-block: 0;
-    color: var(--text-heading);
-    font-weight: 600;
-    line-height: var(--line-height-heading);
-    text-wrap: balance;
+    color: var(--text-strong);
+    font-weight: 500;
+  }
 
-    &:not(:first-child) {
-      margin-block-start: 1.5em;
-    }
+  h1 {
+    font-size: var(--title-size);
+    line-height: var(--title-line);
+    letter-spacing: -0.03em;
+  }
 
-    &:not(:last-child) {
-      margin-block-end: 0.75em;
-    }
+  h2 {
+    font-size: var(--h2-size);
+    line-height: var(--h2-line);
+    letter-spacing: -0.02em;
+  }
+
+  :is(h3, h4, h5, h6) {
+    font-size: var(--h3-size);
+    line-height: var(--h3-line);
   }
 
   :is(h1, h2, h3, h4, h5, h6) a {
     color: inherit;
+    text-decoration: none;
 
     &:visited {
       color: inherit;
     }
-
-    &:hover {
-      color: var(--action-hover);
-    }
-  }
-
-  h1 {
-    max-width: 24ch;
-    font-weight: 700;
-    font-size: var(--body-3xl);
-
-    @media (max-width: 600px) {
-      font-size: var(--body-xxl);
-    }
-  }
-
-  h2 {
-    font-size: var(--body-xl);
-
-    @media (max-width: 600px) {
-      font-size: var(--body-lg);
-    }
-  }
-
-  h3 {
-    font-size: var(--body-lg);
   }
 
   :is(code, pre) {
     font-family: var(--font-family-mono);
   }
 
-  .body-sm {
-    font-size: var(--body-sm);
+  .display {
+    font-size: var(--display-size);
+    line-height: var(--display-line);
   }
 
-  .body-md {
-    font-size: var(--body-md);
+  .subtitle {
+    color: var(--text-strong);
+    font-weight: 500;
+    font-size: var(--subtitle-size);
+    line-height: var(--subtitle-line);
+    letter-spacing: -0.015em;
   }
 
-  .body-lg {
-    font-size: var(--body-lg);
+  .lead {
+    font-size: var(--lead-size);
+    line-height: var(--lead-line);
   }
 
-  .body-xl {
-    font-size: var(--body-xl);
+  :is(.small, .body-sm) {
+    font-size: var(--small-size);
+    line-height: var(--small-line);
   }
 
-  .body-xxl {
-    font-size: var(--body-xxl);
+  .micro {
+    font-size: var(--micro-size);
+    line-height: var(--micro-line);
   }
 
-  .body-3xl {
-    font-size: var(--body-3xl);
+  .text-strong {
+    color: var(--text-strong);
   }
 
   .text-secondary {
-    color: var(--text-secondary);
+    color: var(--text-2);
   }
 
   .text-soft {
-    color: var(--text-soft);
+    color: var(--text-3);
   }
 
-  .measure-copy {
-    max-width: var(--measure-copy);
+  .weight-500 {
+    font-weight: 500;
   }
 
-  :is(ul, ol) {
+  /* Prose: running text on the pages that have no board (service pages,
+     blog posts). Grid sections set their own rhythm. */
+  :where(
+    .page-content > :is(section, article):not(.section-grid) :is(p, ul, ol)
+  ):not(:last-child) {
+    margin-bottom: var(--space-2);
+  }
+
+  :where(
+    .page-content > :is(section, article):not(.section-grid) :is(h2, h3, h4)
+  ):not(:first-child) {
+    margin-block-start: var(--space-4);
+  }
+
+  :where(
+    .page-content > :is(section, article):not(.section-grid) :is(h2, h3, h4)
+  ):not(:last-child) {
+    margin-block-end: var(--space-1);
+  }
+
+  :where(.page-content > :is(section, article):not(.section-grid) :is(ul, ol)) {
     padding-inline-start: 1.25em;
+  }
+
+  :where(.page-content > :is(section, article):not(.section-grid) li + li) {
+    margin-top: var(--space-1);
   }
 }

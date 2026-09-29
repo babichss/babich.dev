@@ -1,83 +1,106 @@
 @layer base, type, layout, components, styles;
 
 :root {
+  /* The only theme switch: every colour below is a light-dark() pair. */
   color-scheme: light dark;
 
-  /* Surfaces */
-  --color-bg: light-dark(#f7f9fc, #0a1320);
-  --color-surface: light-dark(#ffffff, #15263a);
-  --color-code-bg: light-dark(#e9eff6, #15263a);
+  --bg: light-dark(#eef1eb, #141a23);
+  --surface: light-dark(#dee4da, #1b222c);
+  --text-strong: light-dark(#121a14, #eef1f5);
+  --text: light-dark(#1e2820, #dde2ea);
+  --text-2: light-dark(#4a574c, #a4adba);
+  --text-3: light-dark(#5c685e, #8a94a3);
+  --rule: light-dark(#cbd3c6, #2b3441);
+  --rule-subtle: light-dark(#dee3da, #212833);
+  --accent: light-dark(#1d56d0, #5e9bff);
+  --accent-underline: light-dark(rgb(29 86 208 / 0.4), rgb(94 155 255 / 0.5));
+  --underline: light-dark(#b8c2b4, #3c4655);
 
-  /* Text */
-  --color-text: light-dark(#0d1420, #e7eef6);
-  --color-text-muted: light-dark(#4b5a6d, #adbac9);
-  --color-text-soft: light-dark(#5f6f86, #8798aa);
+  --font-family: "Google Sans", sans-serif;
+  --font-family-mono:
+    ui-monospace, "SF Mono", "Cascadia Mono", "Menlo", "Consolas", monospace;
 
-  /* Links */
-  --color-link: light-dark(#1f6fbe, #86b4df);
-  --color-link-hover: light-dark(#0f5aa3, #a1c7ea);
+  /* Type scale, mobile first; the desktop values replace them below. */
+  --display-size: 40px;
+  --display-line: 44px;
+  --title-size: 36px;
+  --title-line: 40px;
+  --subtitle-size: 20px;
+  --subtitle-line: 28px;
+  --h2-size: 24px;
+  --h2-line: 32px;
+  --h3-size: 18px;
+  --h3-line: 26px;
+  --lead-size: 17px;
+  --lead-line: 28px;
+  --body-size: 16px;
+  --body-line: 26px;
+  --small-size: 14px;
+  --small-line: 22px;
+  --micro-size: 13px;
+  --micro-line: 20px;
+  --link-size: 16px;
+  --link-line: 24px;
 
-  /* Borders */
-  --color-border: light-dark(#d5e0ec, #24384f);
-  --color-border-subtle: light-dark(#e5ebf2, #192a3d);
+  /* Spacing scale: 8 16 24 32 48 64 80. */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
 
-  /* Focus / selection */
-  --color-focus: light-dark(#2f7ed8, #86b4df);
-  --color-selection-bg: light-dark(#d9ebff, #1d3a59);
-  --color-selection-text: light-dark(#07111f, #f4f8fc);
-
-  --surface-primary: var(--color-bg);
-  --surface-secondary: var(--color-surface);
-  --surface-code: var(--color-code-bg);
-  --border-primary: var(--color-border);
-  --border-subtle: var(--color-border-subtle);
-  --text-primary: var(--color-text);
-  --text-secondary: var(--color-text-muted);
-  --text-soft: var(--color-text-soft);
-  --text-heading: color-mix(
-    in hsl,
-    var(--text-primary) 76%,
-    var(--accent-primary)
-  );
-  --accent-primary: var(--color-link);
-  --accent-secondary: var(--color-focus);
-  --action-primary: var(--color-link);
-  --action-hover: var(--color-link-hover);
-  --selection-bg: var(--color-selection-bg);
-  --selection-text: var(--color-selection-text);
-
-  /* 96vw's cap leaves narrow phones with less than a --page-gutter side margin. */
-  --page-width: min(
-    clamp(80vw, calc(64vw + 192px), 96vw),
-    100vw - 2 * var(--page-gutter)
-  );
+  --gutter: 20px;
+  --page-width: min(1040px, 100vw - 2 * var(--gutter));
   --measure-body: 66ch;
   --measure-copy: 62ch;
-  --section-space: 64px;
-  --page-gutter: clamp(24px, calc(6.667vw - 16px), var(--section-space));
 
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-xxl: 40px;
-
-  --body-md: 18px;
-  --ratio: 1.25;
-  --line-height-body: 1.5;
-  --line-height-heading: 1.2;
-  --line-height-tight: 1.1;
-
-  --body-sm: calc(var(--body-md) / var(--ratio));
-  --body-lg: calc(var(--body-md) * var(--ratio));
-  --body-xl: calc(var(--body-lg) * var(--ratio));
-  --body-xxl: calc(var(--body-xl) * var(--ratio));
-  --body-3xl: calc(var(--body-xxl) * var(--ratio));
+  --header-gap: 40px;
+  --title-gap: 32px;
+  --section-gap: 48px;
+  --section-pad: 24px;
+  --item-gap: 40px;
+  --bullet-gap: 10px;
+  --underline-offset: 5px;
+  --tap-target: 44px;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 481px) {
   :root {
-    --section-space: 48px;
+    --gutter: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --display-size: 80px;
+    --display-line: 84px;
+    --title-size: 64px;
+    --title-line: 68px;
+    --subtitle-size: 24px;
+    --subtitle-line: 32px;
+    --h2-size: 32px;
+    --h2-line: 40px;
+    --h3-size: 22px;
+    --h3-line: 32px;
+    --lead-size: 20px;
+    --lead-line: 32px;
+    --body-size: 17px;
+    --body-line: 28px;
+    --small-size: 15px;
+    --small-line: 24px;
+    --micro-size: 14px;
+    --micro-line: 22px;
+    --link-size: 17px;
+
+    --gutter: 48px;
+    --header-gap: 80px;
+    --title-gap: 64px;
+    --section-gap: 80px;
+    --section-pad: 32px;
+    --item-gap: 48px;
+    --bullet-gap: 12px;
+    --underline-offset: 6px;
   }
 }

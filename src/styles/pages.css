@@ -1,0 +1,507 @@
+/* Layout for the three designed pages (Home, Work, CV). Desktop is >= 1024px;
+   everything above the media queries is the mobile layout. The 12-column
+   section grid itself lives in layout.css (.section-grid). */
+@layer styles {
+  .desktop-break {
+    display: none;
+  }
+
+  .display {
+    text-wrap: balance;
+  }
+
+  .section-grid > h2 {
+    margin-bottom: var(--space-3);
+  }
+
+  /* A section's content column: paragraphs 16px apart, the first one 24px
+     under the heading. */
+  .section-body {
+    min-width: 0;
+
+    > * {
+      margin: 0;
+      max-width: none;
+    }
+
+    > * + * {
+      margin-top: var(--space-2);
+    }
+
+    > h2 + * {
+      margin-top: var(--space-2);
+    }
+
+    strong {
+      color: var(--text-strong);
+      font-weight: 500;
+    }
+  }
+
+  /* Home: hero */
+  .hero-photo {
+    display: block;
+    background: var(--surface);
+    width: 96px;
+    height: 120px;
+    object-fit: cover;
+    object-position: 40% 18%;
+  }
+
+  .hero-availability {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    font-size: var(--small-size);
+    line-height: var(--small-line);
+
+    p {
+      max-width: none;
+    }
+  }
+
+  .hero > .lead,
+  .hero > .hero-links {
+    max-width: none;
+  }
+
+  @media (max-width: 1023px) {
+    .hero {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      column-gap: var(--space-2);
+      align-items: center;
+    }
+
+    .hero > .lead,
+    .hero > .hero-links {
+      grid-column: 1 / -1;
+    }
+
+    .hero > .lead {
+      margin-top: var(--space-3);
+    }
+
+    .hero > .lead + .lead,
+    .hero > .hero-links {
+      margin-top: var(--space-2);
+    }
+  }
+
+  /* Home: How I work, Selected work, Contact */
+  .item-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+
+    h3 + p {
+      margin-top: 4px;
+    }
+  }
+
+  .item-grid p,
+  .item-list p {
+    max-width: none;
+    color: var(--text-2);
+  }
+
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--item-gap);
+
+    article {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h3 + p {
+      margin-top: var(--space-1);
+    }
+  }
+
+  .item-link {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 4px;
+    min-height: var(--tap-target);
+    font-weight: 500;
+    font-size: var(--link-size);
+    line-height: 28px;
+  }
+
+  #contact > h2 {
+    margin-bottom: var(--space-2);
+  }
+
+  .contact-line {
+    max-width: none;
+    color: var(--text-strong);
+    font-weight: 500;
+    font-size: var(--h2-size);
+    line-height: var(--h2-line);
+    letter-spacing: -0.02em;
+  }
+
+  /* Work */
+  .work-intro {
+    display: flex;
+    flex-direction: column;
+
+    .case-index {
+      order: 2;
+      margin-top: var(--space-2);
+    }
+
+    .subtitle {
+      max-width: none;
+    }
+  }
+
+  .case-index {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    line-height: 24px;
+
+    a {
+      display: flex;
+      align-items: center;
+      min-height: var(--tap-target);
+      color: var(--text-2);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+  }
+
+  .case-meta {
+    .small p {
+      max-width: none;
+    }
+
+    .micro {
+      margin-top: var(--space-1);
+      max-width: none;
+    }
+  }
+
+  .case > .section-body,
+  .earlier > .section-body {
+    margin-top: var(--space-2);
+  }
+
+  .case > .section-body > .stack-line,
+  .earlier > .section-body > .closing {
+    margin-top: 20px;
+  }
+
+  .earlier > .section-body > .closing {
+    margin-top: var(--space-4);
+  }
+
+  .stack-line {
+    color: var(--text-3);
+    font-size: var(--small-size);
+    line-height: var(--small-line);
+
+    strong {
+      color: var(--text-strong);
+      font-weight: 500;
+    }
+  }
+
+  .earlier > .earlier-years {
+    margin-bottom: var(--space-1);
+  }
+
+  /* CV */
+  .cv-subtitle {
+    margin-top: -4px;
+  }
+
+  .cv-availability {
+    margin-top: 4px;
+    font-size: var(--small-size);
+    line-height: var(--small-line);
+
+    p {
+      max-width: none;
+    }
+  }
+
+  .cv-links {
+    margin-top: -8px;
+  }
+
+  .cv-section > h2 {
+    margin-bottom: 12px;
+    font-size: var(--h2-size);
+    line-height: var(--h2-line);
+    letter-spacing: -0.01em;
+  }
+
+  .cv-section .lead {
+    max-width: none;
+  }
+
+  .skills {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+
+    dt {
+      color: var(--text-strong);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: var(--small-line);
+    }
+
+    dd {
+      margin-top: 2px;
+      max-width: none;
+      color: var(--text-2);
+    }
+  }
+
+  .role-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--item-gap);
+    margin-top: 4px;
+
+    article {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .role-dates {
+      color: var(--text-3);
+      font-size: var(--small-size);
+      line-height: var(--small-line);
+    }
+
+    article > p:not(.role-dates) {
+      margin-top: var(--space-1);
+      max-width: none;
+    }
+  }
+
+  .bullets {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bullet-gap);
+    margin: 12px 0 0;
+    padding: 0;
+    max-width: none;
+    list-style: none;
+
+    li {
+      display: flex;
+      gap: 12px;
+      margin: 0;
+      max-width: none;
+    }
+
+    li > span:first-child {
+      flex: none;
+      color: var(--text-3);
+    }
+
+    strong {
+      color: var(--text-strong);
+      font-weight: 500;
+    }
+  }
+
+  .case-link {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 4px;
+    min-height: var(--tap-target);
+    font-weight: 500;
+    font-size: var(--link-size);
+    line-height: 28px;
+  }
+
+  .company-line {
+    color: var(--text-strong);
+    font-weight: 500;
+  }
+
+  .company-line + p {
+    margin-top: var(--space-1);
+  }
+
+  .cv-detail {
+    color: var(--text-3);
+    font-size: var(--small-size);
+    line-height: var(--small-line);
+  }
+
+  @media (min-width: 1024px) {
+    .desktop-break {
+      display: inline;
+    }
+
+    .section-grid > h2 {
+      margin-bottom: 0;
+    }
+
+    .section-body > h2 + * {
+      margin-top: var(--space-3);
+    }
+
+    /* Home: hero */
+    .hero {
+      align-items: start;
+    }
+
+    .hero-photo {
+      grid-row: 1 / span 4;
+      grid-column: 1 / span 3;
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero > .lead:nth-of-type(1) {
+      grid-row: 1;
+    }
+
+    .hero > .lead:nth-of-type(2) {
+      grid-row: 2;
+      margin-top: var(--space-2);
+    }
+
+    .hero-availability {
+      grid-row: 3;
+      justify-content: start;
+      gap: 0;
+      margin-top: var(--space-4);
+    }
+
+    .hero > .hero-links {
+      grid-row: 4;
+      margin-top: var(--space-2);
+    }
+
+    /* Home: How I work, Selected work, Contact */
+    .item-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--space-3);
+      align-items: baseline;
+    }
+
+    .item-grid h3 + p {
+      margin-top: var(--space-1);
+    }
+
+    .item-link {
+      margin-top: var(--space-2);
+      min-height: 0;
+    }
+
+    #contact > h2 {
+      margin-bottom: 0;
+    }
+
+    /* Work */
+    .work-intro {
+      display: grid;
+      align-items: start;
+    }
+
+    .work-intro .case-index {
+      order: 0;
+      gap: var(--space-1);
+      margin-top: 0;
+      font-size: var(--small-size);
+      line-height: var(--small-line);
+    }
+
+    .case-index a {
+      display: inline;
+      min-height: 0;
+    }
+
+    .case-meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .case-meta .micro {
+      margin-top: 0;
+    }
+
+    .case > .section-body,
+    .earlier > .section-body {
+      margin-top: 0;
+    }
+
+    .case > .section-body > .stack-line {
+      margin-top: var(--space-3);
+    }
+
+    .earlier > .section-body > .closing {
+      margin-top: var(--space-6);
+    }
+
+    .earlier > .earlier-years {
+      margin-bottom: 0;
+    }
+
+    /* CV */
+    .cv-subtitle {
+      margin-top: 0;
+    }
+
+    .cv-availability {
+      margin-top: var(--space-1);
+    }
+
+    .cv-links {
+      margin-top: 0;
+    }
+
+    .cv-section > h2 {
+      margin-bottom: 0;
+    }
+
+    .skills {
+      gap: 20px;
+    }
+
+    .skills dt {
+      margin-bottom: 4px;
+    }
+
+    .skills dd {
+      margin-top: 0;
+    }
+
+    .role-list {
+      margin-top: 0;
+    }
+
+    .role-list article > p:not(.role-dates) {
+      margin-top: 12px;
+    }
+
+    .bullets {
+      margin-top: var(--space-2);
+    }
+
+    .case-link {
+      display: inline;
+      margin-top: var(--space-2);
+      min-height: 0;
+    }
+  }
+}

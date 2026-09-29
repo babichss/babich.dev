@@ -1,35 +1,13 @@
-@layer base {
-  a {
-    color: var(--action-primary);
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
-
-    &:visited {
-      color: var(--action-primary);
-    }
-
-    &:hover {
-      color: var(--action-hover);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--accent-secondary);
-      outline-offset: 2px;
-    }
-  }
-}
-
 @layer styles {
   html,
   body {
-    background-color: var(--surface-primary);
-    color: var(--text-primary);
+    background-color: var(--bg);
+    color: var(--text);
   }
 
   body {
     display: flex;
     flex-direction: column;
-    gap: var(--page-gutter);
     min-height: 100dvh;
   }
 
@@ -38,73 +16,81 @@
   }
 
   ::selection {
-    background: var(--selection-bg);
-    color: var(--selection-text);
+    background: color-mix(in srgb, var(--accent) 28%, transparent);
+    color: var(--text-strong);
   }
 
-  .cta:is(a, button) {
+  /* One row of links: hero, CV header, closing lines. Tap targets reach
+     44px below the desktop breakpoint. */
+  .link-row {
+    display: flex;
+    column-gap: var(--space-3);
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-weight: 500;
+    font-size: var(--link-size);
+    line-height: var(--link-line);
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--tap-target);
+    }
+
+    @media (min-width: 1024px) {
+      column-gap: var(--space-4);
+
+      a {
+        display: inline;
+        min-height: 0;
+      }
+    }
+  }
+
+  /* Call-to-action links on the service pages: accent text, no arrow. */
+  a.cta {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    margin-inline-end: var(--spacing-lg);
-    border: 0;
-    background: transparent;
-    padding: 0;
-    min-height: 44px;
-    font-weight: 700;
-    text-decoration: none;
-
-    &::after {
-      content: "\2192";
-    }
-
-    &:focus-visible {
-      outline-offset: 3px;
-    }
-  }
-
-  .cta + .cta {
-    margin-inline-start: 0;
+    margin-inline-end: var(--space-4);
+    min-height: var(--tap-target);
+    color: var(--accent);
+    font-weight: 500;
+    font-size: var(--link-size);
+    text-decoration-color: var(--accent-underline);
   }
 
   article pre {
-    margin-bottom: var(--spacing-md);
-    /* Shiki sets its own themed background inline per token (light/dark);
-       only the border and sizing are ours to add. */
-    border: 1px solid var(--border-primary);
-    padding: var(--spacing-md);
-    font-size: var(--body-sm);
+    margin-bottom: var(--space-2);
+    border: 1px solid var(--rule);
+    padding: var(--space-2);
+    font-size: var(--small-size);
+    line-height: var(--small-line);
   }
 
   article hr {
-    margin-block: var(--spacing-xl);
+    margin-block: var(--space-4);
     border: 0;
-    background: var(--border-primary);
+    background: var(--rule);
     height: 1px;
   }
 
   article code:not(pre code) {
     border-radius: 4px;
-    background-color: var(--surface-code);
+    background-color: var(--surface);
     padding: 0.15em 0.4em;
     font-size: 0.85em;
   }
 
-  /* Dark mode swaps the code block's background to the UI's own surface
-     token rather than Shiki's github-dark background, so it matches the
-     surrounding chrome; token spans go transparent so none of them layers
-     a second background under it. Syntax color still comes from Shiki's
-     own dual-theme custom property. Light mode is untouched. */
-  @media (prefers-color-scheme: dark) {
-    .astro-code {
-      background-color: var(--surface-secondary) !important;
-      color: var(--shiki-dark) !important;
-    }
+  /* Shiki runs with defaultColor: false, so every token only carries
+     --shiki-light and --shiki-dark. light-dark() picks one from the same
+     color-scheme that drives the tokens. */
+  .astro-code {
+    background-color: var(--surface);
+  }
 
-    .astro-code span {
-      background-color: transparent !important;
-      color: var(--shiki-dark) !important;
-    }
+  .astro-code,
+  .astro-code span {
+    color: light-dark(var(--shiki-light), var(--shiki-dark));
   }
 
   /* /cv print stylesheet (job-search-pages.md §7.3). Scoped by the
@@ -114,16 +100,18 @@
      every printed page, not just /cv. */
   @media print {
     body.page-cv {
-      --color-bg: #ffffff;
-      --color-surface: #ffffff;
-      --color-text: #000000;
-      --color-text-muted: #000000;
-      --color-text-soft: #333333;
-      --color-link: #000000;
-      --color-link-hover: #000000;
-      --color-border: #000000;
-      --color-border-subtle: #cccccc;
-      --section-space: 20px;
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text-strong: #000000;
+      --text: #000000;
+      --text-2: #000000;
+      --text-3: #333333;
+      --accent: #000000;
+      --accent-underline: #000000;
+      --underline: #000000;
+      --rule: #000000;
+      --rule-subtle: #cccccc;
+      --section-gap: 20px;
     }
 
     body.page-cv > .site-header,
@@ -139,7 +127,7 @@
     body.page-cv a[href^="https://youtube.com/"]::after {
       content: " (" attr(href) ")";
       font-weight: 400;
-      font-size: var(--body-sm);
+      font-size: var(--small-size);
     }
 
     /* No @page rule here: `@page` has no selector to scope it by an

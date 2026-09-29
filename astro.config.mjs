@@ -16,6 +16,9 @@ export default defineConfig({
   },
   markdown: {
     shikiConfig: {
+      // Token colors stay CSS variables only; global.css picks light or dark
+      // from the page's color-scheme.
+      defaultColor: false,
       themes: {
         light: "github-light",
         dark: "github-dark",
