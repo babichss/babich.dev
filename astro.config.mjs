@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   integrations: [mdx()],
   output: "static",
-  site: "https://babich.dev",
+  site: "https://www.babich.dev",
   build: {
     inlineStylesheets: "never",
   },
