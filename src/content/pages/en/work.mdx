@@ -5,27 +5,13 @@ lang: en
 
 import TitleLayout from "src/layouts/TitleLayout.astro";
 
-<TitleLayout hideLanguageSwitch>
+<TitleLayout hideLanguageSwitch titleGap="section">
 <Fragment slot="title">
   <h1>How I work</h1>
+  <p class="subtitle text-secondary"> The hard part is rarely the code; it's learning what the system really does before I change it. </p>
 </Fragment>
 
 <Fragment slot="content">
-
-<section class="section-grid work-intro">
-
-<nav class="case-index" id="case-index" aria-label="Case studies">
-  <a class="link-plain" href="#test-set-evaluation"> Evaluation against customer test data </a>
-  <a class="link-plain" href="#custom-metrics"> Customer-defined evaluation metrics </a>
-  <a class="link-plain" href="#agentic-workflow"> Multi-agent engineering workflow </a>
-  <a class="link-plain" href="#schema-mapping-editor"> Visual schema-mapping editor </a>
-  <a class="link-plain" href="#skillreveal"> SkillReveal: frontend lead from zero </a>
-  <a class="link-plain" href="#earlier-work"> Earlier work (2011–2021) </a>
-</nav>
-
-<p class="subtitle"> Five projects, walked through step by step: how I found the real scope, the calls I made and why, what broke, and what I'd do differently. </p>
-
-</section>
 
 <article class="section-grid case" id="test-set-evaluation">
 
@@ -62,8 +48,6 @@ Next time I'd treat the requested workflow as a starting point, not the system b
 
 <p class="stack-line"><strong>Stack</strong> — React, context-based state layer. </p>
 
-<a class="link-accent case-link" href="#case-index"> Back to case studies </a>
-
 </div>
 
 </article>
@@ -99,8 +83,6 @@ Next time I'd join during backend design and walk the user flows through before 
 
 <p class="stack-line"><strong>Stack</strong> — React, Python API changes, YAML/Python file validation, integration tests. </p>
 
-<a class="link-accent case-link" href="#case-index"> Back to case studies </a>
-
 </div>
 
 </article>
@@ -133,8 +115,6 @@ Two rules apply to the code itself: write the minimum necessary, and make every 
 With research, implementation and testing running in parallel, I kept up to four tracks moving at once. That's how I took on API changes and integration testing alongside frontend delivery.
 
 <p class="stack-line"><strong>Stack</strong> — Custom orchestration scripts, isolated git worktrees per agent, an LLM coding agent for research and implementation, a small tool for opening diffs. </p>
-
-<a class="link-accent case-link" href="#case-index"> Back to case studies </a>
 
 </div>
 
@@ -173,8 +153,6 @@ Next time I'd do fuller discovery of the DSL up front, split its rules into sepa
 
 <p class="stack-line"><strong>Stack</strong> — A normalized Map-based data model, drag-and-drop UI, virtualized rendering. </p>
 
-<a class="link-accent case-link" href="#case-index"> Back to case studies </a>
-
 </div>
 
 </article>
@@ -209,8 +187,6 @@ During my time there, SkillReveal reached 20 paying customers, about 4,000 regis
 I'd decide many of those early calls differently today. I was also less product-minded then than I am now.
 
 <p class="stack-line"><strong>Stack</strong> — React, Recoil, a customized Material UI design system. </p>
-
-<a class="link-accent case-link" href="#case-index"> Back to case studies </a>
 
 </div>
 

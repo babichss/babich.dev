@@ -111,7 +111,7 @@
     }
   }
 
-  /* Home: How I work, Selected work, Contact */
+  /* Home: Working principles, Selected work, Contact */
   .item-grid {
     display: flex;
     flex-direction: column;
@@ -173,38 +173,6 @@
   }
 
   /* Work */
-  .work-intro {
-    display: flex;
-    flex-direction: column;
-
-    .case-index {
-      order: 2;
-      margin-top: var(--space-2);
-    }
-
-    .subtitle {
-      max-width: none;
-    }
-  }
-
-  .case-index {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    line-height: 24px;
-
-    a {
-      display: flex;
-      align-items: center;
-      min-height: var(--tap-target);
-      color: var(--text-2);
-    }
-
-    a:hover {
-      color: var(--accent);
-    }
-  }
-
   .case-meta {
     .small p {
       max-width: none;
@@ -417,7 +385,7 @@
       margin-top: var(--space-2);
     }
 
-    /* Home: How I work, Selected work, Contact */
+    /* Home: Working principles, Selected work, Contact */
     .item-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -439,24 +407,6 @@
     }
 
     /* Work */
-    .work-intro {
-      display: grid;
-      align-items: start;
-    }
-
-    .work-intro .case-index {
-      order: 0;
-      gap: 12px;
-      margin-top: 0;
-      font-size: var(--small-size);
-      line-height: var(--small-line);
-    }
-
-    .case-index a {
-      display: inline;
-      min-height: 0;
-    }
-
     .case-meta {
       display: flex;
       flex-direction: column;
