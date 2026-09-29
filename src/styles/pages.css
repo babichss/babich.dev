@@ -267,10 +267,13 @@
     column-gap: var(--space-2);
     flex-wrap: nowrap;
     z-index: 1;
-    margin-block: calc(var(--space-2) - 8px) var(--section-gap);
+    --cv-links-pad: var(--space-2);
+    margin-block: calc(var(--space-2) - 8px - var(--cv-links-pad))
+      calc(var(--section-gap) - var(--cv-links-pad));
     inset-block-start: 0;
     border-block-end: 1px solid var(--rule-subtle);
     background: var(--bg);
+    padding-block: var(--cv-links-pad);
     white-space: nowrap;
   }
 
@@ -505,7 +508,8 @@
 
     .cv-links {
       column-gap: var(--space-3);
-      margin-block-start: var(--space-2);
+      --cv-links-pad: var(--space-3);
+      margin-block-start: calc(var(--space-2) - var(--cv-links-pad));
     }
 
     .cv-section > h2 {
