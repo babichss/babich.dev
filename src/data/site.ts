@@ -99,16 +99,17 @@ export const site = {
     interviews: {
       metaTitle: "Interviews",
       metaDescription:
-        "Technical interviews for companies and an individual format for developers",
+        "Independent technical interviews for hiring teams, frontend from Trainee to Tech Lead.",
     },
     proposal: {
-      metaTitle: "Cooperation Proposal",
-      metaDescription: "Cooperation proposal from Serhii Babich",
+      metaTitle: "Interviewing for Hiring Teams",
+      metaDescription:
+        "Technical interviews for hiring teams: an interview plan, the interviews themselves, and an independent technical assessment.",
     },
     youtube: {
-      metaTitle: "YouTube",
+      metaTitle: "Partner with my YouTube channel",
       metaDescription:
-        "Cooperation formats for Serhii Babich's YouTube channel",
+        "Partnership formats for Serhii Babich's YouTube channel.",
     },
     blog: {
       metaTitle: "Blog",
