@@ -13,7 +13,7 @@ const { hideLanguageSwitch = false, titleGap = "title" } = Astro.props;
 
 <Nav hideLanguageSwitch={hideLanguageSwitch} />
 
-<main class="page-container page-main">
+<main id="main" class="page-container page-main">
   <header class="page-title" data-gap={titleGap}>
     <slot name="title" />
   </header>

@@ -53,6 +53,8 @@ const urlFor = (forLang: Lang) =>
 const canonicalURL = urlFor(pageLang);
 const ogImageURL = new URL("/og.jpg", Astro.site).href;
 
+const skipLabel = pageLang === "uk" ? "Перейти до вмісту" : "Skip to content";
+
 const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
 ---
 
@@ -138,6 +140,7 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
     <slot name="head" />
   </head>
   <body class={bodyClass}>
+    <a class="skip-link" href="#main">{skipLabel}</a>
     <slot />
     <Footer />
   </body>

@@ -10,11 +10,11 @@
   --text: light-dark(#1e2820, #dde2ea);
   --text-2: light-dark(#4a574c, #a4adba);
   --text-3: light-dark(#5c685e, #8a94a3);
-  --rule: light-dark(#cbd3c6, #2b3441);
-  --rule-subtle: light-dark(#dee3da, #212833);
+  --rule: light-dark(#cbd3c6, #313b4a);
+  --rule-subtle: light-dark(#dee3da, #262e3a);
   --accent: light-dark(#1d56d0, #5e9bff);
   --accent-underline: light-dark(rgb(29 86 208 / 0.4), rgb(94 155 255 / 0.5));
-  --underline: light-dark(#b8c2b4, #3c4655);
+  --underline: light-dark(#7f8b81, #5b677a);
 
   --font-family: "Google Sans", sans-serif;
   --font-family-mono:

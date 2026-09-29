@@ -1,4 +1,19 @@
 @layer layout {
+  .skip-link {
+    position: absolute;
+    top: var(--space-1);
+    left: var(--space-1);
+    transform: translateY(-200%);
+    z-index: 100;
+    background: var(--bg);
+    padding: var(--space-1) var(--space-2);
+    color: var(--text-strong);
+
+    &:focus {
+      transform: none;
+    }
+  }
+
   .stack {
     display: flex;
     flex-direction: column;
