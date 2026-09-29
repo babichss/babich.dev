@@ -121,7 +121,7 @@
 
     body.page-cv .cv-links {
       position: static;
-      border-bottom: 0;
+      border-block-end: 0;
     }
 
     body.page-cv a {

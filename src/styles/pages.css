@@ -249,11 +249,11 @@
   }
 
   .cv-subtitle {
-    margin-top: calc(var(--space-2) - 4px);
+    margin-block-start: calc(var(--space-2) - 4px);
   }
 
   .cv-availability {
-    margin-top: calc(var(--space-2) + 4px);
+    margin-block-start: calc(var(--space-2) + 4px);
     font-size: var(--small-size);
     line-height: var(--small-line);
 
@@ -264,13 +264,12 @@
 
   .cv-links {
     position: sticky;
-    top: 0;
     column-gap: var(--space-2);
     flex-wrap: nowrap;
     z-index: 1;
-    margin-top: calc(var(--space-2) - 8px);
-    margin-bottom: var(--section-gap);
-    border-bottom: 1px solid var(--rule-subtle);
+    margin-block: calc(var(--space-2) - 8px) var(--section-gap);
+    inset-block-start: 0;
+    border-block-end: 1px solid var(--rule-subtle);
     background: var(--bg);
     white-space: nowrap;
   }
@@ -497,16 +496,16 @@
 
     /* CV */
     .cv-subtitle {
-      margin-top: var(--space-2);
+      margin-block-start: var(--space-2);
     }
 
     .cv-availability {
-      margin-top: calc(var(--space-2) + var(--space-1));
+      margin-block-start: calc(var(--space-2) + var(--space-1));
     }
 
     .cv-links {
       column-gap: var(--space-3);
-      margin-top: var(--space-2);
+      margin-block-start: var(--space-2);
     }
 
     .cv-section > h2 {
