@@ -142,6 +142,13 @@
       margin-top: var(--space-1);
     }
 
+    h3 a {
+      text-decoration: underline;
+      text-decoration-color: var(--underline);
+      text-decoration-thickness: 1px;
+      text-underline-offset: var(--underline-offset);
+    }
+
     h3 a:hover {
       color: var(--accent);
     }
