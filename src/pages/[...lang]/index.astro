@@ -1,8 +1,6 @@
 ---
-import Nav from "src/components/Nav.astro";
 import { site } from "src/data/site";
 import BaseLayout from "src/layouts/BaseLayout.astro";
-import HeroLayout from "src/layouts/HeroLayout.astro";
 import { getLangFromPath, getLangStaticPaths } from "src/lib/i18n";
 import { getPage } from "src/lib/pages";
 
@@ -40,13 +38,5 @@ const personJsonLd = {
     />
   </Fragment>
 
-  <HeroLayout>
-    <Fragment slot="header">
-      <Nav />
-    </Fragment>
-
-    <Fragment slot="content">
-      <Content />
-    </Fragment>
-  </HeroLayout>
+  <Content />
 </BaseLayout>

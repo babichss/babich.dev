@@ -5,18 +5,18 @@ import sharp from "sharp";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
-// The site's dark-mode tokens (src/styles/tokens.css): --color-bg,
-// --color-text, --color-link.
-const PANEL_BACKGROUND = "#0a1320";
-const TEXT_PRIMARY = "#e7eef6";
-const TEXT_ACCENT = "#86b4df";
+// The site's dark-mode tokens (src/styles/tokens.css): --bg,
+// --text-strong, --accent.
+const PANEL_BACKGROUND = "#141a23";
+const TEXT_PRIMARY = "#eef1f5";
+const TEXT_ACCENT = "#5e9bff";
 
 // The 1200x630 og:image/twitter:image every page shares: the home
 // portrait at full height on the left, uncropped, next to a solid panel
 // carrying name/title/domain. Generated at build time; see BaseLayout.astro.
 export const GET: APIRoute = async () => {
   const heroPath = fileURLToPath(
-    new URL("../../assets/hero.webp", import.meta.url),
+    new URL("../../assets/portrait.jpg", import.meta.url),
   );
   const heroBuffer = await readFile(heroPath);
 

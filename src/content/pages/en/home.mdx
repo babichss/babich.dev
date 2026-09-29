@@ -4,147 +4,102 @@ lang: en
 ---
 
 import { Image } from "astro:assets";
-import hero from "../../../../assets/hero.webp";
+import portrait from "../../../../assets/portrait.jpg";
+import TitleLayout from "src/layouts/TitleLayout.astro";
 import { site } from "src/data/site";
 
-<div class="hero">
+export const [titleHead, titleTail] = site.en.home.title.split(" for ");
 
-<header>
+<TitleLayout>
+<Fragment slot="title">
+  <h1 class="display">{titleHead} for<br class="desktop-break" />{" "}{titleTail}</h1>
+</Fragment>
 
-<h1 class="measure-copy">{site.en.home.title}</h1>
+<Fragment slot="content">
 
-</header>
-
-<section class="hero-intro">
-
-I'm Serhii. For 15+ years I've built frontends for data-heavy apps and interactive tools. I turn ambiguous requirements and legacy systems into product flows that work.
-
-Frontend is my depth, not my limit: when a feature needs backend changes, I make those too. Most recently I spent two years at DataRobot, building model-evaluation workflows for its machine-learning platform.
-
-</section>
+<section class="section-grid hero">
 
 <Image
-  class="home-portrait"
-  src={hero}
-  width={960}
-  widths={[320, 640, 960]}
-  sizes="(max-width: 1100px) min(calc(100vw - 48px), 360px), 360px"
+  class="hero-photo"
+  src={portrait}
+  width={242}
+  widths={[96, 192, 242, 484]}
+  sizes="(min-width: 1024px) 242px, 96px"
   format="webp"
-  alt="Serhii Babich"
+  alt="Portrait of Serhii Babich"
   loading="eager"
   fetchpriority="high"
 />
 
-<section class="hero-lead">
-
-<div class="body-sm text-soft">
-  Open to Senior / Staff Product Engineer roles · Remote · Ukraine, EET
-  (UTC+2/+3), overlap with EU and US East.
+<div class="hero-availability">
+  <p class="text-strong weight-500"> Open to Senior / Staff Product Engineer roles </p>
+  <p class="text-soft"> Remote · Ukraine, EET (UTC+2/+3), overlap with EU and US East </p>
 </div>
 
-<a href="/work" class="cta">
-  See my work
-</a>
-<a href="/cv" class="cta">
-  CV
-</a>
-<a href="mailto:serhii@babich.dev" class="cta">
-  {"serhii@babich.dev"}
-</a>
+<p class="lead"> I'm Serhii. For 15+ years I've built frontends for data-heavy apps and interactive tools. I turn ambiguous requirements and legacy systems into product flows that work. </p>
 
-</section>
+<p class="lead text-secondary"> Frontend is my depth, not my limit: when a feature needs backend changes, I make those too. Most recently I spent two years at DataRobot, building model-evaluation workflows for its machine-learning platform. </p>
 
+<div class="link-row hero-links">
+  <a class="link-accent" href="/work"> See my work </a>
+  <a href="/cv">CV</a>
+  <a href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a>
 </div>
 
-<section>
-
-<dl class="proof-strip" aria-label="Career highlights">
-  <div>
-    <dt>20 paying customers</dt>
-    <dd>
-      at SkillReveal, where I led the frontend from the first commit and we
-      shipped the MVP in about three months
-    </dd>
-  </div>
-  <div>
-    <dt>About 1,000–2,000 nodes</dt>
-    <dd>
-      per schema, kept responsive with virtualization in a visual mapping editor
-      I built
-    </dd>
-  </div>
-  <div>
-    <dt>10+ years</dt>
-    <dd>interviewing engineers, Trainee → Tech Lead</dd>
-  </div>
-  <div>
-    <dt>50+</dt>
-    <dd>public technical interviews on YouTube</dd>
-  </div>
-</dl>
-
 </section>
 
-<section>
-
-## Selected work
-
-### Evaluation against customer test data
-
-A US regional bank needed to score models against its own test data, and that feature lived only in a legacy UI. I owned my team's part of moving the supervised workflow into the new product. It shipped in about five months, and customers used it in production.
-
-<a href="/work#test-set-evaluation" class="cta">
-  See the case study
-</a>
-
-### Customer-defined evaluation metrics
-
-Customers could define their own evaluation metrics only through the API. I led the product integration: a UI for packages of up to 50 metrics, validation of each file as it's uploaded, and the Python API changes behind both. All three phases were built behind a feature flag; one UI fix was still in review when I left DataRobot.
-
-<a href="/work#custom-metrics" class="cta">
-  See the case study
-</a>
-
-### Multi-agent engineering workflow
-
-I built it for my own work at DataRobot. Agents research, implement and test in isolated worktrees, up to four tracks at once. I set the scope, review every diff and accept the result.
-
-<a href="/work#agentic-workflow" class="cta">
-  See the case study
-</a>
-
-</section>
-
-<section>
+<section class="section-grid">
 
 ## How I work
 
-### Research before scope
-
-I study the domain, the legacy behavior and the code before I propose scope.
-
-### Small steps that ship
-
-I cut work into the smallest end-to-end flows a user can test and use, and release them one at a time. No big-bang launches.
-
-### Check the whole flow
-
-I trace the complete flow myself and confirm what I find with whoever owns the code. I don't take a colleague's assurance or an agent's report on trust.
-
-</section>
-
-<section>
-
-## Also
-
-Outside product work, I run a Ukrainian [YouTube channel](https://youtube.com/@babichweb) about web development, with live events and podcasts in Lviv.
+<div class="item-grid">
+  <div>
+    <h3>Research before scope</h3>
+    <p> I study the domain, the legacy behavior and the code before I propose scope. </p>
+  </div>
+  <div>
+    <h3>Small steps that ship</h3>
+    <p> I cut work into the smallest end-to-end flows a user can test and use, and release them one at a time. No big-bang launches. </p>
+  </div>
+  <div>
+    <h3>Check the whole flow</h3>
+    <p> I trace the complete flow myself and confirm what I find with whoever owns the code. I don't take a colleague's assurance or an agent's report on trust. </p>
+  </div>
+</div>
 
 </section>
 
-<section>
+<section class="section-grid">
+
+## Selected work
+
+<div class="item-list">
+  <article>
+    <h3>Evaluation against customer test data</h3>
+    <p> A US regional bank needed to score models against its own test data, and that feature lived only in a legacy UI. I owned my team's part of moving the supervised workflow into the new product. It shipped in about five months, and customers used it in production. </p>
+    <a class="link-accent item-link" href="/work#test-set-evaluation"> See the case study </a>
+  </article>
+  <article>
+    <h3>Customer-defined evaluation metrics</h3>
+    <p> Customers could define their own evaluation metrics only through the API. I led the product integration: a UI for packages of up to 50 metrics, validation of each file as it's uploaded, and the Python API changes behind both. All three phases were built behind a feature flag; one UI fix was still in review when I left DataRobot. </p>
+    <a class="link-accent item-link" href="/work#custom-metrics"> See the case study </a>
+  </article>
+  <article>
+    <h3>Multi-agent engineering workflow</h3>
+    <p> I built it for my own work at DataRobot. Agents research, implement and test in isolated worktrees, up to four tracks at once. I set the scope, review every diff and accept the result. </p>
+    <a class="link-accent item-link" href="/work#agentic-workflow"> See the case study </a>
+  </article>
+</div>
+
+</section>
+
+<section class="section-grid" id="contact">
 
 ## Contact
 
-Hiring for a product engineering role? Write to <a href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a> — or grab the [CV](/cv).
+<p class="contact-line"> Hiring for a product engineering role? Write to{" "} <a class="link-accent" href="mailto:serhii@babich.dev"> {"serhii@babich.dev"} </a>{" "} — or grab the <a href="/cv">CV</a>. </p>
 
 </section>
+
+</Fragment>
+</TitleLayout>
