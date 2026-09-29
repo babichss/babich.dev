@@ -74,8 +74,8 @@ if (href && !videoId) {
     .youtube-preview {
       display: grid;
       grid-template-rows: auto 1fr;
-      gap: var(--spacing-sm);
-      margin-block: var(--spacing-lg) var(--spacing-xxl);
+      gap: var(--space-1);
+      margin-block: var(--space-3) 40px;
       /* Caps at 800px against the page column, not the narrower measure-copy parent it sits in. */
       width: min(800px, var(--page-width));
       color: inherit;
@@ -86,13 +86,13 @@ if (href && !videoId) {
     }
 
     .youtube-preview:hover {
-      color: var(--action-hover);
+      color: var(--accent);
     }
 
     .youtube-preview-media {
       display: block;
       position: relative;
-      background: var(--surface-secondary);
+      background: var(--surface);
       aspect-ratio: 16 / 9;
       overflow: hidden;
     }

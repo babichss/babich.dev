@@ -37,7 +37,7 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
               </footer>
             )}
 
-            <Heading class="body-lg flush blog-post-title">
+            <Heading class="flush blog-post-title">
               <a href={localizedPath(lang, `/blog/${post.data.urlSlug}`)}>
                 {post.data.title}
               </a>
@@ -53,23 +53,23 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
 <style>
   @layer components {
     .blog-post-list {
-      --rule-gap: calc(var(--spacing-lg) * 2);
-      --rule-color: var(--border-subtle);
+      --rule-gap: calc(var(--space-3) * 2);
+      --rule-color: var(--rule-subtle);
     }
 
     .blog-post-item {
       display: grid;
-      gap: var(--spacing-xs);
+      gap: 4px;
     }
 
     .blog-post-item time a {
-      color: var(--text-soft);
+      color: var(--text-3);
       text-decoration: none;
     }
 
     .blog-post-title {
-      font-weight: 700;
-      line-height: var(--line-height-tight);
+      font-weight: 500;
+      line-height: var(--h3-line);
     }
 
     .blog-post-title a {
