@@ -22,10 +22,8 @@ describe("Nav", () => {
     }
     expect(html).toContain('href="/work"');
     expect(html).toContain('href="/cv"');
-    expect(html).toContain('href="/uk/blog"');
-    expect(html).not.toContain('href="/uk/work"');
-    expect(html).toContain('href="/blog"');
     expect(html).toContain(languageNames.en);
+    expect(html).toContain('href="/blog" hreflang="en"');
   });
 
   it("renders the en nav with unprefixed links and the language switch to uk", async () => {
@@ -33,12 +31,12 @@ describe("Nav", () => {
 
     expect(html).toContain('href="/work"');
     expect(html).toContain('href="/cv"');
-    expect(html).toContain('href="/blog"');
     expect(html).not.toContain('href="/en');
     for (const { title } of site.en.nav) {
       expect(html).toContain(title);
     }
-    expect(html).toContain('href="/uk/blog"');
+    expect(html).not.toContain("Blog");
+    expect(html).toContain('href="/uk/blog" hreflang="uk"');
     expect(html).toContain(languageNames.uk);
   });
 

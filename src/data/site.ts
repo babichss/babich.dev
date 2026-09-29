@@ -17,7 +17,6 @@ export const site = {
     nav: [
       { href: "/work", title: "Робота (EN)", unprefixed: true },
       { href: "/cv", title: "CV (EN)", unprefixed: true },
-      { href: "/blog", title: "Блоґ" },
     ],
     home: {
       metaTitle: "Головна",
@@ -81,7 +80,6 @@ export const site = {
     nav: [
       { href: "/work", title: "Work" },
       { href: "/cv", title: "CV" },
-      { href: "/blog", title: "Blog" },
     ],
     home: {
       metaTitle: "Home",
