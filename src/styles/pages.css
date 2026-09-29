@@ -241,12 +241,19 @@
   }
 
   /* CV */
+  /* The title block is unboxed on /cv so the link row's sticky containing
+     block is <main>, not the header. The 16px title gap is carried by the
+     children's margin-top. */
+  body.page-cv .page-title {
+    display: contents;
+  }
+
   .cv-subtitle {
-    margin-top: -4px;
+    margin-top: calc(var(--space-2) - 4px);
   }
 
   .cv-availability {
-    margin-top: 4px;
+    margin-top: calc(var(--space-2) + 4px);
     font-size: var(--small-size);
     line-height: var(--small-line);
 
@@ -256,7 +263,16 @@
   }
 
   .cv-links {
-    margin-top: -8px;
+    position: sticky;
+    top: 0;
+    column-gap: var(--space-2);
+    flex-wrap: nowrap;
+    z-index: 1;
+    margin-top: calc(var(--space-2) - 8px);
+    margin-bottom: var(--section-gap);
+    border-bottom: 1px solid var(--rule-subtle);
+    background: var(--bg);
+    white-space: nowrap;
   }
 
   .cv-section > h2 {
@@ -481,15 +497,16 @@
 
     /* CV */
     .cv-subtitle {
-      margin-top: 0;
+      margin-top: var(--space-2);
     }
 
     .cv-availability {
-      margin-top: var(--space-1);
+      margin-top: calc(var(--space-2) + var(--space-1));
     }
 
     .cv-links {
-      margin-top: 0;
+      column-gap: var(--space-3);
+      margin-top: var(--space-2);
     }
 
     .cv-section > h2 {
