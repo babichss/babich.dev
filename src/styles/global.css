@@ -119,6 +119,12 @@
       display: none;
     }
 
+    body.page-cv .cv-links {
+      --cv-links-pad: 0px;
+      position: static;
+      border-block-end: 0;
+    }
+
     body.page-cv a {
       text-decoration: none;
     }
