@@ -10,18 +10,17 @@ export const site = {
   uk: {
     name: "Сергій Бабіч",
     title: "Сергій Бабіч.",
-    tagline:
-      "Продуктовий інженер · складні інтерфейси даних · AI-native розробка",
+    tagline: "Старший продуктовий інженер · шукаю Senior / Staff, віддалено",
     navLabel: "Головна навігація",
     menuLabel: "Відкрити меню",
     nav: [
-      { href: "/work", title: "Робота (EN)", unprefixed: true },
+      { href: "/work", title: "Проєкти (EN)", unprefixed: true },
       { href: "/cv", title: "CV (EN)", unprefixed: true },
     ],
     home: {
-      metaTitle: "Головна",
+      metaTitle: "Старший продуктовий інженер",
       metaDescription:
-        "Сергій Бабіч — старший продуктовий інженер, який створює складні інтерфейси для даних та ML. Відкритий до позицій Senior/Staff, віддалено.",
+        "Сергій Бабіч — старший продуктовий інженер, який створює складні інтерфейси для даних та ML. Шукає позиції Senior / Staff, віддалено.",
       title: "Продуктовий інженер для складних інтерфейсів даних.",
     },
     interviews: {
@@ -74,7 +73,7 @@ export const site = {
   en: {
     name: "Serhii Babich",
     title: "Serhii Babich.",
-    tagline: "Product engineer · complex data interfaces · AI-native delivery",
+    tagline: "Senior product engineer · open to Senior / Staff remote roles",
     navLabel: "Main navigation",
     menuLabel: "Open menu",
     nav: [
@@ -82,9 +81,9 @@ export const site = {
       { href: "/cv", title: "CV" },
     ],
     home: {
-      metaTitle: "Home",
+      metaTitle: "Senior Product Engineer",
       metaDescription:
-        "Serhii Babich — senior product engineer building complex data and ML interfaces. Open to Senior/Staff roles, remote.",
+        "Serhii Babich — senior product engineer building complex data and ML interfaces. Open to Senior / Staff roles, remote.",
       title: "Product engineer for complex data interfaces.",
     },
     work: {

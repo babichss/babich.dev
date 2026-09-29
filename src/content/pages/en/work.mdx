@@ -8,7 +8,7 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 <TitleLayout hideLanguageSwitch>
 <Fragment slot="title">
   <h1>Work</h1>
-  <p>Legacy migrations, customer-facing ML features, and a startup built from zero, over the last five years.</p>
+  <p>Five years of legacy migrations, customer-facing ML features, and a startup I joined at its first commit.</p>
 </Fragment>
 
 <Fragment slot="content">
@@ -24,9 +24,9 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
   {"ML evaluation, legacy migration, React, production debugging"}
 </p>
 
-A US regional bank wanted to score models against its own test data. That capability lived only in a legacy UI nobody was developing anymore, and it had to move into the new experiment workflow without losing what customers relied on. It was my first project of that scale, and I owned my team's part of it fully.
+A US regional bank wanted to score models against its own test data. That capability lived only in a legacy UI nobody was developing anymore, and it had to move into the new experiment workflow without losing what customers relied on. I owned my team's part of it end to end.
 
-The requirements covered supervised training only. I read the legacy system myself to find what they skipped: attachment and eligibility rules, the tables, the charts. The migration covered seven model-insight views plus alignment of prediction explanations. The requirements never mentioned the unsupervised path at all.
+The requirements covered supervised training only. I researched the legacy system with AI agents' help to find what they skipped: attachment and eligibility rules, the tables, the charts. The migration covered seven model-insight views and prediction explanations. Nobody mentioned the unsupervised path, and that gap came back later as a bug.
 
 The designs put an "add data" button beside individual charts. Upload from a chart and it's unclear who owns the dataset, so I argued for one upload point at the experiment level, with every other view picking from what's already attached. The old state layer and charts were tightly coupled. I skipped the rewrite: a shared React context store, selectors, and a transformation layer gave new views clean data while the old charts kept running.
 
@@ -34,11 +34,11 @@ I cut delivery into small releasable steps, from single attachment through scori
 
 The supervised workflow shipped in about five months and customers used it in production. External QA found about 15 defects before broad use, none critical.
 
-Then a customer reported that their data didn't work. I suspected Japanese characters first. That hunt turned up a real backend bug, but fixing it changed nothing. Only when I dropped the theory did I trace the cause: the unsupervised setup, still governed by legacy eligibility rules the new flow didn't support. I fixed UI and backend. The fix merged and reached staging before my role ended.
+Then a customer reported that their data didn't work. I suspected Japanese characters first. That hunt turned up a real backend bug, but fixing it changed nothing. Only when I dropped the theory did I trace the cause: the unsupervised setup, still governed by legacy eligibility rules the new flow didn't support. I fixed both the UI and the backend. The fix merged and reached staging before I left DataRobot.
 
 The lesson: the requested workflow is not the system boundary. Now I map adjacent modes first and write down what's supported, unsupported, and unknown.
 
-**Stack** — React, context-based state layer, integration tests against legacy chart components.
+**Stack** — React, context-based state layer.
 
 </article>
 
@@ -53,17 +53,17 @@ The lesson: the requested workflow is not the system boundary. Now I map adjacen
   {"product ownership, evaluation config, React, Python APIs"}
 </p>
 
-Built-in metrics can't say what "good" means in every domain, so data teams wanted to define their own: YAML describing the metric, a Python file doing the calculation. Until then the capability was API-only. It came to me when my previous task finished, tied to a renewal and to revenue at risk, with customer validation calls and POC demos already leaning on it. I owned it end to end.
+Built-in metrics can't say what "good" means in every domain, so data teams wanted to define their own: YAML describing the metric, a Python file doing the calculation. Until then that was possible only through the API. I picked it up next. A renewal and revenue at risk depended on it, and customer validation calls and POC demos were already relying on it. I owned the full product flow.
 
-That meant more than the frontend. The backend core existed, but every phase needed API work. I extended the project-settings endpoints, added metric metadata to a large GET response and decided how it should return data, and wrote new endpoints the UI needed. I kept the requirements, wrote the specs, and broke about 60 stories out of it. A single package could hold up to 50 metrics.
+That meant more than the frontend. The backend core existed, but each phase needed more from it. In phase two I extended the project-settings endpoint so a chosen metric could be saved. In phase three I added custom-metric information to a large GET response and decided how it should return data. I also wrote the new endpoints the UI needed. Throughout, I kept the requirements, wrote the specs, and broke the work into about 60 stories.
 
-I split the work into three phases: a registry for uploading and inspecting packages, experiment setup where custom and built-in metrics sit side by side, and post-modeling display. All three worked in the UI behind a feature flag.
+I split the work into three phases: a registry for uploading and inspecting packages of up to 50 metrics, experiment setup where custom and built-in metrics sit side by side, and post-modeling display.
 
-The design asked users to upload both files, then click Validate before seeing any feedback. On the design-review call I proposed validating each file as it arrives, then cross-validating the pair. The Validate button disappeared, and the backend now takes files one at a time, detects the type, and runs the right check. The price is a call or two more; the gain is far earlier feedback. The team backed it on the spot.
+The design asked users to upload both files, then click Validate before seeing any feedback. On the design-review call I proposed validating each file as it arrived, then cross-validating the pair. The team backed it on the spot. The Validate button disappeared, and the backend took files one at a time, detected the type, and ran the right check. The price was a call or two more; the gain was far earlier feedback.
 
 Manual testing at the end of a phase found a nasty one: an experiment with a custom optimization metric wouldn't start. A research agent traced the save path into a reference doc with exact files and functions. Two validation points assumed built-in metrics. I checked the evidence with the backend lead and took the fix, validating custom metrics against their own package at both points, with integration tests at those seams.
 
-The backend fix merged. The UI change, sending the right field, was still in review when my role ended, so the feature never left its flag.
+The backend fix merged. All three phases were built behind a feature flag; one UI fix was still in review when I left DataRobot.
 
 Next time I'd get into backend design earlier and work the user flow through before code exists. I'd also read the validation code myself instead of trusting assurances.
 
@@ -73,7 +73,7 @@ Next time I'd get into backend design earlier and work the user flow through bef
 
 <article id="agentic-workflow">
 
-## Agentic engineering workflow
+## Multi-agent engineering workflow
 
 <p class="body-sm text-soft">
   {"DataRobot · Senior Software Engineer · 2024–2026"}
@@ -82,17 +82,17 @@ Next time I'd get into backend design earlier and work the user flow through bef
   {"AI-assisted engineering, agent orchestration, code review"}
 </p>
 
-Owning a feature at DataRobot meant carrying the frontend, the Python API changes, the tests, and the maintenance, usually at once. During the custom-metrics work I spent about three months building a harness for my own way of working. The goal was to formalize my process, not replace my judgment.
+On the larger DataRobot work I carried the frontend, the Python API changes, the tests and the maintenance, often at once. During the custom-metrics work I spent about three months building a workflow for my own use. The goal was to formalize my process, not replace my judgment.
 
-The loop was simple. I write a bounded task or spec. A feature-level orchestrator picks research or implementation subagents, and never writes code itself. Each agent gets its own git worktree, runs its own checks and tests, and hands back a diff. I review every diff in full and decide which feedback is worth acting on. Small scripts fill in PR descriptions from a template, check PR status, and open diffs for review.
+The loop is simple. I write a bounded task or spec. A feature-level orchestrator picks research or implementation subagents, and never writes code itself. Each agent gets its own git worktree, runs its own checks and tests, and hands back a diff. I review every diff in full and decide which review comments to act on. The workflow drafts PR descriptions from a template and checks PR status, and a small tool I built opens diffs for review.
 
-Research agents earned their keep before any code existed. Given a bug, one traces the full code path and writes a reference doc: files, lines, functions. I read that before I write a bug report or spec, and I check anything backend-adjacent with the domain owner. An agent's account of a system is a lead, not a verdict.
+Research agents earn their keep before any code exists. Given a bug, one traces the full code path and writes a reference doc: files, lines, functions. I read that before I write a bug report or spec, and I check anything backend-adjacent with the domain owner. An agent's account of a system is a lead, not a verdict.
 
-I set a few rules. Framing, architecture, decomposition, review, validation, and acceptance stay with me. I keep the code to the minimum necessary and simplify each PR through review rounds rather than accept the first version that works. Because research, implementation, and testing ran in parallel, I could keep up to four tracks at once instead of queuing them. The same loop let me take API changes and integration testing alongside frontend delivery.
+I set a few rules. Framing, architecture, decomposition, review, validation, and acceptance stay with me. I keep the code to the minimum necessary and simplify each PR through review rounds rather than accept the first version that works. Because research, implementation, and testing run in parallel, I can keep up to four tracks going at once instead of queuing them. At DataRobot that let me take API changes and integration testing alongside frontend delivery.
 
-Take the validation defect in the custom-metrics work. A research agent followed the optimization-metric save path and found both hard-coded validation points. I confirmed that with the backend lead, gave an implementation agent a bounded fix, and reviewed the result line by line. The harness only ever executes inside a scope I have already set.
+The validation defect in the custom-metrics case above shows the loop at work. A research agent followed the optimization-metric save path and found both hard-coded validation points. I confirmed that with the backend lead and took the fix myself. The workflow only ever executes inside a scope I have already set.
 
-**Stack** — Custom orchestration scripts, isolated git worktrees per agent, an LLM coding agent for research and implementation, small review tools I wrote.
+**Stack** — Custom orchestration scripts, isolated git worktrees per agent, an LLM coding agent for research and implementation, a small tool for opening diffs.
 
 </article>
 
@@ -101,29 +101,25 @@ Take the validation defect in the custom-metrics work. A research agent followed
 ## Visual schema-mapping editor
 
 <p class="body-sm text-soft">
-  {
-    "Edvantis · Frontend Engineer / Technical Coordinator (official title: Frontend Solution Architect) · 2023–2024"
-  }
+  {"Edvantis · Frontend Solution Architect · 2023–2024"}
 </p>
-<p class="body-sm text-soft">
-  {"data modeling, visual editor, TypeScript, performance"}
-</p>
+<p class="body-sm text-soft">{"data modeling, visual editor, performance"}</p>
 
-A customer's database schema had to be mapped onto the platform's internal model. The tool for it was a CSV DSL filled in by hand: field type, subtype, transformation rules, calculated fields. It was powerful, and on a big schema it was slow, easy to get wrong, poorly discoverable, and gave no preview of the result.
+At Edvantis I combined hands-on frontend engineering with technical coordination on a logistics platform built from distributed micro-frontends. One project was a tool for mapping a customer's database schema onto the platform's internal model. The existing tool was a CSV DSL filled in by hand: field type, subtype, transformation rules, calculated fields. It was powerful but, on a big schema, slow, error-prone, hard to learn, and gave no preview of the result.
 
-I worked with the feature architect to pin down the domain before drawing a screen. I couldn't see the mapping-engine code. The one document I started from was incomplete and had no example CSVs. So I rebuilt the DSL's syntax, semantics, and transformation behavior from the docs, sample files, and explanations from the developer who wrote the mapper.
+I worked with the feature architect to pin down the domain before drawing a screen. I couldn't see the mapping-engine code, and the one document I started from was incomplete and had no example CSVs. The developer who wrote the mapper filled in the context and later sent sample files. From the docs, those explanations, and the samples, I rebuilt the DSL's syntax, semantics, and transformation behavior.
 
-I aimed the editor at the common, simple mappings, where a visual tool pays for itself fastest. Customer schema sits on the left, the internal model on the right, and you drag between nodes to make 1:1, 1:many, and many:1 connections. Each transformation type gets its own presentation.
+I aimed the editor at the common, simple mappings, where a visual tool pays for itself fastest. The customer schema sits on the left, the internal model on the right, and you drag between nodes to make 1:1, 1:many, and many:1 connections. Each transformation type gets its own presentation.
 
 The hard part was data. The backend returned large nested schemas as an awkward array structure, good for transport and bad for editing. I built a normalized in-memory model on JavaScript Maps, maps referencing maps, shaped for traversal instead of for the API's response. Two transformer facades convert between it and the backend format in both directions, so the UI never touches the awkward shape.
 
-Schemas ran to about one to two thousand nodes. Expand and collapse plus virtualization keep most of the tree out of the DOM, and I profiled access and rendering as the model grew instead of assuming it stayed fast. That model and its profiling were the strongest decision in the project.
+Schemas ran to about 1,000–2,000 nodes. Expand and collapse plus virtualization keep most of the tree out of the DOM, and I profiled access and rendering as the model grew instead of assuming it stayed fast. Building that model and profiling it early was the best call on the project.
 
-I tested with unit tests, some integration tests, and fixtures, and ran existing customer spreadsheets back through the editor.
+I tested with unit tests, some integration tests, and fixtures, and ran existing customer spreadsheets back through the editor. Users could build common mappings visually instead of hand-writing the CSV.
 
-Given another pass, I'd do the DSL discovery more fully up front, split its rules into separate docs, and push harder for parity.
+Given another pass, I'd do the DSL discovery more fully up front, split its rules into separate docs, and push harder for parity with the CSV DSL.
 
-**Stack** — TypeScript, a normalized Map-based data model, drag-and-drop UI, virtualized rendering.
+**Stack** — A normalized Map-based data model, drag-and-drop UI, virtualized rendering.
 
 </article>
 
@@ -134,19 +130,19 @@ Given another pass, I'd do the DSL discovery more fully up front, split its rule
 <p class="body-sm text-soft">
   {"SkillReveal · Lead Frontend Developer · 2021–2023"}
 </p>
-<p class="body-sm text-soft">{"0-to-1, React, Recoil, team leadership"}</p>
+<p class="body-sm text-soft">{"0-to-1, React, Recoil, frontend lead"}</p>
 
-SkillReveal began as a few design screens: an interview platform that matched interviewers with candidates for mock interviews and company-outsourced real ones, and later added a job board. Frontend and backend had to be built in parallel, fast. I joined at inception as lead frontend developer in a six-person team, with a backend engineer, a designer, and two other frontend engineers.
+SkillReveal is an interview platform that matches interviewers with candidates for mock interviews and for real interviews that companies outsource to it. It later added a job board. I joined at inception as lead frontend developer in a six-person team, when the product was a few design screens. Frontend and backend had to be built in parallel, fast.
 
-I set the frontend direction from the first commit. For state I chose Recoil, having had good results with atomic state before. It kept UI cleanly separated from data and let me compose derived values from atoms. Redux felt like too much boilerplate for an MVP moving that fast. The stack and architecture I picked then held for the life of the product. I also worked through data-shape questions with the backend engineer.
+I set the frontend direction from the first commit. For state I chose Recoil, having had good results with atomic state before. It kept UI cleanly separated from data and let me compose derived values from atoms. Redux felt like too much boilerplate for an MVP moving that fast. The stack and architecture I picked then held while I was there. I also worked through data-shape questions with the backend engineer.
 
-With the CEO I decided what to ship, postpone, or cut. He specified views; I brought feasibility, UI judgment, and my view as a practicing interviewer. The MVP took about three months. The pace was intense, sometimes into the night, and I ran several interviews on the platform myself, which showed me the scoring flow as a user.
+With the CEO I helped decide what to ship fast, what to postpone, and what to prioritize. He specified views; I brought feasibility, UI judgment, and my view as a practicing interviewer. The MVP took about three months. The pace was intense, sometimes into the night, and I ran several interviews on the platform myself, which showed me the scoring flow as a user.
 
-The assessment page taught me the most. It generates competency sections and scoring controls dynamically, and it's one of the most important pages in the product. Because state was tangled together, one score selection re-rendered every component. I spent about a month reworking the data flow and rendering. Afterward a score change touched only the component it affected, and comments and derived results updated independently. Users said it felt faster, especially on mobile.
+The assessment page taught me the most. It's the product's core page: it generates competency sections and scoring controls dynamically. As it grew, its state became coupled, and one score selection re-rendered every component. I spent about a month reworking the data flow and rendering. Afterward a score change touched only the component it affected, and comments and derived results updated independently. Users said it felt faster, especially on mobile.
 
 I also customized Material UI into an in-house design system, so recurring patterns became reusable components instead of per-screen styling.
 
-During my time the product reached 20 paying customers and about 4,000 registered users across client teams, interviewers, and candidates, at ~USD 15K MRR.
+By the time I left in 2023, SkillReveal had 20 paying customers, about 4,000 registered users and roughly USD 15K in MRR.
 
 **Stack** — React, Recoil, a customized Material UI design system.
 

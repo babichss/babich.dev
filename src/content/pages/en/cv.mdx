@@ -10,7 +10,7 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
   <h1>Serhii Babich</h1>
   <p class="body-lg">Senior Product Engineer · Frontend</p>
   <p class="text-secondary">Ukraine · Remote · EET (UTC+2/+3)</p>
-  <p class="text-secondary">Open to Senior / Staff product engineering roles, remote</p>
+  <p class="text-secondary">Open to Senior / Staff Product Engineer roles</p>
   <div class="cv-actions">
     <a href="https://www.linkedin.com/in/babichss" class="cta">LinkedIn</a>
     <a href="mailto:serhii@babich.dev" class="cta">{"serhii@babich.dev"}</a>
@@ -53,23 +53,19 @@ Product engineer with 15+ years of experience building data-heavy applications, 
 
 Delivered customer-facing workflows and production fixes across legacy-platform migration, customer-configurable evaluation, and model tuning. Worked directly with Product, UX, and backend engineers, with scope varying by initiative from requirements and technical design to hands-on implementation, testing, release, and production investigation.
 
-- Enabled customers to evaluate supervised models against their own test data without returning to the legacy product by bringing the workflow into the new UI over five months. Owned domain and legacy-flow research, requirements, frontend technical design and implementation, delivery sequencing, and testing through release. Consolidated multiple proposed upload points into one experiment-level entry point and staged delivery across five incremental releases; customers used the workflow in production.
+- Enabled customers to evaluate supervised models against their own test data without returning to the legacy product by bringing the workflow into the new UI in about five months. Owned domain and legacy-flow research, requirements, frontend technical design and implementation, delivery sequencing, and testing through release. Consolidated multiple proposed upload points into one experiment-level entry point and staged delivery across five incremental releases; customers used the workflow in production. [Case study →](/work#test-set-evaluation)
 - Delivered the missing user-facing workflow for an existing model-tuning strategy required by a customer migrating from an end-of-life on-prem deployment. Implemented strategy selection and conditional settings, and validated request handling with backend engineers. The same gap affected two large late-stage opportunities, additional late-stage prospects, and customer RFPs.
-- Owned the product integration of an existing API-only capability for customer-defined model-evaluation metrics, a workstream tied to significant at-risk revenue and a separate renewal blocker. Defined requirements and delivery scope, built the React workflows, implemented the necessary Python endpoint and payload changes, and added integration tests at the validation seams. The UI was complete behind a feature flag when my role ended.
+- Owned the product integration of an existing API-only capability for customer-defined model-evaluation metrics, a workstream tied to significant at-risk revenue and a separate renewal blocker. Defined requirements and delivery scope, built the React workflows, implemented the necessary Python endpoint and payload changes, and added integration tests at the validation seams. All three phases were built behind a feature flag; one UI fix was still in review when I left DataRobot. [Case study →](/work#custom-metrics)
 - Challenged a proposed two-file upload flow during Product and UX review because users received no validation feedback until both files were uploaded and they clicked Validate. Designed a progressive alternative that validated each file on upload and then cross-validated the pair; the adopted design removed the extra action and changed the Python API contract to accept files separately.
-- Built and adopted a personal AI-assisted engineering workflow used throughout feature research, implementation, API work, testing, and maintenance. Delegated bounded tasks to specialized agents in isolated worktrees to keep up to four concurrent tracks moving while retaining responsibility for problem framing, architecture, code review, validation, and acceptance. For example, I used the workflow to trace why a customer-defined metric could be registered but not used for model optimization to two backend validation paths that assumed built-in metrics; confirmed the root cause with the backend lead and implemented the fix. The backend fix merged; the small UI change was still in review when my role ended.
-
-[Case study →](/work#test-set-evaluation)
+- Built and adopted a personal AI-assisted engineering workflow used throughout feature research, implementation, API work, testing, and maintenance. Delegated bounded tasks to specialized agents in isolated worktrees to keep up to four concurrent tracks moving while retaining responsibility for problem framing, architecture, code review, validation, and acceptance. For example, I used the workflow to trace why a customer-defined metric could be registered but not used for model optimization to two backend validation paths that assumed built-in metrics; confirmed the root cause with the backend lead and took the fix, whose backend part merged. [Case study →](/work#agentic-workflow)
 
 </article>
 
 <article>
 
-### Frontend Engineer / Technical Coordinator — Edvantis
+### Frontend Solution Architect — Edvantis
 
-<p class="text-secondary">
-  Official title: Frontend Solution Architect · Jun 2023 – Jul 2024
-</p>
+<p class="text-secondary">Jun 2023 – Jul 2024</p>
 
 Combined technical coordination with hands-on frontend engineering within a 5–6 engineer team building a logistics platform with distributed micro-frontends. Clarified incomplete requirements and traced undocumented dependencies with frontend leads, backend engineers, and adjacent teams.
 
@@ -86,10 +82,10 @@ Combined technical coordination with hands-on frontend engineering within a 5–
 
 <p class="text-secondary">May 2021 – Apr 2023</p>
 
-Joined SkillReveal at inception as frontend lead in a six-person team building an interview and assessment product from a few initial design screens. Worked directly with the CEO on prioritization, feasibility, and usability, helping deliver the MVP in three months. During my tenure, the product reached 20 paying customers, ~4,000 registered users across client teams, interviewers, and candidates, and ~USD 15K MRR.
+Joined SkillReveal at inception as frontend lead in a six-person team building an interview and assessment product from a few initial design screens. Worked directly with the CEO on prioritization, feasibility, and usability, helping deliver the MVP in three months. During my tenure, the product reached 20 paying customers; ~4,000 registered users across client teams, interviewers, and candidates; and ~USD 15K MRR.
 
 - Designed the frontend architecture for rapid product iteration around a Recoil-based atomic state model that separated UI from data and composed derived state with limited framework overhead. Established the approach from the first commit; its core stack and architecture remained in place throughout product development.
-- Refactored the assessment page's coupled state model after tracing sluggish score updates to page-wide rerenders. Restructured state and update flows so scoring, comments, and derived results triggered only dependent work, then released the change to production. Users said it felt faster, especially on mobile.
+- Refactored the assessment page's coupled state model after tracing sluggish score updates to page-wide re-renders. Restructured state and update flows so scoring, comments, and derived results triggered only dependent work, then released the change to production. Users said it felt faster, especially on mobile.
 - Built a shared product component library on Material UI as the product expanded from its initial screens, translating its visual design and recurring UI patterns into reusable components used throughout the product.
 
 [Case study →](/work#skillreveal)
