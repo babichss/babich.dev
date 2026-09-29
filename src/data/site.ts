@@ -85,7 +85,7 @@ export const site = {
     work: {
       metaTitle: "How I Work: Product Engineering Case Studies",
       metaDescription:
-        "How I work, walked through five projects: finding the real scope, making product and technical trade-offs, checking the whole flow, and what I'd change.",
+        "How I work, walked through five projects: finding the real scope, making product and technical trade-offs, checking the whole flow and looking back.",
     },
     cv: {
       metaTitle: "CV: Senior Product Engineer",
@@ -113,7 +113,7 @@ export const site = {
         "I write about HTML, CSS and the web platform: how browsers handle broken HTML, what deprecated means, new CSS features, and building without a framework.",
       title: "Blog",
       intro:
-        "Here I write about web development, interviews, teams, technical decisions, and anything worth sharing before the thought disappears.",
+        "Here I write about HTML, CSS, the web platform and anything else worth sharing before the thought disappears.",
       thanks: "Thanks for stopping by. Enjoy reading.",
       allPosts: "All posts",
       empty: "There are no published posts yet.",
