@@ -8,21 +8,39 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
 <TitleLayout hideLanguageSwitch>
 <Fragment slot="title">
   <h1>Work</h1>
-  <p>The last five years: two ML features and my multi-agent engineering workflow at DataRobot, a schema-mapping editor at Edvantis, and a startup frontend I led from the first commit.</p>
 </Fragment>
 
 <Fragment slot="content">
 
-<article id="test-set-evaluation">
+<section class="section-grid work-intro">
+
+<nav class="case-index" aria-label="Case studies">
+  <a class="link-plain" href="#test-set-evaluation"> Evaluation against customer test data </a>
+  <a class="link-plain" href="#custom-metrics"> Customer-defined evaluation metrics </a>
+  <a class="link-plain" href="#agentic-workflow"> Multi-agent engineering workflow </a>
+  <a class="link-plain" href="#schema-mapping-editor"> Visual schema-mapping editor </a>
+  <a class="link-plain" href="#skillreveal"> SkillReveal: frontend lead from zero </a>
+  <a class="link-plain" href="#earlier-work"> Earlier work (2011–2021) </a>
+</nav>
+
+<p class="subtitle"> The last five years: two ML features and my multi-agent engineering workflow at DataRobot, a schema-mapping editor at Edvantis, and a startup frontend I led from the first commit. </p>
+
+</section>
+
+<article class="section-grid case" id="test-set-evaluation">
+
+<div class="case-meta">
+  <div class="small">
+    <p class="text-strong weight-500">DataRobot</p>
+    <p class="text-secondary">Senior Software Engineer</p>
+    <p class="text-soft">2024–2026</p>
+  </div>
+  <p class="micro text-soft"> ML evaluation, legacy migration, React, production debugging </p>
+</div>
+
+<div class="section-body">
 
 ## Evaluation against customer test data
-
-<p class="body-sm text-soft">
-  {"DataRobot · Senior Software Engineer · 2024–2026"}
-</p>
-<p class="body-sm text-soft">
-  {"ML evaluation, legacy migration, React, production debugging"}
-</p>
 
 A US regional bank wanted to evaluate models against its own test data. DataRobot could do that only in a legacy UI that was no longer actively developed. My team was moving that capability into the new product's experiment workflow, and I owned our part of it. It was my first project of that size where I owned delivery directly.
 
@@ -42,20 +60,26 @@ Then a customer reported that their datasets didn't work, without mentioning the
 
 Next time I'd treat the requested workflow as a starting point, not the system boundary: map adjacent modes and dependencies first, and write down what's supported, unsupported and unknown, with the validation assumptions. I walked management through it: what went wrong, why, and what should change.
 
-**Stack** — React, context-based state layer.
+<p class="stack-line"><strong>Stack</strong> — React, context-based state layer. </p>
+
+</div>
 
 </article>
 
-<article id="custom-metrics">
+<article class="section-grid case" id="custom-metrics">
+
+<div class="case-meta">
+  <div class="small">
+    <p class="text-strong weight-500">DataRobot</p>
+    <p class="text-secondary">Senior Software Engineer</p>
+    <p class="text-soft">2024–2026</p>
+  </div>
+  <p class="micro text-soft"> product ownership, evaluation config, React, Python APIs </p>
+</div>
+
+<div class="section-body">
 
 ## Customer-defined evaluation metrics
-
-<p class="body-sm text-soft">
-  {"DataRobot · Senior Software Engineer · 2024–2026"}
-</p>
-<p class="body-sm text-soft">
-  {"product ownership, evaluation config, React, Python APIs"}
-</p>
 
 Built-in metrics are a baseline, but each domain has its own idea of an accurate model. Customers' data engineers wanted to define their own evaluation metrics: a YAML file describing them and a Python file with the calculations. That was possible only through the API. The work had customer validation calls and POC demos behind it, and it was tied to revenue at risk and a separate renewal blocker. It reached me through the team's normal pipeline when my previous task finished, and I was expected to own it through delivery.
 
@@ -71,20 +95,26 @@ The backend fix merged; the UI needed a small change to send the right field and
 
 Next time I'd join during backend design and walk the user flows through before implementation. I relied too much on the backend team's assurances; deeper code research would have exposed the hard-coding sooner. Now I verify the complete flow myself.
 
-**Stack** — React, Python API changes, YAML/Python file validation, integration tests.
+<p class="stack-line"><strong>Stack</strong> — React, Python API changes, YAML/Python file validation, integration tests. </p>
+
+</div>
 
 </article>
 
-<article id="agentic-workflow">
+<article class="section-grid case" id="agentic-workflow">
+
+<div class="case-meta">
+  <div class="small">
+    <p class="text-strong weight-500">DataRobot</p>
+    <p class="text-secondary">Senior Software Engineer</p>
+    <p class="text-soft">2024–2026</p>
+  </div>
+  <p class="micro text-soft"> AI-assisted engineering, agent orchestration, code review </p>
+</div>
+
+<div class="section-body">
 
 ## Multi-agent engineering workflow
-
-<p class="body-sm text-soft">
-  {"DataRobot · Senior Software Engineer · 2024–2026"}
-</p>
-<p class="body-sm text-soft">
-  {"AI-assisted engineering, agent orchestration, code review"}
-</p>
 
 On the custom-metrics work I carried the React UI, the Python API changes, the tests and the maintenance, flaky tests included, often at the same time. Over about three months of that work, I built a workflow for myself to keep all of it moving. It formalizes how I already worked instead of replacing my judgment. The design question was where the agents stop and I start.
 
@@ -98,18 +128,26 @@ Two rules apply to the code itself: write the minimum necessary, and make every 
 
 With research, implementation and testing running in parallel, I kept up to four tracks moving at once. That's how I took on API changes and integration testing alongside frontend delivery.
 
-**Stack** — Custom orchestration scripts, isolated git worktrees per agent, an LLM coding agent for research and implementation, a small tool for opening diffs.
+<p class="stack-line"><strong>Stack</strong> — Custom orchestration scripts, isolated git worktrees per agent, an LLM coding agent for research and implementation, a small tool for opening diffs. </p>
+
+</div>
 
 </article>
 
-<article id="schema-mapping-editor">
+<article class="section-grid case" id="schema-mapping-editor">
+
+<div class="case-meta">
+  <div class="small">
+    <p class="text-strong weight-500">Edvantis</p>
+    <p class="text-secondary">Frontend Solution Architect</p>
+    <p class="text-soft">2023–2024</p>
+  </div>
+  <p class="micro text-soft">data modeling, visual editor, performance</p>
+</div>
+
+<div class="section-body">
 
 ## Visual schema-mapping editor
-
-<p class="body-sm text-soft">
-  {"Edvantis · Frontend Solution Architect · 2023–2024"}
-</p>
-<p class="body-sm text-soft">{"data modeling, visual editor, performance"}</p>
 
 At Edvantis I did hands-on frontend engineering and technical coordination in a team of five or six engineers, on a logistics platform built from distributed micro-frontends.
 
@@ -127,18 +165,26 @@ I verified the work mainly with unit tests, plus some integration tests, fixture
 
 Next time I'd do fuller discovery of the DSL up front, split its rules into separate documents, push for closer parity with the DSL, and decompose the work more carefully.
 
-**Stack** — A normalized Map-based data model, drag-and-drop UI, virtualized rendering.
+<p class="stack-line"><strong>Stack</strong> — A normalized Map-based data model, drag-and-drop UI, virtualized rendering. </p>
+
+</div>
 
 </article>
 
-<article id="skillreveal">
+<article class="section-grid case" id="skillreveal">
+
+<div class="case-meta">
+  <div class="small">
+    <p class="text-strong weight-500">SkillReveal</p>
+    <p class="text-secondary">Lead Frontend Developer</p>
+    <p class="text-soft">2021–2023</p>
+  </div>
+  <p class="micro text-soft">0-to-1, React, Recoil, frontend lead</p>
+</div>
+
+<div class="section-body">
 
 ## SkillReveal: frontend lead from zero
-
-<p class="body-sm text-soft">
-  {"SkillReveal · Lead Frontend Developer · 2021–2023"}
-</p>
-<p class="body-sm text-soft">{"0-to-1, React, Recoil, frontend lead"}</p>
 
 When I joined SkillReveal at inception, it was an early-stage platform connecting interviewers with candidates, for mock interviews and for real interviews that companies outsourced to it. Later it added a job board, with outsourced interviews sold separately. I was lead frontend developer in a six-person team, and the product was a few design screens. Frontend and backend were built in parallel, fast, sometimes late into the night.
 
@@ -154,25 +200,33 @@ During my time there, SkillReveal reached 20 paying customers, about 4,000 regis
 
 I'd decide many of those early calls differently today. I was also less product-minded then than I am now.
 
-**Stack** — React, Recoil, a customized Material UI design system.
+<p class="stack-line"><strong>Stack</strong> — React, Recoil, a customized Material UI design system. </p>
+
+</div>
 
 </article>
 
-<section>
+<section class="section-grid earlier" id="earlier-work">
 
-## Earlier work (2011–2021)
+<p class="small text-soft earlier-years">2011–2021</p>
 
-- **Jonny Git** — lead frontend developer at a startup from the same incubator as SkillReveal, analyzing individual and team activity in Git repositories; built from scratch with one other engineer, with a focus on frontend performance.
-- **N-iX** — real-time trading (Angular/NgRx), from a web prototype of a .NET trading app to the production UI with the full team; a visual questionnaire builder; and a video-processing pipeline editor (React/Redux, real-time SVG manipulation).
-- **Lohika** — UI components for a highly configurable analytics dashboard with real-time data: D3/SVG charts and hand-built virtualization for large lists.
-- **GlobalLogic** — migrated a Chrome-extension messenger to a desktop application built with web technologies (Node-WebKit); HTML5 apps for media-player devices on a customized Opera runtime, under tight memory limits.
-- **Viseven** — interactive e-detailing presentations that pharma sales reps used with healthcare professionals, plus a lightweight CSS framework for chart markup and animation.
+<div class="section-body">
 
-</section>
+## Earlier work
 
-<section>
+**Jonny Git** — lead frontend developer at a startup from the same incubator as SkillReveal, analyzing individual and team activity in Git repositories; built from scratch with one other engineer, with a focus on frontend performance.
 
-Full history in the [CV](/cv) · [serhii@babich.dev](mailto:serhii@babich.dev)
+**N-iX** — real-time trading (Angular/NgRx), from a web prototype of a .NET trading app to the production UI with the full team; a visual questionnaire builder; and a video-processing pipeline editor (React/Redux, real-time SVG manipulation).
+
+**Lohika** — UI components for a highly configurable analytics dashboard with real-time data: D3/SVG charts and hand-built virtualization for large lists.
+
+**GlobalLogic** — migrated a Chrome-extension messenger to a desktop application built with web technologies (Node-WebKit); HTML5 apps for media-player devices on a customized Opera runtime, under tight memory limits.
+
+**Viseven** — interactive e-detailing presentations that pharma sales reps used with healthcare professionals, plus a lightweight CSS framework for chart markup and animation.
+
+<p class="subtitle closing"> Full history in the <a href="/cv">CV</a> ·{" "} <a class="link-accent" href="mailto:serhii@babich.dev"> {"serhii@babich.dev"} </a></p>
+
+</div>
 
 </section>
 
