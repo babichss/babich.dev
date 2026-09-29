@@ -10,7 +10,7 @@ export const site = {
   uk: {
     name: "Сергій Бабіч",
     title: "Сергій Бабіч.",
-    tagline: "Старший продуктовий інженер · шукаю Senior / Staff, віддалено",
+    tagline: "Senior Product Engineer · відкритий до віддаленої роботи",
     navLabel: "Головна навігація",
     menuLabel: "Відкрити меню",
     nav: [
@@ -18,10 +18,10 @@ export const site = {
       { href: "/cv", title: "CV (EN)", unprefixed: true },
     ],
     home: {
-      metaTitle: "Старший продуктовий інженер",
+      metaTitle: "Senior Product Engineer",
       metaDescription:
-        "Сергій Бабіч — старший продуктовий інженер, який створює складні інтерфейси для даних та ML. Шукає позиції Senior / Staff, віддалено.",
-      title: "Продуктовий інженер для складних інтерфейсів даних.",
+        "Сергій Бабіч — продуктовий інженер: складні інтерфейси для роботи з даними та ML, понад 15 років у фронтенді. Відкритий до віддалених позицій Senior / Staff.",
+      title: "Продуктовий інженер: складні інтерфейси для роботи з даними.",
     },
     interviews: {
       metaTitle: "Співбесіди для компаній і розробників",
@@ -73,7 +73,7 @@ export const site = {
   en: {
     name: "Serhii Babich",
     title: "Serhii Babich.",
-    tagline: "Senior product engineer · open to Senior / Staff remote roles",
+    tagline: "Senior Product Engineer · open to remote roles",
     navLabel: "Main navigation",
     menuLabel: "Open menu",
     nav: [
@@ -83,18 +83,18 @@ export const site = {
     home: {
       metaTitle: "Senior Product Engineer",
       metaDescription:
-        "Serhii Babich — senior product engineer building complex data and ML interfaces. Open to Senior / Staff roles, remote.",
+        "Serhii Babich — product engineer for complex data and ML interfaces, 15+ years in frontend. Open to remote Senior / Staff Product Engineer roles.",
       title: "Product engineer for complex data interfaces.",
     },
     work: {
       metaTitle: "Work",
       metaDescription:
-        "Selected case studies from Serhii Babich's work on complex data and ML interfaces.",
+        "Case studies by Serhii Babich: ML evaluation features and a multi-agent engineering workflow at DataRobot, a schema-mapping editor at Edvantis, and the SkillReveal frontend.",
     },
     cv: {
       metaTitle: "CV",
       metaDescription:
-        "Serhii Babich's CV — senior product engineer, complex data and ML interfaces.",
+        "CV of Serhii Babich, Senior Product Engineer: 15+ years in frontend, most recently at DataRobot. Open to remote Senior / Staff roles.",
     },
     interviews: {
       metaTitle: "Interviews",
