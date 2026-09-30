@@ -254,17 +254,33 @@
     z-index: 1;
     --cv-links-pad: var(--space-2);
     --cv-links-gap: calc(var(--space-2) - 8px);
+    /* Transparent border reserves the rule's 1px; the ::after below paints
+       it only while pinned. A container can't query its own stuck state, so
+       the rule lives on the pseudo-element. */
+    container-type: scroll-state;
     /* The top margin never goes negative: the opaque background must not
        overlap the line above. The top padding shrinks to --cv-links-gap
        instead, so the resting text position is gap below that line. */
     margin-block: max(0px, calc(var(--cv-links-gap) - var(--cv-links-pad)))
       calc(var(--section-gap) - var(--cv-links-pad));
     inset-block-start: 0;
-    border-block-end: 1px solid var(--rule-subtle);
+    border-block-end: 1px solid transparent;
     background: var(--bg);
     padding-block: min(var(--cv-links-pad), var(--cv-links-gap))
       var(--cv-links-pad);
     white-space: nowrap;
+
+    &::after {
+      position: absolute;
+      inset: auto 0 -1px;
+      background: var(--rule-subtle);
+      height: 1px;
+      content: none;
+
+      @container scroll-state(stuck: top) {
+        content: "";
+      }
+    }
   }
 
   .cv-section > h2 {
