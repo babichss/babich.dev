@@ -253,13 +253,17 @@
     flex-wrap: nowrap;
     z-index: 1;
     --cv-links-pad: var(--space-2);
-    /* Zero top margin: the opaque background must not overlap the line above.
-       The 8px trimmed from the top padding keeps the resting text position. */
-    margin-block: 0 calc(var(--section-gap) - var(--cv-links-pad));
+    --cv-links-gap: calc(var(--space-2) - 8px);
+    /* The top margin never goes negative: the opaque background must not
+       overlap the line above. The top padding shrinks to --cv-links-gap
+       instead, so the resting text position is gap below that line. */
+    margin-block: max(0px, calc(var(--cv-links-gap) - var(--cv-links-pad)))
+      calc(var(--section-gap) - var(--cv-links-pad));
     inset-block-start: 0;
     border-block-end: 1px solid var(--rule-subtle);
     background: var(--bg);
-    padding-block: calc(var(--cv-links-pad) - 8px) var(--cv-links-pad);
+    padding-block: min(var(--cv-links-pad), var(--cv-links-gap))
+      var(--cv-links-pad);
     white-space: nowrap;
   }
 
@@ -477,6 +481,7 @@
     .cv-links {
       column-gap: var(--space-3);
       --cv-links-pad: var(--space-3);
+      --cv-links-gap: var(--space-2);
     }
 
     .cv-section > h2 {
