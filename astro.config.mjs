@@ -6,16 +6,10 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      // Mirrors every noindex rule; a noindexed URL here is a Search Console error.
-      filter: (page) => {
-        const { pathname } = new URL(page);
-        return !(
-          pathname.startsWith("/uk/") ||
-          pathname.startsWith("/interviews/") ||
-          pathname.startsWith("/youtube/") ||
-          /^\/blog\/\d{4}\//.test(pathname)
-        );
-      },
+      // Only these pages are indexable; every other page is noindex, and a
+      // noindexed URL here is a Search Console error.
+      filter: (page) =>
+        ["/", "/work/", "/cv/"].includes(new URL(page).pathname),
     }),
   ],
   output: "static",
