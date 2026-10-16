@@ -4,18 +4,47 @@ import { getLangFromPath } from "src/lib/i18n";
 
 const lang = getLangFromPath(Astro.url.pathname);
 const year = new Date().getFullYear();
+const isConsulting = Astro.url.pathname.replace(/\/?$/, "/") === "/consulting/";
+
+const links = [
+  { href: "mailto:serhii@babich.dev", label: "serhii@babich.dev" },
+  { href: "https://www.linkedin.com/in/babichss", label: "LinkedIn" },
+  { href: "https://youtube.com/@babichweb", label: "YouTube" },
+];
 ---
 
 <footer class="page-container site-footer">
   <div class="footer-content">
-    <span class="text-soft">© {year} {site[lang].name}</span>
-    <div class="footer-links">
-      <a class="link-plain" href="mailto:serhii@babich.dev">serhii@babich.dev</a
-      >
-      <a class="link-plain" href="https://www.linkedin.com/in/babichss"
-        >LinkedIn</a
-      >
-      <a class="link-plain" href="https://youtube.com/@babichweb">YouTube</a>
+    <div class="footer-group">
+      <div class="footer-list">
+        <span class="footer-item text-soft">© {year} {site[lang].name}</span>
+        {
+          lang === "en" && (
+            <span class="footer-item">
+              <a
+                class="link-plain"
+                href="/consulting/"
+                aria-current={isConsulting ? "page" : undefined}
+              >
+                Technical interviews
+              </a>
+            </span>
+          )
+        }
+      </div>
+    </div>
+    <div class="footer-group">
+      <div class="footer-list">
+        {
+          links.map(({ href, label }) => (
+            <span class="footer-item">
+              <a class="link-plain" href={href}>
+                {label}
+              </a>
+            </span>
+          ))
+        }
+      </div>
     </div>
   </div>
 </footer>
@@ -32,20 +61,51 @@ const year = new Date().getFullYear();
       line-height: 20px;
     }
 
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0 20px;
+    /* Every item carries a leading dot in a 16px gutter. The list is pulled
+       left by one gutter and the group clips it, so the dot of whichever item
+       starts a line is cut off and a dot never leads or trails a line. The
+       padding keeps focus rings inside the clip. */
+    .footer-group {
+      margin-block: -3px;
+      padding-block: 3px;
+      overflow: hidden;
     }
 
-    .footer-links a {
+    .footer-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-inline-start: -16px;
+    }
+
+    .footer-item {
+      position: relative;
+      padding-inline-start: 16px;
+      white-space: nowrap;
+    }
+
+    .footer-item::before {
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      inset-block: 0;
+      inset-inline-start: 0;
+      width: 16px;
+      content: "·";
+      content: "·" / "";
+      color: var(--text-3);
+      text-align: center;
+    }
+
+    .footer-item a {
       display: inline-flex;
       align-items: center;
       min-height: var(--tap-target);
       color: var(--text-2);
     }
 
-    .footer-links a:hover {
+    .footer-item a:hover {
       color: var(--accent);
     }
 
@@ -57,11 +117,7 @@ const year = new Date().getFullYear();
         padding-block: var(--space-3) var(--space-4);
       }
 
-      .footer-links {
-        gap: var(--space-3);
-      }
-
-      .footer-links a {
+      .footer-item a {
         min-height: 0;
       }
     }

@@ -1,0 +1,157 @@
+---
+page: consulting
+lang: en
+---
+
+import { Image } from "astro:assets";
+import portrait from "../../../../assets/portrait.jpg";
+import ClosingCta from "src/components/ClosingCta.astro";
+import TitleLayout from "src/layouts/TitleLayout.astro";
+
+<TitleLayout hideLanguageSwitch>
+<Fragment slot="title">
+  <h1 class="display">Independent technical interviews</h1>
+</Fragment>
+
+<Fragment slot="content">
+
+<section class="section-grid hero">
+
+<Image
+  class="hero-photo"
+  src={portrait}
+  width={242}
+  widths={[96, 192, 242, 484]}
+  sizes="(min-width: 1024px) 242px, 96px"
+  format="webp"
+  alt="Portrait of Serhii Babich"
+  loading="eager"
+  fetchpriority="high"
+/>
+
+{/* prettier-ignore */}
+<p class="lead"> Rehearsed answers pass non-technical screens and AI tools. They don't pass a conversation with an engineer who knows where to dig. </p>
+
+{/* prettier-ignore */}
+<p class="lead text-secondary"> I'm that engineer, and I give you a judgement you can trust. </p>
+
+{/* prettier-ignore */}
+<div class="hero-availability">
+  <p class="text-strong weight-500"> Serhii Babich · for hiring teams and recruiting agencies </p>
+  <p class="text-soft"> Up to 6 interviews a week · English or Ukrainian · Kyiv time (EET, UTC+2/+3) </p>
+</div>
+
+{/* prettier-ignore */}
+<div class="link-row hero-links">
+  <a class="link-accent" href="https://calendar.app.google/e3Pjdq4oS728LXD86" target="_blank" rel="noopener">Book an intro call</a>
+  <a href="/consulting/serhii-babich-technical-interviews.pdf" download>Service details (PDF)</a>
+  <a href="https://www.youtube.com/playlist?list=PLLyJLoRTWreMlqKfu0RVJQNXQU66nu8Tq">Watch my interviews</a>
+</div>
+
+</section>
+
+<section class="section-grid">
+
+## How I interview
+
+<div class="section-body">
+
+I don't fire random questions or check whether candidates guessed the answer I had in mind. I watch how they think: how they explain decisions, ask clarifying questions and handle a task that isn't fully defined. Every interview is recorded, so everything in the report rests on what the candidate actually said. I run no more than two interviews a day, so every candidate gets my full attention.
+
+</div>
+
+</section>
+
+<section class="section-grid">
+
+## Why me
+
+{/* prettier-ignore */}
+<ul class="bullets">
+  <li>
+    <span aria-hidden="true">–</span>
+    <span>
+      15+ years in web development, most recently Senior Software Engineer at
+      DataRobot.
+    </span>
+  </li>
+  <li>
+    <span aria-hidden="true">–</span>
+    <span>
+      10+ years of technical interviews, including paid consulting for
+      companies as an independent interviewer.
+    </span>
+  </li>
+  <li>
+    <span aria-hidden="true">–</span>
+    <span>
+      40+ public technical interviews and test-assignment reviews on YouTube; two in English.
+    </span>
+  </li>
+</ul>
+
+</section>
+
+<section class="section-grid">
+
+## What you get
+
+<div class="section-body">
+
+{/* prettier-ignore */}
+<ul class="bullets">
+  <li>
+    <span aria-hidden="true">–</span>
+    <span>
+      A role profile agreed with the hiring manager: must-haves,
+      nice-to-haves, red flags.
+    </span>
+  </li>
+  <li>
+    <span aria-hidden="true">–</span>
+    <span>
+      A 60–90 minute structured interview with each candidate, on a call you
+      host and record.
+    </span>
+  </li>
+  <li>
+    <span aria-hidden="true">–</span>
+    <span>
+      A written assessment within 48 hours: whether the candidate passed the
+      technical interview, level, scorecard against the must-haves, strengths
+      and concerns. The hiring decision stays with you.
+    </span>
+  </li>
+</ul>
+
+I cover frontend roles in full, Trainee to Tech Lead, and the non-stack side of senior roles in any stack. Sample reports on request. For agencies, reports go out under the agency's name.
+
+</div>
+
+</section>
+
+<section class="section-grid">
+
+## Price
+
+<div class="section-body">
+
+$200 per interview for Junior to Middle, $260 for Senior to Lead, plus $240 per role for the role profile and interview plan, waived from the third candidate on the same role. No retainer or minimum.
+
+Your first role can run hourly at $80, so you can judge the report before committing to more.
+
+{/* prettier-ignore */}
+<p> Add-ons, cancellations and payment terms are in the <a href="/consulting/serhii-babich-technical-interviews.pdf" download>service details (PDF)</a>. </p>
+
+</div>
+
+</section>
+
+{/* prettier-ignore */}
+<ClosingCta question="Hiring and need a technical assessment?" lead="Tell me about the role on a short call — the first interview can run within 3 working days.">
+  <a class="link-accent" href="https://calendar.app.google/e3Pjdq4oS728LXD86" target="_blank" rel="noopener">Book an intro call</a>
+  <a href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a>
+</ClosingCta>
+
+</Fragment>
+</TitleLayout>

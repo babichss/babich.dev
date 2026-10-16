@@ -9,7 +9,9 @@ export default defineConfig({
       // Only these pages are indexable; every other page is noindex, and a
       // noindexed URL here is a Search Console error.
       filter: (page) =>
-        ["/", "/work/", "/cv/"].includes(new URL(page).pathname),
+        ["/", "/work/", "/cv/", "/consulting/"].includes(
+          new URL(page).pathname,
+        ),
     }),
   ],
   output: "static",

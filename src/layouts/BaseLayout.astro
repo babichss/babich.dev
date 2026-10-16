@@ -29,12 +29,17 @@ interface Props {
   // Set on the service pages hidden from nav/home during the job search;
   // keeps them out of search results without deleting them.
   noindex?: boolean;
+  // Set on the 404 page, which is served from whatever URL was mistyped, so
+  // it must claim no canonical, og:url or hreflang of its own.
+  noCanonical?: boolean;
   // Lets a page scope its own CSS (e.g. the /cv print stylesheet) without
   // the shared, code-split-free bundle leaking those rules everywhere.
   bodyClass?: string;
   titleSuffix?: boolean;
   ogType?: "website" | "profile" | "article";
   publishedTime?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -43,10 +48,13 @@ const {
   lang = defaultLang,
   noAlternateLang = false,
   noindex = false,
+  noCanonical = false,
   bodyClass,
   titleSuffix = true,
   ogType = "website",
   publishedTime,
+  ogImage = "/og.jpg",
+  ogImageAlt = "Portrait of Serhii Babich with the text: Serhii Babich, Senior Product Engineer, babich.dev",
 } = Astro.props;
 const pageLang = isLang(lang) ? lang : defaultLang;
 const siteName = site[pageLang].name;
@@ -62,10 +70,8 @@ const urlFor = (forLang: Lang) =>
     Astro.site,
   ).href;
 const canonicalURL = urlFor(pageLang);
-const ogImageURL = new URL("/og.jpg", Astro.site).href;
+const ogImageURL = new URL(ogImage, Astro.site).href;
 const homeURL = new URL("/", Astro.site).href;
-const ogImageAlt =
-  "Portrait of Serhii Babich with the text: Serhii Babich, Senior Product Engineer, babich.dev";
 
 const skipLabel = pageLang === "uk" ? "Перейти до вмісту" : "Skip to content";
 
@@ -104,9 +110,9 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
       )
     }
 
-    <link rel="canonical" href={canonicalURL} />
+    {!noCanonical && <link rel="canonical" href={canonicalURL} />}
     {
-      !ukrainianDetached && (
+      !noCanonical && !ukrainianDetached && (
         <>
           <link rel="alternate" hreflang={pageLang} href={canonicalURL} />
           {!noAlternateLang && (
@@ -145,7 +151,7 @@ const ogLocales: Record<Lang, string> = { uk: "uk_UA", en: "en_US" };
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
+    {!noCanonical && <meta property="og:url" content={canonicalURL} />}
     <meta property="og:locale" content={ogLocales[pageLang]} />
     {
       !noAlternateLang && linksToAlternateLang(pageLang) && (
