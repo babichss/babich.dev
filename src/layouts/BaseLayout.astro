@@ -35,6 +35,8 @@ interface Props {
   titleSuffix?: boolean;
   ogType?: "website" | "profile" | "article";
   publishedTime?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -47,6 +49,8 @@ const {
   titleSuffix = true,
   ogType = "website",
   publishedTime,
+  ogImage = "/og.jpg",
+  ogImageAlt = "Portrait of Serhii Babich with the text: Serhii Babich, Senior Product Engineer, babich.dev",
 } = Astro.props;
 const pageLang = isLang(lang) ? lang : defaultLang;
 const siteName = site[pageLang].name;
@@ -62,10 +66,8 @@ const urlFor = (forLang: Lang) =>
     Astro.site,
   ).href;
 const canonicalURL = urlFor(pageLang);
-const ogImageURL = new URL("/og.jpg", Astro.site).href;
+const ogImageURL = new URL(ogImage, Astro.site).href;
 const homeURL = new URL("/", Astro.site).href;
-const ogImageAlt =
-  "Portrait of Serhii Babich with the text: Serhii Babich, Senior Product Engineer, babich.dev";
 
 const skipLabel = pageLang === "uk" ? "Перейти до вмісту" : "Skip to content";
 

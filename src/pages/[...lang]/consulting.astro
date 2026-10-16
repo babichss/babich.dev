@@ -14,6 +14,9 @@ const { Content } = await getPage("en", "consulting");
 const siteURL = Astro.site ?? Astro.url;
 const pageURL = new URL("/consulting/", siteURL).href;
 const personId = new URL("/#person", siteURL).href;
+const ogImageURL = new URL("/og-consulting.jpg", siteURL).href;
+const ogImageAlt =
+  "Portrait of Serhii Babich with the text: Serhii Babich, Independent technical interviews, babich.dev/consulting";
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -23,6 +26,7 @@ const jsonLd = {
       url: pageURL,
       name: content.metaTitle,
       description: content.metaDescription,
+      image: ogImageURL,
       serviceType: "Technical interviewing",
       areaServed: "Worldwide",
       availableLanguage: ["en", "uk"],
@@ -38,6 +42,8 @@ const jsonLd = {
   description={content.metaDescription}
   lang="en"
   noAlternateLang
+  ogImage="/og-consulting.jpg"
+  ogImageAlt={ogImageAlt}
 >
   <script
     slot="head"
