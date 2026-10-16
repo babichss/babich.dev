@@ -5,6 +5,7 @@ lang: en
 
 import { Image } from "astro:assets";
 import portrait from "../../../../assets/portrait.jpg";
+import ClosingCta from "src/components/ClosingCta.astro";
 import TitleLayout from "src/layouts/TitleLayout.astro";
 import { site } from "src/data/site";
 
@@ -94,13 +95,10 @@ export const [titleHead, titleTail] = site.en.home.title.split(" for ");
 
 </section>
 
-<section class="section-grid" id="contact">
-
-## Contact
-
-<p class="contact-line"> Hiring for a product engineering role? Write to{" "} <a class="link-accent" href="mailto:serhii@babich.dev"> {"serhii@babich.dev"} </a>{" "} — or grab the <a href="/cv/">CV</a>. </p>
-
-</section>
+<ClosingCta question="Hiring for a product engineering role?">
+  <a class="link-accent" href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a>
+  <a href="/cv/">CV</a>
+</ClosingCta>
 
 </Fragment>
 </TitleLayout>

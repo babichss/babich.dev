@@ -1,0 +1,18 @@
+---
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+
+<section id="contact" class="closing-cta">
+  <h2 class="contact-line">{question}</h2>
+  <div class="link-row"><slot /></div>
+</section>
+
+<style>
+  .closing-cta h2 {
+    margin-bottom: var(--space-3);
+  }
+</style>

@@ -5,6 +5,7 @@ lang: en
 
 import { Image } from "astro:assets";
 import portrait from "../../../../assets/portrait.jpg";
+import ClosingCta from "src/components/ClosingCta.astro";
 import TitleLayout from "src/layouts/TitleLayout.astro";
 
 <TitleLayout hideLanguageSwitch>
@@ -143,18 +144,11 @@ Your first role can run hourly at $80, so you can judge the report before commit
 
 </section>
 
-<section>
-
 {/* prettier-ignore */}
-<h2 id="contact" class="contact-line">Hiring and need a technical assessment?</h2>
-
-{/* prettier-ignore */}
-<div class="link-row">
+<ClosingCta question="Hiring and need a technical assessment?">
   <a class="link-accent" href="https://calendar.app.google/e3Pjdq4oS728LXD86" target="_blank" rel="noopener">Book an intro call</a>
   <a href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a>
-</div>
-
-</section>
+</ClosingCta>
 
 </Fragment>
 </TitleLayout>
