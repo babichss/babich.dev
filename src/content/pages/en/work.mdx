@@ -3,6 +3,7 @@ page: work
 lang: en
 ---
 
+import ClosingCta from "src/components/ClosingCta.astro";
 import TitleLayout from "src/layouts/TitleLayout.astro";
 
 <TitleLayout hideLanguageSwitch titleGap="section">
@@ -210,11 +211,15 @@ I'd make many of those early calls differently today; I was less product-minded 
 
 **Viseven** — interactive e-detailing presentations that pharma sales reps used with healthcare professionals, plus a lightweight CSS framework for chart markup and animation.
 
-<p class="subtitle closing"> Full history in the <a href="/cv/">CV</a> ·{" "} <a class="link-accent" href="mailto:serhii@babich.dev"> {"serhii@babich.dev"} </a></p>
-
 </div>
 
 </section>
+
+{/* prettier-ignore */}
+<ClosingCta question="Hiring for a product engineering role?" lead="Send me the role and a few lines about the team.">
+  <a class="link-accent" href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a>
+  <a href="/cv/">Full CV</a>
+</ClosingCta>
 
 </Fragment>
 </TitleLayout>
