@@ -16,39 +16,35 @@ const links = [
 <footer class="page-container site-footer">
   <div class="footer-content">
     <div class="footer-group">
-      <span class="text-soft">© {year} {site[lang].name}</span>
-      {
-        lang === "en" && (
-          <span class="footer-item">
-            <span class="text-soft" aria-hidden="true">
-              ·
+      <div class="footer-list">
+        <span class="footer-item text-soft">© {year} {site[lang].name}</span>
+        {
+          lang === "en" && (
+            <span class="footer-item">
+              <a
+                class="link-plain"
+                href="/consulting/"
+                aria-current={isConsulting ? "page" : undefined}
+              >
+                Technical interviews
+              </a>
             </span>
-            <a
-              class="link-plain"
-              href="/consulting/"
-              aria-current={isConsulting ? "page" : undefined}
-            >
-              Technical interviews
-            </a>
-          </span>
-        )
-      }
+          )
+        }
+      </div>
     </div>
     <div class="footer-group">
-      {
-        links.map(({ href, label }, i) => (
-          <span class="footer-item">
-            {i > 0 && (
-              <span class="text-soft" aria-hidden="true">
-                ·
-              </span>
-            )}
-            <a class="link-plain" href={href}>
-              {label}
-            </a>
-          </span>
-        ))
-      }
+      <div class="footer-list">
+        {
+          links.map(({ href, label }) => (
+            <span class="footer-item">
+              <a class="link-plain" href={href}>
+                {label}
+              </a>
+            </span>
+          ))
+        }
+      </div>
     </div>
   </div>
 </footer>
@@ -65,20 +61,37 @@ const links = [
       line-height: 20px;
     }
 
+    /* Every item carries a leading dot in a 16px gutter. The list is pulled
+       left by one gutter and the group clips it, so the dot of whichever item
+       starts a line is cut off and a dot never leads or trails a line. The
+       padding keeps focus rings inside the clip. */
     .footer-group {
+      margin-block: -3px;
+      padding-block: 3px;
+      overflow: hidden;
+    }
+
+    .footer-list {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0 8px;
+      margin-inline-start: -16px;
     }
 
-    /* A dot and its link wrap as one unit, so a dot never sits alone at a
-       line edge. */
     .footer-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      position: relative;
+      padding-inline-start: 16px;
       white-space: nowrap;
+    }
+
+    .footer-item::before {
+      position: absolute;
+      inset-inline-start: 0;
+      width: 16px;
+      content: "·";
+      content: "·" / "";
+      color: var(--text-3);
+      text-align: center;
     }
 
     .footer-item a {
