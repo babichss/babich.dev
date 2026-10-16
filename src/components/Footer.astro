@@ -10,6 +10,13 @@ const year = new Date().getFullYear();
   <div class="footer-content">
     <span class="text-soft">© {year} {site[lang].name}</span>
     <div class="footer-links">
+      {
+        lang === "en" && (
+          <a class="link-plain" href="/consulting/">
+            Technical interviews
+          </a>
+        )
+      }
       <a class="link-plain" href="mailto:serhii@babich.dev">serhii@babich.dev</a
       >
       <a class="link-plain" href="https://www.linkedin.com/in/babichss"
