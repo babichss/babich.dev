@@ -1,0 +1,56 @@
+---
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import TitleLayout from "src/layouts/TitleLayout.astro";
+---
+
+<BaseLayout
+  title="Page not found"
+  description="There's nothing here. Yet."
+  lang="en"
+  noindex
+  noAlternateLang
+  noCanonical
+>
+  <TitleLayout hideLanguageSwitch>
+    <Fragment slot="title">
+      <h1 class="display">There's nothing here. Yet.</h1>
+    </Fragment>
+
+    <Fragment slot="content">
+      <section class="section-grid">
+        <p class="lead text-secondary">
+          And I have no idea how you ended up here.
+        </p>
+
+        <div class="section-body">
+          <p>Maybe you were looking for:</p>
+
+          <ul class="bullets">
+            <li>
+              <span aria-hidden="true">–</span>
+              <span><a class="link-accent" href="/work/">How I work</a></span>
+            </li>
+            <li>
+              <span aria-hidden="true">–</span>
+              <span><a class="link-accent" href="/cv/">My CV</a></span>
+            </li>
+            <li>
+              <span aria-hidden="true">–</span>
+              <span
+                ><a class="link-accent" href="/consulting/"
+                  >Technical interviews</a
+                ></span
+              >
+            </li>
+          </ul>
+
+          <p class="text-soft">
+            If one of my links sent you here, tell me: <a
+              href="mailto:serhii@babich.dev">serhii@babich.dev</a
+            >
+          </p>
+        </div>
+      </section>
+    </Fragment>
+  </TitleLayout>
+</BaseLayout>

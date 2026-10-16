@@ -46,6 +46,7 @@ const WorkPage = (await import("src/pages/[...lang]/work.astro")).default;
 const CvPage = (await import("src/pages/[...lang]/cv.astro")).default;
 const ConsultingPage = (await import("src/pages/[...lang]/consulting.astro"))
   .default;
+const NotFoundPage = (await import("src/pages/404.astro")).default;
 const BlogIndexPage = (await import("src/pages/[...lang]/blog/index.astro"))
   .default;
 const BlogPostPage = (await import("src/pages/[...lang]/blog/[slug].astro"))
@@ -109,6 +110,12 @@ describe("the indexable pages stay indexable", () => {
 
   it("consulting does not carry noindex", async () => {
     expect(await render(ConsultingPage, "/consulting/")).not.toContain(NOINDEX);
+  });
+});
+
+describe("noindex on the 404 page", () => {
+  it("404 carries noindex", async () => {
+    expect(await render(NotFoundPage, "/404.html")).toContain(NOINDEX);
   });
 });
 
