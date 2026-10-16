@@ -88,9 +88,9 @@ export const site = {
         "How I work, walked through five projects: finding the real scope, making product and technical trade-offs, checking the whole flow and looking back.",
     },
     consulting: {
-      metaTitle: "Technical Interviews for Recruiting Agencies",
+      metaTitle: "Independent Technical Interviews",
       metaDescription:
-        "Human-led technical interviews for recruiting agencies: an agreed role profile, a recorded interview, and a written result and level within 48 hours.",
+        "Human-led technical interviews for hiring teams and agencies: an agreed role profile, a recorded interview, and a written result and level within 48 hours.",
     },
     cv: {
       metaTitle: "CV: Senior Product Engineer",
