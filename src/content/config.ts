@@ -11,6 +11,7 @@ const pages = defineCollection({
       "youtube",
       "work",
       "cv",
+      "consulting",
     ]),
     lang: z.enum(["uk", "en"]).default("uk"),
   }),

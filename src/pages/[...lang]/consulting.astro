@@ -1,0 +1,48 @@
+---
+import { site } from "src/data/site";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import { getPage } from "src/lib/pages";
+import { personJsonLd } from "src/lib/seo";
+
+export function getStaticPaths() {
+  return [{ params: { lang: undefined } }];
+}
+
+const content = site.en.consulting;
+const { Content } = await getPage("en", "consulting");
+
+const siteURL = Astro.site ?? Astro.url;
+const pageURL = new URL("/consulting/", siteURL).href;
+const personId = new URL("/#person", siteURL).href;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": `${pageURL}#service`,
+      url: pageURL,
+      name: content.metaTitle,
+      description: content.metaDescription,
+      serviceType: "Technical interviewing",
+      areaServed: "Worldwide",
+      availableLanguage: ["en", "uk"],
+      provider: { "@id": personId },
+    },
+    personJsonLd(siteURL),
+  ],
+};
+---
+
+<BaseLayout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  lang="en"
+  noAlternateLang
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(jsonLd)}
+  />
+  <Content />
+</BaseLayout>

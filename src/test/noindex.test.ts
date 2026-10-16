@@ -18,6 +18,7 @@ vi.mock("astro:content", () => ({
           { data: { page: "home", lang: "en" } },
           { data: { page: "work", lang: "en" } },
           { data: { page: "cv", lang: "en" } },
+          { data: { page: "consulting", lang: "en" } },
         ],
   ),
   // The route under test only cares whether BaseLayout receives `noindex`,
@@ -43,6 +44,8 @@ const YouTubePage = (await import("src/pages/[...lang]/youtube.astro")).default;
 const HomePage = (await import("src/pages/[...lang]/index.astro")).default;
 const WorkPage = (await import("src/pages/[...lang]/work.astro")).default;
 const CvPage = (await import("src/pages/[...lang]/cv.astro")).default;
+const ConsultingPage = (await import("src/pages/[...lang]/consulting.astro"))
+  .default;
 const BlogIndexPage = (await import("src/pages/[...lang]/blog/index.astro"))
   .default;
 const BlogPostPage = (await import("src/pages/[...lang]/blog/[slug].astro"))
@@ -102,6 +105,10 @@ describe("the indexable pages stay indexable", () => {
 
   it("cv does not carry noindex", async () => {
     expect(await render(CvPage, "/cv/")).not.toContain(NOINDEX);
+  });
+
+  it("consulting does not carry noindex", async () => {
+    expect(await render(ConsultingPage, "/consulting/")).not.toContain(NOINDEX);
   });
 });
 
