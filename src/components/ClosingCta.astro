@@ -1,18 +1,29 @@
 ---
 interface Props {
   question: string;
+  lead?: string;
 }
 
-const { question } = Astro.props;
+const { question, lead } = Astro.props;
 ---
 
-<section id="contact" class="closing-cta">
+<section id="contact" class:list={["closing-cta", { "has-lead": lead }]}>
   <h2 class="contact-line">{question}</h2>
+  {lead && <p class="text-secondary closing-lead">{lead}</p>}
   <div class="link-row"><slot /></div>
 </section>
 
 <style>
   .closing-cta h2 {
     margin-bottom: var(--space-3);
+  }
+
+  .closing-cta.has-lead h2 {
+    margin-bottom: var(--space-2);
+  }
+
+  .closing-lead {
+    margin: 0 0 var(--space-3);
+    max-width: 60ch;
   }
 </style>
