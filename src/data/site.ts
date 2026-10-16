@@ -90,7 +90,7 @@ export const site = {
     consulting: {
       metaTitle: "Technical Interviews for Recruiting Agencies",
       metaDescription:
-        "Independent technical interviews for recruiting agencies' clients: an agreed role profile, a recorded interview and a written pass/fail report within 48 hours.",
+        "Independent technical interviews for recruiting agencies' clients: an agreed role profile, a recorded interview and a written report with the result and level within 48 hours.",
     },
     cv: {
       metaTitle: "CV: Senior Product Engineer",
