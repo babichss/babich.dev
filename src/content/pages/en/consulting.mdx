@@ -3,19 +3,51 @@ page: consulting
 lang: en
 ---
 
+import { Image } from "astro:assets";
+import portrait from "../../../../assets/portrait.jpg";
 import TitleLayout from "src/layouts/TitleLayout.astro";
 
-<TitleLayout hideLanguageSwitch titleGap="section">
+<TitleLayout hideLanguageSwitch>
 <Fragment slot="title">
-  <h1>Technical interviews led by a person, not a checklist</h1>
-  <p class="subtitle text-secondary"> Rehearsed answers pass screening calls and AI screeners. They don't pass a conversation with an engineer who knows where to dig. I lead that conversation and give your client a judgement they can trust. </p>
-  <div class="link-row">
-    <a class="link-accent" href="/consulting/serhii-babich-technical-interviews.pdf" download>Service details (PDF)</a>
-    <a href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a>
-  </div>
+  <h1 class="display">Technical interviews led by a person,<br class="desktop-break" />{" "}not a checklist</h1>
 </Fragment>
 
 <Fragment slot="content">
+
+<section class="section-grid hero">
+
+<Image
+  class="hero-photo"
+  src={portrait}
+  width={242}
+  widths={[96, 192, 242, 484]}
+  sizes="(min-width: 1024px) 242px, 96px"
+  format="webp"
+  alt="Portrait of Serhii Babich"
+  loading="eager"
+  fetchpriority="high"
+/>
+
+{/* prettier-ignore */}
+<p class="lead"> Rehearsed answers pass screening calls and AI screeners. They don't pass a conversation with an engineer who knows where to dig. </p>
+
+{/* prettier-ignore */}
+<p class="lead text-secondary"> I lead that conversation and give your client a judgement they can trust. </p>
+
+{/* prettier-ignore */}
+<div class="hero-availability">
+  <p class="text-strong weight-500"> For recruiting agencies · up to 3 interviews a week </p>
+  <p class="text-soft"> English or Ukrainian · Kyiv time (EET, UTC+2/+3) · report within 48 hours </p>
+</div>
+
+{/* prettier-ignore */}
+<div class="link-row hero-links">
+  <a class="link-accent" href="/consulting/serhii-babich-technical-interviews.pdf" download>Service details (PDF)</a>
+  <a href="https://www.youtube.com/playlist?list=PLLyJLoRTWreMlqKfu0RVJQNXQU66nu8Tq">Watch an interview</a>
+  <a href="mailto:serhii@babich.dev">{"serhii@babich.dev"}</a>
+</div>
+
+</section>
 
 <section class="section-grid">
 
