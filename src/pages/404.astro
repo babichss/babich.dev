@@ -11,20 +11,19 @@ import TitleLayout from "src/layouts/TitleLayout.astro";
   noAlternateLang
   noCanonical
 >
-  <TitleLayout hideLanguageSwitch>
+  <TitleLayout hideLanguageSwitch titleGap="section">
     <Fragment slot="title">
       <h1 class="display">There's nothing here. Yet.</h1>
+      <p class="subtitle text-secondary">
+        And I have no idea how you ended up here.
+      </p>
     </Fragment>
 
     <Fragment slot="content">
       <section class="section-grid">
-        <p class="lead text-secondary">
-          And I have no idea how you ended up here.
-        </p>
+        <h2>Maybe you were looking for</h2>
 
         <div class="section-body">
-          <p>Maybe you were looking for:</p>
-
           <ul class="bullets">
             <li>
               <span aria-hidden="true">–</span>
