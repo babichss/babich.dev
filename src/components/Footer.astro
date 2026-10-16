@@ -4,25 +4,51 @@ import { getLangFromPath } from "src/lib/i18n";
 
 const lang = getLangFromPath(Astro.url.pathname);
 const year = new Date().getFullYear();
+const isConsulting = Astro.url.pathname.replace(/\/?$/, "/") === "/consulting/";
+
+const links = [
+  { href: "mailto:serhii@babich.dev", label: "serhii@babich.dev" },
+  { href: "https://www.linkedin.com/in/babichss", label: "LinkedIn" },
+  { href: "https://youtube.com/@babichweb", label: "YouTube" },
+];
 ---
 
 <footer class="page-container site-footer">
   <div class="footer-content">
-    <span class="text-soft">© {year} {site[lang].name}</span>
-    <div class="footer-links">
+    <div class="footer-group">
+      <span class="text-soft">© {year} {site[lang].name}</span>
       {
         lang === "en" && (
-          <a class="link-plain" href="/consulting/">
-            Technical interviews
-          </a>
+          <span class="footer-item">
+            <span class="text-soft" aria-hidden="true">
+              ·
+            </span>
+            <a
+              class="link-plain"
+              href="/consulting/"
+              aria-current={isConsulting ? "page" : undefined}
+            >
+              Technical interviews
+            </a>
+          </span>
         )
       }
-      <a class="link-plain" href="mailto:serhii@babich.dev">serhii@babich.dev</a
-      >
-      <a class="link-plain" href="https://www.linkedin.com/in/babichss"
-        >LinkedIn</a
-      >
-      <a class="link-plain" href="https://youtube.com/@babichweb">YouTube</a>
+    </div>
+    <div class="footer-group">
+      {
+        links.map(({ href, label }, i) => (
+          <span class="footer-item">
+            {i > 0 && (
+              <span class="text-soft" aria-hidden="true">
+                ·
+              </span>
+            )}
+            <a class="link-plain" href={href}>
+              {label}
+            </a>
+          </span>
+        ))
+      }
     </div>
   </div>
 </footer>
@@ -39,20 +65,30 @@ const year = new Date().getFullYear();
       line-height: 20px;
     }
 
-    .footer-links {
+    .footer-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 0 20px;
+      align-items: center;
+      gap: 0 8px;
     }
 
-    .footer-links a {
+    /* A dot and its link wrap as one unit, so a dot never sits alone at a
+       line edge. */
+    .footer-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .footer-item a {
       display: inline-flex;
       align-items: center;
       min-height: var(--tap-target);
       color: var(--text-2);
     }
 
-    .footer-links a:hover {
+    .footer-item a:hover {
       color: var(--accent);
     }
 
@@ -64,11 +100,7 @@ const year = new Date().getFullYear();
         padding-block: var(--space-3) var(--space-4);
       }
 
-      .footer-links {
-        gap: var(--space-3);
-      }
-
-      .footer-links a {
+      .footer-item a {
         min-height: 0;
       }
     }
