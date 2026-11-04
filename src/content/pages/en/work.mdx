@@ -41,7 +41,7 @@ I cut delivery into small steps, each testable, releasable and useful on its own
 
 The browser can't reliably tell at upload whether a dataset is compatible; those rules live on the backend and can be expensive to run. So after an upload the UI refetches the eligible datasets and warns if the new one isn't among them. A real incompatibility can still surface at scoring, but users get the earliest reliable feedback and the client doesn't duplicate domain logic.
 
-The supervised workflow shipped in about five months, and customers used it in production. An external QA pass before broad use found about 15 defects, mostly UI state and unusual-data edge cases, none critical or blocking.
+The supervised workflow shipped in about five months, and within two months of GA customers in banking, chemicals and manufacturing were using it in production. An external QA pass before broad use found about 15 defects, mostly UI state and unusual-data edge cases, none critical or blocking.
 
 Then a customer reported that their datasets didn't work, without mentioning the experiment was unsupervised. The first theory was an encoding problem with Japanese characters. Chasing it turned up a real backend bug, but fixing that didn't fix the report. Once the theory changed, I traced the cause to the unsupervised setup: its eligibility rules still lived in the legacy flow, and neither the new UI nor the backend supported that variant. I fixed both sides. The fix merged and reached staging before I left DataRobot.
 
@@ -175,7 +175,7 @@ Next time I'd do fuller discovery of the DSL up front, split its rules into sepa
 
 SkillReveal was an early-stage platform connecting interviewers with candidates, for mock interviews and for real interviews that companies outsourced to it; later it added a job board, with outsourced interviews sold separately. I joined as lead frontend developer in a six-person team, when the product was a few design screens. Frontend and backend were built in parallel, fast, sometimes late into the night.
 
-Nothing was settled yet: not the stack, not the architecture, not the order of features. I set the frontend direction from the first commit. For state I chose Recoil, because atomic state had worked well for me before. It kept UI separate from data, let me derive state from atoms, and needed little external tooling. Redux felt too boilerplate-heavy for an MVP moving that fast. The stack and architecture stayed in place for as long as I was there. I also worked through data-shape questions with the backend engineer.
+Nothing was settled yet: not the stack, not the architecture, not the order of features. I set the frontend direction from the first commit. For state I chose Recoil, because atomic state had worked well for me before. It kept UI separate from data, let me derive state from atoms, and needed little external tooling. Redux felt too boilerplate-heavy for an MVP moving that fast. That architecture carried the product from MVP onward, and late in my time there I contributed to its migration from a React SPA to Next.js. I also worked through data-shape questions with the backend engineer.
 
 The CEO specified the views. Together we decided what to ship fast, what to postpone and what to prioritize; I brought feasibility, UI decisions and the user's perspective. I also ran several interviews on the platform myself, and my feedback as a practicing interviewer went into the UI. The MVP took about three months.
 
@@ -187,7 +187,7 @@ During my time there, SkillReveal reached 20 paying customers, roughly $15K in m
 
 I'd make many of those early calls differently today; I was less product-minded then.
 
-<p class="stack-line"><strong>Stack</strong> — React, Recoil, a customized Material UI design system. </p>
+<p class="stack-line"><strong>Stack</strong> — React, Next.js, Recoil, a customized Material UI design system. </p>
 
 </div>
 

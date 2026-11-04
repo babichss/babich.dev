@@ -16,9 +16,9 @@ export const site = {
       { href: "/cv/", title: "CV (EN)", unprefixed: true },
     ],
     home: {
-      metaTitle: "Сергій Бабіч — Senior Product Engineer",
+      metaTitle: "Сергій Бабіч — Senior Frontend / Product Engineer",
       metaDescription:
-        "Сергій Бабіч — продуктовий інженер: складні інтерфейси для роботи з даними та ML, понад 15 років у фронтенді. Відкритий до віддалених позицій Senior / Staff.",
+        "Сергій Бабіч — продуктовий інженер: складні інтерфейси для роботи з даними та ML, понад 15 років у фронтенді. Відкритий до роботи в штаті або за B2B-контрактом.",
       title: "Продуктовий інженер: складні інтерфейси для роботи з даними.",
     },
     interviews: {
@@ -77,9 +77,9 @@ export const site = {
       { href: "/cv/", title: "CV" },
     ],
     home: {
-      metaTitle: "Serhii Babich — Senior Product Engineer",
+      metaTitle: "Serhii Babich — Senior Frontend / Product Engineer",
       metaDescription:
-        "I'm a product engineer for complex data interfaces: 15+ years in frontend, most recently ML evaluation at DataRobot. Open to remote Senior / Staff roles.",
+        "I'm a product engineer for complex data interfaces: 15+ years in frontend, most recently ML evaluation at DataRobot. Open to employment or B2B contract.",
       title: "Product engineer for complex data interfaces.",
     },
     work: {
@@ -93,9 +93,9 @@ export const site = {
         "Human-led technical interviews for hiring teams and agencies: an agreed role profile, a recorded interview, and a written result and level within 48 hours.",
     },
     cv: {
-      metaTitle: "CV: Senior Product Engineer",
+      metaTitle: "CV: Senior Frontend / Product Engineer",
       metaDescription:
-        "Senior Product Engineer with 15+ years building data-heavy apps and interactive tools, most recently at DataRobot. Remote from Ukraine (EET).",
+        "Senior Frontend / Product Engineer with 15+ years building data-heavy apps and interactive tools, most recently at DataRobot. Remote from Ukraine (EET).",
     },
     interviews: {
       metaTitle: "Technical interviews",
