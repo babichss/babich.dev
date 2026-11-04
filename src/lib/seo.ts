@@ -8,7 +8,7 @@ export const personJsonLd = (siteURL: URL) => {
     name: site.en.name,
     givenName: "Serhii",
     familyName: "Babich",
-    jobTitle: "Senior Product Engineer",
+    jobTitle: "Senior Frontend / Product Engineer",
     description: site.en.home.title,
     url: home,
     image: new URL("/serhii-babich.jpg", siteURL).href,

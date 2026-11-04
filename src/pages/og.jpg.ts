@@ -5,7 +5,7 @@ export const GET: APIRoute = async () =>
   new Response(
     await renderOgImage({
       kicker: "Serhii Babich",
-      headline: "Senior Product Engineer",
+      headline: "Senior Frontend / Product Engineer",
       domain: "babich.dev",
     }),
     { headers: { "Content-Type": "image/jpeg" } },
