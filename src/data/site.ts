@@ -18,7 +18,7 @@ export const site = {
     home: {
       metaTitle: "Сергій Бабіч — Senior Frontend / Product Engineer",
       metaDescription:
-        "Сергій Бабіч — продуктовий інженер: складні інтерфейси для роботи з даними та ML, понад 15 років у фронтенді. Відкритий до роботи в штаті або за B2B-контрактом.",
+        "Сергій Бабіч — продуктовий інженер: складні інтерфейси для роботи з даними та ML, понад 15 років у фронтенді. Відкритий до віддаленої роботи в штаті або за B2B-контрактом.",
       title: "Продуктовий інженер: складні інтерфейси для роботи з даними.",
     },
     interviews: {
@@ -79,7 +79,7 @@ export const site = {
     home: {
       metaTitle: "Serhii Babich — Senior Frontend / Product Engineer",
       metaDescription:
-        "I'm a product engineer for complex data interfaces: 15+ years in frontend, most recently ML evaluation at DataRobot. Open to employment or B2B contract.",
+        "I'm a product engineer for complex data interfaces: 15+ years in frontend, most recently ML evaluation at DataRobot. Open to remote employment or a B2B contract.",
       title: "Product engineer for complex data interfaces.",
     },
     work: {
